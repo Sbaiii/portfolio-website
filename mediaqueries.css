@@ -101,3 +101,51 @@
     text-align: justify;
   }
 }
+
+/* Language Switcher Responsive Design */
+@media screen and (max-width: 1200px) {
+  .language-switcher {
+    margin-left: 0.5rem;
+  }
+  
+  .language-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    min-width: 45px;
+  }
+  
+  .language-menu {
+    min-width: 100px;
+  }
+  
+  .language-option {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .language-switcher-mobile {
+    margin-top: 0.5rem;
+    padding: 1.5rem 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  .language-switcher-mobile .language-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 60px;
+  }
+  
+  .language-switcher-mobile .language-menu {
+    min-width: 120px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  
+  .language-switcher-mobile .language-option {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+}
