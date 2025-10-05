@@ -34,15 +34,23 @@ nav,
 }
 
 nav {
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 17vh;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 2.5rem;
+  margin-right: 2rem;
+  flex-shrink: 0;
 }
 
 .nav-links {
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  flex-wrap: wrap;
 }
 
 a {
@@ -59,7 +67,7 @@ a:hover {
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 2.5rem;
   transition: transform 0.3s ease;
 }
 
