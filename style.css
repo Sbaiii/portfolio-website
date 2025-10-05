@@ -168,6 +168,17 @@ a:hover {
   display: none;
 }
 
+/* Responsive Navigation - Hide regular nav below 1300px */
+@media (max-width: 1300px) {
+  .nav-links {
+    display: none;
+  }
+  
+  #hamburger-nav {
+    display: flex;
+  }
+}
+
 .hamburger-menu {
   position: relative;
   display: inline-block;
