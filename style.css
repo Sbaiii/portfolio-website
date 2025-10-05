@@ -37,11 +37,12 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 17vh;
-  padding: 0 3rem;
+  padding: 0 2rem;
 }
 
 .logo {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: normal;
   margin-right: 2rem;
   flex-shrink: 0;
 }
@@ -67,7 +68,8 @@ a:hover {
 }
 
 .logo {
-  font-size: 1.6rem;
+  font-size: 2rem;
+  font-weight: normal;
   transition: transform 0.3s ease;
 }
 
