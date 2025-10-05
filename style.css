@@ -170,7 +170,8 @@ a:hover {
 
 /* Responsive Navigation - Hide regular nav below 1300px */
 @media (max-width: 1300px) {
-  .nav-links {
+  /* Only hide nav-links in the desktop header, not footer */
+  #desktop-nav .nav-links {
     display: none;
   }
   
@@ -1050,6 +1051,15 @@ article .icon {
 footer {
   height: 26vh;
   margin: 0 1rem;
+}
+
+footer nav {
+  display: flex;
+  justify-content: center;
+}
+
+footer .nav-links {
+  justify-content: center;
 }
 
 footer p {
