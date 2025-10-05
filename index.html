@@ -40,6 +40,15 @@
           <span></span>
         </div>
         <div class="menu-links">
+          <div class="close-btn" onclick="toggleMenu()">×</div>
+          
+          <!-- Language Selector -->
+          <div class="mobile-language-selector">
+            <div class="language-option" onclick="changeLanguage('en')">🇺EN</div>
+            <div class="language-option" onclick="changeLanguage('fr')">🇫🇷 FR</div>
+            <div class="language-option" onclick="changeLanguage('es')">🇪🇸 ES</div>
+          </div>
+          
           <li><a href="#about" onclick="toggleMenu()" data-en="About" data-fr="À propos" data-es="Acerca de">About</a></li>
           <li><a href="#Technical Profeciencies" onclick="toggleMenu()" data-en="Technical Proficiencies" data-fr="Compétences Techniques" data-es="Competencias Técnicas">Technical Proficiencies</a></li>
           <li><a href="#experience" onclick="toggleMenu()" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</a></li>
@@ -49,14 +58,14 @@
       </div>
     </nav>
     <section id="profile">
-      <div class="section__pic-container">
+      <div class="section__pic-container scroll-profile">
         <img src="./assets/profile-pic.png" alt="Abdellah Sbai profile picture" 
              class="about-pic"/>
       </div>
       <div class="section__text">
-        <p class="section__text__p1" data-en="Hello, I'm" data-fr="Bonjour, je suis" data-es="Hola, soy" data-translate="profile-greeting">Hello, I'm</p>
-        <h1 class="title">Abdellah Sbai</h1>
-        <p class="section__text__p2" data-en="Data Analytics Student" data-fr="Étudiant en Analyse de Données" data-es="Estudiante de Análisis de Datos" data-translate="profile-title">Data Analytics Student</p>
+        <p class="section__text__p1 scroll-animate" data-en="Hello, I'm" data-fr="Bonjour, je suis" data-es="Hola, soy" data-translate="profile-greeting">Hello, I'm</p>
+        <h1 class="title scroll-title">Abdellah Sbai Atta Allah</h1>
+        <p class="section__text__p2 scroll-animate" data-en="Data Analytics Student" data-fr="Étudiant en Analyse de Données" data-es="Estudiante de Análisis de Datos" data-translate="profile-title">Data Analytics Student</p>
         <div class="btn-container">
           <button
             class="btn btn-color-2"
@@ -90,8 +99,8 @@
       </div>
     </section>
     <section id="about">
-      <p class="section__text__p1" data-en="Get To Know More" data-fr="Apprenez à me connaître" data-es="Conoce más sobre mí">Get To Know More</p>
-      <h1 class="title" data-en="About Me" data-fr="À propos de moi" data-es="Acerca de mí">About Me</h1>
+      <p class="section__text__p1 scroll-animate" data-en="Get To Know More" data-fr="Apprenez à me connaître" data-es="Conoce más sobre mí">Get To Know More</p>
+      <h1 class="title scroll-title" data-en="About Me" data-fr="À propos de moi" data-es="Acerca de mí">About Me</h1>
       <div class="section-container">
         <div class="section__pic-container">
           <img
@@ -99,10 +108,10 @@
             alt="Profile picture"
             class="about-pic"
           />
-        </div>      
+        </div>
         <div class="about-details-container">
           <div class="about-containers">
-            <div class="details-container">
+            <div class="details-container scroll-box">
               <img
                 src="./assets/experience.png"
                 alt="Experience icon"
@@ -111,7 +120,7 @@
               <h3 data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</h3>
               <p data-en="Data Analytics Internships at AXA & Taswim Python | SQL | Power BI | Excel | Business Insights" data-fr="Stages en Analyse de Données chez AXA & Taswim Python | SQL | Power BI | Excel | Insights Business" data-es="Pasantías en Análisis de Datos en AXA & Taswim Python | SQL | Power BI | Excel | Insights de Negocio">Data Analytics Internships at AXA & Taswim <br />Python | SQL | Power BI | Excel | Business Insights</p>
             </div>
-            <div class="details-container">
+            <div class="details-container scroll-box">
               <img
                 src="./assets/education.png"
                 alt="Education icon"
@@ -132,20 +141,14 @@
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#Technical Profeciencies'"
-      />
     </section>
     <section id="Technical Profeciencies">
-      <p class="section__text__p1" data-en="Explore My" data-fr="Explorez mes" data-es="Explora mis">Explore My</p>
-      <h1 class="title" data-en="Technical Proficiencies" data-fr="Compétences Techniques" data-es="Competencias Técnicas">Technical Proficiencies</h1>
+      <p class="section__text__p1 scroll-animate" data-en="Explore My" data-fr="Explorez mes" data-es="Explora mis">Explore My</p>
+      <h1 class="title scroll-title" data-en="Technical Proficiencies" data-fr="Compétences Techniques" data-es="Competencias Técnicas">Technical Proficiencies</h1>
       <div class="experience-details-container">
         <div class="about-containers">
           <!-- Programming Languages -->
-          <div class="details-container">
+          <div class="details-container scroll-box">
             <h2 class="experience-sub-title" data-en="Programming Languages" data-fr="Langages de Programmation" data-es="Lenguajes de Programación">Programming Languages</h2>
             <div class="article-container">
               <article>
@@ -170,10 +173,10 @@
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="icon" />
               </article>
             </div>
-          </div>
+                </div>
           
           <!-- Data Analytics & Visualization -->
-          <div class="details-container">
+          <div class="details-container scroll-box">
             <h2 class="experience-sub-title" data-en="Data Analytics & Visualization" data-fr="Analyse de Données & Visualisation" data-es="Análisis de Datos & Visualización">Data Analytics & Visualization</h2>
             <div class="article-container">
               <article>
@@ -200,7 +203,7 @@
         
         <div class="about-containers">
           <!-- Databases & Query Languages -->
-          <div class="details-container">
+          <div class="details-container scroll-box">
             <h2 class="experience-sub-title" data-en="Databases & Query Languages" data-fr="Bases de Données & Langages de Requête" data-es="Bases de Datos & Lenguajes de Consulta">Databases & Query Languages</h2>
             <div class="article-container">
               <article>
@@ -219,8 +222,8 @@
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" class="icon" />
               </article>
             </div>
-          </div>
-                    <div class="details-container">
+                </div>
+                    <div class="details-container scroll-box">
             <h2 class="experience-sub-title" data-en="Web & Front-End Basics" data-fr="Web & Bases Front-End" data-es="Web & Fundamentos Front-End">Web & Front-End Basics</h2>
             <div class="article-container">
               <article>
@@ -234,10 +237,10 @@
               </article>
             </div>
           </div>
-        </div>
+                </div>
         
         <div class="about-containers">
-          <div class="details-container">
+          <div class="details-container scroll-box">
             <h2 class="experience-sub-title" data-en="Tools & Environments" data-fr="Outils & Environnements" data-es="Herramientas & Entornos">Tools & Environments</h2>
             <div class="article-container">
               <article>
@@ -250,20 +253,14 @@
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
     </section> 
     <section id="experience">
-      <p class="section__text__p1" data-en="Explore My" data-fr="Explorez mon" data-es="Explora mi">Explore My</p>
-      <h1 class="title" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</h1>
+      <p class="section__text__p1 scroll-animate" data-en="Explore My" data-fr="Explorez mon" data-es="Explora mi">Explore My</p>
+      <h1 class="title scroll-title" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</h1>
       <div class="timeline-container">
         <div class="timeline">
           <!-- Academic Growth in Analytics -->
-          <div class="timeline-item">
+          <div class="timeline-item scroll-box">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 data-en="AXA Assurance Maroc – Data Analyst" data-fr="AXA Assurance Maroc – Analyste de Données" data-es="AXA Assurance Maroc – Analista de Datos">AXA Assurance Maroc – Data Analyst</h3>
@@ -273,7 +270,7 @@
           </div>
           
           <!-- AXA Assurance Maroc -->
-          <div class="timeline-item">
+          <div class="timeline-item scroll-box">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 data-en="Asia Pacific University of Technology & Innovation – B.Sc. (Hons) in Computer Science (Data Analytics)" data-fr="Asia Pacific University of Technology & Innovation – B.Sc. (Hons) en Informatique (Analyse de Données)" data-es="Asia Pacific University of Technology & Innovation – B.Sc. (Hons) en Ciencias de la Computación (Análisis de Datos)">Asia Pacific University of Technology & Innovation – B.Sc. (Hons) in Computer Science (Data Analytics)</h3>
@@ -283,7 +280,7 @@
           </div>
           
           <!-- Taswim Auto -->
-          <div class="timeline-item">
+          <div class="timeline-item scroll-box">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 data-en="Taswim Auto – Accounting Intern (Advanced Stage)" data-fr="Taswim Auto – Stagiaire Comptable (Stage Avancé)" data-es="Taswim Auto – Pasante de Contabilidad (Etapa Avanzada)">Taswim Auto – Accounting Intern (Advanced Stage)</h3>
@@ -293,7 +290,7 @@
           </div>
           
           <!-- Mohammed VI University of Health Science -->
-          <div class="timeline-item">
+          <div class="timeline-item scroll-box">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3 data-en="Mohammed VI University of Health Sciences – First-Year Medical Student" data-fr="Université Mohammed VI des Sciences de la Santé – Étudiant en Médecine de Première Année" data-es="Universidad Mohammed VI de Ciencias de la Salud – Estudiante de Medicina de Primer Año">Mohammed VI University of Health Sciences – First-Year Medical Student</h3>
@@ -313,19 +310,13 @@
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
     <section id="projects">
-      <p class="section__text__p1" data-en="Browse My Recent" data-fr="Parcourez mes récents" data-es="Explora mis recientes">Browse My Recent</p>
-      <h1 class="title" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</h1>
+      <p class="section__text__p1 scroll-animate" data-en="Browse My Recent" data-fr="Parcourez mes récents" data-es="Explora mis recientes">Browse My Recent</p>
+      <h1 class="title scroll-title" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</h1>
       <div class="experience-details-container">
         <div class="about-containers">
-          <div class="details-container color-container">
+          <div class="details-container color-container scroll-box">
             <div class="article-container">
               <img
                 src="./assets/project-1.png"
@@ -351,7 +342,7 @@
               </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <div class="details-container color-container scroll-box">
             <div class="article-container">
               <img
                 src="./assets/project-2.png"
@@ -377,7 +368,7 @@
               </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <div class="details-container color-container scroll-box">
             <div class="article-container">
               <img
                 src="./assets/project-3.png"
@@ -405,18 +396,12 @@
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
     </section>
     <section id="contact">
-      <p class="section__text__p1" data-en="Get in Touch" data-fr="Entrer en contact" data-es="Ponerse en contacto">Get in Touch</p>
-      <h1 class="title" data-en="Contact Me" data-fr="Contactez-moi" data-es="Contáctame">Contact Me</h1>
+      <p class="section__text__p1 scroll-animate" data-en="Get in Touch" data-fr="Entrer en contact" data-es="Ponerse en contacto">Get in Touch</p>
+      <h1 class="title scroll-title" data-en="Contact Me" data-fr="Contactez-moi" data-es="Contáctame">Contact Me</h1>
       <div class="contact-info-upper-container">
-        <div class="contact-info-container">
+        <div class="contact-info-container scroll-box">
           <img
             src="./assets/email.png"
             alt="Email icon"
@@ -424,7 +409,7 @@
           />
           <p><a href="mailto:abdellahsbaisbai@gmail.com">abdellahsbaisbai@gmail.com</a></p>
         </div>
-        <div class="contact-info-container">
+        <div class="contact-info-container scroll-box">
           <img
             src="./assets/linkedin.png"
             alt="LinkedIn icon"
