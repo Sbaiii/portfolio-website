@@ -185,6 +185,21 @@ a:hover {
   }
 }
 
+/* Adjust for longer text in different languages */
+@media (max-width: 1500px) {
+  .nav-links {
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1400px) {
+  .nav-links {
+    gap: 0.8rem;
+    font-size: 1.1rem;
+  }
+}
+
 .hamburger-menu {
   position: relative;
   display: inline-block;
