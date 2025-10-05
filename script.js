@@ -74,4 +74,35 @@ document.addEventListener('DOMContentLoaded', function() {
       option.classList.add('active');
     }
   });
+  
+  // Initialize scroll animations
+  initializeScrollAnimations();
 });
+
+// Scroll-triggered fade-in animations
+function initializeScrollAnimations() {
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add a slight delay for staggered effect
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+      } else {
+        // Remove visible class when scrolling back up for re-animation
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in elements
+  const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-down');
+  fadeElements.forEach(element => {
+    observer.observe(element);
+  });
+}
