@@ -180,4 +180,10 @@ function initializeTimelineCenterAnimations() {
   // Initial set and listeners
   window.updateActiveTimelineItem();
   window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('scroll', onScroll, { passive: true });
+  // Mobile-specific: ensure recalculation on orientation and page restore
+  window.addEventListener('orientationchange', () => setTimeout(window.updateActiveTimelineItem, 300));
+  window.addEventListener('pageshow', () => setTimeout(window.updateActiveTimelineItem, 0));
+  window.addEventListener('load', () => setTimeout(window.updateActiveTimelineItem, 0));
+  document.addEventListener('touchmove', onScroll, { passive: true });
 }
