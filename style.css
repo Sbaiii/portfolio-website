@@ -533,6 +533,9 @@ section {
 .about-details-container {
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 .text-container {
   text-align: justify;
@@ -645,6 +648,33 @@ section {
 .section-container {
   gap: 4rem;
   height: 80%;
+}
+
+/* About section specific container adjustments */
+#about .section-container {
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* About section responsive adjustments */
+@media (max-width: 1200px) {
+  #about .about-details-container {
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #about .about-details-container {
+    max-width: 95%;
+    padding: 0 0.5rem;
+  }
+  
+  #about .about-containers {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 .section__pic-container {

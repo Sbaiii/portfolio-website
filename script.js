@@ -25,6 +25,15 @@ function changeLanguage(lang) {
     }
   });
   
+  // Update elements with data-translate attributes (for about description and other translated content)
+  const elementsWithTranslate = document.querySelectorAll('[data-translate]');
+  elementsWithTranslate.forEach(element => {
+    const translateKey = element.getAttribute('data-translate');
+    if (window.translations && window.translations[lang] && window.translations[lang][translateKey]) {
+      element.textContent = window.translations[lang][translateKey];
+    }
+  });
+  
   // Update mobile language selector active state
   const mobileOptions = document.querySelectorAll('.mobile-language-selector .language-option');
   mobileOptions.forEach(option => {
