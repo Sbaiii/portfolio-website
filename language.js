@@ -1,9 +1,6 @@
 // Language Switcher JavaScript
 let currentLanguage = 'en';
 
-// Make translations globally accessible for mobile language switching
-window.translations = null;
-
 // Language data
 const translations = {
   en: {
@@ -166,8 +163,6 @@ const languageCodes = {
 
 // Initialize language switcher
 document.addEventListener('DOMContentLoaded', function() {
-  // Make translations globally accessible
-  window.translations = translations;
   initializeLanguageSwitcher();
   loadLanguage(currentLanguage);
 });

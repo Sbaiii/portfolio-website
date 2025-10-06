@@ -12,6 +12,24 @@
   }
 }
 
+/* Desktop-only About layout (keeps phone/tablet intact) */
+@media screen and (min-width: 1201px) {
+  #about .section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+  }
+  #about .about-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   #desktop-nav {
     display: none;
@@ -63,12 +81,60 @@
   .about-containers {
     margin-top: 0;
   }
+  #about {
+    padding: 2rem 1rem;
+  }
+  .about-details-container {
+    max-width: 90%;
+  }
+  
+  /* Timeline single-column layout - same breakpoint as hamburger menu */
+  .timeline-content {
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 0;
+  }
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 0;
+  }
+  .timeline {
+    max-width: 100%;
+  }
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-marker {
+    left: 20px;
+  }
+  .timeline-item {
+    flex-direction: row !important;
+    padding-left: 60px;
+  }
+  .timeline-content::after {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
+  /* lock horizontal overflow on very small screens */
+  html, body { overflow-x: hidden; }
+  /* ensure sections stay centered and don't drift left */
+  section {
+    margin: 0 1rem;
+  }
+  .section-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  /* allow Contact/Footer to grow so page doesn't get stuck */
   #contact,
   footer {
-    height: 40vh;
+    height: auto;
+    min-height: 40vh;
   }
   #profile {
     height: 83vh;
@@ -89,10 +155,10 @@
   .contact-info-container {
     margin: 0;
   }
-  .contact-info-container p,
-  .nav-links li a {
-    font-size: 1rem;
-  }
+  /* Keep contact text comfortably large on phones */
+  .contact-info-container p { font-size: larger; }
+  /* But reduce nav link size in the mobile header */
+  .nav-links li a { font-size: 1rem; }
   .experience-sub-title {
     font-size: 1.25rem;
   }
@@ -117,6 +183,13 @@
   }
   .text-container {
     text-align: justify;
+  }
+  #about {
+    padding: 2rem 1rem;
+  }
+  .about-details-container {
+    max-width: 100%;
+    padding: 0 1rem;
   }
 }
 

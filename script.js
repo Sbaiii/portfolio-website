@@ -24,15 +24,12 @@ function changeLanguage(lang) {
       element.textContent = text;
     }
   });
-  
-  // Update elements with data-translate attributes (for about description and other translated content)
-  const elementsWithTranslate = document.querySelectorAll('[data-translate]');
-  elementsWithTranslate.forEach(element => {
-    const translateKey = element.getAttribute('data-translate');
-    if (window.translations && window.translations[lang] && window.translations[lang][translateKey]) {
-      element.textContent = window.translations[lang][translateKey];
-    }
-  });
+
+  // Also update any elements using translation keys (mobile support)
+  if (typeof loadLanguage === 'function') {
+    loadLanguage(lang);
+  }
+  try { localStorage.setItem('preferred-language', lang); } catch (e) {}
   
   // Update mobile language selector active state
   const mobileOptions = document.querySelectorAll('.mobile-language-selector .language-option');
@@ -86,6 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize scroll animations
   initializeScrollAnimations();
+  
+  // Initialize timeline center animations for mobile/tablet (hamburger breakpoint)
+  initializeTimelineCenterAnimations();
+  
+  // Re-initialize on window resize to handle screen size changes
+  window.addEventListener('resize', function() {
+    // Update active item on any resize (works for desktop and mobile)
+    if (typeof window.updateActiveTimelineItem === 'function') {
+      window.updateActiveTimelineItem();
+    }
+  });
 });
 
 // Scroll-triggered fade-in animations
@@ -114,4 +122,62 @@ function initializeScrollAnimations() {
   fadeElements.forEach(element => {
     observer.observe(element);
   });
+}
+
+// Timeline center animations - animate when timeline items are at viewport center (all breakpoints)
+function initializeTimelineCenterAnimations() {
+
+  // Throttled scroll handler to set only the item closest to center as active
+  let ticking = false;
+
+  function getClosestItemToCenter(items) {
+    const viewportCenter = window.innerHeight / 2;
+    let closest = null;
+    let closestDist = Infinity;
+
+    items.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      // Consider only items at least partially visible
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        const elementCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(elementCenter - viewportCenter);
+        if (dist < closestDist) {
+          closest = item;
+          closestDist = dist;
+        }
+      }
+    });
+    return closest;
+  }
+
+  window.updateActiveTimelineItem = function updateActiveTimelineItem() {
+    const items = Array.from(document.querySelectorAll('.timeline-item'));
+    if (items.length === 0) return;
+    const active = getClosestItemToCenter(items);
+    items.forEach(item => {
+      const content = item.querySelector('.timeline-content');
+      const marker = item.querySelector('.timeline-marker');
+      if (!content) return;
+      if (item === active) {
+        content.classList.add('center-animated');
+        if (marker) marker.classList.add('center-animated');
+      } else {
+        content.classList.remove('center-animated');
+        if (marker) marker.classList.remove('center-animated');
+      }
+    });
+  };
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      window.updateActiveTimelineItem();
+      ticking = false;
+    });
+  }
+
+  // Initial set and listeners
+  window.updateActiveTimelineItem();
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
