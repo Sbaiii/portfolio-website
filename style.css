@@ -9,10 +9,16 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 p {
@@ -389,17 +395,29 @@ a:hover {
 /* SECTIONS */
 
 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 4vh;
   height: auto; /* allow sections to grow with their content */
-  margin: 0 10rem;
+  margin: 0 auto;
+  padding-left: 10rem;
+  padding-right: 10rem;
   box-sizing: border-box;
   min-height: fit-content;
   position: relative;
+  max-width: 1400px;
+  width: 100%;
 }
 
 .section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 4rem;
   height: auto; /* let inner wrappers size naturally */
+  width: 100%;
 }
 
 
@@ -407,21 +425,39 @@ section {
 
 #profile {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 5rem;
   height: 80vh;
+  position: relative;
 }
 
 .section__pic-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 400px;
   width: 400px;
+  flex-shrink: 0;
   margin: auto 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .section__text {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .section__text p {
@@ -521,34 +557,58 @@ section {
 /* ABOUT SECTION */
 
 #about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   height: auto;
   min-height: 80vh;
+  width: 100%;
 }
 
 .about-containers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
 }
-.about-containers,
+
 .about-details-container {
   display: flex;
-}
-
-
-.about-details-container {
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: justify;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .about-pic {
-  border-radius: 2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  display: block;
 }
 
 .about-pic:hover {
@@ -557,8 +617,14 @@ section {
 
 
 .details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 1.5rem;
-  flex: 1;
+  flex: 1 1 300px;
+  min-width: 250px;
+  max-width: 400px;
   background: white;
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
@@ -566,6 +632,7 @@ section {
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .details-container:hover {
@@ -579,6 +646,7 @@ section {
 .details-container h2,
 .details-container h3,
 .details-container p {
+  width: 100%;
   transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -647,22 +715,24 @@ section {
 }
 
 
-.section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
-}
+/* Removed duplicate - using definition above */
 
 /* EXPERIENCE SECTION - TIMELINE */
 
 .timeline-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 2rem;
   perspective: 1000px;
+  width: 100%;
 }
 
 .timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   max-width: 900px;
   width: 100%;
@@ -779,6 +849,10 @@ section {
 }
 
 .timeline-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   padding: 2rem;
   border-radius: 16px;
@@ -788,6 +862,7 @@ section {
   border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .timeline-content::before {
@@ -858,6 +933,8 @@ section {
 .timeline-content h3,
 .timeline-content .timeline-date,
 .timeline-content p {
+  width: 100%;
+  text-align: center;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -950,31 +1027,57 @@ section {
 }
 
 .experience-sub-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgb(85, 85, 85);
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
+  width: 100%;
+  text-align: center;
 }
 
 .experience-details-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
 }
 
 .article-container {
   display: flex;
-  text-align: initial;
   flex-wrap: wrap;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 2.5rem;
-  justify-content: space-around;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Project article containers should be column layout */
+#projects .article-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  gap: 0;
 }
 
 article {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 10rem;
-  justify-content: space-around;
+  flex-shrink: 0;
   gap: 0.5rem;
 }
 
@@ -1019,8 +1122,12 @@ article .icon {
 
 /* Technical Proficiencies Section - Spacing */
 #Technical\ Profeciencies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 2rem;
   position: relative;
+  width: 100%;
 }
 
 #Technical\ Profeciencies .details-container:hover {
@@ -1031,13 +1138,26 @@ article .icon {
 
 #projects {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .color-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   border-color: rgb(163, 163, 163);
   background: rgb(250, 250, 250);
   transition: all 0.3s ease;
   cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  gap: 1rem;
+  box-sizing: border-box;
 }
 
 .color-container:hover {
@@ -1049,9 +1169,13 @@ article .icon {
 }
 
 .project-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 2rem;
   width: 90%;
   height: 90%;
+  object-fit: cover;
   transition: all 0.3s ease;
 }
 
@@ -1060,9 +1184,14 @@ article .icon {
 }
 
 .project-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 1rem;
   color: black;
   transition: color 0.3s ease;
+  width: 100%;
+  text-align: center;
 }
 
 .color-container:hover .project-title {
@@ -1090,14 +1219,17 @@ article .icon {
 
 #contact {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: fit-content;
   min-height: 70vh;
+  width: 100%;
 }
 
 .contact-info-upper-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -1107,7 +1239,8 @@ article .icon {
   background: rgb(250, 250, 250);
   margin: 2rem auto;
   padding: 1rem;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
 }
 
 .contact-info-container {
@@ -1118,6 +1251,7 @@ article .icon {
   margin: 0.5rem;
   padding: 0.5rem;
   min-width: 200px;
+  flex: 1 1 auto;
 }
 
 .contact-info-container p {
@@ -1135,21 +1269,39 @@ article .icon {
 /* FOOTER SECTION */
 
 footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 26vh;
   margin: 0 1rem;
+  width: 100%;
 }
 
 footer nav {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 footer .nav-links {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 /* SCROLL FADE-IN ANIMATIONS */
@@ -1157,54 +1309,64 @@ footer p {
 .fade-in {
   opacity: 0;
   transform: translateY(60px);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 .fade-in-left {
   opacity: 0;
   transform: translateX(-80px) translateY(40px);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in-left.visible {
   opacity: 1;
   transform: translateX(0) translateY(0);
+  will-change: auto;
 }
 
 .fade-in-right {
   opacity: 0;
   transform: translateX(80px) translateY(40px);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in-right.visible {
   opacity: 1;
   transform: translateX(0) translateY(0);
+  will-change: auto;
 }
 
 .fade-in-up {
   opacity: 0;
   transform: translateY(-60px);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in-up.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 .fade-in-down {
   opacity: 0;
   transform: translateY(80px);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in-down.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }

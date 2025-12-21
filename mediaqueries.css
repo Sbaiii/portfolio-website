@@ -4,7 +4,11 @@
     margin-bottom: 6rem;
   }
   .about-containers {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
   }
   #contact,
   #projects {
@@ -55,13 +59,35 @@
       padding: 0.7rem 1.2rem;
     }
   }
-  #experience,
-  .experience-details-container {
+  #experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 2rem;
+    width: 100%;
   }
-  #profile,
+  
+  .experience-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  #profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: auto;
+    min-height: 80vh;
+  }
+  
   .section-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .arrow {
     display: none;
@@ -71,12 +97,25 @@
     height: fit-content;
   }
   section {
-    margin: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .section__pic-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 275px;
     height: 275px;
     margin: 0 auto 2rem;
+    flex-shrink: 0;
+    border-radius: 50%;
   }
   .about-containers {
     margin-top: 0;
@@ -85,7 +124,11 @@
     padding: 2rem 1rem;
   }
   .about-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 90%;
+    width: 100%;
   }
   
   /* Timeline single-column layout - same breakpoint as hamburger menu */
@@ -123,9 +166,20 @@
   html, body { overflow-x: hidden; }
   /* ensure sections stay centered and don't drift left */
   section {
-    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -137,8 +191,14 @@
     min-height: 40vh;
   }
   #profile {
-    height: 83vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 83vh;
     margin-bottom: 0;
+    gap: 2rem;
   }
   article {
     font-size: 1rem;
@@ -171,9 +231,15 @@
     text-align: center;
   }
   .section__pic-container {
-    width: auto;
-    height: 46vw;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    width: 46vw;
+    height: 46vw;
+    max-width: 300px;
+    max-height: 300px;
+    flex-shrink: 0;
+    border-radius: 50%;
   }
   .section__text__p2 {
     font-size: 1.25rem;
@@ -188,8 +254,12 @@
     padding: 2rem 1rem;
   }
   .about-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 100%;
     padding: 0 1rem;
+    width: 100%;
   }
 }
 

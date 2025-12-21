@@ -71,8 +71,26 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
+// Scroll to top on page load/refresh
+(function() {
+  // Scroll immediately if page is already loaded
+  if (document.readyState === 'complete') {
+    window.scrollTo(0, 0);
+  } else {
+    // Scroll on page load
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+    });
+    // Also scroll on DOM ready for faster response
+    document.addEventListener('DOMContentLoaded', function() {
+      window.scrollTo(0, 0);
+    });
+  }
+})();
+
 // Initialize mobile language selector on page load
 document.addEventListener('DOMContentLoaded', function() {
+  
   // Set English as default active language in mobile menu
   const mobileOptions = document.querySelectorAll('.mobile-language-selector .language-option');
   mobileOptions.forEach(option => {
@@ -96,24 +114,36 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Scroll-triggered fade-in animations
+// Scroll-triggered fade-in animations - optimized for performance
 function initializeScrollAnimations() {
+  // Use requestAnimationFrame for smoother performance
+  let rafId = null;
+  const observedElements = new Set();
+
   const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Add a slight delay for staggered effect
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 100);
-      } else {
-        // Remove visible class when scrolling back up for re-animation
-        entry.target.classList.remove('visible');
-      }
+    // Use requestAnimationFrame to batch updates
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
+    
+    rafId = requestAnimationFrame(() => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Only add visible class once - don't remove it
+          if (!entry.target.classList.contains('visible')) {
+            entry.target.classList.add('visible');
+            // Stop observing once visible to improve performance
+            observer.unobserve(entry.target);
+            observedElements.delete(entry.target);
+          }
+        }
+      });
+      rafId = null;
     });
   }, observerOptions);
 
@@ -121,6 +151,7 @@ function initializeScrollAnimations() {
   const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-down');
   fadeElements.forEach(element => {
     observer.observe(element);
+    observedElements.add(element);
   });
 }
 
