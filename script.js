@@ -2,10 +2,10 @@ function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
   const body = document.body;
-  
+
   menu.classList.toggle("open");
   icon.classList.toggle("open");
-  
+
   // Prevent body scroll when menu is open
   if (menu.classList.contains("open")) {
     body.classList.add("menu-open");
@@ -29,40 +29,40 @@ function changeLanguage(lang) {
   if (typeof loadLanguage === 'function') {
     loadLanguage(lang);
   }
-  try { localStorage.setItem('preferred-language', lang); } catch (e) {}
-  
+  try { localStorage.setItem('preferred-language', lang); } catch (e) { }
+
   // Update mobile language selector active state
   const mobileOptions = document.querySelectorAll('.mobile-language-selector .language-option');
   mobileOptions.forEach(option => {
     option.classList.remove('active');
   });
-  
+
   // Add active class to selected language
-  const selectedOption = Array.from(mobileOptions).find(option => 
+  const selectedOption = Array.from(mobileOptions).find(option =>
     option.textContent.includes(lang.toUpperCase())
   );
   if (selectedOption) {
     selectedOption.classList.add('active');
   }
-  
+
   // Close mobile menu after language selection
   toggleMenu();
 }
 
 // Close menu when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
-  
-  if (menu.classList.contains("open") && 
-      !menu.contains(event.target) && 
-      !icon.contains(event.target)) {
+
+  if (menu.classList.contains("open") &&
+    !menu.contains(event.target) &&
+    !icon.contains(event.target)) {
     toggleMenu();
   }
 });
 
 // Close menu on escape key
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
     const menu = document.querySelector(".menu-links");
     if (menu.classList.contains("open")) {
@@ -72,25 +72,25 @@ document.addEventListener('keydown', function(event) {
 });
 
 // Scroll to top on page load/refresh
-(function() {
+(function () {
   // Scroll immediately if page is already loaded
   if (document.readyState === 'complete') {
     window.scrollTo(0, 0);
   } else {
     // Scroll on page load
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       window.scrollTo(0, 0);
     });
     // Also scroll on DOM ready for faster response
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       window.scrollTo(0, 0);
     });
   }
 })();
 
 // Initialize mobile language selector on page load
-document.addEventListener('DOMContentLoaded', function() {
-  
+document.addEventListener('DOMContentLoaded', function () {
+
   // Set English as default active language in mobile menu
   const mobileOptions = document.querySelectorAll('.mobile-language-selector .language-option');
   mobileOptions.forEach(option => {
@@ -98,20 +98,22 @@ document.addEventListener('DOMContentLoaded', function() {
       option.classList.add('active');
     }
   });
-  
+
   // Initialize scroll animations
   initializeScrollAnimations();
-  
+
   // Initialize timeline center animations for mobile/tablet (hamburger breakpoint)
   initializeTimelineCenterAnimations();
-  
+
   // Re-initialize on window resize to handle screen size changes
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', function () {
     // Update active item on any resize (works for desktop and mobile)
     if (typeof window.updateActiveTimelineItem === 'function') {
       window.updateActiveTimelineItem();
     }
   });
+
+
 });
 
 // Scroll-triggered fade-in animations - optimized for performance
@@ -130,7 +132,7 @@ function initializeScrollAnimations() {
     if (rafId) {
       cancelAnimationFrame(rafId);
     }
-    
+
     rafId = requestAnimationFrame(() => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
