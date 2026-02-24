@@ -347,8 +347,8 @@ h6 {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 120px 8% 80px;
-    gap: 4rem;
+    padding: 120px 5% 80px;
+    gap: 2rem;
     text-align: center;
 }
 
@@ -362,13 +362,13 @@ h6 {
 
 .profile-pic {
     width: 100%;
-    max-width: 450px;
+    max-width: min(320px, 80vw);
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
-    padding: 15px;
+    padding: 10px;
     background: var(--surface);
     transition: transform var(--transition-slow);
 }
@@ -397,18 +397,18 @@ h6 {
 }
 
 .hero-name {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 8vw, 4.5rem);
     font-weight: 800;
     line-height: 1.1;
     color: var(--text-primary);
     margin: 0.5rem auto;
     letter-spacing: -0.02em;
-    max-width: 10ch;
+    max-width: 12ch;
     /* Professional wrapping */
 }
 
 .hero-role {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
     font-weight: 600;
     color: var(--text-secondary);
     margin-bottom: 2rem;
@@ -824,8 +824,8 @@ h6 {
 /* Projects */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .project-card {
@@ -1040,31 +1040,63 @@ h6 {
     }
 
     .hero {
-        padding: 100px 5% 60px;
+        padding: 80px 5% 40px;
         justify-content: center;
         text-align: center;
-        gap: 2rem;
+        gap: 1.5rem;
+        min-height: auto;
     }
 
     .hero-content {
         align-items: center;
         text-align: center;
         min-width: 100%;
+        gap: 1rem;
+    }
+
+    .hero-greeting {
+        font-size: 1rem;
+    }
+
+    .hero-name {
+        font-size: 2.2rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .hero-role {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-actions {
         flex-direction: column;
         width: 100%;
+        gap: 1rem;
     }
 
     .hero-actions .btn {
         width: 100%;
+        padding: 0.8rem 1.5rem;
     }
 
     .hero-visual {
         min-width: 100%;
         order: -1;
         /* Image on top for mobile */
+    }
+
+    .profile-pic {
+        max-width: 220px;
+        padding: 8px;
+    }
+
+    .section {
+        padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
     }
 
     /* Disable custom cursor on mobile to use touch */
@@ -1076,7 +1108,7 @@ h6 {
     body,
     a,
     button {
-        cursor: auto;
+        cursor: auto !important;
     }
 
     .footer {
