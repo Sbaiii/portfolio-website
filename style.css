@@ -229,7 +229,8 @@ h6 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.lang-selector:hover .lang-dropdown {
+.lang-selector:hover .lang-dropdown,
+.lang-dropdown.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
