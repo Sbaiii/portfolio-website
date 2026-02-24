@@ -121,10 +121,23 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -50px 0px"
     };
 
+    // Check if we have a hash in the URL to skip hiding that section
+    const currentHash = window.location.hash;
+
     // Give elements initial hidden state
     sections.forEach(sec => {
-        sec.style.opacity = '0';
-        sec.style.transform = 'translateY(20px)';
+        // Find the parent section to check if it matches the hash
+        const parentSection = sec.closest('section');
+        const isCurrentTarget = currentHash && parentSection && `#${parentSection.id}` === currentHash;
+
+        if (isCurrentTarget) {
+            // If this is the section the user is refreshing into, show it immediately
+            sec.style.opacity = '1';
+            sec.style.transform = 'translateY(0)';
+        } else {
+            sec.style.opacity = '0';
+            sec.style.transform = 'translateY(20px)';
+        }
         sec.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     });
 
@@ -139,4 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     sections.forEach(sec => revealOnScroll.observe(sec));
+
+    // Rescue scroll: If the browser was interrupted by layout shifts, re-scroll to the hash
+    if (currentHash) {
+        setTimeout(() => {
+            const target = document.querySelector(currentHash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'auto' });
+            }
+        }, 100);
+    }
 });
