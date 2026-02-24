@@ -854,13 +854,13 @@ h6 {
 
 /* Project Image Placeholders with Real Images */
 #project-img-sas {
-    background-image: url('file:///Users/sbai/.gemini/antigravity/brain/d70e95cc-82ab-4fb6-b475-2a8333a4e81d/sas_car_analysis_hero_1771937834775.png');
+    background-image: url('assets/project-1.png');
     background-size: cover;
     background-position: center;
 }
 
 #project-img-java {
-    background-image: url('file:///Users/sbai/.gemini/antigravity/brain/d70e95cc-82ab-4fb6-b475-2a8333a4e81d/java_management_hero_retry_1771937909025.png');
+    background-image: url('assets/project-2.png');
     background-size: cover;
     background-position: center;
 }
