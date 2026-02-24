@@ -1,513 +1,470 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sbaiii</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="mediaqueries.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data Analyst Portfolio">
+    <title>Abdellah - Data Analyst</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 
 <body>
-  <header id="desktop-header">
-    <nav id="desktop-nav">
-      <div class="logo"><a href="#profile">Abdellah Sbai Atta Allah</a></div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about" data-en="About" data-fr="À propos" data-es="Acerca de">About</a></li>
-          <li><a href="#Technical Profeciencies" data-en="Technical Proficiencies" data-fr="Compétences Techniques"
-              data-es="Competencias Técnicas">Technical Proficiencies</a></li>
-          <li><a href="#experience" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</a></li>
-          <li><a href="#projects" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</a></li>
-          <li><a href="#contact" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a></li>
-          <li class="language-switcher">
-            <div class="language-dropdown">
-              <button class="language-btn" id="current-lang">
-                EN
-                <span class="chevron"></span>
-              </button>
-              <div class="language-menu">
-                <button class="language-option" data-lang="en">English</button>
-                <button class="language-option" data-lang="fr">Français</button>
-                <button class="language-option" data-lang="es">Español</button>
-              </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="logo">Abdellah Sbai Atta Allah<span class="dot">.</span></div>
+        <nav class="nav-links">
+            <a href="#about" data-i18n="nav_about">About</a>
+            <a href="#experience" data-i18n="nav_experience">Experience</a>
+            <a href="#skills" data-i18n="nav_skills">Skills</a>
+            <a href="#projects" data-i18n="nav_projects">Projects</a>
+            <a href="#contact" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="controls">
+            <!-- Language Selector -->
+            <div class="lang-selector">
+                <button class="lang-btn" id="current-lang">EN</button>
+                <div class="lang-dropdown">
+                    <button data-lang="en">English</button>
+                    <button data-lang="fr">Français</button>
+                    <button data-lang="es">Español</button>
+                </div>
             </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <nav id="hamburger-nav">
-    <div class="logo"><a href="#profile">Abdellah Sbai Atta Allah</a></div>
-    <div class="hamburger-menu">
-      <div class="hamburger-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="menu-links">
-        <div class="close-btn" onclick="toggleMenu()">×</div>
-
-        <!-- Language Selector -->
-        <div class="mobile-language-selector">
-          <div class="language-option" onclick="changeLanguage('en')">EN</div>
-          <div class="language-option" onclick="changeLanguage('fr')">FR</div>
-          <div class="language-option" onclick="changeLanguage('es')">ES</div>
-        </div>
-
-        <li><a href="#about" onclick="toggleMenu()" data-en="About" data-fr="À propos" data-es="Acerca de">About</a>
-        </li>
-        <li><a href="#Technical Profeciencies" onclick="toggleMenu()" data-en="Technical Proficiencies"
-            data-fr="Compétences Techniques" data-es="Competencias Técnicas">Technical Proficiencies</a></li>
-        <li><a href="#experience" onclick="toggleMenu()" data-en="Experience" data-fr="Expérience"
-            data-es="Experiencia">Experience</a></li>
-        <li><a href="#projects" onclick="toggleMenu()" data-en="Projects" data-fr="Projets"
-            data-es="Proyectos">Projects</a></li>
-        <li><a href="#contact" onclick="toggleMenu()" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a>
-        </li>
-      </div>
-    </div>
-  </nav>
-  <section id="profile">
-    <div class="section__pic-container fade-in-left">
-      <img src="./assets/profile-pic.png" alt="Abdellah Sbai profile picture" class="about-pic" />
-    </div>
-    <div class="section__text fade-in-right">
-      <p class="section__text__p1" data-en="Hello, I'm" data-fr="Bonjour, je suis" data-es="Hola, soy"
-        data-translate="profile-greeting">Hello, I'm</p>
-      <h1 class="title">Abdellah Sbai Atta Allah</h1>
-      <p class="section__text__p2" data-en="Data Analytics Student" data-fr="Étudiant en Analyse de Données"
-        data-es="Estudiante de Análisis de Datos" data-translate="profile-title">Data Analytics Student</p>
-      <div class="btn-container">
-        <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')" data-en="Download Resume"
-          data-fr="Télécharger le CV" data-es="Descargar Currículum" data-translate="btn-download">
-          Download Resume
-        </button>
-        <button class="btn btn-color-1" onclick="location.href='./#contact'" data-en="Contact Info"
-          data-fr="Informations de Contact" data-es="Información de Contacto" data-translate="btn-contact">
-          Contact Info
-        </button>
-      </div>
-      <div id="socials-container">
-        <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
-          onclick="location.href='https://www.linkedin.com/in/abdellahsbai/'" />
-        <img src="./assets/github.png" alt="My Github profile" class="icon"
-          onclick="location.href='https://github.com/Sbaiii'" />
-      </div>
-    </div>
-  </section>
-  <section id="about">
-    <p class="section__text__p1 fade-in-down" data-en="Get To Know More" data-fr="Apprenez à me connaître"
-      data-es="Conoce más sobre mí">Get To Know More</p>
-    <h1 class="title fade-in-up" data-en="About Me" data-fr="À propos de moi" data-es="Acerca de mí">About Me</h1>
-    <div class="section-container">
-      <div class="about-details-container fade-in">
-        <div class="about-containers">
-          <div class="details-container">
-            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-            <h3 data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</h3>
-            <p data-en="Data Analytics Internships at AXA & Taswim Python | SQL | Power BI | Excel | Business Insights"
-              data-fr="Stages en Analyse de Données chez AXA & Taswim Python | SQL | Power BI | Excel | Insights Business"
-              data-es="Pasantías en Análisis de Datos en AXA & Taswim Python | SQL | Power BI | Excel | Insights de Negocio">
-              Data Analytics Internships at AXA & Taswim <br />Python | SQL | Power BI | Excel | Business Insights</p>
-          </div>
-          <div class="details-container">
-            <img src="./assets/education.png" alt="Education icon" class="icon" />
-            <h3 data-en="Education" data-fr="Éducation" data-es="Educación">Education</h3>
-            <p data-en="B.Sc. (Hons) in Computer Science (Data Analytics) Asia Pacific University of Technology & Innovation (APU), Malaysia"
-              data-fr="B.Sc. (Hons) en Informatique (Analyse de Données) Asia Pacific University of Technology & Innovation (APU), Malaisie"
-              data-es="B.Sc. (Hons) en Ciencias de la Computación (Análisis de Datos) Asia Pacific University of Technology & Innovation (APU), Malasia">
-              B.Sc. (Hons) in Computer Science (Data Analytics)<br />Asia Pacific University of Technology & Innovation
-              (APU), Malaysia</p>
-          </div>
-        </div>
-        <div class="text-container">
-          <p data-translate="about-description">
-            I'm a Computer Science student specializing in Data Analytics with a strong interest in turning data into
-            meaningful insights.
-            I enjoy working with Python, SQL, and visualization tools to solve problems and present information clearly.
-            Through academic projects,
-            I've built dashboards, databases, and analytical models that strengthened my technical skills and attention
-            to detail.
-            I'm currently seeking internship opportunities where I can contribute,
-            learn from real-world challenges, and grow into a well-rounded data professional.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="Technical Profeciencies">
-    <p class="section__text__p1 fade-in-down" data-en="Explore My" data-fr="Explorez mes" data-es="Explora mis">Explore
-      My</p>
-    <h1 class="title fade-in-up" data-en="Technical Proficiencies" data-fr="Compétences Techniques"
-      data-es="Competencias Técnicas">Technical Proficiencies</h1>
-    <div class="experience-details-container fade-in">
-      <div class="about-containers">
-        <!-- Programming Languages -->
-        <div class="details-container">
-          <h2 class="experience-sub-title" data-en="Programming Languages" data-fr="Langages de Programmation"
-            data-es="Lenguajes de Programación">Programming Languages</h2>
-          <div class="article-container">
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
-                alt="Python" class="icon" />
-            </article>
-            <article>
-              <img src="./assets/skills/c.png" alt="C" class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
-                alt="C++" class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"
-                class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-                alt="Java" class="icon" />
-            </article>
-            <article>
-              <img src="./assets/skills/r.png" alt="R" class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                alt="JavaScript" class="icon" />
-            </article>
-          </div>
-        </div>
-
-        <!-- Data Analytics & Visualization -->
-        <div class="details-container">
-          <h2 class="experience-sub-title" data-en="Data Analytics & Visualization"
-            data-fr="Analyse de Données & Visualisation" data-es="Análisis de Datos & Visualización">Data Analytics &
-            Visualization</h2>
-          <div class="article-container">
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg"
-                alt="Pandas" class="icon" />
-            </article>
-            <article>
-              <img src="./assets/skills/seaborn.png" alt="Seaborn" class="icon" />
-            </article>
-            <article>
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original-wordmark.svg"
-                alt="Matplotlib" class="icon" />
-            </article>
-            <article>
-              <img src="./assets/skills/excel.png" alt="Excel" class="icon" />
-            </article>
-            <article>
-              <img src="./assets/skills/icons8-tableau-software-48.png" alt="Tableau" class="icon" />
-            </article>
-            <article>
-              <img src="./assets/skills/powerbi.png" alt="Power BI" class="icon" />
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-containers">
-        <!-- Databases & Query Languages -->
-        <div class="details-container">
-          <h2 class="experience-sub-title" data-en="Databases & Query Languages"
-            data-fr="Bases de Données & Langages de Requête" data-es="Bases de Datos & Lenguajes de Consulta">Databases
-            & Query Languages</h2>
-          <div class="article-container">
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-                alt="MySQL" class="icon" />
-            </article>
-            <article>
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
-                alt="PostgreSQL" class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
-                alt="SQLite" class="icon" />
-            </article>
-            <article>
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg"
-                alt="SQL Server" class="icon" />
-            </article>
-            <article>
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
-                alt="SQL" class="icon" />
-            </article>
-          </div>
-        </div>
-        <div class="details-container">
-          <h2 class="experience-sub-title" data-en="Web & Front-End Basics" data-fr="Web & Bases Front-End"
-            data-es="Web & Fundamentos Front-End">Web & Front-End Basics</h2>
-          <div class="article-container">
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML"
-                class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS"
-                class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                alt="JavaScript" class="icon" />
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-containers">
-        <div class="details-container">
-          <h2 class="experience-sub-title" data-en="Tools & Environments" data-fr="Outils & Environnements"
-            data-es="Herramientas & Entornos">Tools & Environments</h2>
-          <div class="article-container">
-            <article>
-              <img src="./assets/skills/excel.png" alt="Excel" class="icon" />
-            </article>
-            <article>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original-wordmark.svg"
-                alt="Jupyter Notebook" class="icon" />
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="experience">
-    <p class="section__text__p1 fade-in-down" data-en="Explore My" data-fr="Explorez mon" data-es="Explora mi">Explore
-      My</p>
-    <h1 class="title fade-in-up" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</h1>
-    <div class="timeline-container fade-in">
-      <div class="timeline">
-        <!-- Academic Growth in Analytics -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3 data-en="AXA Assurance Maroc – Data Analyst" data-fr="AXA Assurance Maroc – Analyste de Données"
-              data-es="AXA Assurance Maroc – Analista de Datos">AXA Assurance Maroc – Data Analyst</h3>
-            <p class="timeline-date">Dec 2024 – Feb 2025</p>
-            <p data-en="Applied Python, SQL, and Power BI to clean, analyze, and visualize insurance datasets, helping teams uncover insights and improve KPI tracking."
-              data-fr="Appliqué Python, SQL et Power BI pour nettoyer, analyser et visualiser les ensembles de données d'assurance, aidant les équipes à découvrir des insights et améliorer le suivi des KPI."
-              data-es="Apliqué Python, SQL y Power BI para limpiar, analizar y visualizar conjuntos de datos de seguros, ayudando a los equipos a descubrir insights y mejorar el seguimiento de KPI.">
-              Applied Python, SQL, and Power BI to clean, analyze, and visualize insurance datasets, helping teams
-              uncover insights and improve KPI tracking.</p>
-          </div>
-        </div>
-
-        <!-- AXA Assurance Maroc -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3
-              data-en="Asia Pacific University of Technology & Innovation – B.Sc. (Hons) in Computer Science (Data Analytics)"
-              data-fr="Asia Pacific University of Technology & Innovation – B.Sc. (Hons) en Informatique (Analyse de Données)"
-              data-es="Asia Pacific University of Technology & Innovation – B.Sc. (Hons) en Ciencias de la Computación (Análisis de Datos)">
-              Asia Pacific University of Technology & Innovation – B.Sc. (Hons) in Computer Science (Data Analytics)
-            </h3>
-            <p class="timeline-date">Mar 2024 – Present</p>
-            <p data-en="Pursuing my degree in Data Analytics, strengthening my expertise in programming, databases, and visualization through hands-on academic projects."
-              data-fr="Poursuivant mon diplôme en Analyse de Données, renforçant mon expertise en programmation, bases de données et visualisation grâce à des projets académiques pratiques."
-              data-es="Cursando mi grado en Análisis de Datos, fortaleciendo mi experiencia en programación, bases de datos y visualización a través de proyectos académicos prácticos.">
-              Pursuing my degree in Data Analytics, strengthening my expertise in programming, databases, and
-              visualization through hands-on academic projects.</p>
-          </div>
-        </div>
-
-        <!-- Taswim Auto -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3 data-en="Taswim Auto – Accounting Intern (Advanced Stage)"
-              data-fr="Taswim Auto – Stagiaire Comptable (Stage Avancé)"
-              data-es="Taswim Auto – Pasante de Contabilidad (Etapa Avanzada)">Taswim Auto – Accounting Intern (Advanced
-              Stage)</h3>
-            <p class="timeline-date">Jul 2023 – Oct 2023</p>
-            <p data-en="Advanced my accounting skills by preparing financial statements and management reports, learning how structured data supports real business decisions."
-              data-fr="Perfectionné mes compétences comptables en préparant des états financiers et des rapports de gestion, apprenant comment les données structurées soutiennent les décisions commerciales réelles."
-              data-es="Avancé mis habilidades contables preparando estados financieros e informes de gestión, aprendiendo cómo los datos estructurados apoyan las decisiones comerciales reales.">
-              Advanced my accounting skills by preparing financial statements and management reports, learning how
-              structured data supports real business decisions.</p>
-          </div>
-        </div>
-
-        <!-- Mohammed VI University of Health Science -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3 data-en="Mohammed VI University of Health Sciences – First-Year Medical Student"
-              data-fr="Université Mohammed VI des Sciences de la Santé – Étudiant en Médecine de Première Année"
-              data-es="Universidad Mohammed VI de Ciencias de la Salud – Estudiante de Medicina de Primer Año">Mohammed
-              VI University of Health Sciences – First-Year Medical Student</h3>
-            <p class="timeline-date">Sept 2022 – Jun 2023</p>
-            <p data-en="Built a foundation in analytical thinking and discipline through medical studies, which later inspired my shift toward data-driven problem solving."
-              data-fr="Construit une base en pensée analytique et discipline grâce aux études médicales, ce qui a plus tard inspiré mon passage vers la résolution de problèmes basée sur les données."
-              data-es="Construí una base en pensamiento analítico y disciplina a través de estudios médicos, lo que más tarde inspiró mi cambio hacia la resolución de problemas basada en datos.">
-              Built a foundation in analytical thinking and discipline through medical studies, which later inspired my
-              shift toward data-driven problem solving.</p>
-          </div>
-        </div>
-
-        <!-- Taswim Auto -->
-        <div class="timeline-item timeline-start">
-          <div class="timeline-marker timeline-start-marker"></div>
-          <div class="timeline-content">
-            <h3 data-en="Taswim Auto – Accounting Intern (Initiation Stage)"
-              data-fr="Taswim Auto – Stagiaire Comptable (Stage d'Initiation)"
-              data-es="Taswim Auto – Pasante de Contabilidad (Etapa de Iniciación)">Taswim Auto – Accounting Intern
-              (Initiation Stage)</h3>
-            <p class="timeline-date">Jun 2022 – Sep 2022</p>
-            <p data-en="Gained my first professional experience assisting with bookkeeping and data entry, developing precision and attention to detail in managing financial information."
-              data-fr="Acquis ma première expérience professionnelle en assistant à la tenue de livres et à la saisie de données, développant la précision et l'attention aux détails dans la gestion des informations financières."
-              data-es="Obtuve mi primera experiencia profesional ayudando con la contabilidad y entrada de datos, desarrollando precisión y atención al detalle en la gestión de información financiera.">
-              Gained my first professional experience assisting with bookkeeping and data entry, developing precision
-              and attention to detail in managing financial information.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="projects">
-    <p class="section__text__p1 fade-in-down" data-en="Browse My Recent" data-fr="Parcourez mes récents"
-      data-es="Explora mis recientes">Browse My Recent</p>
-    <h1 class="title fade-in-up" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</h1>
-    <div class="experience-details-container fade-in">
-      <div class="about-containers">
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-1.png" alt="Project 1" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title" data-en="Car Resale Price Analysis | SAS Studio"
-            data-fr="Analyse des prix de revente de voitures | SAS Studio"
-            data-es="Análisis de precios de reventa de coches | SAS Studio">CarResalePriceAnalysis | SAS Studio</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/Sbaiii/car-resale-price-analysis'" data-en="Github"
-              data-fr="Github" data-es="Github">
-              Github
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
             </button>
-            <button class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/Sbaiii/car-resale-price-analysis'" data-en="More"
-              data-fr="Plus" data-es="Más">
-              More
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span><span></span><span></span>
             </button>
-          </div>
         </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-2.png" alt="Project 2" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title"
-            data-en="Automated Purchase Order Management System | Java Swing"
-            data-fr="Système automatisé de gestion des commandes | Java Swing"
-            data-es="Sistema automatizado de gestión de órdenes de compra | Java Swing">
-            AutomatedPurchaseOrderManagementSystem | Java Swing</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/Sbaiii/Automated_purchase_Order_Management_System'"
-              data-en="Github" data-fr="Github" data-es="Github">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/Sbaiii/Automated_purchase_Order_Management_System'"
-              data-en="More" data-fr="Plus" data-es="Más">
-              More
-            </button>
-          </div>
-        </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-3.png" alt="Project 3" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title" data-en="To be integrated" data-fr="A intégrer"
-            data-es="Para ser integrado">Project Three</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Sbaiii/'"
-              data-en="Github" data-fr="Github" data-es="Github">
-              Github
-            </button>
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Sbaiii/'"
-              data-en="More" data-fr="Plus" data-es="Más">
-              More
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact">
-    <p class="section__text__p1 fade-in-down" data-en="Get in Touch" data-fr="Entrer en contact"
-      data-es="Ponerse en contacto">Get in Touch</p>
-    <h1 class="title fade-in-up" data-en="Contact Me" data-fr="Contactez-moi" data-es="Contáctame">Contact Me</h1>
-    <div class="contact-info-upper-container fade-in">
-      <div class="contact-info-container">
-        <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-        <p><a href="mailto:abdellahsbaisbai@gmail.com">abdellahsbaisbai@gmail.com</a></p>
-      </div>
-      <div class="contact-info-container">
-        <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-        <p><a href="https://www.linkedin.com/in/abdellahsbai/">LinkedIn</a></p>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="footer-container">
-      <!-- Brand / About Section -->
-      <div class="footer-about">
-        <h2 class="footer-logo">Abdellah Sbai Atta Allah</h2>
-        <p class="footer-tagline" data-en="Turning data into meaningful insights."
-          data-fr="Transformer les données en insights significatifs."
-          data-es="Transformando datos en insights significativos.">
-          Turning data into meaningful insights.
-        </p>
-      </div>
+    </header>
 
-      <!-- Navigation Links -->
-      <div class="footer-nav-section">
-        <h3 class="footer-heading" data-en="Quick Links" data-fr="Liens Rapides" data-es="Enlaces Rápidos">Quick Links
-        </h3>
-        <ul class="footer-nav-links">
-          <li><a href="#about" data-en="About" data-fr="À propos" data-es="Acerca de">About</a></li>
-          <li><a href="#Technical Profeciencies" data-en="Technical Proficiencies" data-fr="Compétences Techniques"
-              data-es="Competencias Técnicas">Technical Proficiencies</a></li>
-          <li><a href="#experience" data-en="Experience" data-fr="Expérience" data-es="Experiencia">Experience</a></li>
-          <li><a href="#projects" data-en="Projects" data-fr="Projets" data-es="Proyectos">Projects</a></li>
-          <li><a href="#contact" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Social Links -->
-      <div class="footer-social-section">
-        <h3 class="footer-heading" data-en="Connect" data-fr="Connecter" data-es="Conectar">Connect</h3>
-        <div class="footer-social-icons">
-          <a href="https://www.linkedin.com/in/abdellahsbai/" target="_blank" aria-label="LinkedIn">
-            <img src="./assets/linkedin.png" alt="LinkedIn" class="footer-icon" />
-          </a>
-          <a href="https://github.com/Sbaiii" target="_blank" aria-label="GitHub">
-            <img src="./assets/github.png" alt="GitHub" class="footer-icon" />
-          </a>
-          <a href="mailto:abdellahsbaisbai@gmail.com" aria-label="Email">
-            <img src="./assets/email.png" alt="Email" class="footer-icon" />
-          </a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-visual">
+            <img src="./assets/profile-pic.png" alt="Abdellah Sbai Atta Allah - Profile" class="profile-pic" />
         </div>
-      </div>
-    </div>
+        <div class="hero-content">
+            <span class="hero-greeting" data-i18n="hero_greeting">Hello, I'm</span>
+            <h1 class="hero-name" data-i18n="hero_name">Abdellah Sbai Atta Allah</h1>
+            <h2 class="hero-role" data-i18n="hero_role">Data Analytics Student</h2>
 
-    <div class="footer-bottom">
-      <p data-en="Copyright &#169; 2025 Abdellah Sbai Atta Allah. All Rights Reserved."
-        data-fr="Copyright &#169; 2025 Abdellah Sbai Atta Allah. Tous droits réservés."
-        data-es="Copyright &#169; 2025 Abdellah Sbai Atta Allah. Todos los derechos reservados.">
-        Copyright &#169; 2025 Abdellah Sbai Atta Allah. All Rights Reserved.
-      </p>
-    </div>
-  </footer>
-  <script src="script.js"></script>
-  <script src="language.js"></script>
+            <div class="hero-actions">
+                <a href="./assets/resume.pdf" class="btn btn-outline" data-i18n="btn_resume">Download Resume</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="btn_contact_info">Contact Info</a>
+            </div>
+
+            <div class="hero-socials">
+                <a href="https://www.linkedin.com/in/sbaiii/" target="_blank" rel="noopener noreferrer"
+                    class="social-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="https://github.com/Sbaiii" target="_blank" rel="noopener noreferrer" class="social-icon"
+                    aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <a href="https://www.kaggle.com/sbaiiiiii" target="_blank" rel="noopener noreferrer" class="social-icon"
+                    aria-label="Kaggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M18.825 23.859c-.022.013-.042.022-.062.031-.023.01-.044.02-.066.027-.013.005-.025.008-.038.012l-.048.012c-.012.004-.025.006-.038.008l-.055.009c-.013.002-.025.002-.038.003L18.428 24c-.031 0-.061-.001-.091-.002l-.053-.004c-.012-.001-.024-.002-.036-.003l-.06-.008c-.011-.002-.021-.003-.031-.005l-.066-.013c-.007-.002-.014-.003-.021-.005l-.014-.003c-1.127-.272-1.93-1.258-1.93-2.433v-4.102l-2.732-2.71c-.347-.344-.658-.707-.93-1.082l-3.344 3.22v4.864c0 1.268-.934 2.348-2.185 2.378H7.13c-1.251-.03-2.185-1.11-2.185-2.378v-18.7c0-1.268.934-2.348 2.185-2.378h.01c1.251.03 2.185 1.11 2.185 2.378v8.423l6.57-6.331c.214-.207.472-.364.757-.456l.011-.004.01-.003c.046-.014.091-.024.137-.031.056-.01.112-.015.168-.018l.056-.002h.001c.036 0 .073 0 .109.003l.055.005c.012.001.025.002.037.004l.053.007c.013.002.025.004.037.006l.051.01c.012.002.024.005.035.008l.024.006c.866.223 1.543.896 1.776 1.758.002.009.006.017.008.026.002.102.016.204.041.302l.006.027c.015.068.04.132.072.193.011.021.023.041.036.061.018.027.039.052.062.076l-5.733 5.526 5.8 5.748c.026.026.05.053.069.083.012.018.024.037.034.056.028.055.05.113.065.174l.004.017c.015.063.024.128.027.194.001.019.002.038.002.057v3.743c0 .19-.011.378-.032.562l-.004.036c-.004.034-.01.068-.018.102l-.005.018c-.015.055-.034.108-.057.16l-.013.029c-.033.07-.074.136-.122.198l-.023.029c-.053.066-.113.126-.18.179l-.014.011z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Bento Redesign) -->
+    <section class="about section" id="about">
+        <h2 class="section-title" data-i18n="about_title">About Me</h2>
+
+        <div class="bento-grid">
+            <!-- Bio Card (Large) -->
+            <div class="bento-card bento-bio">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="bento-content">
+                    <p data-i18n="about_p1">I am a driven Data Analytics student with a strong foundation in statistics,
+                        programming, and data visualization.</p>
+                    <p data-i18n="about_p2">My analytical approach is rooted in curiosity and a relentless desire to
+                        solve complex problems through clean code.</p>
+                </div>
+            </div>
+
+            <!-- Focus Card -->
+            <div class="bento-card bento-focus">
+                <h3 class="bento-label" data-i18n="bento_focus_title">Current Focus</h3>
+                <div class="focus-stack">
+                    <span class="focus-text" data-i18n="bento_focus_text">Deep Learning & SQL Optimization</span>
+                    <div class="pulse-dot"></div>
+                </div>
+            </div>
+
+            <!-- Langs Stat -->
+            <div class="bento-card bento-stat">
+                <span class="stat-num">3+</span>
+                <span class="stat-label" data-i18n="stat_langs">Languages</span>
+            </div>
+
+            <!-- Projects Stat -->
+            <div class="bento-card bento-stat">
+                <span class="stat-num">10+</span>
+                <span class="stat-label" data-i18n="stat_projects">Projects</span>
+            </div>
+
+            <!-- Coffee Card -->
+            <div class="bento-card bento-coffee">
+                <div class="coffee-visual">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                </div>
+                <div class="coffee-info">
+                    <span class="coffee-ratio">∞ : 1</span>
+                    <span class="bento-label" data-i18n="bento_coffee_label">Coffee to Code Ratio</span>
+                </div>
+            </div>
+
+            <!-- Global Education -->
+            <div class="bento-card bento-edu">
+                <div class="edu-badge" data-i18n="bento_edu_dual">Dual Degree Program</div>
+                <h3 class="bento-label" data-i18n="bento_edu_title">Global Dual Degree</h3>
+                <div class="edu-content">
+                    <div class="edu-item highlight">
+                        <span class="edu-degree" data-i18n="bento_edu_degree">BSc (Hons) Computer Science (Data
+                            Analytics)</span>
+                    </div>
+                    <div class="edu-unis">
+                        <div class="edu-uni-item">
+                            <span class="edu-uni" data-i18n="bento_edu_apu">Asia Pacific University (APU),
+                                Malaysia</span>
+                        </div>
+                        <div class="edu-uni-item">
+                            <span class="edu-uni" data-i18n="bento_edu_dmu">De Montfort University (DMU), UK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience section" id="experience">
+        <h2 class="section-title" data-i18n="experience_title">Experience</h2>
+        <div class="experience-timeline">
+            <!-- Experience Item 4 (MSS CONSEIL) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date" data-i18n="exp4_date">Jan 2026 – Apr 2026</span>
+                    <h3 class="timeline-title" data-i18n="exp4_title">Data & CRM Intern</h3>
+                    <h4 class="timeline-company" data-i18n="exp4_company">MSS CONSEIL — Île-de-France, France</h4>
+                    <p class="timeline-desc" data-i18n="exp4_desc">Architected CRM web app features including advanced
+                        filtering and search, backed by structured SQL databases. Developed automated reporting
+                        pipelines in Python/SQL and strategic Power BI dashboards for operational decision-making.</p>
+                </div>
+            </div>
+            <!-- Experience Item 1 (Audensiel) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date" data-i18n="exp1_date">Sep 2024 – Feb 2025</span>
+                    <h3 class="timeline-title" data-i18n="exp1_title">Data Analyst Intern</h3>
+                    <h4 class="timeline-company" data-i18n="exp1_company">Audensiel — Île-de-France, France</h4>
+                    <p class="timeline-desc" data-i18n="exp1_desc">Constructed optimized datasets for reporting through
+                        multi-source consolidation. Engineered statistical models in Python/R to drive strategic
+                        decisions and developed interactive Power BI/SQL dashboards for stakeholder self-service.</p>
+                </div>
+            </div>
+            <!-- Experience Item 2 (BP) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date" data-i18n="exp2_date">Jun 2023 – Nov 2023</span>
+                    <h3 class="timeline-title" data-i18n="exp2_title">Data & AI Intern</h3>
+                    <h4 class="timeline-company" data-i18n="exp2_company">BP Malaysia — Kuala Lumpur, Malaysia</h4>
+                    <p class="timeline-desc" data-i18n="exp2_desc">Translated business requirements into actionable
+                        KPIs. Built end-to-end ML pipelines (ETL, feature engineering) using Python and SQL, delivering
+                        strategic Power BI analytics to monitor performance trends.</p>
+                </div>
+            </div>
+            <!-- Experience Item 3 (AXA) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date" data-i18n="exp3_date">Jun 2022 – Sep 2022</span>
+                    <h3 class="timeline-title" data-i18n="exp3_title">Data Analyst Intern</h3>
+                    <h4 class="timeline-company" data-i18n="exp3_company">AXA Assurance Morocco — Rabat, Morocco</h4>
+                    <p class="timeline-desc" data-i18n="exp3_desc">Optimized data integrity through rigorous validation
+                        of customer datasets. Designed automated KPI dashboards in Power BI/Excel and streamlined
+                        reporting workflows by optimizing high-performance SQL queries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section box-bg" id="skills">
+        <h2 class="section-title" data-i18n="skills_title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="about-containers">
+                <!-- Programming Languages -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title" data-i18n="skill_prog">Programming Languages</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
+                                alt="Python" class="icon" />
+                        </article>
+                        <article>
+                            <img src="./assets/skills/c.png" alt="C" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+                                alt="C++" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+                                alt="C#" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+                                alt="Java" class="icon" />
+                        </article>
+                        <article>
+                            <img src="./assets/skills/r.png" alt="R" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                                alt="JavaScript" class="icon" />
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Data Analytics & Visualization -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title" data-i18n="skill_data">Data Analytics & Visualization</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg"
+                                alt="Pandas" class="icon" />
+                        </article>
+                        <article>
+                            <img src="./assets/skills/seaborn.png" alt="Seaborn" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original-wordmark.svg"
+                                alt="Matplotlib" class="icon" />
+                        </article>
+                        <article>
+                            <img src="./assets/skills/excel.png" alt="Excel" class="icon" />
+                        </article>
+                        <article>
+                            <img src="./assets/skills/icons8-tableau-software-48.png" alt="Tableau" class="icon" />
+                        </article>
+                        <article>
+                            <img src="./assets/skills/powerbi.png" alt="Power BI" class="icon" />
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-containers">
+                <!-- Databases & Query Languages -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title" data-i18n="skill_db">Databases & Query Languages</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+                                alt="MySQL" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+                                alt="PostgreSQL" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
+                                alt="SQLite" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg"
+                                alt="SQL Server" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
+                                alt="SQL" class="icon" />
+                        </article>
+                    </div>
+                </div>
+                <!-- Web & Front-End Basics -->
+                <div class="details-container">
+                    <h2 class="experience-sub-title" data-i18n="skill_web">Web & Front-End Basics</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                                alt="HTML" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                                alt="CSS" class="icon" />
+                        </article>
+                        <article>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                                alt="JavaScript" class="icon" />
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+        <h2 class="section-title" data-i18n="projects_title">Selected Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <article class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="project-img placeholder-1" id="project-img-sas"></div>
+                </div>
+                <div class="project-tags">
+                    <span data-i18n="projects.carResale.tags.0">SAS</span>
+                    <span data-i18n="projects.carResale.tags.1">SQL</span>
+                    <span data-i18n="projects.carResale.tags.2">EDA</span>
+                </div>
+                <h3 class="project-title" data-i18n="projects.carResale.title">Car Resale Price Analysis</h3>
+                <p class="project-desc" data-i18n="projects.carResale.desc">
+                    Exploratory data analysis and preprocessing of car resale prices using SAS Studio.
+                </p>
+                <a href="https://github.com/Sbaiii/car-resale-price-analysis" class="btn-text" target="_blank">
+                    <span data-i18n="projects.view_case">View Case Study</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="project-img placeholder-2" id="project-img-java"></div>
+                </div>
+                <div class="project-tags">
+                    <span data-i18n="projects.purchaseOrder.tags.0">Java</span>
+                    <span data-i18n="projects.purchaseOrder.tags.1">OOP</span>
+                    <span data-i18n="projects.purchaseOrder.tags.2">Swing</span>
+                </div>
+                <h3 class="project-title" data-i18n="projects.purchaseOrder.title">Automated Purchase Order System</h3>
+                <p class="project-desc" data-i18n="projects.purchaseOrder.desc">
+                    Java Swing desktop application for automating purchase order workflows with role-based dashboards.
+                </p>
+                <a href="https://github.com/Sbaiii/Automated_purchase_Order_Management_System" class="btn-text"
+                    target="_blank">
+                    <span data-i18n="projects.view_case">View Case Study</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <!-- Project 3 (Placeholder for future) -->
+            <article class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="project-img placeholder-3"></div>
+                </div>
+                <div class="project-tags">
+                    <span>Upcoming</span>
+                    <span>Project</span>
+                </div>
+                <h3 class="project-title">Future Innovation</h3>
+                <p class="project-desc">
+                    A new data-driven project is currently in development. Stay tuned for updates on performance and
+                    scale.
+                </p>
+                <a href="#" class="btn-text">
+                    <span data-i18n="projects.view_case">View Case Study</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section box-bg" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title" data-i18n="contact_title">Let's Connect</h2>
+            <p class="contact-desc" data-i18n="contact_desc">I'm currently looking for new opportunities, analyzing
+                datasets, or learning new algorithms. My inbox is always open.</p>
+            <a href="mailto:hello@example.com" class="btn btn-primary btn-large" data-i18n="btn_hello">Say Hello</a>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/sbaiii/" target="_blank" rel="noopener noreferrer"
+                    class="social-link">LinkedIn</a>
+                <a href="https://github.com/Sbaiii" target="_blank" rel="noopener noreferrer"
+                    class="social-link">GitHub</a>
+                <a href="https://www.kaggle.com/sbaiiiiii" target="_blank" rel="noopener noreferrer"
+                    class="social-link">Kaggle</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Abdellah Sbai Atta Allah<span class="dot">.</span></div>
+            <p class="footer-copy">© 2026 Abdellah Sbai Atta Allah. <span data-i18n="footer_rights">All rights
+                    reserved.</span></p>
+        </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
