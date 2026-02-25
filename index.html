@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Data Analyst Portfolio">
-    <title>Abdellah - Data Analyst</title>
+    <title>Sbai - Data Analyst</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Performance Preloads -->
+    <link rel="preload" href="./assets/profile-pic.png" as="image">
+    <link rel="preload" href="./assets/logo.png" as="image">
 </head>
 
 <body>
@@ -68,7 +72,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-visual">
-            <img src="./assets/profile-pic.png" alt="Abdellah Sbai Atta Allah - Profile" class="profile-pic" />
+            <img src="./assets/profile-pic.png" alt="Abdellah Sbai Atta Allah - Profile" class="profile-pic"
+                fetchpriority="high" />
         </div>
         <div class="hero-content">
             <span class="hero-greeting" data-i18n="hero_greeting">Hello, I'm</span>
