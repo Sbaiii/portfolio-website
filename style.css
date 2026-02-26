@@ -73,7 +73,6 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     font-size: clamp(0.95rem, 0.4vw + 0.8rem, 1.1rem);
-    transition: background-color var(--transition-slow), color var(--transition-slow);
     overflow-x: hidden;
     cursor: none;
 }
@@ -1096,5 +1095,38 @@ h6 {
         gap: 1rem;
         padding: 2rem;
         text-align: center;
+    }
+}
+
+/* =========================================
+   VIEW TRANSITIONS (Circular Wave)
+   ========================================= */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+}
+
+/* The "Wave" Animation */
+[data-transition="theme"]::view-transition-new(root) {
+    animation: 0.7s cubic-bezier(0.4, 0, 0.2, 1) both wave-reveal;
+}
+
+@keyframes wave-reveal {
+    from {
+        clip-path: circle(0% at var(--x) var(--y));
+    }
+
+    to {
+        clip-path: circle(150% at var(--x) var(--y));
     }
 }

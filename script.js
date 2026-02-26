@@ -63,10 +63,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Manual Toggle
-    themeToggle.addEventListener('click', () => {
+    themeToggle.addEventListener('click', (e) => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
+
+        // Check for View Transition API support
+        if (!document.startViewTransition) {
+            setTheme(newTheme);
+            return;
+        }
+
+        // Get the click position, or use center of button as fallback
+        const x = e.clientX ?? (themeToggle.getBoundingClientRect().left + themeToggle.offsetWidth / 2);
+        const y = e.clientY ?? (themeToggle.getBoundingClientRect().top + themeToggle.offsetHeight / 2);
+
+        // Set custom variables for the transition origin
+        document.documentElement.style.setProperty('--x', `${x}px`);
+        document.documentElement.style.setProperty('--y', `${y}px`);
+        document.documentElement.setAttribute('data-transition', 'theme');
+
+        const transition = document.startViewTransition(() => {
+            setTheme(newTheme);
+        });
+
+        // Clean up after transition
+        transition.finished.finally(() => {
+            document.documentElement.removeAttribute('data-transition');
+        });
 
         // Brief pulse effect on cursor
         if (!isTouchDevice && cursorOutline) {
