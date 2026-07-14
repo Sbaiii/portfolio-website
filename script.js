@@ -1,44 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
-       CUSTOM CURSOR
-       ========================================= */
-    const cursorDot = document.querySelector('[data-cursor-dot]');
-    const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-    // Check if device supports hover
-    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-
-    if (!isTouchDevice && cursorDot && cursorOutline) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // Instantly move dot
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Smoothly animate outline
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: 'forwards' });
-        });
-
-        // Hover effects for anchors and buttons
-        const interactables = document.querySelectorAll('a, button, input, .lang-selector');
-        interactables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorOutline.style.backgroundColor = 'rgba(128, 128, 128, 0.2)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorOutline.style.backgroundColor = 'transparent';
-            });
-        });
-    }
-
-    /* =========================================
        THEME TOGGLE & SYSTEM PREFERENCE
        ========================================= */
     const themeToggle = document.getElementById('theme-toggle');
@@ -90,14 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         transition.finished.finally(() => {
             document.documentElement.removeAttribute('data-transition');
         });
-
-        // Brief pulse effect on cursor
-        if (!isTouchDevice && cursorOutline) {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(2)';
-            setTimeout(() => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-            }, 150);
-        }
     });
 
     // Listen for System Theme Changes

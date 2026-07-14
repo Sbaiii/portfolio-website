@@ -9,8 +9,6 @@
     --border-color: #e5e5e5;
     --surface: #ffffff;
 
-    --cursor-color: #000000;
-
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
     --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -28,7 +26,6 @@
         --accent-hover: #cccccc;
         --border-color: #333333;
         --surface: #1a1a1a;
-        --cursor-color: #ffffff;
     }
 }
 
@@ -42,7 +39,6 @@
     --accent-hover: #cccccc;
     --border-color: #333333;
     --surface: #1a1a1a;
-    --cursor-color: #ffffff;
 }
 
 [data-theme="light"] {
@@ -54,7 +50,6 @@
     --accent-hover: #333333;
     --border-color: #e5e5e5;
     --surface: #ffffff;
-    --cursor-color: #000000;
 }
 
 * {
@@ -74,16 +69,6 @@ body {
     line-height: 1.6;
     font-size: clamp(0.95rem, 0.4vw + 0.8rem, 1.1rem);
     overflow-x: hidden;
-    cursor: none;
-}
-
-/* Links and buttons hide native cursor too */
-a,
-button,
-input,
-textarea,
-select {
-    cursor: none;
 }
 
 ::selection {
@@ -108,34 +93,6 @@ h6 {
     margin-bottom: clamp(1.5rem, 4vw, 3rem);
     position: relative;
     display: inline-block;
-}
-
-/* Custom Cursor */
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--cursor-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--cursor-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 9998;
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
 /* Header & Nav */
@@ -366,15 +323,6 @@ h6 {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-    padding: clamp(8px, 1.5vw, 15px);
-    background: var(--surface);
-    transition: transform var(--transition-slow);
-}
-
-.profile-pic:hover {
-    transform: translateY(-10px) rotate(2deg);
 }
 
 .hero-content {
@@ -1076,18 +1024,6 @@ h6 {
     .hero-visual {
         min-width: 100%;
         order: -1;
-    }
-
-    /* Disable custom cursor on mobile to use touch */
-    .cursor-dot,
-    .cursor-outline {
-        display: none;
-    }
-
-    body,
-    a,
-    button {
-        cursor: auto !important;
     }
 
     .footer {
