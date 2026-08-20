@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     const themeToggle = document.getElementById('theme-toggle');
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function setTheme(theme, save = true) {
         document.documentElement.setAttribute('data-theme', theme);
@@ -14,22 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialization
-    const storedTheme = localStorage.getItem('portfolio_theme');
-    if (storedTheme) {
-        setTheme(storedTheme);
-    } else {
-        // Follow system preference
-        setTheme(mediaQuery.matches ? 'dark' : 'light', false);
-    }
+    // The inline <head> script already applied the theme before first paint,
+    // so there is nothing to initialize here.
 
     // Manual Toggle
     themeToggle.addEventListener('click', (e) => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-        // Check for View Transition API support
-        if (!document.startViewTransition) {
+        // Skip the circular wipe when the API is unavailable or the user asked for less motion
+        if (!document.startViewTransition || reduceMotion.matches) {
             setTheme(newTheme);
             return;
         }
@@ -55,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Listen for System Theme Changes
     mediaQuery.addEventListener('change', (e) => {
-        // When system theme changes, we automatically follow it 
-        // and clear any manual override to stay in sync with the device
-        const newSystemTheme = e.matches ? 'dark' : 'light';
-        setTheme(newSystemTheme, false);
+        // Only follow the device while the visitor has no explicit preference of
+        // their own. A manual pick stays put until they toggle it back.
+        if (localStorage.getItem('portfolio_theme')) return;
+        setTheme(e.matches ? 'dark' : 'light', false);
     });
 
     /* =========================================
@@ -68,74 +63,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
+    // Coalesce scroll handling into one class flip per frame
+    let scrollQueued = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+        if (scrollQueued) return;
+        scrollQueued = true;
+        requestAnimationFrame(() => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+            scrollQueued = false;
+        });
+    }, { passive: true });
+
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        mobileBtn.classList.toggle('active', open);
+        mobileBtn.setAttribute('aria-expanded', String(open));
+        mobileBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
 
     mobileBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileBtn.classList.toggle('active');
+        setMenu(!navLinks.classList.contains('active'));
     });
 
     // Close mobile menu when a link is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileBtn.classList.remove('active');
-        });
+        link.addEventListener('click', () => setMenu(false));
     });
 
-    // Simple reveal animation on scroll using Intersection Observer
-    const sections = document.querySelectorAll('.section-title, .about-grid, .skills-grid, .project-card');
-
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    // Check if we have a hash in the URL to skip hiding that section
-    const currentHash = window.location.hash;
-
-    // Give elements initial hidden state
-    sections.forEach(sec => {
-        // Find the parent section to check if it matches the hash
-        const parentSection = sec.closest('section');
-        const isCurrentTarget = currentHash && parentSection && `#${parentSection.id}` === currentHash;
-
-        if (isCurrentTarget) {
-            // If this is the section the user is refreshing into, show it immediately
-            sec.style.opacity = '1';
-            sec.style.transform = 'translateY(0)';
-        } else {
-            sec.style.opacity = '0';
-            sec.style.transform = 'translateY(20px)';
+    // Escape closes the menu and returns focus to the button
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            setMenu(false);
+            mobileBtn.focus();
         }
-        sec.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     });
 
-    const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    /* =========================================
+       REVEAL ON SCROLL
+       ========================================= */
+    // Honour the OS "reduce motion" setting: everything just stays visible.
+    if (!reduceMotion.matches) {
+        const sections = document.querySelectorAll('.section-title, .about-grid, .skills-grid, .project-card');
 
-    sections.forEach(sec => revealOnScroll.observe(sec));
+        sections.forEach(sec => sec.classList.add('reveal'));
 
-    // Rescue scroll: If the browser was interrupted by layout shifts, re-scroll to the hash
-    if (currentHash) {
-        setTimeout(() => {
-            const target = document.querySelector(currentHash);
-            if (target) {
-                target.scrollIntoView({ behavior: 'auto' });
-            }
-        }, 100);
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        sections.forEach(sec => revealOnScroll.observe(sec));
     }
 });

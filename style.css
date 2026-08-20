@@ -60,6 +60,9 @@
 
 html {
     scroll-behavior: smooth;
+    /* `clip` contains sideways overflow without turning the element into a
+       scroll container the way `hidden` does. */
+    overflow-x: clip;
 }
 
 body {
@@ -68,7 +71,44 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     font-size: clamp(0.95rem, 0.4vw + 0.8rem, 1.1rem);
-    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+/* Keep anchored sections clear of the fixed header */
+section[id] {
+    scroll-margin-top: 6rem;
+}
+
+/* Reveal-on-scroll: script.js adds .reveal, then .is-visible as each enters view */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 ::selection {
@@ -317,8 +357,16 @@ h6 {
     animation: fadeInScale 1s ease-out;
 }
 
+/* Let the <img> stay the flex item so the width/height attributes we set for
+   layout stability don't change how the hero is arranged. */
+.hero-visual picture {
+    display: contents;
+}
+
 .profile-pic {
     width: 100%;
+    /* Overrides the intrinsic height attribute so aspect-ratio drives the box */
+    height: auto;
     max-width: clamp(150px, 30vw, 450px);
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -885,6 +933,25 @@ h6 {
 
 .project-link:hover::after {
     width: 100%;
+}
+
+.project-link svg {
+    margin-left: 0.4rem;
+    transition: transform var(--transition-fast);
+}
+
+.project-link:hover svg {
+    transform: translate(2px, -2px);
+}
+
+/* Non-interactive state for a project that has nothing to link to yet */
+.project-link.is-disabled {
+    color: var(--text-secondary);
+    cursor: default;
+}
+
+.project-link.is-disabled::after {
+    display: none;
 }
 
 /* Contact */

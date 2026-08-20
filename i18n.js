@@ -50,17 +50,23 @@ const translations = {
         skill_web: "Web & Front-End Basics",
         skill_tools_env: "Tools & Environments",
         "projects": {
-            "title": "Featured Projects",
+            "title": "Selected Projects",
             "carResale": {
                 "title": "Car Resale Price Analysis",
                 "desc": "Exploratory data analysis and preprocessing of car resale prices using SAS Studio and SQL to identify key depreciation factors.",
                 "tags": ["SAS", "SQL", "EDA"]
             },
             "purchaseOrder": {
-                "title": "Purchase Order Management",
+                "title": "Automated Purchase Order System",
                 "desc": "Java Swing desktop application with role-based dashboards and persistent storage for automated procurement workflows.",
                 "tags": ["Java", "OOP", "Swing"]
             },
+            "upcoming": {
+                "title": "Future Innovation",
+                "desc": "A new data-driven project is currently in development. Stay tuned for updates on performance and scale.",
+                "tags": ["Upcoming", "Project"]
+            },
+            "in_progress": "In progress",
             "view_case": "View on GitHub"
         },
         contact_title: "Let's Connect",
@@ -130,6 +136,12 @@ const translations = {
                 "desc": "Application Java Swing avec tableaux de bord par rôle et stockage persistant pour l'automatisation des flux d'achat.",
                 "tags": ["Java", "OOP", "Swing"]
             },
+            "upcoming": {
+                "title": "Innovation à Venir",
+                "desc": "Un nouveau projet axé sur les données est en cours de développement. Restez à l'écoute pour les prochaines mises à jour.",
+                "tags": ["À venir", "Projet"]
+            },
+            "in_progress": "En cours",
             "view_case": "Voir sur GitHub"
         },
         contact_title: "Restons en Contact",
@@ -199,6 +211,12 @@ const translations = {
                 "desc": "Aplicación Java Swing con tableros basados en roles y almacenamiento persistente para flujos de automatización.",
                 "tags": ["Java", "OOP", "Swing"]
             },
+            "upcoming": {
+                "title": "Próxima Innovación",
+                "desc": "Un nuevo proyecto basado en datos está actualmente en desarrollo. Mantente atento a las próximas novedades.",
+                "tags": ["Próximamente", "Proyecto"]
+            },
+            "in_progress": "En curso",
             "view_case": "Ver en GitHub"
         },
         contact_title: "Conectemos",
@@ -210,16 +228,34 @@ const translations = {
 
 let currentLang = 'en';
 
+// Walk a dotted path ("projects.carResale.tags.0") through nested objects/arrays.
+// Returns undefined if any segment is missing, so callers keep the HTML fallback.
+function resolveKey(dict, path) {
+    return path.split('.').reduce((acc, part) => (
+        acc === null || acc === undefined ? undefined : acc[part]
+    ), dict);
+}
+
 function setLanguage(lang) {
     if (!translations[lang]) return;
+    // Ignore anything we don't actually ship a dictionary for, so a stale
+    // localStorage value can't take the whole selector down.
+    if (!translations[lang]) {
+        lang = 'en';
+    }
+
     currentLang = lang;
 
-    // Update elements
+    // Keep the document language in sync for screen readers and search engines
+    document.documentElement.setAttribute('lang', lang);
+
+    // Update elements. Keys may be dotted paths ("projects.carResale.tags.0")
+    // that walk into the nested objects and arrays in the dictionary above.
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            el.innerText = translations[lang][key];
+        const value = resolveKey(translations[lang], el.getAttribute('data-i18n'));
+        if (typeof value === 'string') {
+            el.innerText = value;
         }
     });
 
@@ -245,25 +281,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const langDropdown = document.querySelector('.lang-dropdown');
     const langOptions = document.querySelectorAll('.lang-dropdown button');
 
+    const setDropdown = (open) => {
+        langDropdown.classList.toggle('active', open);
+        langBtn.setAttribute('aria-expanded', String(open));
+    };
+
     // Toggle dropdown on button click
     langBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        langDropdown.classList.toggle('active');
+        setDropdown(!langDropdown.classList.contains('active'));
     });
 
     // Language Selection
     langOptions.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const selectedLang = e.target.getAttribute('data-lang');
-            setLanguage(selectedLang);
-            langDropdown.classList.remove('active');
+            setLanguage(e.currentTarget.getAttribute('data-lang'));
+            setDropdown(false);
         });
     });
 
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
         if (!langSelector.contains(e.target)) {
-            langDropdown.classList.remove('active');
+            setDropdown(false);
+        }
+    });
+
+    // Escape closes the dropdown and returns focus to the trigger
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && langDropdown.classList.contains('active')) {
+            setDropdown(false);
+            langBtn.focus();
         }
     });
 });

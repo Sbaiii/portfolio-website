@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,40 +7,84 @@
     <meta name="description" content="Data Scientist & Software Developer Portfolio - Abdellah Sbai Atta Allah">
     <meta name="author" content="Abdellah Sbai Atta Allah">
     <title>Sbai - Data Analyst & Developer</title>
+    <link rel="canonical" href="https://sbaiii.com/">
+
+    <!-- Resolve the theme before first paint so there is no flash of the wrong one. -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('portfolio_theme');
+                document.documentElement.setAttribute('data-theme',
+                    stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="Sbai - Data Analyst & Developer">
     <meta itemprop="description" content="Data Scientist & Software Developer Portfolio - Abdellah Sbai Atta Allah">
-    <meta itemprop="image" content="https://sbaiii.com/assets/favicon.png">
+    <meta itemprop="image" content="https://sbaiii.com/assets/og-image.png">
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://sbaiii.com">
+    <meta property="og:url" content="https://sbaiii.com/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Abdellah Sbai Atta Allah">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
     <meta property="og:title" content="Sbai - Data Analyst & Developer">
     <meta property="og:description" content="Data Scientist & Software Developer Portfolio - Abdellah Sbai Atta Allah">
-    <meta property="og:image" content="https://sbaiii.com/assets/favicon.png">
+    <meta property="og:image" content="https://sbaiii.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Abdellah Sbai Atta Allah - Computer Science and Data Analytics">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sbai - Data Analyst & Developer">
     <meta name="twitter:description" content="Data Scientist & Software Developer Portfolio - Abdellah Sbai Atta Allah">
-    <meta name="twitter:image" content="https://sbaiii.com/assets/favicon.png">
+    <meta name="twitter:image" content="https://sbaiii.com/assets/og-image.png">
+    <meta name="twitter:image:alt" content="Abdellah Sbai Atta Allah - Computer Science and Data Analytics">
 
     <!-- Favicon & App Icons -->
-    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="16x16">
-    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="any">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <!-- Performance Preloads -->
-    <link rel="preload" href="./assets/profile-pic.png" as="image">
-    <link rel="preload" href="./assets/logo.png" as="image">
+    <link rel="preload" href="./assets/profile-pic.webp" as="image" type="image/webp">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Abdellah Sbai Atta Allah",
+        "url": "https://sbaiii.com/",
+        "image": "https://sbaiii.com/assets/og-image.png",
+        "jobTitle": "Data Analyst",
+        "email": "mailto:abdellahsbaisbai@gmail.com",
+        "description": "Data Scientist & Software Developer Portfolio - Abdellah Sbai Atta Allah",
+        "knowsLanguage": ["en", "fr", "es"],
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Asia Pacific University (APU), Malaysia" },
+            { "@type": "CollegeOrUniversity", "name": "De Montfort University (DMU), United Kingdom" }
+        ],
+        "knowsAbout": ["Data Analytics", "Python", "SQL", "Power BI", "Machine Learning"],
+        "sameAs": [
+            "https://www.linkedin.com/in/sbaiii/",
+            "https://github.com/Sbaiii",
+            "https://www.kaggle.com/sbaiiiiii"
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -48,7 +92,7 @@
     <!-- Navigation -->
     <header class="header">
         <div class="logo">Abdellah Sbai Atta Allah<span class="dot">.</span></div>
-        <nav class="nav-links">
+        <nav class="nav-links" id="primary-nav" aria-label="Primary">
             <a href="#about" data-i18n="nav_about">About</a>
             <a href="#experience" data-i18n="nav_experience">Experience</a>
             <a href="#skills" data-i18n="nav_skills">Skills</a>
@@ -58,11 +102,12 @@
         <div class="controls">
             <!-- Language Selector -->
             <div class="lang-selector">
-                <button class="lang-btn" id="current-lang">EN</button>
-                <div class="lang-dropdown">
-                    <button data-lang="en">English</button>
-                    <button data-lang="fr">Français</button>
-                    <button data-lang="es">Español</button>
+                <button class="lang-btn" id="current-lang" aria-label="Select language" aria-haspopup="true"
+                    aria-expanded="false" aria-controls="lang-dropdown">EN</button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button data-lang="en" lang="en">English</button>
+                    <button data-lang="fr" lang="fr">Français</button>
+                    <button data-lang="es" lang="es">Español</button>
                 </div>
             </div>
             <!-- Theme Toggle -->
@@ -84,8 +129,9 @@
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
             </button>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <span></span><span></span><span></span>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false"
+                aria-controls="primary-nav">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
             </button>
         </div>
     </header>
@@ -93,8 +139,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-visual">
-            <img src="./assets/profile-pic.png" alt="Abdellah Sbai Atta Allah - Profile" class="profile-pic"
-                fetchpriority="high" />
+            <picture>
+                <source srcset="./assets/profile-pic.webp" type="image/webp">
+                <img src="./assets/profile-pic.jpg" alt="Abdellah Sbai Atta Allah - Profile" class="profile-pic"
+                    width="750" height="1000" fetchpriority="high" decoding="async" />
+            </picture>
         </div>
         <div class="hero-content">
             <span class="hero-greeting" data-i18n="hero_greeting">Hello, I'm</span>
@@ -287,30 +336,30 @@
                     <h2 class="experience-sub-title" data-i18n="skill_prog">Programming Languages</h2>
                     <div class="article-container">
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
-                                alt="Python" class="icon" />
+                            <img src="./assets/skills/devicon/python-original-wordmark.svg"
+                                alt="Python" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="./assets/skills/c.png" alt="C" class="icon" />
+                            <img src="./assets/skills/c.png" alt="C" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
-                                alt="C++" class="icon" />
+                            <img src="./assets/skills/devicon/cplusplus-original.svg"
+                                alt="C++" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
-                                alt="C#" class="icon" />
+                            <img src="./assets/skills/devicon/csharp-original.svg"
+                                alt="C#" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-                                alt="Java" class="icon" />
+                            <img src="./assets/skills/devicon/java-original-wordmark.svg"
+                                alt="Java" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="./assets/skills/r.png" alt="R" class="icon" />
+                            <img src="./assets/skills/r.png" alt="R" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                alt="JavaScript" class="icon" />
+                            <img src="./assets/skills/devicon/javascript-original.svg"
+                                alt="JavaScript" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                     </div>
                 </div>
@@ -320,24 +369,24 @@
                     <h2 class="experience-sub-title" data-i18n="skill_data">Data Analytics & Visualization</h2>
                     <div class="article-container">
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg"
-                                alt="Pandas" class="icon" />
+                            <img src="./assets/skills/devicon/pandas-original-wordmark.svg"
+                                alt="Pandas" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="./assets/skills/seaborn.png" alt="Seaborn" class="icon" />
+                            <img src="./assets/skills/seaborn.png" alt="Seaborn" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original-wordmark.svg"
-                                alt="Matplotlib" class="icon" />
+                            <img src="./assets/skills/devicon/matplotlib-original-wordmark.svg"
+                                alt="Matplotlib" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="./assets/skills/excel.png" alt="Excel" class="icon" />
+                            <img src="./assets/skills/excel.png" alt="Excel" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="./assets/skills/icons8-tableau-software-48.png" alt="Tableau" class="icon" />
+                            <img src="./assets/skills/icons8-tableau-software-48.png" alt="Tableau" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="./assets/skills/powerbi.png" alt="Power BI" class="icon" />
+                            <img src="./assets/skills/powerbi.png" alt="Power BI" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                     </div>
                 </div>
@@ -349,24 +398,24 @@
                     <h2 class="experience-sub-title" data-i18n="skill_db">Databases & Query Languages</h2>
                     <div class="article-container">
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-                                alt="MySQL" class="icon" />
+                            <img src="./assets/skills/devicon/mysql-original-wordmark.svg"
+                                alt="MySQL" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
-                                alt="PostgreSQL" class="icon" />
+                            <img src="./assets/skills/devicon/postgresql-original-wordmark.svg"
+                                alt="PostgreSQL" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
-                                alt="SQLite" class="icon" />
+                            <img src="./assets/skills/devicon/sqlite-original-wordmark.svg"
+                                alt="SQLite" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg"
-                                alt="SQL Server" class="icon" />
+                            <img src="./assets/skills/devicon/microsoftsqlserver-original-wordmark.svg"
+                                alt="SQL Server" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
-                                alt="SQL" class="icon" />
+                            <img src="./assets/skills/devicon/azuresqldatabase-original.svg"
+                                alt="SQL" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                     </div>
                 </div>
@@ -375,16 +424,16 @@
                     <h2 class="experience-sub-title" data-i18n="skill_web">Web & Front-End Basics</h2>
                     <div class="article-container">
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                alt="HTML" class="icon" />
+                            <img src="./assets/skills/devicon/html5-original.svg"
+                                alt="HTML" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                alt="CSS" class="icon" />
+                            <img src="./assets/skills/devicon/css3-original.svg"
+                                alt="CSS" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                         <article>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                alt="JavaScript" class="icon" />
+                            <img src="./assets/skills/devicon/javascript-original.svg"
+                                alt="JavaScript" class="icon" width="64" height="64" loading="lazy" decoding="async" />
                         </article>
                     </div>
                 </div>
@@ -394,7 +443,7 @@
 
     <!-- Projects Section -->
     <section class="projects section" id="projects">
-        <h2 class="section-title" data-i18n="projects_title">Selected Projects</h2>
+        <h2 class="section-title" data-i18n="projects.title">Selected Projects</h2>
         <div class="projects-grid">
             <!-- Project 1 -->
             <article class="project-card">
@@ -410,8 +459,9 @@
                 <p class="project-desc" data-i18n="projects.carResale.desc">
                     Exploratory data analysis and preprocessing of car resale prices using SAS Studio.
                 </p>
-                <a href="https://github.com/Sbaiii/car-resale-price-analysis" class="btn-text" target="_blank">
-                    <span data-i18n="projects.view_case">View Case Study</span>
+                <a href="https://github.com/Sbaiii/car-resale-price-analysis" class="project-link" target="_blank"
+                    rel="noopener noreferrer" aria-label="Car Resale Price Analysis on GitHub (opens in a new tab)">
+                    <span data-i18n="projects.view_case">View on GitHub</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
@@ -432,9 +482,10 @@
                 <p class="project-desc" data-i18n="projects.purchaseOrder.desc">
                     Java Swing desktop application for automating purchase order workflows with role-based dashboards.
                 </p>
-                <a href="https://github.com/Sbaiii/Automated_purchase_Order_Management_System" class="btn-text"
-                    target="_blank">
-                    <span data-i18n="projects.view_case">View Case Study</span>
+                <a href="https://github.com/Sbaiii/Automated_purchase_Order_Management_System" class="project-link"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Automated Purchase Order System on GitHub (opens in a new tab)">
+                    <span data-i18n="projects.view_case">View on GitHub</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 17L17 7M17 7H7M17 7V17" />
                     </svg>
@@ -447,20 +498,15 @@
                     <div class="project-img placeholder-3"></div>
                 </div>
                 <div class="project-tags">
-                    <span>Upcoming</span>
-                    <span>Project</span>
+                    <span data-i18n="projects.upcoming.tags.0">Upcoming</span>
+                    <span data-i18n="projects.upcoming.tags.1">Project</span>
                 </div>
-                <h3 class="project-title">Future Innovation</h3>
-                <p class="project-desc">
+                <h3 class="project-title" data-i18n="projects.upcoming.title">Future Innovation</h3>
+                <p class="project-desc" data-i18n="projects.upcoming.desc">
                     A new data-driven project is currently in development. Stay tuned for updates on performance and
                     scale.
                 </p>
-                <a href="#" class="btn-text">
-                    <span data-i18n="projects.view_case">View Case Study</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                </a>
+                <span class="project-link is-disabled" data-i18n="projects.in_progress">In progress</span>
             </article>
         </div>
     </section>
