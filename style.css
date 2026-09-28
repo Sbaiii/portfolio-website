@@ -23,56 +23,48 @@
 /* 01  FONTS ---------------------------------------------------------------- */
 
 @font-face {
-    font-family: 'Instrument Serif';
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('./assets/fonts/archivo.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'IBM Plex Mono';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('./assets/fonts/instrument-serif.woff2') format('woff2');
+    src: url('./assets/fonts/plex-mono-400.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'Instrument Serif';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url('./assets/fonts/instrument-serif-italic.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: 'Inter';
+    font-family: 'IBM Plex Mono';
     font-style: normal;
-    font-weight: 100 900;
+    font-weight: 500;
     font-display: swap;
-    src: url('./assets/fonts/inter.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: 'JetBrains Mono';
-    font-style: normal;
-    font-weight: 400 600;
-    font-display: swap;
-    src: url('./assets/fonts/jetbrains-mono.woff2') format('woff2');
+    src: url('./assets/fonts/plex-mono-500.woff2') format('woff2');
 }
 
 /* 02  DESIGN TOKENS -------------------------------------------------------- */
 
 :root {
     /* Colour — light is the default. One accent, used only for data. */
-    --paper: #f6f4ef;
-    --paper-2: #efece5;
-    --ink: #14110f;
-    --muted: #6b655e;
-    --faint: #726c64;
-    --rule: #e0dbd2;
-    --accent: #ff4a1c;
-    --accent-ink: #c8330c;
-    --accent-soft: rgba(255, 74, 28, 0.12);
-    --shadow: rgba(20, 17, 15, 0.08);
+    --paper: #ffffff;
+    --paper-2: #f5f6f8;
+    --ink: #0a0b0d;
+    --muted: #575d66;
+    --faint: #6b7280;
+    --rule: #e4e6ea;
+    --accent: #1b4dff;
+    --accent-ink: #1b4dff;
+    --accent-soft: rgba(27, 77, 255, 0.10);
+    --shadow: rgba(10, 11, 13, 0.10);
 
     /* Type */
-    --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --t-display: clamp(3.4rem, 11vw, 9rem);
     --t-h1: clamp(2.6rem, 7vw, 5.5rem);
@@ -95,42 +87,43 @@
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
-        --paper: #0c0b0a;
-        --paper-2: #131110;
-        --ink: #ede9e3;
-        --muted: #8c857c;
-        --faint: #827b72;
-        --rule: #23211e;
-        --accent: #ff5a30;
-        --accent-soft: rgba(255, 90, 48, 0.16);
-        --shadow: rgba(0, 0, 0, 0.5);
+        --paper: #08090b;
+        --paper-2: #101217;
+        --ink: #edeff2;
+        --muted: #9aa2ad;
+        --faint: #7c848f;
+        --rule: #1e2127;
+        --accent: #5b87ff;
+        --accent-ink: #5b87ff;
+        --accent-soft: rgba(91, 135, 255, 0.16);
+        --shadow: rgba(0, 0, 0, 0.6);
     }
 }
 
 [data-theme='dark'] {
-    --paper: #0c0b0a;
-    --paper-2: #131110;
-    --ink: #ede9e3;
-    --muted: #8c857c;
-    --faint: #827b72;
-    --rule: #23211e;
-    --accent: #ff5a30;
-    --accent-ink: #ff5a30;
-    --accent-soft: rgba(255, 90, 48, 0.16);
-    --shadow: rgba(0, 0, 0, 0.5);
+    --paper: #08090b;
+    --paper-2: #101217;
+    --ink: #edeff2;
+    --muted: #9aa2ad;
+    --faint: #7c848f;
+    --rule: #1e2127;
+    --accent: #5b87ff;
+    --accent-ink: #5b87ff;
+    --accent-soft: rgba(91, 135, 255, 0.16);
+    --shadow: rgba(0, 0, 0, 0.6);
 }
 
 [data-theme='light'] {
-    --paper: #f6f4ef;
-    --paper-2: #efece5;
-    --ink: #14110f;
-    --muted: #6b655e;
-    --faint: #726c64;
-    --rule: #e0dbd2;
-    --accent: #ff4a1c;
-    --accent-ink: #c8330c;
-    --accent-soft: rgba(255, 74, 28, 0.12);
-    --shadow: rgba(20, 17, 15, 0.08);
+    --paper: #ffffff;
+    --paper-2: #f5f6f8;
+    --ink: #0a0b0d;
+    --muted: #575d66;
+    --faint: #6b7280;
+    --rule: #e4e6ea;
+    --accent: #1b4dff;
+    --accent-ink: #1b4dff;
+    --accent-soft: rgba(27, 77, 255, 0.10);
+    --shadow: rgba(10, 11, 13, 0.10);
 }
 
 /* 03  RESET & BASE --------------------------------------------------------- */
@@ -224,9 +217,9 @@ button {
 
 /* 04  TYPOGRAPHY ----------------------------------------------------------- */
 
-.serif {
-    font-family: var(--serif);
-    font-weight: 400;
+.display {
+    font-family: var(--display);
+    font-weight: 800;
     letter-spacing: -0.015em;
     line-height: 1.02;
 }
@@ -248,7 +241,7 @@ button {
 }
 
 .num {
-    font-family: var(--serif);
+    font-family: var(--display);
     font-variant-numeric: tabular-nums;
     line-height: 0.9;
 }
@@ -280,10 +273,11 @@ button {
 }
 
 .fig__title {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 800;
     font-size: var(--t-h2);
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     margin-bottom: 0.75rem;
 }
 
@@ -568,10 +562,11 @@ button {
 }
 
 .masthead__name {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 800;
     font-size: var(--t-display);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
     margin-bottom: 1.5rem;
     text-wrap: balance;
 }
@@ -600,12 +595,13 @@ button {
 }
 
 .masthead__tagline {
-    font-family: var(--serif);
-    font-style: italic;
+    font-family: var(--display);
+    font-weight: 500;
     font-size: clamp(1.3rem, 2.6vw, 2.1rem);
-    line-height: 1.2;
-    color: var(--muted);
-    max-width: 24ch;
+    line-height: 1.22;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 26ch;
     margin-block: 2rem 0.6rem;
 }
 
@@ -640,17 +636,18 @@ button {
 }
 
 .btn--primary {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
     font-family: var(--mono);
     font-size: 0.82rem;
     letter-spacing: 0.02em;
 }
 
 .btn--primary:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
 }
 
 .btn--ghost {
@@ -748,9 +745,11 @@ button {
 }
 
 .figures__value {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 800;
     font-size: clamp(2.4rem, 5.5vw, 4.5rem);
     line-height: 0.9;
+    letter-spacing: -0.04em;
     font-variant-numeric: tabular-nums;
 }
 
@@ -886,12 +885,15 @@ button {
 }
 
 .chart__footnote p {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(1.05rem, 1.8vw, 1.5rem);
-    line-height: 1.35;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+    line-height: 1.32;
+    letter-spacing: -0.02em;
     max-width: 46ch;
-    color: var(--muted);
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 1.1rem;
 }
 
 @media (max-width: 860px) {
@@ -939,9 +941,11 @@ button {
 }
 
 .chart__detail-org {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 700;
     font-size: clamp(1.4rem, 3vw, 2rem);
     line-height: 1.05;
+    letter-spacing: -0.03em;
 }
 
 .chart__detail-role {
@@ -994,10 +998,11 @@ button {
 }
 
 .case__title {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 700;
     font-size: clamp(1.75rem, 3.4vw, 2.75rem);
     line-height: 1.05;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     margin-bottom: 1.25rem;
 }
 
@@ -1145,9 +1150,10 @@ button {
 
 .aside-card strong {
     display: block;
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 400;
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     color: var(--ink);
     line-height: 1.2;
     margin-bottom: 0.4rem;
@@ -1184,15 +1190,25 @@ button {
 }
 
 .metric__value {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 700;
     font-size: clamp(1.9rem, 3.5vw, 2.8rem);
     line-height: 0.95;
+    letter-spacing: -0.03em;
     font-variant-numeric: tabular-nums;
 }
 
 .metric__value span {
     font-size: 0.45em;
     color: var(--muted);
+}
+
+/* Word-valued metrics (input, theme) need to fit the tile, not tower over it. */
+.metric__value .metric__word {
+    display: block;
+    font-size: 0.4em;
+    line-height: 1.2;
+    color: var(--ink);
 }
 
 /* Horizontal bars for dwell time */
@@ -1288,10 +1304,11 @@ button {
 
 .contact__mail {
     display: inline-block;
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 700;
     font-size: clamp(1.6rem, 5vw, 3.6rem);
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     word-break: break-word;
     border-bottom: 1px solid var(--rule);
     padding-bottom: 0.15em;
@@ -1492,23 +1509,26 @@ button {
 .crosshair {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 150;
     pointer-events: none;
     display: none;
+    overflow: visible;
     mix-blend-mode: difference;
 }
 
 .crosshair line {
-    stroke: #808080;
+    stroke: #6e6e6e;
     stroke-width: 1;
     stroke-dasharray: 3 5;
 }
 
 .crosshair text {
     font-family: var(--mono);
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.06em;
-    fill: #808080;
+    fill: #6e6e6e;
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 861px) {
@@ -1519,13 +1539,15 @@ button {
 
 /* 15  REVEAL, REDUCED MOTION, PRINT ---------------------------------------- */
 
-.reveal {
+/* Gated on .js: the hidden state only applies once the script that will reveal
+   it is actually running. Without JavaScript every section stays visible. */
+.js .reveal {
     opacity: 0;
     transform: translateY(18px);
     transition: opacity 0.7s var(--slow), transform 0.7s var(--slow);
 }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
     opacity: 1;
     transform: none;
 }
@@ -1544,7 +1566,7 @@ button {
         scroll-behavior: auto !important;
     }
 
-    .reveal {
+    .js .reveal {
         opacity: 1;
         transform: none;
     }
@@ -1598,9 +1620,11 @@ button {
 }
 
 .plain h1 {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 800;
     font-size: var(--t-h2);
     line-height: 1;
+    letter-spacing: -0.035em;
     margin-bottom: 1rem;
 }
 
@@ -1659,16 +1683,20 @@ button {
 }
 
 .notfound__code {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 800;
     font-size: clamp(6rem, 22vw, 16rem);
     line-height: 0.85;
+    letter-spacing: -0.05em;
     color: var(--accent);
 }
 
 .notfound__title {
-    font-family: var(--serif);
+    font-family: var(--display);
+    font-weight: 800;
     font-size: var(--t-h2);
     line-height: 1.05;
+    letter-spacing: -0.035em;
 }
 
 .notfound p {

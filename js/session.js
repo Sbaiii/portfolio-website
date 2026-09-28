@@ -160,8 +160,8 @@ function render() {
         ${metric(t('session.scroll'), state.scrollDepth, '%')}
         ${metric(t('session.interactions'), state.interactions)}
         ${metric(t('session.viewport'), `${window.innerWidth}<span>×${window.innerHeight}</span>`)}
-        ${metric(t('session.device'), `<span style="font-size:.5em">${isTouch ? t('session.touch') : t('session.mouse')}</span>`)}
-        ${metric(t('session.theme'), `<span style="font-size:.5em">${theme}</span>`)}
+        ${metric(t('session.device'), `<span class="metric__word">${isTouch ? t('session.touch') : t('session.mouse')}</span>`)}
+        ${metric(t('session.theme'), `<span class="metric__word">${theme}</span>`)}
         ${metric(t('session.language'), stats.langSwitches())}
         <div class="rule-box">
             <span class="metric__label">${t('session.classify')}</span>

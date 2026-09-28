@@ -70,10 +70,15 @@ function pathFor(segs, proj) {
 function render(host, mode) {
     const wide = mode === 'wide';
     const W = wide ? 1200 : 340;
-    const H = wide ? 560 : 1040;
+    // The wide layout needs room under the axis for the below-line annotations,
+    // which otherwise land on top of the year labels.
+    const H = wide ? 640 : 1040;
     const pad = wide
-        ? { l: 58, r: 130, t: 64, b: 52 }
-        : { l: 40, r: 158, t: 30, b: 44 };
+        ? { l: 58, r: 130, t: 64, b: 118 }
+        // Tall layout: the annotation column needs ~174px for the longest line
+        // ("Île-de-France · 48.86°N" at 12px mono), so the latitude strip is
+        // deliberately narrow — the shape still reads, and the labels are legible.
+        : { l: 34, r: 198, t: 30, b: 44 };
 
     // Projection: (year, latitude) -> (x, y) in viewBox units.
     const proj = wide
@@ -109,7 +114,7 @@ function render(host, mode) {
         const p = proj(y, Y_MIN);
         grid.appendChild(
             wide
-                ? el('text', { class: 'chart__axis-label', x: p.x, y: H - pad.b + 22, 'text-anchor': 'middle' }, String(y))
+                ? el('text', { class: 'chart__axis-label', x: p.x, y: p.y + 20, 'text-anchor': 'middle' }, String(y))
                 : el('text', { class: 'chart__axis-label', x: 6, y: p.y + 3 }, String(y)),
         );
     }
@@ -165,7 +170,9 @@ function render(host, mode) {
 
         // Leader line + label
         if (wide) {
-            const ly = mid.y + side * 34;
+            // Below-line callouts reach further so they clear the year axis.
+            const reach = side < 0 ? 34 : 62;
+            const ly = mid.y + side * reach;
             g.appendChild(el('line', { class: 'chart__leader', x1: mid.x, y1: mid.y, x2: mid.x, y2: ly }));
             g.appendChild(el('text', {
                 class: 'chart__pt-org', x: mid.x, y: side < 0 ? ly - 16 : ly + 16, 'text-anchor': 'middle',
@@ -179,9 +186,9 @@ function render(host, mode) {
         } else {
             const lx = W - pad.r + 12;
             g.appendChild(el('line', { class: 'chart__leader', x1: mid.x, y1: mid.y, x2: lx - 6, y2: mid.y }));
-            g.appendChild(el('text', { class: 'chart__pt-org', x: lx, y: mid.y - 3 }, p.org));
-            g.appendChild(el('text', { class: 'chart__pt-meta', x: lx, y: mid.y + 11 }, `${p.city} · ${p.lat}°N`));
-            g.appendChild(el('text', { class: 'chart__pt-meta', x: lx, y: mid.y + 23 }, formatRange(p.start, p.end)));
+            g.appendChild(el('text', { class: 'chart__pt-org', x: lx, y: mid.y - 5 }, p.org));
+            g.appendChild(el('text', { class: 'chart__pt-meta', x: lx, y: mid.y + 10 }, `${p.city} · ${p.lat}°N`));
+            g.appendChild(el('text', { class: 'chart__pt-meta', x: lx, y: mid.y + 24 }, formatRange(p.start, p.end)));
         }
 
         g.appendChild(el('circle', { class: 'chart__dot', cx: mid.x, cy: mid.y, r: 6 }));
@@ -263,6 +270,7 @@ export function mountChart() {
 
     let view = null;
     let mode = null;
+    let played = false;   // the reveal is one-shot; a re-render must not replay it
 
     const draw = () => {
         const next = window.innerWidth > BREAKPOINT ? 'wide' : 'tall';
@@ -278,14 +286,7 @@ export function mountChart() {
         }
         view = render(mountPoint, mode);
 
-        // Prime the draw-on-scroll.
-        const len = view.line.getTotalLength();
-        view.line.style.strokeDasharray = String(len);
-        view.line.style.strokeDashoffset = reduceMotion.matches ? '0' : String(len);
-        if (reduceMotion.matches) {
-            view.forecast.setAttribute('opacity', '1');
-            view.points.forEach((g) => g.setAttribute('opacity', '1'));
-        }
+        view.line.style.strokeDasharray = String(view.line.getTotalLength());
 
         view.points.forEach((g) => {
             const open = () => openDetail(g.dataset.id);
@@ -299,55 +300,64 @@ export function mountChart() {
             g.addEventListener('focus', open);
         });
 
-        update();
+        // Re-rendering (a resize across the breakpoint, or a language switch)
+        // rebuilds the SVG. If the reveal already ran, show the finished state
+        // rather than animating it a second time.
+        paint(played || reduceMotion.matches ? 1 : 0);
     };
 
-    /* Scroll-linked progress: the line draws as the figure crosses the viewport. */
-    let queued = false;
-    function update() {
-        if (!view || reduceMotion.matches) return;
-        const rect = view.svg.getBoundingClientRect();
-        const vh = window.innerHeight;
-
-        // Start as the figure enters, and — importantly — finish while it is still
-        // on screen. For a chart taller than the viewport (the phone layout) that
-        // means completing once its bottom edge has risen into view, not after it
-        // has scrolled past.
-        const startTop = vh * 0.85;
-        const endTop = Math.min(vh * 0.12, vh * 0.78 - rect.height);
-        const p = Math.max(0, Math.min(1, (startTop - rect.top) / Math.max(1, startTop - endTop)));
-
+    /* Apply a progress value 0..1 to the current view. */
+    function paint(p) {
+        if (!view) return;
         const len = view.line.getTotalLength();
         view.line.style.strokeDashoffset = String(len * (1 - p));
-
-        // Reveal each annotation exactly as the line reaches its dot.
         view.points.forEach((g, i) => {
             g.setAttribute('opacity', p >= view.at[i] ? '1' : '0');
         });
-        view.forecast.setAttribute('opacity', p >= 0.97 ? '1' : '0');
+        view.forecast.setAttribute('opacity', p >= 0.985 ? '1' : '0');
     }
 
-    window.addEventListener('scroll', () => {
-        if (queued) return;
-        queued = true;
-        requestAnimationFrame(() => { update(); queued = false; });
-    }, { passive: true });
+    /**
+     * The animation runs once, when the figure first comes into view, and then
+     * stays finished. It is deliberately not tied to scroll position: scrubbing
+     * the line back and forth as you scroll meant you had already scrolled past
+     * the chart by the time it completed.
+     */
+    const DURATION = 2000;
+    let raf = null;
 
-    // Safety net: a reload part-way down the page, a restored scroll position or
-    // a late layout shift can leave the line in a stale state with no scroll
-    // event to correct it. Re-sync whenever the figure enters or leaves view,
-    // and once more after everything (fonts, images) has settled.
-    const io = new IntersectionObserver(update, { threshold: [0, 0.01, 0.5, 1] });
-    io.observe(host);
-    window.addEventListener('load', update);
+    function play() {
+        if (played) return;
+        played = true;
 
-    // A page opened in a background tab gets no rAF and no scroll events, so the
-    // line can sit unplotted until the tab is first looked at. Re-sync on reveal.
-    document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
-            queued = false;
-            update();
+        if (reduceMotion.matches) { paint(1); return; }
+
+        const start = performance.now();
+        const step = (now) => {
+            const t = Math.min(1, (now - start) / DURATION);
+            // ease-out cubic: quick off the mark, settles into the forecast
+            paint(1 - Math.pow(1 - t, 3));
+            raf = t < 1 ? requestAnimationFrame(step) : null;
+        };
+        raf = requestAnimationFrame(step);
+    }
+
+    // Fire once the figure is meaningfully on screen. A chart taller than the
+    // viewport can never hit a large ratio, so also accept "its top has entered".
+    const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const enough = e.intersectionRatio >= 0.35
+                || e.intersectionRect.height >= window.innerHeight * 0.45;
+            if (enough) { play(); io.disconnect(); }
         }
+    }, { threshold: [0, 0.15, 0.35, 0.6] });
+    io.observe(host);
+
+    // A background tab gets no rAF, so a chart that "played" while hidden would
+    // finish invisibly. Snap it to its final state when the tab is first shown.
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && played && !raf) paint(1);
     });
 
     let resizeTimer;

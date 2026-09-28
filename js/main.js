@@ -251,7 +251,7 @@ function initStatus() {
 
 export function observeReveals(root = document) {
     const items = $$('.reveal:not(.is-visible)', root);
-    if (reduceMotion.matches) {
+    if (reduceMotion.matches || !('IntersectionObserver' in window)) {
         items.forEach((el) => el.classList.add('is-visible'));
         return;
     }
@@ -263,6 +263,18 @@ export function observeReveals(root = document) {
         });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     items.forEach((el) => io.observe(el));
+}
+
+/**
+ * Failsafe: anything already on screen must never stay hidden waiting for an
+ * observer callback that, for whatever reason, did not arrive.
+ */
+function revealOnScreen() {
+    $$('.reveal:not(.is-visible)').forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add('is-visible');
+        }
+    });
 }
 
 /* --- headline figures (with count-up) ------------------------------------ */
@@ -437,6 +449,8 @@ function initCrosshair() {
 /* --- boot ---------------------------------------------------------------- */
 
 function boot() {
+    // Enables the reveal-on-scroll hidden state; see `.js .reveal` in style.css.
+    document.documentElement.classList.add('js');
     document.getElementById('year').textContent = String(new Date().getFullYear());
 
     initTheme();
@@ -455,6 +469,10 @@ function boot() {
 
     applyI18n();
     observeReveals();
+    window.addEventListener('load', revealOnScreen);
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) revealOnScreen();
+    });
 
     // eslint-disable-next-line no-console
     console.log(
