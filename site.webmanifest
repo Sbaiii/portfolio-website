@@ -1,14 +1,14 @@
 {
     "id": "/",
-    "name": "Abdellah Sbai Atta Allah - Portfolio",
+    "name": "Abdellah Sbai Atta Allah \u2014 Portfolio",
     "short_name": "Sbai",
-    "description": "Data Scientist & Software Developer Portfolio - Abdellah Sbai Atta Allah",
+    "description": "Data analyst and software developer. A career plotted on the only axis I can prove.",
     "lang": "en",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#f6f4ef",
+    "background_color": "#f6f4ef",
     "icons": [
         {
             "src": "assets/icon-192.png",

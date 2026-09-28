@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — This data point doesn’t exist</title>
+    <meta name="robots" content="noindex">
+    <script>
+        (function () {
+            try {
+                var s = localStorage.getItem('portfolio_theme');
+                if (s) document.documentElement.setAttribute('data-theme', s);
+            } catch (e) { }
+        })();
+    </script>
+    <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="any">
+    <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0b0a" media="(prefers-color-scheme: dark)">
+    <link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <main class="notfound">
+        <!-- A residual plot with one point conspicuously off the line. -->
+        <svg width="220" height="90" viewBox="0 0 220 90" aria-hidden="true" style="margin-inline:auto">
+            <line x1="0" y1="45" x2="220" y2="45" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 5" />
+            <circle cx="20" cy="43" r="3" fill="var(--faint)" />
+            <circle cx="55" cy="47" r="3" fill="var(--faint)" />
+            <circle cx="90" cy="44" r="3" fill="var(--faint)" />
+            <circle cx="125" cy="46" r="3" fill="var(--faint)" />
+            <circle cx="160" cy="44" r="3" fill="var(--faint)" />
+            <circle cx="195" cy="12" r="5" fill="var(--accent)" />
+            <line x1="195" y1="20" x2="195" y2="43" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 3" />
+        </svg>
+
+        <p class="notfound__code">404</p>
+        <h1 class="notfound__title">This data point doesn’t exist</h1>
+        <p>The URL you asked for isn’t in the dataset. It may have been moved, or it may never have been plotted.</p>
+        <p style="margin-top:1.5rem">
+            <a class="btn btn--primary" href="/">Return to the chart</a>
+        </p>
+    </main>
+</body>
+
+</html>
