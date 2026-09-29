@@ -71,7 +71,7 @@ function render(panel) {
         </div>
 
         <div class="idcard__actions">
-            <a class="btn btn--primary" href="${PROFILE.cv}" download>${t('masthead.cv')}</a>
+            <a class="btn btn--primary" href="${PROFILE.cv}" target="_blank" rel="noopener">${t('masthead.cv')}</a>
             <a class="btn btn--ghost" href="mailto:${PROFILE.email}">${PROFILE.email}</a>
             <a class="btn btn--ghost" href="${PROFILE.links.github}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             <a class="btn btn--ghost" href="${PROFILE.links.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>

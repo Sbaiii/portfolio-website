@@ -55,7 +55,7 @@ function tables() {
             { channel: 'linkedin', value: PROFILE.links.linkedin },
             { channel: 'github', value: PROFILE.links.github },
             { channel: 'kaggle', value: PROFILE.links.kaggle },
-            { channel: 'cv', value: 'https://sbaiii.com/assets/resume.pdf' },
+            { channel: 'cv', value: 'https://sbaiii.com/resume.pdf' },
         ],
     };
 }

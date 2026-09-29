@@ -179,8 +179,8 @@ function render() {
         const wantsCv = !state.cvClicked;
         cta.innerHTML = `
             <span class="meta">${t('session.cta')}</span>
-            <a class="btn btn--primary" href="${wantsCv ? './assets/resume.pdf' : 'mailto:abdellahsbaisbai@gmail.com'}"
-               ${wantsCv ? 'download' : ''}>
+            <a class="btn btn--primary" href="${wantsCv ? './resume.pdf' : 'mailto:abdellahsbaisbai@gmail.com'}"
+               ${wantsCv ? 'target="_blank" rel="noopener"' : ''}>
                ${wantsCv ? t('session.ctaCv') : t('session.ctaContact')} →
             </a>
             <span class="meta" style="text-transform:none;letter-spacing:.02em">${t('session.classifyNote')}</span>`;

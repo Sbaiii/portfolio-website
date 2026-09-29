@@ -308,6 +308,20 @@ export function observeReveals(root = document) {
 }
 
 /**
+ * Failsafe: a figure primed to zero must never be left that way. The observer
+ * that would have counted it up can fail to deliver (suspended tab, throttling),
+ * and the page would then state "0 Internships", which is simply false.
+ */
+function settleFigures() {
+    $$('.figures__value').forEach((el) => {
+        const to = el.dataset.to;
+        if (!to || el.textContent === to) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) countUp(el, Number(to));
+    });
+}
+
+/**
  * Failsafe: anything already on screen must never stay hidden waiting for an
  * observer callback that, for whatever reason, did not arrive.
  */
@@ -322,7 +336,10 @@ function revealOnScreen() {
 /* --- headline figures (with count-up) ------------------------------------ */
 
 function countUp(el, to) {
-    if (reduceMotion.matches) {
+    // These are factual claims, so the final number must never depend on an
+    // animation frame arriving: a suspended rAF would leave the page asserting
+    // "0 Internships". Same reasoning as scrambleTo.
+    if (reduceMotion.matches || document.hidden) {
         el.textContent = String(to);
         return;
     }
@@ -335,6 +352,9 @@ function countUp(el, to) {
         if (p < 1) requestAnimationFrame(frame);
     };
     requestAnimationFrame(frame);
+    setTimeout(() => {
+        if (el.textContent !== String(to)) el.textContent = String(to);
+    }, dur + 250);
 }
 
 function renderFigures() {
@@ -360,7 +380,7 @@ function renderFigures() {
             if (entry.isIntersecting) {
                 countUp(el, Number(el.dataset.to));
                 obs.unobserve(el);
-            } else if (!el.dataset.primed) {
+            } else if (!el.dataset.primed && !document.hidden) {
                 // Off screen, so an intersect event is still coming: safe to zero.
                 el.dataset.primed = '1';
                 el.textContent = '0';
@@ -553,9 +573,23 @@ function boot() {
 
     applyI18n();
     observeReveals();
-    window.addEventListener('load', revealOnScreen);
+    // Three independent paths to a settled page, none of which need an observer
+    // callback to arrive. The scroll listener detaches once there is nothing
+    // left to settle, so it is not a standing cost.
+    const settle = () => {
+        revealOnScreen();
+        settleFigures();
+        const pending = document.querySelector('.reveal:not(.is-visible)')
+            || [...document.querySelectorAll('.figures__value')].some((el) => el.textContent !== el.dataset.to);
+        if (!pending) window.removeEventListener('scroll', settle);
+    };
+    window.addEventListener('load', settle);
+    window.addEventListener('scroll', settle, { passive: true });
     document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) revealOnScreen();
+        if (!document.hidden) {
+            window.addEventListener('scroll', settle, { passive: true });
+            settle();
+        }
     });
 
     // eslint-disable-next-line no-console
