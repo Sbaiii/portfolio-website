@@ -30,6 +30,19 @@
     src: url('./assets/fonts/archivo.woff2') format('woff2');
 }
 
+/* Metric-matched fallback. Archivo is ~11% wider than Helvetica/Arial, and at
+   the masthead's display size that difference reflowed the h1 when the webfont
+   swapped in, which was the page's only layout shift. Numbers computed from the
+   two fonts' average advance widths and typo metrics. */
+@font-face {
+    font-family: 'Archivo Fallback';
+    src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+    size-adjust: 111.31%;
+    ascent-override: 78.88%;
+    descent-override: 18.87%;
+    line-gap-override: 0%;
+}
+
 @font-face {
     font-family: 'IBM Plex Mono';
     font-style: normal;
@@ -58,12 +71,13 @@
     --rule: #e4e6ea;
     --accent: #1b4dff;
     --accent-ink: #1b4dff;
+    --accent-on: #ffffff;
     --accent-soft: rgba(27, 77, 255, 0.10);
     --shadow: rgba(10, 11, 13, 0.10);
 
     /* Type */
-    --display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --display: 'Archivo', 'Archivo Fallback', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sans: 'Archivo', 'Archivo Fallback', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --t-display: clamp(3.4rem, 11vw, 9rem);
@@ -95,6 +109,7 @@
         --rule: #1e2127;
         --accent: #5b87ff;
         --accent-ink: #5b87ff;
+        --accent-on: #08090b;
         --accent-soft: rgba(91, 135, 255, 0.16);
         --shadow: rgba(0, 0, 0, 0.6);
     }
@@ -109,6 +124,7 @@
     --rule: #1e2127;
     --accent: #5b87ff;
     --accent-ink: #5b87ff;
+    --accent-on: #08090b;
     --accent-soft: rgba(91, 135, 255, 0.16);
     --shadow: rgba(0, 0, 0, 0.6);
 }
@@ -122,6 +138,7 @@
     --rule: #e4e6ea;
     --accent: #1b4dff;
     --accent-ink: #1b4dff;
+    --accent-on: #ffffff;
     --accent-soft: rgba(27, 77, 255, 0.10);
     --shadow: rgba(10, 11, 13, 0.10);
 }
@@ -552,6 +569,14 @@ button {
         display: none;
     }
 
+    /* Keep the brand and the close button above the open menu: they are
+       static, so the positioned menu would otherwise paint over them. */
+    .brand,
+    .controls {
+        position: relative;
+        z-index: 96;
+    }
+
     .nav {
         position: fixed;
         inset: 0;
@@ -823,7 +848,7 @@ button {
 .btn--primary {
     background: var(--accent);
     border-color: var(--accent);
-    color: #fff;
+    color: var(--accent-on);
     font-family: var(--mono);
     font-size: 0.82rem;
     letter-spacing: 0.02em;
@@ -893,6 +918,14 @@ button {
 @media (max-width: 720px) {
     .masthead__fig {
         flex-wrap: wrap;
+    }
+
+    /* The clock text is written by JS after first paint. Without a row of its
+       own the pill would wrap at that moment and push the h1 down, which was
+       the page's only layout shift. Giving it a full row keeps the height
+       fixed whether the clock has arrived or not. */
+    .masthead__fig .status {
+        flex-basis: 100%;
     }
 
     .status {
@@ -1722,7 +1755,7 @@ button {
     height: 1.35rem;
     border-radius: 50%;
     background: var(--accent);
-    color: #fff;
+    color: var(--accent-on);
     font-family: var(--mono);
     font-size: 0.5rem;
     font-weight: 600;
@@ -1768,7 +1801,7 @@ button {
     gap: 1rem;
     padding: 0.85rem 1.25rem;
     background: var(--accent);
-    color: #fff;
+    color: var(--accent-on);
 }
 
 .idcard__doc {
@@ -1786,7 +1819,7 @@ button {
     font-size: 0.66rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--accent-on);
     opacity: 0.85;
 }
 
@@ -1942,8 +1975,8 @@ button {
    it is actually running. Without JavaScript every section stays visible. */
 .js .reveal {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.7s var(--slow), transform 0.7s var(--slow);
+    transform: translateY(12px);
+    transition: opacity 0.38s var(--slow), transform 0.38s var(--slow);
 }
 
 .js .reveal.is-visible {

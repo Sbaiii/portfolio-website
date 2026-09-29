@@ -44,7 +44,7 @@ function render(panel) {
         <div class="idcard__head">
             <span class="idcard__doc">${t('idcard.doc')}</span>
             <button class="idcard__close" id="idcard-close" aria-label="${t('idcard.close')}">
-                ${t('idcard.close')} <span aria-hidden="true">✕</span>
+                ${t('idcard.close')}
             </button>
         </div>
 

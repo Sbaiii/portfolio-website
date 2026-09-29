@@ -7,8 +7,6 @@ import {
 } from '../content.js';
 import { mountChart } from './chart.js';
 import { mountSession } from './session.js';
-import { mountQuery } from './query.js';
-import { mountIdCard } from './idcard.js';
 
 /* --- shared helpers (exported for the other modules) --------------------- */
 
@@ -305,7 +303,7 @@ export function observeReveals(root = document) {
             entry.target.classList.add('is-visible');
             obs.unobserve(entry.target);
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px 25% 0px' });
     items.forEach((el) => io.observe(el));
 }
 
@@ -509,8 +507,32 @@ function boot() {
 
     mountChart();
     mountSession();
-    mountQuery();
-    mountIdCard();
+    // The query bar and ID card are interaction-only, so they are fetched after
+    // first paint and never compete with the CSS and fonts the page needs to
+    // render. Their triggers still work if tapped before that happens.
+    let extras = null;
+    let extrasReady = false;
+    const loadExtras = () => {
+        if (!extras) {
+            extras = Promise.all([
+                import('./query.js').then((m) => m.mountQuery()),
+                import('./idcard.js').then((m) => m.mountIdCard()),
+            ]).then(() => { extrasReady = true; });
+        }
+        return extras;
+    };
+
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 250));
+    idle(() => loadExtras(), { timeout: 1500 });
+
+    // Tapped before the module arrived: load it, then replay the click.
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('#idcard-open, #query-open, #query-open-mobile');
+        if (!trigger || extrasReady) return;
+        e.preventDefault();
+        e.stopPropagation();
+        loadExtras().then(() => trigger.click());
+    }, true);
 
     applyI18n();
     observeReveals();
