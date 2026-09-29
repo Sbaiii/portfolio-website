@@ -1,9 +1,9 @@
 /* =============================================================================
-   chart.js — "The Trajectory".
+   chart.js: "The Trajectory".
 
    A step chart of where Abdellah physically was, over time.
      x = time,  y = latitude °N   (wide layout)
-     y = time,  x = latitude °N   (tall layout — phones, genuinely transposed)
+     y = time,  x = latitude °N   (tall layout: phones, genuinely transposed)
 
    Each role is a horizontal segment spanning its actual duration; the diagonals
    between them are the moves. The line is drawn by scroll position, then ends in
@@ -77,7 +77,7 @@ function render(host, mode) {
         ? { l: 58, r: 130, t: 64, b: 118 }
         // Tall layout: the annotation column needs ~174px for the longest line
         // ("Île-de-France · 48.86°N" at 12px mono), so the latitude strip is
-        // deliberately narrow — the shape still reads, and the labels are legible.
+        // deliberately narrow, but the shape still reads, and the labels are legible.
         : { l: 34, r: 198, t: 30, b: 44 };
 
     // Projection: (year, latitude) -> (x, y) in viewBox units.
@@ -206,8 +206,8 @@ function render(host, mode) {
 
 /**
  * Fraction along the drawn path at which each dot sits, so annotations appear
- * exactly as the line reaches them. Path length is not linear in x — the
- * diagonals between postings are longer than they look — so sample rather than
+ * exactly as the line reaches them. Path length is not linear in x, because the
+ * diagonals between postings are longer than they look, so sample rather than
  * assume an even spacing.
  */
 function thresholdsFor(line, points) {

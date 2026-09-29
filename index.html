@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdellah Sbai Atta Allah — Data Analyst & Software Developer</title>
+    <title>Abdellah Sbai Atta Allah, Data Analyst & Software Developer</title>
     <meta name="description"
         content="Data analyst and software developer. Four internships across Morocco, Malaysia and France, plotted on the only axis I can prove: latitude.">
     <meta name="author" content="Abdellah Sbai Atta Allah">
@@ -16,7 +16,7 @@
             try {
                 var stored = localStorage.getItem('portfolio_theme');
                 if (stored) document.documentElement.setAttribute('data-theme', stored);
-            } catch (e) { /* private mode — fall back to the CSS media query */ }
+            } catch (e) { /* private mode: fall back to the CSS media query */ }
         })();
     </script>
 
@@ -26,18 +26,18 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:title" content="Abdellah Sbai Atta Allah — Data Analyst & Software Developer">
+    <meta property="og:title" content="Abdellah Sbai Atta Allah, Data Analyst & Software Developer">
     <meta property="og:description"
-        content="Four internships, three countries, one dual degree — plotted on the only axis I can prove.">
+        content="Four internships, three countries, one dual degree, plotted on the only axis I can prove.">
     <meta property="og:image" content="https://sbaiii.com/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="A career plotted as a line chart: latitude against time.">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Abdellah Sbai Atta Allah — Data Analyst & Software Developer">
+    <meta name="twitter:title" content="Abdellah Sbai Atta Allah, Data Analyst & Software Developer">
     <meta name="twitter:description"
-        content="Four internships, three countries, one dual degree — plotted on the only axis I can prove.">
+        content="Four internships, three countries, one dual degree, plotted on the only axis I can prove.">
     <meta name="twitter:image" content="https://sbaiii.com/assets/og-image.png">
 
     <link rel="icon" type="image/png" href="assets/favicon.png" sizes="any">
@@ -140,11 +140,15 @@
             <h1 class="masthead__name">Abdellah Sbai<br>Atta Allah</h1>
 
             <p class="masthead__byline">
-                <picture>
-                    <source srcset="./assets/portrait.webp" type="image/webp">
-                    <img class="masthead__portrait" src="./assets/portrait.jpg"
-                        alt="Abdellah Sbai Atta Allah" width="192" height="192" decoding="async">
-                </picture>
+                <button class="portrait-btn" id="idcard-open" type="button" aria-haspopup="dialog"
+                    aria-controls="idcard" aria-label="Open ID card">
+                    <picture>
+                        <source srcset="./assets/portrait.webp" type="image/webp">
+                        <img class="masthead__portrait" src="./assets/portrait.jpg"
+                            alt="Abdellah Sbai Atta Allah" width="192" height="192" decoding="async">
+                    </picture>
+                    <span class="portrait-btn__badge" aria-hidden="true">ID</span>
+                </button>
                 <span class="masthead__role" data-i18n="masthead.role">Data analyst &amp; software developer</span>
             </p>
 
@@ -275,7 +279,7 @@
     </main>
 
     <footer class="wrap colophon">
-        <p data-i18n="contact.colophon">Built from scratch — no framework, no tracking.</p>
+        <p data-i18n="contact.colophon">Built from scratch. No framework, no tracking.</p>
         <p>© <span id="year">2026</span> Abdellah Sbai Atta Allah. <span data-i18n="contact.rights">All rights
                 reserved.</span></p>
     </footer>
@@ -293,6 +297,11 @@
             <div class="query__chips" id="query-chips"></div>
             <div class="query__out" id="query-out" aria-live="polite"></div>
         </div>
+    </div>
+
+    <!-- ==================== ID CARD ==================== -->
+    <div class="idcard" id="idcard" role="dialog" aria-modal="true" aria-label="ID card" hidden>
+        <div class="idcard__panel" id="idcard-panel"></div>
     </div>
 
     <svg class="crosshair" id="crosshair" aria-hidden="true"></svg>

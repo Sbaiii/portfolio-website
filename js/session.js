@@ -1,10 +1,10 @@
 /* =============================================================================
-   session.js — "You Are The Dataset".
+   session.js: "You Are The Dataset".
 
    Measures this page view and shows it back. Everything here lives in a plain
    object in memory for the lifetime of the tab:
      · nothing is written to localStorage, sessionStorage, IndexedDB or cookies
-     · nothing is sent over the network — there is no fetch/beacon in this file
+     · nothing is sent over the network, there is no fetch/beacon in this file
      · reloading the page discards all of it
 
    The "classifier" is deliberately a printed rule, not a model. Showing a
@@ -25,7 +25,11 @@ const SECTIONS = [
 
 const state = {
     dwell: Object.fromEntries(SECTIONS.map((s) => [s.id, 0])),
+    // Live position, and separately the furthest point reached. Showing only the
+    // high-water mark made the tile read a permanent 100%, because this panel
+    // sits near the bottom of the page: you cannot read it without maxing it out.
     scrollDepth: 0,
+    maxDepth: 0,
     interactions: 0,
     cvClicked: false,
     contactClicked: false,
@@ -62,7 +66,8 @@ function startMeasuring() {
         requestAnimationFrame(() => {
             const max = document.documentElement.scrollHeight - window.innerHeight;
             const pct = max > 0 ? Math.min(100, Math.round((window.scrollY / max) * 100)) : 0;
-            state.scrollDepth = Math.max(state.scrollDepth, pct);
+            state.scrollDepth = pct;
+            state.maxDepth = Math.max(state.maxDepth, pct);
             queued = false;
         });
     }, { passive: true });
@@ -89,7 +94,7 @@ function classify() {
     const exp = state.dwell.trajectory + state.dwell.work;
     if (exp > 20 && state.cvClicked) return 'recruiter';
     if (state.queryOpened || state.pointsOpened.size >= 3) return 'engineer';
-    if (state.scrollDepth > 55) return 'browser';
+    if (state.maxDepth > 55) return 'browser';
     return 'unknown';
 }
 
@@ -111,14 +116,14 @@ function ruleMarkup(verdict) {
     return [
         branch('IF   dwell(work) &gt; 20s AND cv_clicked     ', 'recruiter', verdict === 'recruiter'),
         branch('ELIF opened(query) OR points_opened &gt;= 3  ', 'engineer', verdict === 'engineer'),
-        branch('ELIF scroll_depth &gt; 55%                   ', 'browser', verdict === 'browser'),
+        branch('ELIF max_scroll &gt; 55%                      ', 'browser', verdict === 'browser'),
         branch('ELSE                                      ', 'unknown', verdict === 'unknown'),
         '',
         `  dwell(work)   = ${exp}s`,
         `  cv_clicked    = ${state.cvClicked}`,
         `  opened(query) = ${state.queryOpened}`,
         `  points_opened = ${state.pointsOpened.size}`,
-        `  scroll_depth  = ${state.scrollDepth}%`,
+        `  max_scroll    = ${state.maxDepth}%`,
     ].join('\n');
 }
 
@@ -168,7 +173,7 @@ function render() {
             <pre>${ruleMarkup(verdict)}</pre>
         </div>`;
 
-    // Predicted next action — a link, so it is actually useful.
+    // Predicted next action: a link, so it is actually useful.
     const cta = document.getElementById('session-cta');
     if (cta) {
         const wantsCv = !state.cvClicked;

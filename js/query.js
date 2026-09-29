@@ -1,5 +1,5 @@
 /* =============================================================================
-   query.js — the ⌘K / Ctrl+K easter egg.
+   query.js: the ⌘K / Ctrl+K easter egg.
 
    A deliberately small SQL dialect over the site's own content:
      SELECT <cols|*> FROM <table> [WHERE <col> <op> <value>] [ORDER BY <col> [ASC|DESC]] [LIMIT n]
@@ -46,9 +46,9 @@ function tables() {
         }))),
         projects: PROJECTS.map((p) => ({
             project: t(`work.projects.${p.id}.title`),
-            tags: p.tags.join(', ') || '—',
+            tags: p.tags.join(', ') || '·',
             status: p.status,
-            url: p.repo || '—',
+            url: p.repo || '·',
         })),
         contact: [
             { channel: 'email', value: PROFILE.email },
@@ -162,14 +162,14 @@ export function mountQuery() {
                 <p class="query__status">${rows.length} ${esc(t('query.rows'))}</p>
                 <table class="qtable">
                     <thead><tr>${cols.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
-                    <tbody>${rows.map((r) => `<tr>${cols.map((c) => `<td>${esc(r[c] ?? '—')}</td>`).join('')}</tr>`).join('')}</tbody>
+                    <tbody>${rows.map((r) => `<tr>${cols.map((c) => `<td>${esc(r[c] ?? '·')}</td>`).join('')}</tr>`).join('')}</tbody>
                 </table>`);
         } catch (err) {
             const hints = [t('query.errorHints.0'), t('query.errorHints.1'), t('query.errorHints.2')];
             const detail = err.message === 'parse'
                 ? hints[Math.floor(Math.random() * hints.length)]
                 : err.message;
-            show(`<p class="query__status is-error">${esc(t('query.error'))} — ${esc(detail)}</p>`);
+            show(`<p class="query__status is-error">${esc(t('query.error'))}: ${esc(detail)}</p>`);
         }
     };
 

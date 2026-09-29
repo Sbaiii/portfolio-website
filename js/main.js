@@ -1,5 +1,5 @@
 /* =============================================================================
-   main.js — boot, theme, i18n, navigation, and the static section renderers.
+   main.js: boot, theme, i18n, navigation, and the static section renderers.
    ========================================================================== */
 
 import {
@@ -8,6 +8,7 @@ import {
 import { mountChart } from './chart.js';
 import { mountSession } from './session.js';
 import { mountQuery } from './query.js';
+import { mountIdCard } from './idcard.js';
 
 /* --- shared helpers (exported for the other modules) --------------------- */
 
@@ -41,7 +42,7 @@ export function formatMonth(iso) {
 }
 
 export function formatRange(start, end) {
-    return `${formatMonth(start)} – ${end ? formatMonth(end) : t('trajectory.ongoing')}`;
+    return `${formatMonth(start)} → ${end ? formatMonth(end) : t('trajectory.ongoing')}`;
 }
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -86,7 +87,7 @@ function initTheme() {
 
 /* --- i18n ---------------------------------------------------------------- */
 
-const SCRAMBLE = '!<>-_\\/[]{}—=+*^?#01';
+const SCRAMBLE = '!<>-_\\/[]{}=+*^?#01';
 
 /** Briefly scramble a string into its new value. Skipped under reduced motion. */
 function scrambleTo(el, next) {
@@ -466,6 +467,7 @@ function boot() {
     mountChart();
     mountSession();
     mountQuery();
+    mountIdCard();
 
     applyI18n();
     observeReveals();
@@ -476,7 +478,7 @@ function boot() {
 
     // eslint-disable-next-line no-console
     console.log(
-        `%cA Career, Plotted%c\n\nThe y-axis is real latitude — 34.0°N → 3.1°N → 48.9°N.\nNo framework, no tracking, no analytics. Press ⌘K / Ctrl+K to query me.\n\n${PROFILE.links.github}`,
+        `%cA Career, Plotted%c\n\nThe y-axis is real latitude: 34.0°N → 3.1°N → 48.9°N.\nNo framework, no tracking, no analytics. Press ⌘K / Ctrl+K to query me.\n\n${PROFILE.links.github}`,
         'font:600 18px/1.4 ui-monospace,monospace;color:#ff4a1c',
         'font:12px/1.6 ui-monospace,monospace;color:#888',
     );

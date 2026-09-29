@@ -1,11 +1,11 @@
 /* =============================================================================
-   content.js — everything you will ever need to edit lives in this file.
+   content.js: everything you will ever need to edit lives in this file.
 
    Two kinds of thing live here, kept deliberately apart:
 
-     1. DATA    — facts that are the same in every language.
+     1. DATA    = facts that are the same in every language.
                   Dates, latitudes, URLs, tool names. Edit once.
-     2. STRINGS — prose, translated into en / fr / es.
+     2. STRINGS = prose, translated into en / fr / es.
 
    Anything marked TODO: is a placeholder waiting on real content.
    ========================================================================== */
@@ -27,14 +27,13 @@ export const PROFILE = {
 /* The headline figures. All verifiable from the timeline below. */
 export const FIGURES = [
   { id: 'internships', value: 4 },
-  { id: 'countries', value: 3 },
   { id: 'spoken', value: 3 },
   { id: 'languages', value: 7 },
 ];
 
 /* -----------------------------------------------------------------------------
    THE TRAJECTORY
-   The y-axis is latitude in degrees north. These are real coordinates —
+   The y-axis is latitude in degrees north. These are real coordinates,
    that is the whole point, so do not fudge them.
    `type` is 'work' or 'study'; 'study' renders as a hollow point.
 -------------------------------------------------------------------------------*/
@@ -138,7 +137,7 @@ export const PROJECTS = [
 ];
 
 /* -----------------------------------------------------------------------------
-   THE STACK — grouped by what the tool is for, not by logo availability.
+   THE STACK: grouped by what the tool is for, not by logo availability.
 -------------------------------------------------------------------------------*/
 export const STACK = [
   { id: 'code', items: ['Python', 'C', 'C++', 'C#', 'Java', 'R', 'JavaScript'] },
@@ -156,7 +155,7 @@ export const EDUCATION = {
 };
 
 /* -----------------------------------------------------------------------------
-   STRINGS — prose only. Keys are dotted paths used by data-i18n in the HTML
+   STRINGS: prose only. Keys are dotted paths used by data-i18n in the HTML
    and by t() in js/main.js.
 -------------------------------------------------------------------------------*/
 export const STRINGS = {
@@ -192,11 +191,11 @@ export const STRINGS = {
       fig: 'fig. 01',
       title: 'The Trajectory',
       standfirst:
-        'Four internships, three countries, one dual degree — plotted on the only axis I can prove.',
+        'Four internships, three countries, one dual degree, plotted on the only axis I can prove.',
       axis: 'y = latitude °N · x = time · n = 5 · source: real life',
       footnote:
         'The y-axis is real latitude. I’m not going to plot “impact” on a chart and call myself a data analyst.',
-      forecast: 'forecast — open to graduate roles',
+      forecast: 'forecast: open to graduate roles',
       forecastNote:
         'The confidence band is wide because I move a lot. Anywhere on it works.',
       hint: 'Select a point for detail',
@@ -212,7 +211,7 @@ export const STRINGS = {
         bp: {
           role: 'Data & AI Intern',
           summary:
-            'Translated business requirements into actionable KPIs. Built end-to-end ML pipelines — ETL and feature engineering — in Python and SQL, delivering Power BI analytics to monitor performance trends.',
+            'Translated business requirements into actionable KPIs. Built end-to-end ML pipelines (ETL and feature engineering) in Python and SQL, delivering Power BI analytics to monitor performance trends.',
         },
         audensiel: {
           role: 'Data Analyst Intern',
@@ -225,7 +224,7 @@ export const STRINGS = {
             'Architected CRM web app features including advanced filtering and search, backed by structured SQL databases. Developed automated reporting pipelines in Python and SQL, plus Power BI dashboards for operational decisions.',
         },
         apu: {
-          role: 'Final year — BSc (Hons) Computer Science (Data Analytics)',
+          role: 'Final year, BSc (Hons) Computer Science (Data Analytics)',
           summary:
             'Dual award with De Montfort University, UK. Currently focused on deep learning and SQL optimisation.',
         },
@@ -239,7 +238,7 @@ export const STRINGS = {
       built: 'What I built',
       result: 'Result',
       view: 'View on GitHub',
-      todo: 'Results pending — real numbers going in here.',
+      todo: 'Results pending. Real numbers going in here.',
       wip: 'In progress',
       projects: {
         carResale: {
@@ -247,8 +246,8 @@ export const STRINGS = {
           problem:
             'Resale prices in the dataset were noisy and inconsistently recorded, making it hard to see which factors actually drove depreciation.',
           built:
-            'Exploratory data analysis and a full preprocessing pipeline in SAS Studio and SQL — cleaning, outlier handling and feature exploration to isolate the real depreciation signals.',
-          result: 'TODO: add the concrete result — what did the analysis show, and what changed because of it?',
+            'Exploratory data analysis and a full preprocessing pipeline in SAS Studio and SQL: cleaning, outlier handling and feature exploration to isolate the real depreciation signals.',
+          result: 'TODO: add the concrete result. What did the analysis show, and what changed because of it?',
         },
         purchaseOrder: {
           title: 'Automated Purchase Order System',
@@ -256,7 +255,7 @@ export const STRINGS = {
             'Procurement approvals were manual, slow, and gave different roles no clear view of where an order actually was.',
           built:
             'A Java Swing desktop application with role-based dashboards and persistent storage, automating the approval workflow end to end.',
-          result: 'TODO: add the concrete result — time saved, steps removed, users served.',
+          result: 'TODO: add the concrete result: time saved, steps removed, users served.',
         },
         upcoming: {
           title: 'Next project',
@@ -284,7 +283,7 @@ export const STRINGS = {
       fig: 'fig. 04',
       title: 'You Are The Dataset',
       standfirst:
-        'You’ve been reading my data. Here’s yours — measured in your browser, for the length of this page view.',
+        'You’ve been reading my data. Here’s yours, measured in your browser, for the length of this page view.',
       privacy:
         'Computed locally. Nothing is sent anywhere, nothing is stored, no cookies, no analytics. Reload and it’s gone.',
       dwell: 'Time per section',
@@ -297,7 +296,7 @@ export const STRINGS = {
       interactions: 'Interactions',
       classify: 'Classifier',
       classifyNote:
-        'This is a rule, not a model. No training data, no accuracy claim — the rule is printed above so you can check it yourself.',
+        'This is a rule, not a model. No training data, no accuracy claim. The rule is printed above so you can check it yourself.',
       verdicts: {
         recruiter: 'recruiter',
         engineer: 'engineer',
@@ -308,9 +307,25 @@ export const STRINGS = {
       ctaCv: 'download the CV',
       ctaContact: 'send a message',
       seconds: 's',
-      none: '—',
+      none: '·',
       touch: 'touch',
       mouse: 'mouse + keyboard',
+    },
+    idcard: {
+      open: 'Open ID card',
+      doc: 'PORTFOLIO ID',
+      surname: 'Surname',
+      given: 'Given names',
+      role: 'Role',
+      status: 'Status',
+      based: 'Based',
+      languages: 'Languages',
+      degree: 'Degree',
+      awarded: 'Awarded by',
+      range: 'Latitude range',
+      issued: 'RENDERED',
+      close: 'Close',
+      hint: 'Every field on this card is pulled from the same data as the chart. Press Esc to close.',
     },
     query: {
       open: 'Query me',
@@ -338,11 +353,11 @@ export const STRINGS = {
       fig: 'fig. 05',
       title: 'Let’s talk',
       standfirst:
-        'Open to graduate roles in data analytics and software. The forecast band is wide — I’ll come to you.',
+        'Open to graduate roles in data analytics and software. The forecast band is wide, so I’ll come to you.',
       email: 'Email',
       say: 'Say hello',
       colophon:
-        'Built from scratch — no framework, no tracking. Vanilla HTML, CSS and about 20 KB of JavaScript.',
+        'Built from scratch. No framework, no tracking. Vanilla HTML, CSS and about 20 KB of JavaScript.',
       source: 'Source',
       rights: 'All rights reserved.',
     },
@@ -398,11 +413,11 @@ export const STRINGS = {
       fig: 'fig. 01',
       title: 'La Trajectoire',
       standfirst:
-        'Quatre stages, trois pays, un double diplôme — tracés sur le seul axe que je peux prouver.',
+        'Quatre stages, trois pays, un double diplôme, tracés sur le seul axe que je peux prouver.',
       axis: 'y = latitude °N · x = temps · n = 5 · source : la vraie vie',
       footnote:
         'L’axe des ordonnées, c’est la latitude réelle. Je ne vais pas tracer « l’impact » sur un graphique et me dire analyste de données.',
-      forecast: 'prévision — ouvert aux postes de jeune diplômé',
+      forecast: 'prévision : ouvert aux postes de jeune diplômé',
       forecastNote:
         'L’intervalle de confiance est large parce que je bouge beaucoup. N’importe où dessus me convient.',
       hint: 'Sélectionnez un point pour le détail',
@@ -418,7 +433,7 @@ export const STRINGS = {
         bp: {
           role: 'Stagiaire Data & IA',
           summary:
-            'Traduction des besoins métier en KPI exploitables. Construction de pipelines ML de bout en bout — ETL et feature engineering — en Python et SQL, avec des analyses Power BI pour suivre les tendances de performance.',
+            'Traduction des besoins métier en KPI exploitables. Construction de pipelines ML de bout en bout (ETL et feature engineering) en Python et SQL, avec des analyses Power BI pour suivre les tendances de performance.',
         },
         audensiel: {
           role: 'Stagiaire Analyste de Données',
@@ -431,7 +446,7 @@ export const STRINGS = {
             'Conception de fonctionnalités d’application web CRM, dont le filtrage et la recherche avancés, adossées à des bases SQL structurées. Développement de pipelines de reporting automatisés en Python et SQL, ainsi que de tableaux de bord Power BI pour le pilotage opérationnel.',
         },
         apu: {
-          role: 'Dernière année — BSc (Hons) Informatique (Data Analytics)',
+          role: 'Dernière année, BSc (Hons) Informatique (Data Analytics)',
           summary:
             'Double diplôme avec De Montfort University, Royaume-Uni. Actuellement centré sur le deep learning et l’optimisation SQL.',
         },
@@ -445,7 +460,7 @@ export const STRINGS = {
       built: 'Ce que j’ai construit',
       result: 'Résultat',
       view: 'Voir sur GitHub',
-      todo: 'Résultats à venir — les vrais chiffres arrivent ici.',
+      todo: 'Résultats à venir. Les vrais chiffres arrivent ici.',
       wip: 'En cours',
       projects: {
         carResale: {
@@ -453,9 +468,9 @@ export const STRINGS = {
           problem:
             'Les prix de revente du jeu de données étaient bruités et saisis de façon incohérente, ce qui rendait difficile d’identifier les vrais facteurs de dépréciation.',
           built:
-            'Analyse exploratoire et pipeline complet de prétraitement sous SAS Studio et SQL — nettoyage, traitement des valeurs aberrantes et exploration de variables pour isoler les signaux réels de dépréciation.',
+            'Analyse exploratoire et pipeline complet de prétraitement sous SAS Studio et SQL : nettoyage, traitement des valeurs aberrantes et exploration de variables pour isoler les signaux réels de dépréciation.',
           result:
-            'TODO : ajouter le résultat concret — qu’a montré l’analyse, et qu’est-ce que cela a changé ?',
+            'TODO : ajouter le résultat concret. Qu’a montré l’analyse, et qu’est-ce que cela a changé ?',
         },
         purchaseOrder: {
           title: 'Système Automatisé de Bons de Commande',
@@ -464,7 +479,7 @@ export const STRINGS = {
           built:
             'Une application de bureau Java Swing avec tableaux de bord par rôle et stockage persistant, automatisant le circuit de validation de bout en bout.',
           result:
-            'TODO : ajouter le résultat concret — temps gagné, étapes supprimées, utilisateurs servis.',
+            'TODO : ajouter le résultat concret : temps gagné, étapes supprimées, utilisateurs servis.',
         },
         upcoming: {
           title: 'Prochain projet',
@@ -492,7 +507,7 @@ export const STRINGS = {
       fig: 'fig. 04',
       title: 'Vous Êtes Le Jeu De Données',
       standfirst:
-        'Vous venez de lire mes données. Voici les vôtres — mesurées dans votre navigateur, le temps de cette visite.',
+        'Vous venez de lire mes données. Voici les vôtres, mesurées dans votre navigateur, le temps de cette visite.',
       privacy:
         'Calculé localement. Rien n’est envoyé, rien n’est stocké, aucun cookie, aucun tracker. Rechargez et tout disparaît.',
       dwell: 'Temps par section',
@@ -505,7 +520,7 @@ export const STRINGS = {
       interactions: 'Interactions',
       classify: 'Classifieur',
       classifyNote:
-        'C’est une règle, pas un modèle. Aucune donnée d’entraînement, aucune prétention de précision — la règle est affichée ci-dessus, vérifiez-la vous-même.',
+        'C’est une règle, pas un modèle. Aucune donnée d’entraînement, aucune prétention de précision. La règle est affichée ci-dessus, vérifiez-la vous-même.',
       verdicts: {
         recruiter: 'recruteur',
         engineer: 'ingénieur',
@@ -516,9 +531,25 @@ export const STRINGS = {
       ctaCv: 'télécharger le CV',
       ctaContact: 'envoyer un message',
       seconds: 's',
-      none: '—',
+      none: '·',
       touch: 'tactile',
       mouse: 'souris + clavier',
+    },
+    idcard: {
+      open: 'Ouvrir la carte d’identité',
+      doc: 'CARTE PORTFOLIO',
+      surname: 'Nom',
+      given: 'Prénom',
+      role: 'Fonction',
+      status: 'Statut',
+      based: 'Basé à',
+      languages: 'Langues',
+      degree: 'Diplôme',
+      awarded: 'Délivré par',
+      range: 'Amplitude de latitude',
+      issued: 'GÉNÉRÉ LE',
+      close: 'Fermer',
+      hint: 'Chaque champ de cette carte provient des mêmes données que le graphique. Échap pour fermer.',
     },
     query: {
       open: 'Interrogez-moi',
@@ -546,11 +577,11 @@ export const STRINGS = {
       fig: 'fig. 05',
       title: 'Parlons-en',
       standfirst:
-        'Ouvert aux postes de jeune diplômé en data analytics et en développement. L’intervalle est large — je viendrai à vous.',
+        'Ouvert aux postes de jeune diplômé en data analytics et en développement. L’intervalle est large, je viendrai à vous.',
       email: 'E-mail',
       say: 'Dire bonjour',
       colophon:
-        'Fait main — sans framework, sans tracking. HTML, CSS et environ 20 Ko de JavaScript.',
+        'Fait main. Sans framework, sans tracking. HTML, CSS et environ 20 Ko de JavaScript.',
       source: 'Code source',
       rights: 'Tous droits réservés.',
     },
@@ -606,11 +637,11 @@ export const STRINGS = {
       fig: 'fig. 01',
       title: 'La Trayectoria',
       standfirst:
-        'Cuatro prácticas, tres países, una doble titulación — trazados sobre el único eje que puedo demostrar.',
+        'Cuatro prácticas, tres países, una doble titulación, trazados sobre el único eje que puedo demostrar.',
       axis: 'y = latitud °N · x = tiempo · n = 5 · fuente: la vida real',
       footnote:
         'El eje Y es latitud real. No voy a graficar «impacto» y llamarme analista de datos.',
-      forecast: 'pronóstico — abierto a puestos de recién graduado',
+      forecast: 'pronóstico: abierto a puestos de recién graduado',
       forecastNote:
         'La banda de confianza es ancha porque me muevo mucho. Cualquier punto de ella me sirve.',
       hint: 'Selecciona un punto para ver el detalle',
@@ -626,7 +657,7 @@ export const STRINGS = {
         bp: {
           role: 'Practicante de Datos e IA',
           summary:
-            'Traducción de requisitos de negocio en KPI accionables. Construcción de pipelines de ML de extremo a extremo — ETL e ingeniería de variables — en Python y SQL, con analítica en Power BI para seguir las tendencias de rendimiento.',
+            'Traducción de requisitos de negocio en KPI accionables. Construcción de pipelines de ML de extremo a extremo (ETL e ingeniería de variables) en Python y SQL, con analítica en Power BI para seguir las tendencias de rendimiento.',
         },
         audensiel: {
           role: 'Analista de Datos en Prácticas',
@@ -639,7 +670,7 @@ export const STRINGS = {
             'Diseño de funcionalidades de una aplicación web CRM, incluidos filtrado y búsqueda avanzados, apoyadas en bases de datos SQL estructuradas. Desarrollo de pipelines de reporting automatizados en Python y SQL, además de paneles de Power BI para decisiones operativas.',
         },
         apu: {
-          role: 'Último año — BSc (Hons) Informática (Data Analytics)',
+          role: 'Último año, BSc (Hons) Informática (Data Analytics)',
           summary:
             'Doble titulación con De Montfort University, Reino Unido. Actualmente centrado en deep learning y optimización SQL.',
         },
@@ -653,7 +684,7 @@ export const STRINGS = {
       built: 'Lo que construí',
       result: 'Resultado',
       view: 'Ver en GitHub',
-      todo: 'Resultados pendientes — aquí van las cifras reales.',
+      todo: 'Resultados pendientes. Aquí van las cifras reales.',
       wip: 'En curso',
       projects: {
         carResale: {
@@ -661,9 +692,9 @@ export const STRINGS = {
           problem:
             'Los precios de reventa del conjunto de datos eran ruidosos y estaban registrados de forma inconsistente, lo que dificultaba ver qué factores impulsaban realmente la depreciación.',
           built:
-            'Análisis exploratorio y un pipeline completo de preprocesamiento en SAS Studio y SQL — limpieza, tratamiento de atípicos y exploración de variables para aislar las señales reales de depreciación.',
+            'Análisis exploratorio y un pipeline completo de preprocesamiento en SAS Studio y SQL: limpieza, tratamiento de atípicos y exploración de variables para aislar las señales reales de depreciación.',
           result:
-            'TODO: añadir el resultado concreto — qué mostró el análisis y qué cambió a raíz de ello.',
+            'TODO: añadir el resultado concreto. Qué mostró el análisis y qué cambió a raíz de ello.',
         },
         purchaseOrder: {
           title: 'Sistema Automatizado de Órdenes de Compra',
@@ -672,7 +703,7 @@ export const STRINGS = {
           built:
             'Una aplicación de escritorio en Java Swing con paneles por rol y almacenamiento persistente, que automatiza el flujo de aprobación de principio a fin.',
           result:
-            'TODO: añadir el resultado concreto — tiempo ahorrado, pasos eliminados, usuarios atendidos.',
+            'TODO: añadir el resultado concreto: tiempo ahorrado, pasos eliminados, usuarios atendidos.',
         },
         upcoming: {
           title: 'Próximo proyecto',
@@ -700,7 +731,7 @@ export const STRINGS = {
       fig: 'fig. 04',
       title: 'Tú Eres El Conjunto De Datos',
       standfirst:
-        'Has estado leyendo mis datos. Aquí están los tuyos — medidos en tu navegador, durante esta visita.',
+        'Has estado leyendo mis datos. Aquí están los tuyos, medidos en tu navegador, durante esta visita.',
       privacy:
         'Calculado localmente. No se envía nada, no se guarda nada, sin cookies ni rastreadores. Recarga y desaparece.',
       dwell: 'Tiempo por sección',
@@ -713,7 +744,7 @@ export const STRINGS = {
       interactions: 'Interacciones',
       classify: 'Clasificador',
       classifyNote:
-        'Esto es una regla, no un modelo. Sin datos de entrenamiento ni promesas de precisión — la regla está arriba, compruébala tú mismo.',
+        'Esto es una regla, no un modelo. Sin datos de entrenamiento ni promesas de precisión. La regla está arriba, compruébala tú mismo.',
       verdicts: {
         recruiter: 'reclutador',
         engineer: 'ingeniero',
@@ -724,9 +755,25 @@ export const STRINGS = {
       ctaCv: 'descargar el CV',
       ctaContact: 'enviar un mensaje',
       seconds: 's',
-      none: '—',
+      none: '·',
       touch: 'táctil',
       mouse: 'ratón + teclado',
+    },
+    idcard: {
+      open: 'Abrir la tarjeta de identidad',
+      doc: 'TARJETA PORTFOLIO',
+      surname: 'Apellidos',
+      given: 'Nombre',
+      role: 'Función',
+      status: 'Situación',
+      based: 'Base',
+      languages: 'Idiomas',
+      degree: 'Titulación',
+      awarded: 'Expedido por',
+      range: 'Rango de latitud',
+      issued: 'GENERADO EL',
+      close: 'Cerrar',
+      hint: 'Cada campo de esta tarjeta procede de los mismos datos que el gráfico. Esc para cerrar.',
     },
     query: {
       open: 'Consúltame',
@@ -754,11 +801,11 @@ export const STRINGS = {
       fig: 'fig. 05',
       title: 'Hablemos',
       standfirst:
-        'Abierto a puestos de recién graduado en analítica de datos y software. La banda es ancha — yo me acerco.',
+        'Abierto a puestos de recién graduado en analítica de datos y software. La banda es ancha, yo me acerco.',
       email: 'Correo',
       say: 'Saludar',
       colophon:
-        'Hecho a mano — sin framework, sin rastreo. HTML, CSS y unos 20 KB de JavaScript.',
+        'Hecho a mano. Sin framework, sin rastreo. HTML, CSS y unos 20 KB de JavaScript.',
       source: 'Código fuente',
       rights: 'Todos los derechos reservados.',
     },
