@@ -162,6 +162,7 @@ export const STRINGS = {
   en: {
     lang: { name: 'English', code: 'EN' },
     nav: {
+      top: 'Masthead',
       trajectory: 'Trajectory',
       work: 'Case studies',
       stack: 'Stack',
@@ -384,6 +385,7 @@ export const STRINGS = {
   fr: {
     lang: { name: 'Français', code: 'FR' },
     nav: {
+      top: 'En-tête',
       trajectory: 'Trajectoire',
       work: 'Études de cas',
       stack: 'Stack',
@@ -608,6 +610,7 @@ export const STRINGS = {
   es: {
     lang: { name: 'Español', code: 'ES' },
     nav: {
+      top: 'Cabecera',
       trajectory: 'Trayectoria',
       work: 'Casos prácticos',
       stack: 'Stack',

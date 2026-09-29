@@ -136,6 +136,12 @@
     padding: 0;
 }
 
+/* No scrolling the page behind the open mobile menu. */
+html.nav-open,
+html.nav-open body {
+    overflow: hidden;
+}
+
 html {
     scroll-behavior: smooth;
     overflow-x: clip;
@@ -339,6 +345,17 @@ button {
     color: var(--muted);
 }
 
+/* The index is a plain row on desktop; it becomes the figure list on phones. */
+.nav__index {
+    display: contents;
+}
+
+.nav__fig,
+.nav__foot,
+.nav__top {
+    display: none;
+}
+
 .nav a {
     position: relative;
     padding-block: 0.25rem;
@@ -521,26 +538,194 @@ button {
         display: none;
     }
 
+    /* The site is a set of numbered figures, so the menu is their index:
+       each entry is a point on an axis, mirroring fig. 01. */
+
+    /* backdrop-filter would make .header the containing block for the fixed
+       menu below, capping it at the header's height instead of the viewport. */
+    .header {
+        background: var(--paper);
+        backdrop-filter: none;
+    }
+
+    .lang {
+        display: none;
+    }
+
     .nav {
         position: fixed;
-        inset: 0 0 auto 0;
+        inset: 0;
+        z-index: 95;
         flex-direction: column;
-        gap: 0;
-        padding: 5rem var(--gutter) 2rem;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 5.5rem var(--gutter) 2rem;
         background: var(--paper);
-        border-bottom: 1px solid var(--rule);
-        transform: translateY(-100%);
-        transition: transform var(--slow);
-        font-size: 1.1rem;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-0.75rem);
+        transition: opacity 0.28s var(--slow), transform 0.4s var(--slow), visibility 0.28s;
     }
 
     .nav.is-open {
+        opacity: 1;
+        visibility: visible;
         transform: none;
     }
 
-    .nav a {
-        padding-block: 0.8rem;
-        border-bottom: 1px solid var(--rule);
+    .nav__index {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    /* the axis the figures sit on */
+    .nav__index::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 1.6rem;
+        bottom: 2.4rem;
+        width: 1px;
+        background: var(--rule);
+    }
+
+    .nav__index a {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.5rem 0 0.5rem 2rem;
+        border: 0;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: opacity 0.45s var(--slow), transform 0.45s var(--slow);
+        transition-delay: calc(var(--i, 6) * 45ms);
+    }
+
+    .nav.is-open .nav__index a {
+        opacity: 1;
+        transform: none;
+    }
+
+    .nav__index a::after {
+        display: none;
+    }
+
+    /* the data point */
+    .nav__index a::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 1.15rem;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--paper);
+        border: 2px solid var(--rule);
+        transition: background var(--fast), border-color var(--fast), transform var(--fast);
+    }
+
+    .nav__index a[aria-current='true']::before {
+        background: var(--accent);
+        border-color: var(--accent);
+        transform: scale(1.2);
+    }
+
+    .nav__top,
+    .nav__fig {
+        display: block;
+    }
+
+    .nav__top {
+        display: flex;
+    }
+
+    .nav__label {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(1.35rem, 7.2vw, 2.5rem);
+        line-height: 1.04;
+        letter-spacing: -0.035em;
+        color: var(--muted);
+        transition: color var(--fast);
+    }
+
+    .nav__index a[aria-current='true'] .nav__label {
+        color: var(--ink);
+    }
+
+    .nav__fig {
+        order: 2;
+        flex: none;
+        font-family: var(--mono);
+        font-size: var(--t-meta);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--faint);
+    }
+
+    .nav__index a[aria-current='true'] .nav__fig {
+        color: var(--accent);
+    }
+
+    /* the plain-text escape hatch is not a figure, so it sits apart */
+    .nav__index a.nav__skip {
+        display: none;
+    }
+
+    .nav__foot {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+        opacity: 0;
+        transition: opacity 0.4s var(--slow) 0.22s;
+    }
+
+    .nav.is-open .nav__foot {
+        opacity: 1;
+    }
+
+    .nav__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav__langs {
+        display: flex;
+        gap: 0.3rem;
+    }
+
+    .nav__langs button {
+        padding: 0.4rem 0.75rem;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        transition: background var(--fast), color var(--fast), border-color var(--fast);
+    }
+
+    .nav__langs button[aria-current='true'] {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--paper);
+    }
+
+    .nav__plain {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-color: var(--rule);
     }
 }
 

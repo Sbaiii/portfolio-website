@@ -91,16 +91,27 @@ const SCRAMBLE = '!<>-_\\/[]{}=+*^?#01';
 
 /** Briefly scramble a string into its new value. Skipped under reduced motion. */
 function scrambleTo(el, next) {
-    if (reduceMotion.matches || next.length > 90) {
-        el.textContent = next;
-        return;
-    }
+    const prev = el.textContent;
+
+    // Correctness first. The final text is written synchronously so it never
+    // depends on an animation frame arriving: rAF is suspended in a background
+    // tab and can stall in an occluded or busy one, which would otherwise leave
+    // the label frozen on the previous language. The scramble is decoration.
+    el.textContent = next;
+
+    if (reduceMotion.matches || document.hidden || next.length > 90) return;
+
     const start = performance.now();
     const dur = 340;
-    const prev = el.textContent;
     const len = Math.max(prev.length, next.length);
 
+    // Switching language twice quickly would leave two loops writing to the same
+    // node; the later one wins and the earlier must stand down.
+    const token = (el._scramble || 0) + 1;
+    el._scramble = token;
+
     function frame(now) {
+        if (el._scramble !== token) return;
         const p = Math.min(1, (now - start) / dur);
         let out = '';
         for (let i = 0; i < len; i++) {
@@ -113,6 +124,11 @@ function scrambleTo(el, next) {
         else el.textContent = next;
     }
     requestAnimationFrame(frame);
+
+    // Backstop: if the frames stop arriving part-way, repair the final value.
+    setTimeout(() => {
+        if (el._scramble === token && el.textContent !== next) el.textContent = next;
+    }, dur + 150);
 }
 
 export function applyI18n(root = document, animate = false) {
@@ -207,10 +223,36 @@ function initNav() {
         btn.classList.toggle('is-open', open);
         btn.setAttribute('aria-expanded', String(open));
         btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        // Stop the page scrolling behind the full-screen menu.
+        document.documentElement.classList.toggle('nav-open', open);
     };
 
     btn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
     $$('a', nav).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+
+    // Language pills live inside the menu on phones, where the header dropdown
+    // has no room.
+    const langPills = $$('#nav-langs button');
+    const syncPills = () => langPills.forEach((b) => {
+        b.setAttribute('aria-current', String(b.dataset.lang === lang));
+    });
+    langPills.forEach((b) => b.addEventListener('click', () => {
+        setLanguage(b.dataset.lang);
+        syncPills();
+    }));
+    syncPills();
+    document.addEventListener('langchange', syncPills);
+
+    // The ⌘K bar is unreachable without a keyboard, so surface it in the menu.
+    $('#query-open-mobile')?.addEventListener('click', () => {
+        setMenu(false);
+        $('#query-open')?.click();
+    });
+
+    // A rotation back to desktop must not leave the menu latched open.
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 860 && nav.classList.contains('is-open')) setMenu(false);
+    });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && nav.classList.contains('is-open')) {
             setMenu(false);
@@ -228,7 +270,7 @@ function initNav() {
             });
         });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['trajectory', 'work', 'stack', 'session', 'contact']
+    ['top', 'trajectory', 'work', 'stack', 'session', 'contact']
         .map((id) => document.getElementById(id))
         .filter(Boolean)
         .forEach((el) => spy.observe(el));
@@ -237,12 +279,13 @@ function initNav() {
 /* --- live status clock --------------------------------------------------- */
 
 function initStatus() {
-    const el = $('#status-clock');
+    const clocks = $$('.js-clock');
     const fmt = new Intl.DateTimeFormat('en-GB', {
         hour: '2-digit', minute: '2-digit', hour12: false, timeZone: PROFILE.base.tz,
     });
     const tick = () => {
-        el.textContent = `· ${PROFILE.base.city} ${PROFILE.base.offset} · ${fmt.format(new Date())}`;
+        const text = `· ${PROFILE.base.city} ${PROFILE.base.offset} · ${fmt.format(new Date())}`;
+        clocks.forEach((el) => { el.textContent = text; });
     };
     tick();
     setInterval(tick, 30000);

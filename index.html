@@ -82,12 +82,42 @@
         <a class="brand" href="#top">Abdellah Sbai<span class="dot">.</span></a>
 
         <nav class="nav" id="nav" aria-label="Primary">
-            <a href="#trajectory" data-i18n="nav.trajectory">Trajectory</a>
-            <a href="#work" data-i18n="nav.work">Case studies</a>
-            <a href="#stack" data-i18n="nav.stack">Stack</a>
-            <a href="#session" data-i18n="nav.session">Your session</a>
-            <a href="#contact" data-i18n="nav.contact">Contact</a>
-            <a href="plain.html" data-i18n="nav.skip">Skip to the facts</a>
+            <div class="nav__index">
+                <a href="#top" class="nav__top" style="--i:0"><span class="nav__fig">fig. 00</span><span
+                        class="nav__label" data-i18n="nav.top">Masthead</span></a>
+                <a href="#trajectory" style="--i:1"><span class="nav__fig">fig. 01</span><span class="nav__label"
+                        data-i18n="nav.trajectory">Trajectory</span></a>
+                <a href="#work" style="--i:2"><span class="nav__fig">fig. 02</span><span class="nav__label"
+                        data-i18n="nav.work">Case studies</span></a>
+                <a href="#stack" style="--i:3"><span class="nav__fig">fig. 03</span><span class="nav__label"
+                        data-i18n="nav.stack">Stack</span></a>
+                <a href="#session" style="--i:4"><span class="nav__fig">fig. 04</span><span class="nav__label"
+                        data-i18n="nav.session">Your session</span></a>
+                <a href="#contact" style="--i:5"><span class="nav__fig">fig. 05</span><span class="nav__label"
+                        data-i18n="nav.contact">Contact</span></a>
+                <a href="plain.html" class="nav__skip" data-i18n="nav.skip">Skip to the facts</a>
+            </div>
+
+            <!-- Mobile only: the controls that do not fit the phone header. -->
+            <div class="nav__foot">
+                <div class="nav__actions">
+                    <a class="btn btn--primary" href="./assets/resume.pdf" download
+                        data-i18n="masthead.cv">export → cv.pdf</a>
+                    <button class="btn btn--ghost" type="button" id="query-open-mobile"
+                        data-i18n="query.open">Query me</button>
+                </div>
+                <div class="nav__langs" id="nav-langs" role="group" aria-label="Language">
+                    <button type="button" data-lang="en" lang="en">EN</button>
+                    <button type="button" data-lang="fr" lang="fr">FR</button>
+                    <button type="button" data-lang="es" lang="es">ES</button>
+                </div>
+                <a class="nav__plain" href="plain.html" data-i18n="nav.skip">Skip to the facts</a>
+                <span class="status">
+                    <span class="status__dot" aria-hidden="true"></span>
+                    <span data-i18n="masthead.status">Final year</span>
+                    <span class="js-clock"></span>
+                </span>
+            </div>
         </nav>
 
         <div class="controls">
@@ -133,7 +163,7 @@
                     <span class="status__dot" aria-hidden="true"></span>
                     <span class="status__full" data-i18n="masthead.statusFull">Final year</span>
                     <span class="status__short" data-i18n="masthead.status">Final year</span>
-                    <span id="status-clock"></span>
+                    <span class="js-clock"></span>
                 </span>
             </div>
 
