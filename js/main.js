@@ -3,7 +3,7 @@
    ========================================================================== */
 
 import {
-    PROFILE, FIGURES, TRAJECTORY, PROJECTS, STACK, EDUCATION, STRINGS, LANGS,
+    PROFILE, FIGURES, TRAJECTORY, PROJECTS, STACK, PROVEN, EDUCATION, STRINGS, LANGS,
 } from '../content.js';
 import { mountChart } from './chart.js';
 import { mountSession } from './session.js';
@@ -431,15 +431,28 @@ function renderCases() {
 
 /* --- the stack ----------------------------------------------------------- */
 
+/** Proper nouns pass through; concepts get a per-language override. */
+function term(item) {
+    return resolveKey(STRINGS[lang], `terms.${item}`) || item;
+}
+
 function renderStack() {
     const grid = $('#stack-grid');
+    const total = STACK.reduce((a, g) => a + g.items.length, 0);
+
     grid.innerHTML = STACK.map((group) => `
         <div class="stack__group">
             <h3><span>${t(`stack.groups.${group.id}`)}</span><span>n = ${group.items.length}</span></h3>
             <ul class="stack__list">
-                ${group.items.map((item) => `<li>${item}</li>`).join('')}
+                ${group.items.map((item) => `
+                    <li class="${PROVEN.has(item) ? 'is-proven' : ''}">${term(item)}</li>`).join('')}
             </ul>
         </div>`).join('');
+
+    $('#stack-legend').innerHTML = `
+        <span class="stack__key" aria-hidden="true"></span>
+        <span>${t('stack.legend')}</span>
+        <span class="stack__total">n = ${total}</span>`;
 
     $('#stack-aside').innerHTML = `
         <div class="aside-card">
@@ -450,6 +463,10 @@ function renderStack() {
         <div class="aside-card">
             <h3>${t('stack.focus')}</h3>
             <strong>${t('stack.focusText')}</strong>
+        </div>
+        <div class="aside-card">
+            <h3>${t('stack.working')}</h3>
+            <p>${t('stack.workingText')}</p>
         </div>`;
 }
 
