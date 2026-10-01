@@ -1274,6 +1274,91 @@ button {
         repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 11px);
 }
 
+.case__subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-top: -0.6rem;
+    margin-bottom: 1rem;
+    max-width: 46ch;
+}
+
+.case__hook {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 44ch;
+}
+
+.case__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.badge--wip {
+    border: 1px solid var(--accent);
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+}
+
+/* Shape-only price illustration used on the card and the case study page. */
+.case__media--plot {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: var(--paper-2);
+}
+
+.case__media--plot svg,
+.cd-figure svg {
+    width: 100%;
+    height: auto;
+}
+
+.cd-zero {
+    stroke: var(--rule);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+.cd-line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cd-neg {
+    fill: var(--accent-soft);
+    stroke: none;
+}
+
+.cd-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    fill: var(--faint);
+}
+
 .case__tags {
     display: flex;
     flex-wrap: wrap;

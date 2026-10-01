@@ -111,26 +111,12 @@ export const FORECAST = { until: '2028-01', latLow: 0, latHigh: 56 };
 -------------------------------------------------------------------------------*/
 export const PROJECTS = [
   {
-    id: 'carResale',
-    repo: 'https://github.com/Sbaiii/car-resale-price-analysis',
-    tags: ['SAS', 'SQL', 'EDA'],
-    image: './assets/project-1.png', // TODO: replace with a real chart/screenshot
-    metrics: [], // TODO: add real results, e.g. { value: '…', label: '…' }
-    status: 'live',
-  },
-  {
-    id: 'purchaseOrder',
-    repo: 'https://github.com/Sbaiii/Automated_purchase_Order_Management_System',
-    tags: ['Java', 'OOP', 'Swing'],
-    image: './assets/project-2.png', // TODO: replace with a real UI screenshot
-    metrics: [], // TODO: add real results
-    status: 'live',
-  },
-  {
-    id: 'upcoming',
-    repo: null,
-    tags: [],
+    id: 'negativeHours',
+    repo: 'https://github.com/Sbaiii/negative-hours',
+    caseStudy: '/projects/negative-hours/',
+    tags: ['Python', 'SQL', 'dbt', 'DuckDB', 'GitHub Actions'],
     image: null,
+    // Stays empty until the analysis ships; the card renders the pending state.
     metrics: [],
     status: 'wip',
   },
@@ -248,34 +234,23 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Case Studies',
-      standfirst: 'Two shipped, one in progress.',
+      standfirst: 'One in progress. Built in the open.',
       problem: 'Problem',
       built: 'What I built',
       result: 'Result',
       view: 'View on GitHub',
       todo: 'Results pending. Real numbers going in here.',
       wip: 'In progress',
+      readCase: 'Read the case study →',
       projects: {
-        carResale: {
-          title: 'Car Resale Price Analysis',
+        negativeHours: {
+          title: 'Negative Hours',
+          subtitle: 'Europe’s electricity market in the renewables era',
+          hook: 'How often is power free in Europe, and what is a battery worth in each country?',
           problem:
-            'Resale prices in the dataset were noisy and inconsistently recorded, making it hard to see which factors actually drove depreciation.',
+            'Solar and wind now push European wholesale prices to zero or below for hours at a time. Solar owners earn less exactly when they produce most, while batteries can be paid to absorb free power.',
           built:
-            'Exploratory data analysis and a full preprocessing pipeline in SAS Studio and SQL: cleaning, outlier handling and feature exploration to isolate the real depreciation signals.',
-          result: 'TODO: add the concrete result. What did the analysis show, and what changed because of it?',
-        },
-        purchaseOrder: {
-          title: 'Automated Purchase Order System',
-          problem:
-            'Procurement approvals were manual, slow, and gave different roles no clear view of where an order actually was.',
-          built:
-            'A Java Swing desktop application with role-based dashboards and persistent storage, automating the approval workflow end to end.',
-          result: 'TODO: add the concrete result: time saved, steps removed, users served.',
-        },
-        upcoming: {
-          title: 'Next project',
-          problem: 'TODO: name the project and the problem it solves.',
-          built: 'In development.',
+            'An automated pipeline pulling official ENTSO-E grid data for 8 European bidding zones (ES, PT, FR, DE-LU, NL, BE, PL, IT-North) since 2019, modelled in dbt, analysed in SQL and Python, with a live dashboard.',
           result: '',
         },
       },
@@ -500,36 +475,23 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Études de Cas',
-      standfirst: 'Deux livrés, un en cours.',
+      standfirst: 'Un en cours. Construit à ciel ouvert.',
       problem: 'Problème',
       built: 'Ce que j’ai construit',
       result: 'Résultat',
       view: 'Voir sur GitHub',
       todo: 'Résultats à venir. Les vrais chiffres arrivent ici.',
       wip: 'En cours',
+      readCase: 'Lire l’étude de cas →',
       projects: {
-        carResale: {
-          title: 'Analyse des Prix de Revente Automobile',
+        negativeHours: {
+          title: 'Negative Hours',
+          subtitle: 'Le marché européen de l’électricité à l’ère des renouvelables',
+          hook: 'À quelle fréquence l’électricité est-elle gratuite en Europe, et que vaut une batterie dans chaque pays ?',
           problem:
-            'Les prix de revente du jeu de données étaient bruités et saisis de façon incohérente, ce qui rendait difficile d’identifier les vrais facteurs de dépréciation.',
+            'Le solaire et l’éolien poussent désormais les prix de gros européens à zéro ou en dessous pendant des heures. Les producteurs solaires gagnent moins au moment précis où ils produisent le plus, tandis que les batteries peuvent être payées pour absorber cette électricité gratuite.',
           built:
-            'Analyse exploratoire et pipeline complet de prétraitement sous SAS Studio et SQL : nettoyage, traitement des valeurs aberrantes et exploration de variables pour isoler les signaux réels de dépréciation.',
-          result:
-            'TODO : ajouter le résultat concret. Qu’a montré l’analyse, et qu’est-ce que cela a changé ?',
-        },
-        purchaseOrder: {
-          title: 'Système Automatisé de Bons de Commande',
-          problem:
-            'Les validations d’achat étaient manuelles, lentes, et aucun rôle n’avait de visibilité claire sur l’avancement réel d’une commande.',
-          built:
-            'Une application de bureau Java Swing avec tableaux de bord par rôle et stockage persistant, automatisant le circuit de validation de bout en bout.',
-          result:
-            'TODO : ajouter le résultat concret : temps gagné, étapes supprimées, utilisateurs servis.',
-        },
-        upcoming: {
-          title: 'Prochain projet',
-          problem: 'TODO : nommer le projet et le problème qu’il résout.',
-          built: 'En développement.',
+            'Un pipeline automatisé qui récupère les données officielles du réseau ENTSO-E pour 8 zones de marché européennes (ES, PT, FR, DE-LU, NL, BE, PL, IT-Nord) depuis 2019, modélisées avec dbt, analysées en SQL et Python, avec un tableau de bord en direct.',
           result: '',
         },
       },
@@ -753,36 +715,23 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Casos Prácticos',
-      standfirst: 'Dos entregados, uno en curso.',
+      standfirst: 'Uno en curso. Construido a la vista.',
       problem: 'Problema',
       built: 'Lo que construí',
       result: 'Resultado',
       view: 'Ver en GitHub',
       todo: 'Resultados pendientes. Aquí van las cifras reales.',
       wip: 'En curso',
+      readCase: 'Leer el caso práctico →',
       projects: {
-        carResale: {
-          title: 'Análisis de Precios de Reventa de Coches',
+        negativeHours: {
+          title: 'Negative Hours',
+          subtitle: 'El mercado eléctrico europeo en la era de las renovables',
+          hook: '¿Con qué frecuencia la electricidad es gratis en Europa, y cuánto vale una batería en cada país?',
           problem:
-            'Los precios de reventa del conjunto de datos eran ruidosos y estaban registrados de forma inconsistente, lo que dificultaba ver qué factores impulsaban realmente la depreciación.',
+            'La solar y la eólica empujan ya los precios mayoristas europeos a cero o por debajo durante horas. Los productores solares ganan menos justo cuando más producen, mientras que a las baterías se les puede pagar por absorber esa electricidad gratuita.',
           built:
-            'Análisis exploratorio y un pipeline completo de preprocesamiento en SAS Studio y SQL: limpieza, tratamiento de atípicos y exploración de variables para aislar las señales reales de depreciación.',
-          result:
-            'TODO: añadir el resultado concreto. Qué mostró el análisis y qué cambió a raíz de ello.',
-        },
-        purchaseOrder: {
-          title: 'Sistema Automatizado de Órdenes de Compra',
-          problem:
-            'Las aprobaciones de compra eran manuales, lentas, y ningún rol tenía visibilidad clara de dónde estaba realmente una orden.',
-          built:
-            'Una aplicación de escritorio en Java Swing con paneles por rol y almacenamiento persistente, que automatiza el flujo de aprobación de principio a fin.',
-          result:
-            'TODO: añadir el resultado concreto: tiempo ahorrado, pasos eliminados, usuarios atendidos.',
-        },
-        upcoming: {
-          title: 'Próximo proyecto',
-          problem: 'TODO: nombrar el proyecto y el problema que resuelve.',
-          built: 'En desarrollo.',
+            'Un pipeline automatizado que extrae datos oficiales de la red ENTSO-E para 8 zonas de mercado europeas (ES, PT, FR, DE-LU, NL, BE, PL, IT-Norte) desde 2019, modelados con dbt, analizados en SQL y Python, con un panel en vivo.',
           result: '',
         },
       },

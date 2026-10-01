@@ -399,35 +399,43 @@ function renderCases() {
     PROJECTS.forEach((p, i) => {
         const base = `work.projects.${p.id}`;
         const result = t(`${base}.result`);
-        const isTodo = result.startsWith('TODO');
+        // An empty result is still a pending result: the card must say so rather
+        // than quietly dropping the row.
+        const pending = !result || result.startsWith('TODO');
 
         const media = p.image
             ? `<div class="case__media"><img src="${p.image}" alt="" width="640" height="480" loading="lazy" decoding="async"></div>`
-            : '<div class="case__media case__media--empty"></div>';
+            : `<div class="case__media case__media--plot">${priceDaySvg()}</div>`;
 
         const tags = p.tags.length
             ? `<div class="case__tags">${p.tags.map((tag) => `<span class="tool">${tag}</span>`).join('')}</div>`
             : '';
 
-        const resultBlock = result
-            ? `<div class="case__block">
-                   <dt>${t('work.result')}</dt>
-                   <dd class="${isTodo ? 'is-todo' : ''}">${isTodo ? t('work.todo') : result}</dd>
-               </div>`
-            : '';
+        const subtitle = t(`${base}.subtitle`);
+        const hook = t(`${base}.hook`);
 
-        const link = p.repo
-            ? `<a class="btn btn--ghost" href="${p.repo}" target="_blank" rel="noopener noreferrer">${t('work.view')} ↗</a>`
-            : `<span class="tool">${t('work.wip')}</span>`;
+        const links = [
+            p.caseStudy
+                ? `<a class="btn btn--primary" href="${p.caseStudy}">${t('work.readCase')}</a>`
+                : '',
+            p.repo
+                ? `<a class="btn btn--ghost" href="${p.repo}" target="_blank" rel="noopener noreferrer">${t('work.view')} ↗</a>`
+                : '',
+        ].filter(Boolean).join('');
 
         const el = document.createElement('article');
         el.className = 'case reveal';
         el.innerHTML = `
-            <div class="fig__label"><span class="meta">${String(i + 1).padStart(2, '0')}</span></div>
+            <div class="fig__label">
+                <span class="meta">${String(i + 1).padStart(2, '0')}</span>
+                ${p.status === 'wip' ? `<span class="badge badge--wip">${t('work.wip')}</span>` : ''}
+            </div>
             <div class="case__body">
                 <div>
                     ${tags}
                     <h3 class="case__title">${t(`${base}.title`)}</h3>
+                    ${subtitle !== `${base}.subtitle` ? `<p class="case__subtitle">${subtitle}</p>` : ''}
+                    ${hook !== `${base}.hook` ? `<p class="case__hook">${hook}</p>` : ''}
                     <dl>
                         <div class="case__block">
                             <dt>${t('work.problem')}</dt>
@@ -437,9 +445,12 @@ function renderCases() {
                             <dt>${t('work.built')}</dt>
                             <dd>${t(`${base}.built`)}</dd>
                         </div>
-                        ${resultBlock}
+                        <div class="case__block">
+                            <dt>${t('work.result')}</dt>
+                            <dd class="${pending ? 'is-todo' : ''}">${pending ? t('work.todo') : result}</dd>
+                        </div>
                     </dl>
-                    ${link}
+                    <div class="case__links">${links}</div>
                 </div>
                 ${media}
             </div>`;
@@ -447,6 +458,22 @@ function renderCases() {
     });
 
     observeReveals(host);
+}
+
+/**
+ * A day where midday solar pushes the price under zero. Shape only, drawn from
+ * no dataset, so it carries a caption saying exactly that.
+ */
+function priceDaySvg() {
+    return `
+        <svg viewBox="0 0 320 180" role="img" aria-label="Illustration of a day where the midday price falls below zero">
+            <line class="cd-zero" x1="18" y1="108" x2="302" y2="108" />
+            <path class="cd-neg" d="M18 108 L60 104 L96 96 L130 118 L160 150 L190 140 L220 104 L260 92 L302 96 L302 108 Z" />
+            <path class="cd-line" d="M18 60 L60 52 L96 62 L130 96 L160 150 L190 140 L220 88 L260 44 L302 56" />
+            <text class="cd-label" x="18" y="24">€/MWh</text>
+            <text class="cd-label" x="24" y="104">0</text>
+            <text class="cd-label" x="150" y="172">midday</text>
+        </svg>`;
 }
 
 /* --- the stack ----------------------------------------------------------- */
