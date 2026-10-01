@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negative Hours, a case study by Abdellah Sbai Atta Allah</title>
+    <meta name="description"
+        content="How often European wholesale electricity prices fall below zero, and what that is worth to a battery. An automated pipeline over official ENTSO-E data for eight bidding zones since 2019.">
+    <meta name="author" content="Abdellah Sbai Atta Allah">
+    <link rel="canonical" href="https://sbaiii.com/projects/negative-hours/">
+
+    <!-- Resolve the theme before first paint so there is no flash of the wrong one. -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('portfolio_theme');
+                if (stored) document.documentElement.setAttribute('data-theme', stored);
+            } catch (e) { /* private mode: fall back to the CSS media query */ }
+        })();
+    </script>
+
+    <meta property="og:url" content="https://sbaiii.com/projects/negative-hours/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Abdellah Sbai Atta Allah">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:title" content="Negative Hours: Europe’s electricity market in the renewables era">
+    <meta property="og:description"
+        content="How often is power free in Europe, and what is a battery worth in each country?">
+    <meta property="og:image" content="https://sbaiii.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A career plotted as a line chart: latitude against time.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Negative Hours: Europe’s electricity market in the renewables era">
+    <meta name="twitter:description"
+        content="How often is power free in Europe, and what is a battery worth in each country?">
+    <meta name="twitter:image" content="https://sbaiii.com/assets/og-image.png">
+
+    <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#08090b" media="(prefers-color-scheme: dark)">
+
+    <link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="modulepreload" href="./page.js">
+    <link rel="modulepreload" href="/js/chrome.js">
+    <link rel="modulepreload" href="./strings.js">
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Negative Hours: Europe’s electricity market in the renewables era",
+        "description": "How often European wholesale electricity prices fall below zero, and what that is worth to a battery.",
+        "url": "https://sbaiii.com/projects/negative-hours/",
+        "author": {
+            "@type": "Person",
+            "name": "Abdellah Sbai Atta Allah",
+            "url": "https://sbaiii.com/"
+        },
+        "isPartOf": { "@type": "WebSite", "url": "https://sbaiii.com/" }
+    }
+    </script>
+</head>
+
+<body>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <a class="brand" href="/">Abdellah Sbai<span class="dot">.</span></a>
+
+        <nav class="nav" id="nav" aria-label="Primary">
+            <div class="nav__index">
+                <a href="/#work" class="nav__back"><span class="nav__label" data-i18n="back">Back to the
+                        portfolio</span></a>
+                <a href="/" style="--i:0"><span class="nav__fig">fig. 00</span><span class="nav__label"
+                        data-i18n="nav.home">Home</span></a>
+                <a href="https://github.com/Sbaiii/negative-hours" target="_blank" rel="noopener noreferrer"
+                    style="--i:1"><span class="nav__fig">git</span><span class="nav__label"
+                        data-i18n="nav.repo">Repository</span></a>
+            </div>
+            <div class="nav__foot">
+                <div class="nav__langs" id="nav-langs" role="group" aria-label="Language">
+                    <button type="button" data-lang="en" lang="en">EN</button>
+                    <button type="button" data-lang="fr" lang="fr">FR</button>
+                    <button type="button" data-lang="es" lang="es">ES</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="controls">
+            <a class="ctrl ctrl--query" href="/#work" data-i18n="back">Back to the portfolio</a>
+
+            <div class="lang">
+                <button class="lang__btn" id="lang-btn" aria-haspopup="true" aria-expanded="false"
+                    aria-controls="lang-menu"><span class="visually-hidden">Language: </span><span
+                        id="lang-code">EN</span></button>
+                <div class="lang__menu" id="lang-menu">
+                    <button data-lang="en" lang="en">English</button>
+                    <button data-lang="fr" lang="fr">Français</button>
+                    <button data-lang="es" lang="es">Español</button>
+                </div>
+            </div>
+
+            <button class="ctrl" id="theme-toggle" aria-label="Toggle colour theme">
+                <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4.5" />
+                    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                </svg>
+                <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- ==================== fig. 00  HERO ==================== -->
+        <section class="wrap cs-hero" id="top">
+            <div class="masthead__fig">
+                <span class="meta" data-i18n="hero.fig">fig. 00</span>
+                <span class="meta" data-i18n="hero.kicker">Case study</span>
+                <span class="badge badge--wip" data-i18n="hero.status">In progress</span>
+            </div>
+
+            <h1 class="cs-hero__title" data-i18n="hero.title">Negative Hours</h1>
+            <p class="cs-hero__subtitle" data-i18n="hero.subtitle">Europe’s electricity market in the renewables era</p>
+            <p class="cs-hero__hook" data-i18n="hero.hook">How often is power free in Europe, and what is a battery
+                worth in each country?</p>
+            <p class="meta cs-hero__meta" data-i18n="hero.meta">8 bidding zones</p>
+
+            <div class="case__tags" style="margin-top:1.5rem">
+                <span class="tool">Python</span><span class="tool">SQL</span><span class="tool">dbt</span><span
+                    class="tool">DuckDB</span><span class="tool">GitHub Actions</span>
+            </div>
+
+            <div class="cs-hero__actions">
+                <a class="btn btn--primary" href="https://github.com/Sbaiii/negative-hours" target="_blank"
+                    rel="noopener noreferrer" data-i18n="hero.repo">View the repository ↗</a>
+                <a class="btn btn--text" href="/#work" data-i18n="back">Back to the portfolio</a>
+            </div>
+        </section>
+
+        <!-- ==================== fig. 01  EXPLAINER ==================== -->
+        <section class="wrap fig" id="explainer">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="explain.fig">fig. 01</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="explain.title">Wait, negative prices?</h2>
+                </div>
+            </div>
+            <div class="cs-split reveal">
+                <div class="cs-prose">
+                    <p data-i18n="explain.p1"></p>
+                    <p data-i18n="explain.p2"></p>
+                    <p data-i18n="explain.p3"></p>
+                </div>
+                <figure class="cd-figure">
+                    <div id="price-day"></div>
+                    <figcaption class="meta cd-caption" data-i18n="explain.caption">Illustrative, not real data.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ==================== fig. 02  FOUR QUESTIONS ==================== -->
+        <section class="wrap fig" id="four-questions">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="questions.fig">fig. 02</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="questions.title">Four questions</h2>
+                    <p class="fig__standfirst" data-i18n="questions.standfirst"></p>
+                </div>
+            </div>
+            <div class="qgrid" id="questions"></div>
+        </section>
+
+        <!-- ==================== fig. 03  PIPELINE ==================== -->
+        <section class="wrap fig" id="how">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="pipeline.fig">fig. 03</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="pipeline.title">How it works</h2>
+                    <p class="fig__standfirst" data-i18n="pipeline.standfirst"></p>
+                </div>
+            </div>
+            <div class="pipeline reveal" id="pipeline"></div>
+            <p class="meta pipeline__refresh" data-i18n="pipeline.refresh"></p>
+        </section>
+
+        <!-- ==================== fig. 04  DECISIONS ==================== -->
+        <section class="wrap fig" id="decision-records">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="decisions.fig">fig. 04</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="decisions.title">Decisions</h2>
+                    <p class="fig__standfirst" data-i18n="decisions.standfirst"></p>
+                </div>
+            </div>
+            <div class="dgrid" id="decisions"></div>
+        </section>
+
+        <!-- ==================== fig. 05  BUILD LOG ==================== -->
+        <section class="wrap fig" id="build-log">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="log.fig">fig. 05</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="log.title">Build log</h2>
+                    <p class="fig__standfirst" data-i18n="log.standfirst"></p>
+                </div>
+            </div>
+            <ol class="logline" id="log"></ol>
+        </section>
+
+        <!-- ==================== fig. 06  RESULTS ==================== -->
+        <section class="wrap fig" id="results-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="results.fig">fig. 06</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="results.title">Results</h2>
+                    <p class="fig__standfirst" data-i18n="results.standfirst"></p>
+                </div>
+            </div>
+            <div class="rgrid" id="results"></div>
+        </section>
+    </main>
+
+    <footer class="wrap colophon">
+        <p data-i18n="footer.note">Data: ENTSO-E Transparency Platform.</p>
+        <p>
+            <a href="https://github.com/Sbaiii/negative-hours" target="_blank" rel="noopener noreferrer"
+                data-i18n="footer.repo">Repository ↗</a>
+            &nbsp;·&nbsp;
+            <a href="/" data-i18n="footer.home">Back to sbaiii.com</a>
+            &nbsp;·&nbsp;
+            © <span id="year">2026</span> Abdellah Sbai Atta Allah
+        </p>
+    </footer>
+
+    <script type="module" src="./page.js"></script>
+</body>
+
+</html>

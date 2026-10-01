@@ -2180,6 +2180,346 @@ button {
     }
 }
 
+/* 15b  CASE STUDY PAGE ------------------------------------------------------ */
+
+.cs-hero {
+    padding-block: 8rem 3rem;
+}
+
+.cs-hero__title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.8rem, 9vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    margin-block: 1.25rem 0.75rem;
+    text-wrap: balance;
+}
+
+.cs-hero__subtitle {
+    font-size: var(--t-h3);
+    font-weight: 500;
+    color: var(--muted);
+    max-width: 32ch;
+}
+
+.cs-hero__hook {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.1rem;
+    margin-block: 2rem 1.25rem;
+    max-width: 30ch;
+}
+
+.cs-hero__meta {
+    text-transform: none;
+    letter-spacing: 0.06em;
+}
+
+.cs-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+/* fig. 01: prose beside the illustration */
+.cs-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: start;
+}
+
+.cs-prose p {
+    color: var(--muted);
+    max-width: 52ch;
+    margin-bottom: 1rem;
+}
+
+.cs-prose p:last-child {
+    margin-bottom: 0;
+    color: var(--ink);
+}
+
+.cd-figure {
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 1rem 1rem 0.75rem;
+    background: var(--paper-2);
+}
+
+.cd-caption {
+    display: block;
+    margin-top: 0.6rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+}
+
+.cd-shaded {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    fill: var(--accent-ink);
+}
+
+/* fig. 02: the four questions */
+.qgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.qcard {
+    position: relative;
+    padding: 1.5rem 1.35rem;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--paper);
+}
+
+.qcard__n {
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent-ink);
+}
+
+.qcard__q {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-block: 0.5rem 1.1rem;
+}
+
+.qcard__meta div + div {
+    margin-top: 0.85rem;
+}
+
+.qcard__meta dt {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.25rem;
+}
+
+.qcard__meta dd {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--muted);
+}
+
+.qcard__metric {
+    font-family: var(--mono);
+    font-size: 0.78rem !important;
+    color: var(--ink) !important;
+}
+
+/* fig. 03: the pipeline */
+.pipeline svg {
+    width: 100%;
+    height: auto;
+    color: var(--faint);
+}
+
+.pl-box {
+    fill: var(--paper-2);
+    stroke: var(--rule);
+    stroke-width: 1;
+}
+
+.pl-title {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    fill: var(--ink);
+}
+
+.pl-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    fill: var(--faint);
+}
+
+.pl-arrow {
+    stroke: var(--accent);
+    stroke-width: 1.5;
+    fill: none;
+    color: var(--accent);
+}
+
+.pipeline__refresh {
+    margin-top: 1.25rem;
+    text-transform: none;
+    letter-spacing: 0.06em;
+}
+
+/* fig. 04: decision records */
+.dgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.dcard {
+    padding: 1.5rem 1.35rem;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+}
+
+.dcard__title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    margin-block: 0.4rem 0.75rem;
+}
+
+.dcard__body {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+/* fig. 05: build log */
+.logline {
+    list-style: none;
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.logline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0.65rem;
+    bottom: 0.65rem;
+    width: 1px;
+    background: var(--rule);
+}
+
+.logitem {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.logitem::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 0.42rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--rule);
+}
+
+.logitem:first-child::before {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.logitem__date {
+    display: block;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.2rem;
+}
+
+.logitem__text {
+    color: var(--ink);
+    max-width: 62ch;
+}
+
+/* fig. 06: results, waiting */
+.rgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.rslot {
+    background: var(--paper);
+    padding: 1.35rem;
+    min-height: 9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rslot__n {
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+}
+
+.rslot__q {
+    font-size: 0.92rem;
+    line-height: 1.35;
+    color: var(--ink);
+}
+
+.rslot__pending {
+    margin-top: auto;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    padding: 0.4rem 0.6rem;
+    border: 1px dashed var(--accent);
+    border-radius: 8px;
+    background: var(--accent-soft);
+    text-align: center;
+}
+
+.nav__back {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    .nav__index .nav__back {
+        display: flex;
+    }
+
+    .ctrl--query {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .cs-split {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-hero {
+        padding-block: 6.5rem 2rem;
+    }
+}
+
 /* 16  PLAIN & 404 PAGES ---------------------------------------------------- */
 
 .plain {
