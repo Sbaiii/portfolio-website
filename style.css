@@ -2294,6 +2294,11 @@ button {
     color: var(--ink);
 }
 
+/* Where the figure is too wide to sit beside the prose, it sits under it. */
+.cs-prose + .cd-figure {
+    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
 .cd-figure {
     border: 1px solid var(--rule);
     border-radius: 14px;
