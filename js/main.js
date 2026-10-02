@@ -403,12 +403,15 @@ function renderCases() {
         // than quietly dropping the row.
         const pending = !result || result.startsWith('TODO');
 
+        const plot = casePlot(p, base);
         const media = p.image
             ? `<div class="case__media"><img src="${p.image}" alt="" width="640" height="480" loading="lazy" decoding="async"></div>`
-            : `<div class="case__media case__media--plot">${priceDaySvg()}</div>`;
+            : plot
+                ? `<div class="case__media case__media--plot">${plot}</div>`
+                : '<div class="case__media case__media--empty"></div>';
 
         const tags = p.tags.length
-            ? `<div class="case__tags">${p.tags.map((tag) => `<span class="tool">${tag}</span>`).join('')}</div>`
+            ? `<div class="case__tags">${p.tags.map((tag) => `<span class="tool">${term(tag)}</span>`).join('')}</div>`
             : '';
 
         const subtitle = t(`${base}.subtitle`);
@@ -458,6 +461,53 @@ function renderCases() {
     });
 
     observeReveals(host);
+}
+
+/**
+ * Picks the inline illustration a card draws in place of a screenshot. A card
+ * with neither falls back to the empty hatched panel rather than a blank box.
+ */
+function casePlot(project, base) {
+    if (project.plot === 'policyTimeline') return policyTimelineSvg(t(`${base}.plotAlt`));
+    if (project.plot === 'priceDay') return priceDaySvg();
+    return '';
+}
+
+/**
+ * Three German policies on a two-year axis. Dates only, no measurements: the
+ * point is that the €9 ticket and the fuel tax cut ran over exactly the same
+ * months, which is why the 2023 Deutschlandticket is the cleaner test. The
+ * confounder is drawn dashed to say so without a legend.
+ */
+function policyTimelineSvg(alt) {
+    const x0 = 10;
+    const perMonth = 12.5;          // 24 months from Jan 2022 to Jan 2024
+    const at = (month) => x0 + month * perMonth;
+    const mid = at(12);
+
+    const bar = (y, from, to, cls) =>
+        `<rect class="${cls}" x="${at(from)}" y="${y}" width="${at(to) - at(from)}" height="15" rx="3" />`;
+
+    // The Deutschlandticket has no end date, so its bar ends in a point.
+    const open = (y, from) => {
+        const a = at(from);
+        const b = at(24);
+        return `<path class="tl-bar" d="M${a} ${y} L${b - 7} ${y} L${b} ${y + 7.5} L${b - 7} ${y + 15} L${a} ${y + 15} Z" />`;
+    };
+
+    return `
+        <svg viewBox="0 0 320 180" role="img" aria-label="${alt}">
+            <line class="tl-grid" x1="${mid}" y1="10" x2="${mid}" y2="150" />
+            <text class="tl-name" x="${at(5)}" y="22">€9 ticket</text>
+            ${bar(28, 5, 8, 'tl-bar')}
+            <text class="tl-name" x="${at(5)}" y="66">Tankrabatt</text>
+            ${bar(72, 5, 8, 'tl-bar tl-bar--confound')}
+            <text class="tl-name" x="${at(16)}" y="110">Deutschlandticket</text>
+            ${open(116, 16)}
+            <line class="tl-axis" x1="${x0}" y1="150" x2="${at(24)}" y2="150" />
+            <text class="tl-year" x="${(x0 + mid) / 2}" y="168" text-anchor="middle">2022</text>
+            <text class="tl-year" x="${(mid + at(24)) / 2}" y="168" text-anchor="middle">2023</text>
+        </svg>`;
 }
 
 /**

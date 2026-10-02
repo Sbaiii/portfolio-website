@@ -1359,6 +1359,53 @@ button {
     fill: var(--faint);
 }
 
+/* Policy timeline, shared by the Ticket to Breathe card and its case study.
+   Dates only: there is no y-axis because nothing here is measured. */
+.tl-bar {
+    fill: var(--accent-soft);
+    stroke: var(--accent);
+    stroke-width: 1.25;
+}
+
+/* The confounder. Dashed and unfilled so it reads as a caveat, not a result. */
+.tl-bar--confound {
+    fill: none;
+    stroke: var(--faint);
+    stroke-dasharray: 3 3;
+}
+
+.tl-name {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--ink);
+}
+
+.tl-when {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    fill: var(--faint);
+}
+
+.tl-axis {
+    stroke: var(--rule);
+    stroke-width: 1;
+}
+
+.tl-grid {
+    stroke: var(--rule);
+    stroke-width: 1;
+    stroke-dasharray: 2 4;
+}
+
+.tl-year {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    fill: var(--faint);
+}
+
 .case__tags {
     display: flex;
     flex-wrap: wrap;

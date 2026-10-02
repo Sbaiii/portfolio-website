@@ -116,7 +116,20 @@ export const PROJECTS = [
     caseStudy: '/projects/negative-hours/',
     tags: ['Python', 'SQL', 'dbt', 'DuckDB', 'GitHub Actions'],
     image: null,
+    // Which inline illustration the card draws in place of a screenshot.
+    plot: 'priceDay',
     // Stays empty until the analysis ships; the card renders the pending state.
+    metrics: [],
+    status: 'wip',
+  },
+  {
+    id: 'ticketToBreathe',
+    repo: 'https://github.com/Sbaiii/ticket-to-breathe',
+    caseStudy: '/projects/ticket-to-breathe/',
+    tags: ['Python', 'DuckDB', 'dbt', 'LightGBM', 'Causal inference'],
+    image: null,
+    // Policy dates, not measurements. There is nothing to plot yet.
+    plot: 'policyTimeline',
     metrics: [],
     status: 'wip',
   },
@@ -234,7 +247,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Case Studies',
-      standfirst: 'One in progress. Built in the open.',
+      standfirst: 'Two in progress. Built in the open.',
       problem: 'Problem',
       built: 'What I built',
       result: 'Result',
@@ -251,6 +264,17 @@ export const STRINGS = {
             'Solar and wind now push European wholesale prices to zero or below for hours at a time. Solar owners earn less exactly when they produce most, while batteries can be paid to absorb free power.',
           built:
             'An automated pipeline pulling official ENTSO-E grid data for 8 European bidding zones (ES, PT, FR, DE-LU, NL, BE, PL, IT-North) since 2019, modelled in dbt, analysed in SQL and Python, with a live dashboard.',
+          result: '',
+        },
+        ticketToBreathe: {
+          title: 'Ticket to Breathe',
+          subtitle: 'The €9 experiment',
+          hook: 'Did nearly-free public transport clean Germany’s air?',
+          problem:
+            'In summer 2022 Germany sold a €9-a-month ticket for all local and regional public transport, from 1 June to 31 August. In May 2023 the €49 Deutschlandticket made cheap transit permanent. Did taking people out of cars measurably reduce urban NO2, the pollutant most tied to road traffic?',
+          built:
+            'A pipeline over the EEA’s verified hourly air-quality data (1,955 NO2 sampling points in 10 countries, 2.5 GB) and ERA5 reanalysis weather, a DuckDB and dbt warehouse, a LightGBM model that removes the effect of weather, then difference-in-differences, synthetic control and an event study comparing Germany with 7 neighbouring countries.',
+          plotAlt: 'Timeline of three German policies: the €9 ticket and the Tankrabatt fuel tax cut, both from June to August 2022, and the Deutschlandticket from May 2023 onwards.',
           result: '',
         },
       },
@@ -396,6 +420,7 @@ export const STRINGS = {
         'Segmentation & RFM': 'Segmentation & RFM',
         'Model evaluation': 'Évaluation de modèles',
         'Cross-validation': 'Validation croisée',
+        'Causal inference': 'Inférence causale',
         'NLP & sentiment': 'NLP & sentiment',
         'Star & snowflake schemas': 'Schémas en étoile & flocon',
         'Data warehousing': 'Entrepôts de données',
@@ -475,7 +500,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Études de Cas',
-      standfirst: 'Un en cours. Construit à ciel ouvert.',
+      standfirst: 'Deux en cours. Construit à ciel ouvert.',
       problem: 'Problème',
       built: 'Ce que j’ai construit',
       result: 'Résultat',
@@ -492,6 +517,17 @@ export const STRINGS = {
             'Le solaire et l’éolien poussent désormais les prix de gros européens à zéro ou en dessous pendant des heures. Les producteurs solaires gagnent moins au moment précis où ils produisent le plus, tandis que les batteries peuvent être payées pour absorber cette électricité gratuite.',
           built:
             'Un pipeline automatisé qui récupère les données officielles du réseau ENTSO-E pour 8 zones de marché européennes (ES, PT, FR, DE-LU, NL, BE, PL, IT-Nord) depuis 2019, modélisées avec dbt, analysées en SQL et Python, avec un tableau de bord en direct.',
+          result: '',
+        },
+        ticketToBreathe: {
+          title: 'Ticket to Breathe',
+          subtitle: 'L’expérience des 9 €',
+          hook: 'Un transport public quasi gratuit a-t-il assaini l’air allemand ?',
+          problem:
+            'À l’été 2022, l’Allemagne a vendu un abonnement à 9 € par mois valable sur tous les transports locaux et régionaux, du 1er juin au 31 août. En mai 2023, le Deutschlandticket à 49 € a rendu ce tarif durable. Sortir des gens de leur voiture a-t-il fait baisser de façon mesurable le NO2 urbain, le polluant le plus lié au trafic routier ?',
+          built:
+            'Un pipeline sur les données horaires validées de qualité de l’air de l’AEE (1 955 points de mesure du NO2 dans 10 pays, 2,5 Go) et la météo de réanalyse ERA5, un entrepôt DuckDB et dbt, un modèle LightGBM qui retire l’effet de la météo, puis doubles différences, contrôle synthétique et étude d’événement comparant l’Allemagne à 7 pays voisins.',
+          plotAlt: 'Chronologie de trois mesures allemandes : le billet à 9 € et la remise sur les carburants (Tankrabatt), tous deux de juin à août 2022, et le Deutschlandticket à partir de mai 2023.',
           result: '',
         },
       },
@@ -637,6 +673,7 @@ export const STRINGS = {
         'Segmentation & RFM': 'Segmentación y RFM',
         'Model evaluation': 'Evaluación de modelos',
         'Cross-validation': 'Validación cruzada',
+        'Causal inference': 'Inferencia causal',
         'NLP & sentiment': 'NLP y sentimiento',
         'Star & snowflake schemas': 'Esquemas en estrella y copo de nieve',
         'Data warehousing': 'Almacenes de datos',
@@ -715,7 +752,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Casos Prácticos',
-      standfirst: 'Uno en curso. Construido a la vista.',
+      standfirst: 'Dos en curso. Construido a la vista.',
       problem: 'Problema',
       built: 'Lo que construí',
       result: 'Resultado',
@@ -732,6 +769,17 @@ export const STRINGS = {
             'La solar y la eólica empujan ya los precios mayoristas europeos a cero o por debajo durante horas. Los productores solares ganan menos justo cuando más producen, mientras que a las baterías se les puede pagar por absorber esa electricidad gratuita.',
           built:
             'Un pipeline automatizado que extrae datos oficiales de la red ENTSO-E para 8 zonas de mercado europeas (ES, PT, FR, DE-LU, NL, BE, PL, IT-Norte) desde 2019, modelados con dbt, analizados en SQL y Python, con un panel en vivo.',
+          result: '',
+        },
+        ticketToBreathe: {
+          title: 'Ticket to Breathe',
+          subtitle: 'El experimento de los 9 €',
+          hook: '¿Limpió el aire de Alemania un transporte público casi gratis?',
+          problem:
+            'En el verano de 2022 Alemania vendió un abono de 9 € al mes para todo el transporte público local y regional, del 1 de junio al 31 de agosto. En mayo de 2023 el Deutschlandticket de 49 € hizo permanente el billete barato. ¿Sacar gente del coche redujo de forma medible el NO2 urbano, el contaminante más ligado al tráfico?',
+          built:
+            'Un pipeline sobre los datos horarios validados de calidad del aire de la AEMA (1.955 puntos de muestreo de NO2 en 10 países, 2,5 GB) y la meteorología de reanálisis ERA5, un almacén con DuckDB y dbt, un modelo LightGBM que descuenta el efecto del tiempo, y después diferencias en diferencias, control sintético y un estudio de eventos que compara Alemania con 7 países vecinos.',
+          plotAlt: 'Cronología de tres medidas alemanas: el abono de 9 € y la rebaja del combustible (Tankrabatt), ambos de junio a agosto de 2022, y el Deutschlandticket desde mayo de 2023.',
           result: '',
         },
       },
