@@ -11,6 +11,36 @@
 
 export const LOG = [
   {
+    date: '2026-10-03',
+    en: 'Q1 answered: negative hours by zone, 2019 → 2026.',
+    fr: 'Q1 répondue : heures négatives par zone, 2019 → 2026.',
+    es: 'Q1 respondida: horas negativas por zona, 2019 → 2026.',
+  },
+  {
+    date: '2026-10-03',
+    en: 'dbt warehouse built. The results match published German statistics exactly.',
+    fr: 'Entrepôt dbt construit. Les résultats correspondent exactement aux statistiques allemandes publiées.',
+    es: 'Almacén dbt construido. Los resultados coinciden exactamente con las estadísticas alemanas publicadas.',
+  },
+  {
+    date: '2026-10-03',
+    en: 'Resolution bug found in the raw data and fixed, with 14 pipeline tests behind it.',
+    fr: 'Bug de résolution détecté dans les données brutes et corrigé, avec 14 tests de pipeline derrière.',
+    es: 'Error de resolución detectado en los datos brutos y corregido, con 14 tests de pipeline detrás.',
+  },
+  {
+    date: '2026-10-02',
+    en: 'Full backfill: prices, generation and load, 8 zones, 2019 → 2026.',
+    fr: 'Historique complet récupéré : prix, production et consommation, 8 zones, 2019 → 2026.',
+    es: 'Histórico completo descargado: precios, generación y demanda, 8 zonas, 2019 → 2026.',
+  },
+  {
+    date: '2026-10-02',
+    en: 'ENTSO-E API access granted, and the first real data downloaded.',
+    fr: 'Accès à l’API ENTSO-E accordé, et premières données réelles téléchargées.',
+    es: 'Acceso a la API de ENTSO-E concedido, y primeros datos reales descargados.',
+  },
+  {
     date: '2026-10-01',
     en: 'Bidding zones chosen: eight, picked for contrast rather than convenience.',
     fr: 'Zones de marché choisies : huit, retenues pour leur contraste plutôt que par commodité.',
