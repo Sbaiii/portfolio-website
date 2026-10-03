@@ -2596,6 +2596,23 @@ button {
     margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
 }
 
+/* A limit on the claim directly above it. It sits tight under the summary
+   rather than floating between blocks, so it cannot be read apart from the
+   number it qualifies. */
+.rans__summary:has(+ .rans__caveat) {
+    margin-bottom: 0.85rem;
+}
+
+.rans__caveat {
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--rule);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--faint);
+    max-width: 68ch;
+}
+
 .rans__figures {
     display: grid;
     gap: clamp(1.25rem, 3vw, 1.75rem);

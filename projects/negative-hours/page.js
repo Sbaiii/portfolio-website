@@ -196,6 +196,13 @@ const ANSWERED = {
             { file: 'q1_share_at_or_below_zero_2026.svg', w: 912, h: 499 },
         ],
     },
+    q2: {
+        notebook: 'https://github.com/Sbaiii/negative-hours/blob/main/analysis/q2_capture_prices.ipynb',
+        figures: [
+            { file: 'q2_solar_capture_rate_by_zone.svg', w: 1152, h: 634 },
+            { file: 'q2_cannibalisation_curve.svg', w: 1152, h: 653 },
+        ],
+    },
 };
 
 function renderResults() {
@@ -215,6 +222,11 @@ function renderResults() {
                 <figcaption class="meta rfig__caption">${t(`results.answers.${id}.fig${j + 1}Caption`)}</figcaption>
             </figure>`).join('');
 
+        // A caveat is optional: an answer that needs one says so under the
+        // claim, where it cannot be read separately from it.
+        const caveatKey = `results.answers.${id}.caveat`;
+        const caveat = t(caveatKey);
+
         return `
             <article class="rans reveal">
                 <div class="rans__head">
@@ -223,6 +235,7 @@ function renderResults() {
                 </div>
                 <h3 class="rans__q">${t(`questions.items.${id}.q`)}</h3>
                 <p class="rans__summary">${t(`results.answers.${id}.summary`)}</p>
+                ${caveat === caveatKey ? '' : `<p class="rans__caveat">${caveat}</p>`}
                 <div class="rans__figures">${plates}</div>
                 <a class="btn btn--text" href="${notebook}" target="_blank"
                    rel="noopener noreferrer">${t('results.notebook')}</a>

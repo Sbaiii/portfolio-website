@@ -12,6 +12,12 @@
 export const LOG = [
   {
     date: '2026-10-03',
+    en: 'Q2 answered: solar capture rates, validated against official German market values.',
+    fr: 'Q2 répondue : taux de captation du solaire, validés face aux valeurs de marché officielles allemandes.',
+    es: 'Q2 respondida: tasas de captura solar, validadas frente a los valores de mercado oficiales alemanes.',
+  },
+  {
+    date: '2026-10-03',
     en: 'Q1 answered: negative hours by zone, 2019 → 2026.',
     fr: 'Q1 répondue : heures négatives par zone, 2019 → 2026.',
     es: 'Q1 respondida: horas negativas por zona, 2019 → 2026.',
