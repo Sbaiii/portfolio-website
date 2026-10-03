@@ -124,12 +124,13 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Results',
-      standfirst: 'Q1 to Q3 have their answers. Q4 lands here as the analysis ships, and nothing is filled in until the numbers are real.',
+      standfirst: 'All four questions have their answers. Every number here came out of the pipeline in fig. 03, and nothing was filled in until it was real.',
       pending: 'Pending',
       awaiting: 'Awaiting analysis',
       answered: 'Answered',
       notebook: 'See the analysis notebook →',
       notebookModel: 'See the model and notebook →',
+      notebookShort: 'See the notebook →',
       answers: {
         q1: {
           summary: 'Negative prices went from rare to routine: 5 of 8 European zones topped 500 negative-price hours in 2025, up from at most 112 in 2022. Spain and Portugal now hit zero or below most often, but their negative prices are shallow; Germany, the Netherlands and Belgium go much deeper.',
@@ -155,6 +156,14 @@ export const PAGE = {
           fig1Caption: 'What a 1 MW / 2 MWh battery could have earned from day-ahead arbitrage in 2025, at most one cycle a day and 88% round trip. Bars are the optimal schedule, ticks the rule of thumb.',
           fig2Alt: 'A scatter plot of battery revenue against negative-price hours, one dot per zone and full year from 2019 to 2025, coloured by zone. More negative hours generally went with more revenue, at a correlation of 0.40 across all 55 points and 0.76 once 2022 is set aside. The 2022 points are ringed and sit well above the rest: the energy crisis brought very high prices and few negative hours, so revenue was high for the opposite reason.',
           fig2Caption: 'Battery revenue against negative-price hours, one point per zone and full year from 2019 to 2025. Association only: both grew over the same years.',
+        },
+        q4: {
+          summary: 'At midday, no longer at night. In 2019 the cheapest hour was 03:00 or 04:00 in every zone; in 2025 it was 12:00 to 14:00. Charging in the cheapest block of each day instead of plugging in at 18:00 cut wholesale cost by 67% to 74% in 7 of 8 zones. In Spain, charging overnight in summer 2025 cost 53% more than charging at 18:00.',
+          caveat: 'Wholesale day-ahead cost only, for 10 kWh a day. Excludes retail margin, taxes and grid fees, so these are not household bills.',
+          fig1Alt: 'A slope chart with one row per bidding zone, marking the hour of the day with the lowest average day-ahead price in 2019 as a hollow circle and in 2025 as a filled one, joined by an arrow. Every zone moves from the small hours to the middle of the day: 03:00 in 2019 for Germany-Luxembourg, Portugal and Poland and 04:00 for the Netherlands, Belgium, France, Spain and northern Italy, against 12:00 for Poland in 2025, 13:00 for Germany-Luxembourg, the Netherlands, Belgium, Portugal and northern Italy, and 14:00 for France and Spain. Poland is marked with an asterisk because its first year is 2020 rather than 2019, since earlier prices were in zloty.',
+          fig1Caption: 'Hour of the day with the lowest average day-ahead price, local time, 2019 against 2025. Poland starts from 2020, because earlier Polish prices were quoted in zloty.',
+          fig2Alt: 'A horizontal bar chart of what an electric car would have saved in 2025 by charging in the cheapest block of each day instead of plugging in at 18:00, for 10 kWh a day at 7 kW. Poland saves 368 euros a year, which is 67 per cent of its 547 euro cost at 18:00, then Germany-Luxembourg 338 or 72 per cent, the Netherlands 333 or 74 per cent, Belgium 300 or 72 per cent, Portugal 252 or 72 per cent, France 220 or 72 per cent, northern Italy 198 or 39 per cent, and Spain 182 or 67 per cent. A tick on each bar marks the smaller saving from charging overnight between 22:00 and 07:00 instead.',
+          fig2Caption: 'Wholesale saving per car per year in 2025 from charging in the cheapest block of the day rather than at 18:00, for 10 kWh a day at 7 kW. Ticks mark the overnight strategy.',
         },
       },
     },
@@ -278,12 +287,13 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Résultats',
-      standfirst: 'Les Q1 à Q3 ont leur réponse. La Q4 arrivera ici au fil de l’analyse, et rien n’est rempli tant que les chiffres ne sont pas réels.',
+      standfirst: 'Les quatre questions ont leur réponse. Chaque chiffre est sorti du pipeline de la fig. 03, et rien n’a été rempli avant d’être réel.',
       pending: 'En attente',
       awaiting: 'Analyse en cours',
       answered: 'Répondue',
       notebook: 'Voir le notebook d’analyse →',
       notebookModel: 'Voir le modèle et le notebook →',
+      notebookShort: 'Voir le notebook →',
       answers: {
         q1: {
           summary: 'Les prix négatifs sont passés de rares à courants : 5 zones européennes sur 8 ont dépassé 500 heures de prix négatifs en 2025, contre 112 au maximum en 2022. L’Espagne et le Portugal touchent désormais zéro ou moins le plus souvent, mais leurs prix négatifs restent peu profonds ; l’Allemagne, les Pays-Bas et la Belgique descendent bien plus bas.',
@@ -309,6 +319,14 @@ export const PAGE = {
           fig1Caption: 'Ce qu’une batterie de 1 MW / 2 MWh aurait pu gagner en arbitrage day-ahead en 2025, au plus un cycle par jour et 88 % de rendement aller-retour. Les barres donnent le programme optimal, les traits la règle empirique.',
           fig2Alt: 'Un nuage de points croisant le revenu de la batterie et le nombre d’heures à prix négatif, un point par zone et par année complète de 2019 à 2025, coloré par zone. Plus d’heures négatives va généralement de pair avec plus de revenu, pour une corrélation de 0,40 sur les 55 points et de 0,76 une fois 2022 mis de côté. Les points de 2022 sont entourés et se détachent nettement vers le haut : la crise de l’énergie a amené des prix très élevés et peu d’heures négatives, le revenu était donc élevé pour la raison inverse.',
           fig2Caption: 'Revenu de la batterie rapporté aux heures à prix négatif, un point par zone et par année complète de 2019 à 2025. Simple association : les deux ont progressé sur les mêmes années.',
+        },
+        q4: {
+          summary: 'À midi, et non plus la nuit. En 2019, l’heure la moins chère était 03h00 ou 04h00 dans toutes les zones ; en 2025, c’est entre 12h00 et 14h00. Charger sur le créneau le moins cher de la journée plutôt que de brancher à 18h00 a réduit le coût de gros de 67 % à 74 % dans 7 zones sur 8. En Espagne, charger la nuit pendant l’été 2025 a coûté 53 % de plus que charger à 18h00.',
+          caveat: 'Coût de gros day-ahead uniquement, pour 10 kWh par jour. Hors marge de détail, taxes et frais de réseau : ce ne sont donc pas des factures de ménage.',
+          fig1Alt: 'Un graphique en pente avec une ligne par zone de marché, marquant l’heure de la journée au prix day-ahead moyen le plus bas en 2019 par un cercle vide et en 2025 par un cercle plein, reliés par une flèche. Toutes les zones passent du milieu de la nuit au milieu de la journée : 03h00 en 2019 pour l’Allemagne-Luxembourg, le Portugal et la Pologne, 04h00 pour les Pays-Bas, la Belgique, la France, l’Espagne et l’Italie du Nord, contre 12h00 pour la Pologne en 2025, 13h00 pour l’Allemagne-Luxembourg, les Pays-Bas, la Belgique, le Portugal et l’Italie du Nord, et 14h00 pour la France et l’Espagne. La Pologne porte un astérisque car sa première année est 2020 et non 2019, les prix antérieurs étant en zloty.',
+          fig1Caption: 'Heure de la journée au prix day-ahead moyen le plus bas, heure locale, 2019 face à 2025. La Pologne part de 2020, ses prix antérieurs étant libellés en zloty.',
+          fig2Alt: 'Un graphique en barres horizontales de ce qu’une voiture électrique aurait économisé en 2025 en chargeant sur le créneau le moins cher de chaque journée plutôt qu’en branchant à 18h00, pour 10 kWh par jour à 7 kW. La Pologne économise 368 euros par an, soit 67 % de son coût de 547 euros à 18h00, puis l’Allemagne-Luxembourg 338 ou 72 %, les Pays-Bas 333 ou 74 %, la Belgique 300 ou 72 %, le Portugal 252 ou 72 %, la France 220 ou 72 %, l’Italie du Nord 198 ou 39 %, et l’Espagne 182 ou 67 %. Un trait sur chaque barre indique l’économie plus faible obtenue en chargeant la nuit entre 22h00 et 07h00.',
+          fig2Caption: 'Économie de gros par voiture et par an en 2025 en chargeant sur le créneau le moins cher de la journée plutôt qu’à 18h00, pour 10 kWh par jour à 7 kW. Les traits indiquent la stratégie de nuit.',
         },
       },
     },
@@ -432,12 +450,13 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Resultados',
-      standfirst: 'De la Q1 a la Q3 ya tienen respuesta. La Q4 aparecerá aquí según avance el análisis, y nada se rellena hasta que las cifras sean reales.',
+      standfirst: 'Las cuatro preguntas ya tienen respuesta. Cada cifra salió del pipeline de la fig. 03, y nada se rellenó hasta que fue real.',
       pending: 'Pendiente',
       awaiting: 'A la espera del análisis',
       answered: 'Respondida',
       notebook: 'Ver el cuaderno de análisis →',
       notebookModel: 'Ver el modelo y el cuaderno →',
+      notebookShort: 'Ver el cuaderno →',
       answers: {
         q1: {
           summary: 'Los precios negativos han pasado de raros a habituales: 5 de las 8 zonas europeas superaron las 500 horas de precios negativos en 2025, frente a 112 como máximo en 2022. España y Portugal son ahora las que más veces tocan cero o por debajo, pero sus precios negativos son poco profundos; Alemania, Países Bajos y Bélgica bajan mucho más.',
@@ -463,6 +482,14 @@ export const PAGE = {
           fig1Caption: 'Lo que una batería de 1 MW / 2 MWh habría podido ganar con arbitraje day-ahead en 2025, como mucho un ciclo al día y 88 % de rendimiento de ida y vuelta. Las barras son el programa óptimo, las marcas la regla aproximada.',
           fig2Alt: 'Un diagrama de dispersión que cruza los ingresos de la batería con las horas de precio negativo, un punto por zona y año completo de 2019 a 2025, con color por zona. Más horas negativas suelen ir con más ingresos, con una correlación de 0,40 en los 55 puntos y de 0,76 dejando fuera 2022. Los puntos de 2022 van rodeados y quedan muy por encima del resto: la crisis energética trajo precios muy altos y pocas horas negativas, así que los ingresos fueron altos por el motivo contrario.',
           fig2Caption: 'Ingresos de la batería frente a las horas de precio negativo, un punto por zona y año completo de 2019 a 2025. Solo asociación: ambos crecieron en los mismos años.',
+        },
+        q4: {
+          summary: 'A mediodía, ya no de noche. En 2019 la hora más barata eran las 03:00 o las 04:00 en todas las zonas; en 2025 está entre las 12:00 y las 14:00. Cargar en el bloque más barato de cada día en lugar de enchufar a las 18:00 redujo el coste mayorista entre un 67 % y un 74 % en 7 de las 8 zonas. En España, cargar de noche durante el verano de 2025 costó un 53 % más que cargar a las 18:00.',
+          caveat: 'Solo coste mayorista day-ahead, para 10 kWh al día. Excluye margen minorista, impuestos y peajes de red, así que no son facturas domésticas.',
+          fig1Alt: 'Un gráfico de pendiente con una fila por zona de mercado, que marca la hora del día con el precio day-ahead medio más bajo en 2019 con un círculo hueco y en 2025 con uno relleno, unidos por una flecha. Todas las zonas pasan de la madrugada al centro del día: las 03:00 en 2019 para Alemania-Luxemburgo, Portugal y Polonia, y las 04:00 para Países Bajos, Bélgica, Francia, España y el norte de Italia, frente a las 12:00 para Polonia en 2025, las 13:00 para Alemania-Luxemburgo, Países Bajos, Bélgica, Portugal y el norte de Italia, y las 14:00 para Francia y España. Polonia lleva un asterisco porque su primer año es 2020 y no 2019, ya que los precios anteriores estaban en zlotys.',
+          fig1Caption: 'Hora del día con el precio day-ahead medio más bajo, hora local, 2019 frente a 2025. Polonia arranca en 2020, porque sus precios anteriores estaban en zlotys.',
+          fig2Alt: 'Un gráfico de barras horizontales con lo que un coche eléctrico habría ahorrado en 2025 cargando en el bloque más barato de cada día en lugar de enchufar a las 18:00, para 10 kWh al día a 7 kW. Polonia ahorra 368 euros al año, el 67 % de su coste de 547 euros a las 18:00, seguida de Alemania-Luxemburgo con 338 o el 72 %, Países Bajos con 333 o el 74 %, Bélgica con 300 o el 72 %, Portugal con 252 o el 72 %, Francia con 220 o el 72 %, el norte de Italia con 198 o el 39 %, y España con 182 o el 67 %. Una marca en cada barra señala el ahorro menor de cargar de noche entre las 22:00 y las 07:00.',
+          fig2Caption: 'Ahorro mayorista por coche y año en 2025 al cargar en el bloque más barato del día en lugar de a las 18:00, para 10 kWh al día a 7 kW. Las marcas indican la estrategia nocturna.',
         },
       },
     },

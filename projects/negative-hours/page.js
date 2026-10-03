@@ -211,6 +211,14 @@ const ANSWERED = {
             { file: 'q3_revenue_vs_negative_hours.svg', w: 1056, h: 595 },
         ],
     },
+    q4: {
+        linkKey: 'results.notebookShort',
+        notebook: 'https://github.com/Sbaiii/negative-hours/blob/main/analysis/q4_ev_charging.ipynb',
+        figures: [
+            { file: 'q4_cheapest_hour_2019_vs_2025.svg', w: 1056, h: 538 },
+            { file: 'q4_smart_charging_savings_2025.svg', w: 1056, h: 557 },
+        ],
+    },
 };
 
 function renderResults() {
