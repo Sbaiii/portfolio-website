@@ -124,11 +124,12 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Results',
-      standfirst: 'Q1 and Q2 have their answers. Q3 and Q4 land here as the analysis ships, and nothing is filled in until the numbers are real.',
+      standfirst: 'Q1 to Q3 have their answers. Q4 lands here as the analysis ships, and nothing is filled in until the numbers are real.',
       pending: 'Pending',
       awaiting: 'Awaiting analysis',
       answered: 'Answered',
       notebook: 'See the analysis notebook →',
+      notebookModel: 'See the model and notebook →',
       answers: {
         q1: {
           summary: 'Negative prices went from rare to routine: 5 of 8 European zones topped 500 negative-price hours in 2025, up from at most 112 in 2022. Spain and Portugal now hit zero or below most often, but their negative prices are shallow; Germany, the Netherlands and Belgium go much deeper.',
@@ -146,6 +147,14 @@ export const PAGE = {
           fig1Caption: 'Solar capture rate by bidding zone: what a MWh of solar earned on the day-ahead market, as a share of the average price. The hollow 2026 bar is the year to date.',
           fig2Alt: 'Seven small line charts plotting each zone’s solar share of generation against its solar capture rate, one point per year from 2019, with the other zones drawn faintly behind in grey. Every zone slopes downward: as solar takes a larger share of generation, the price it captures falls. Spain is the clearest case, moving from 6 per cent solar at a 102 per cent capture rate in 2019 to 20 per cent solar at 55 per cent in 2025. The Netherlands is left out, because ENTSO-E reports 0.49 TWh of Dutch solar in 2024 against 22 TWh in national statistics.',
           fig2Caption: 'Solar share of reported generation against solar capture rate, one point per year from 2019. Grey lines are the other zones.',
+        },
+        q3: {
+          summary: 'Not where prices go most negative. In 2025 an optimised 1 MW / 2 hour battery trading the day-ahead market could have earned up to €86k per MW in Poland, €76k in Germany and the Netherlands, and €37k in North Italy. What pays is the daily gap between cheap middays and expensive evenings: being paid to charge at negative prices was never more than 11% of a year’s revenue in any zone, and under 7% in 2025.',
+          caveat: 'Upper bound: day-ahead market only, perfect knowledge of cleared prices. Excludes intraday, balancing and capacity markets, degradation and grid fees. Not investment advice.',
+          fig1Alt: 'A horizontal bar chart ranking what a 1 MW, 2 MWh battery could have earned from day-ahead arbitrage in 2025, by bidding zone. Poland leads on 85.6 thousand euros per MW, then Germany-Luxembourg and the Netherlands on 76.1 each, Belgium on 68.2, Spain on 60.7, Portugal on 58.9, France on 55.3 and northern Italy last on 36.6. A tick on each bar marks what a simple rule of thumb would have earned, charging in the cheapest two hours and discharging in the most expensive two, and it falls short of the optimal schedule everywhere.',
+          fig1Caption: 'What a 1 MW / 2 MWh battery could have earned from day-ahead arbitrage in 2025, at most one cycle a day and 88% round trip. Bars are the optimal schedule, ticks the rule of thumb.',
+          fig2Alt: 'A scatter plot of battery revenue against negative-price hours, one dot per zone and full year from 2019 to 2025, coloured by zone. More negative hours generally went with more revenue, at a correlation of 0.40 across all 55 points and 0.76 once 2022 is set aside. The 2022 points are ringed and sit well above the rest: the energy crisis brought very high prices and few negative hours, so revenue was high for the opposite reason.',
+          fig2Caption: 'Battery revenue against negative-price hours, one point per zone and full year from 2019 to 2025. Association only: both grew over the same years.',
         },
       },
     },
@@ -269,11 +278,12 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Résultats',
-      standfirst: 'Les Q1 et Q2 ont leur réponse. Les Q3 et Q4 arriveront ici au fil de l’analyse, et rien n’est rempli tant que les chiffres ne sont pas réels.',
+      standfirst: 'Les Q1 à Q3 ont leur réponse. La Q4 arrivera ici au fil de l’analyse, et rien n’est rempli tant que les chiffres ne sont pas réels.',
       pending: 'En attente',
       awaiting: 'Analyse en cours',
       answered: 'Répondue',
       notebook: 'Voir le notebook d’analyse →',
+      notebookModel: 'Voir le modèle et le notebook →',
       answers: {
         q1: {
           summary: 'Les prix négatifs sont passés de rares à courants : 5 zones européennes sur 8 ont dépassé 500 heures de prix négatifs en 2025, contre 112 au maximum en 2022. L’Espagne et le Portugal touchent désormais zéro ou moins le plus souvent, mais leurs prix négatifs restent peu profonds ; l’Allemagne, les Pays-Bas et la Belgique descendent bien plus bas.',
@@ -291,6 +301,14 @@ export const PAGE = {
           fig1Caption: 'Taux de captation du solaire par zone de marché : ce qu’un MWh solaire a gagné sur le marché day-ahead, en part du prix moyen. La barre 2026 évidée correspond à l’année en cours.',
           fig2Alt: 'Sept petits graphiques en lignes croisant, pour chaque zone, la part du solaire dans la production et son taux de captation, un point par année depuis 2019, les autres zones étant tracées en gris clair en arrière-plan. Toutes les zones descendent : plus la part du solaire dans la production augmente, moins le prix qu’il capte est élevé. L’Espagne est le cas le plus net, passant de 6 % de solaire à un taux de 102 % en 2019 à 20 % de solaire à 55 % en 2025. Les Pays-Bas sont absents, car ENTSO-E déclare 0,49 TWh de solaire néerlandais en 2024 contre 22 TWh dans les statistiques nationales.',
           fig2Caption: 'Part du solaire dans la production déclarée rapportée au taux de captation du solaire, un point par année depuis 2019. Les lignes grises sont les autres zones.',
+        },
+        q3: {
+          summary: 'Pas là où les prix descendent le plus bas. En 2025, une batterie optimisée de 1 MW / 2 heures sur le marché day-ahead aurait pu gagner jusqu’à 86 k€ par MW en Pologne, 76 k€ en Allemagne et aux Pays-Bas, et 37 k€ en Italie du Nord. Ce qui paie, c’est l’écart quotidien entre des midis bon marché et des soirées chères : être payé pour se charger à prix négatif n’a jamais dépassé 11 % du revenu annuel d’une zone, et moins de 7 % en 2025.',
+          caveat: 'Borne supérieure : marché day-ahead uniquement, connaissance parfaite des prix fixés. Hors marchés infrajournalier, d’équilibrage et de capacité, hors dégradation et frais de réseau. Ceci n’est pas un conseil en investissement.',
+          fig1Alt: 'Un graphique en barres horizontales classant ce qu’une batterie de 1 MW et 2 MWh aurait pu gagner en arbitrage day-ahead en 2025, par zone de marché. La Pologne arrive en tête avec 85,6 milliers d’euros par MW, puis l’Allemagne-Luxembourg et les Pays-Bas à 76,1 chacun, la Belgique à 68,2, l’Espagne à 60,7, le Portugal à 58,9, la France à 55,3 et l’Italie du Nord en dernier à 36,6. Un trait sur chaque barre indique ce qu’aurait rapporté une règle simple, charger pendant les deux heures les moins chères et décharger pendant les deux plus chères, et il reste partout en deçà du programme optimal.',
+          fig1Caption: 'Ce qu’une batterie de 1 MW / 2 MWh aurait pu gagner en arbitrage day-ahead en 2025, au plus un cycle par jour et 88 % de rendement aller-retour. Les barres donnent le programme optimal, les traits la règle empirique.',
+          fig2Alt: 'Un nuage de points croisant le revenu de la batterie et le nombre d’heures à prix négatif, un point par zone et par année complète de 2019 à 2025, coloré par zone. Plus d’heures négatives va généralement de pair avec plus de revenu, pour une corrélation de 0,40 sur les 55 points et de 0,76 une fois 2022 mis de côté. Les points de 2022 sont entourés et se détachent nettement vers le haut : la crise de l’énergie a amené des prix très élevés et peu d’heures négatives, le revenu était donc élevé pour la raison inverse.',
+          fig2Caption: 'Revenu de la batterie rapporté aux heures à prix négatif, un point par zone et par année complète de 2019 à 2025. Simple association : les deux ont progressé sur les mêmes années.',
         },
       },
     },
@@ -414,11 +432,12 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Resultados',
-      standfirst: 'La Q1 y la Q2 ya tienen respuesta. La Q3 y la Q4 aparecerán aquí según avance el análisis, y nada se rellena hasta que las cifras sean reales.',
+      standfirst: 'De la Q1 a la Q3 ya tienen respuesta. La Q4 aparecerá aquí según avance el análisis, y nada se rellena hasta que las cifras sean reales.',
       pending: 'Pendiente',
       awaiting: 'A la espera del análisis',
       answered: 'Respondida',
       notebook: 'Ver el cuaderno de análisis →',
+      notebookModel: 'Ver el modelo y el cuaderno →',
       answers: {
         q1: {
           summary: 'Los precios negativos han pasado de raros a habituales: 5 de las 8 zonas europeas superaron las 500 horas de precios negativos en 2025, frente a 112 como máximo en 2022. España y Portugal son ahora las que más veces tocan cero o por debajo, pero sus precios negativos son poco profundos; Alemania, Países Bajos y Bélgica bajan mucho más.',
@@ -436,6 +455,14 @@ export const PAGE = {
           fig1Caption: 'Tasa de captura solar por zona de mercado: lo que un MWh solar ganó en el mercado day-ahead, como proporción del precio medio. La barra hueca de 2026 es el año en curso.',
           fig2Alt: 'Siete gráficos de líneas pequeños que cruzan, para cada zona, la proporción de solar en la generación y su tasa de captura, un punto por año desde 2019, con las demás zonas dibujadas en gris claro al fondo. Todas las zonas bajan: cuanta más generación aporta la solar, menos precio captura. España es el caso más claro, pasando del 6 % de solar con una tasa del 102 % en 2019 al 20 % de solar con el 55 % en 2025. Los Países Bajos quedan fuera, porque ENTSO-E declara 0,49 TWh de solar neerlandesa en 2024 frente a 22 TWh en las estadísticas nacionales.',
           fig2Caption: 'Proporción de solar en la generación declarada frente a la tasa de captura solar, un punto por año desde 2019. Las líneas grises son las demás zonas.',
+        },
+        q3: {
+          summary: 'No donde los precios bajan más. En 2025 una batería optimizada de 1 MW / 2 horas operando en el mercado day-ahead habría podido ganar hasta 86 k€ por MW en Polonia, 76 k€ en Alemania y Países Bajos, y 37 k€ en el norte de Italia. Lo que paga es la diferencia diaria entre mediodías baratos y tardes caras: cobrar por cargar a precios negativos nunca pasó del 11 % de los ingresos anuales de una zona, y se quedó por debajo del 7 % en 2025.',
+          caveat: 'Cota superior: solo mercado day-ahead y conocimiento perfecto de los precios casados. Excluye los mercados intradiario, de balance y de capacidad, la degradación y los peajes de red. Esto no es asesoramiento de inversión.',
+          fig1Alt: 'Un gráfico de barras horizontales que ordena lo que una batería de 1 MW y 2 MWh habría podido ganar con arbitraje day-ahead en 2025, por zona de mercado. Polonia encabeza con 85,6 miles de euros por MW, seguida de Alemania-Luxemburgo y Países Bajos con 76,1 cada una, Bélgica con 68,2, España con 60,7, Portugal con 58,9, Francia con 55,3 y el norte de Italia en último lugar con 36,6. Una marca en cada barra señala lo que habría dado una regla sencilla, cargar en las dos horas más baratas y descargar en las dos más caras, y en todas las zonas se queda por debajo del programa óptimo.',
+          fig1Caption: 'Lo que una batería de 1 MW / 2 MWh habría podido ganar con arbitraje day-ahead en 2025, como mucho un ciclo al día y 88 % de rendimiento de ida y vuelta. Las barras son el programa óptimo, las marcas la regla aproximada.',
+          fig2Alt: 'Un diagrama de dispersión que cruza los ingresos de la batería con las horas de precio negativo, un punto por zona y año completo de 2019 a 2025, con color por zona. Más horas negativas suelen ir con más ingresos, con una correlación de 0,40 en los 55 puntos y de 0,76 dejando fuera 2022. Los puntos de 2022 van rodeados y quedan muy por encima del resto: la crisis energética trajo precios muy altos y pocas horas negativas, así que los ingresos fueron altos por el motivo contrario.',
+          fig2Caption: 'Ingresos de la batería frente a las horas de precio negativo, un punto por zona y año completo de 2019 a 2025. Solo asociación: ambos crecieron en los mismos años.',
         },
       },
     },

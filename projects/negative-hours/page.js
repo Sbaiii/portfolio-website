@@ -203,13 +203,21 @@ const ANSWERED = {
             { file: 'q2_cannibalisation_curve.svg', w: 1152, h: 653 },
         ],
     },
+    q3: {
+        linkKey: 'results.notebookModel',
+        notebook: 'https://github.com/Sbaiii/negative-hours/blob/main/analysis/q3_battery_arbitrage.ipynb',
+        figures: [
+            { file: 'q3_revenue_by_zone_2025.svg', w: 1056, h: 557 },
+            { file: 'q3_revenue_vs_negative_hours.svg', w: 1056, h: 595 },
+        ],
+    },
 };
 
 function renderResults() {
     const host = $('#results');
 
     const answered = QIDS.filter((id) => ANSWERED[id]).map((id) => {
-        const { notebook, figures } = ANSWERED[id];
+        const { notebook, figures, linkKey } = ANSWERED[id];
         const n = QIDS.indexOf(id) + 1;
 
         const plates = figures.map((f, j) => `
@@ -238,7 +246,7 @@ function renderResults() {
                 ${caveat === caveatKey ? '' : `<p class="rans__caveat">${caveat}</p>`}
                 <div class="rans__figures">${plates}</div>
                 <a class="btn btn--text" href="${notebook}" target="_blank"
-                   rel="noopener noreferrer">${t('results.notebook')}</a>
+                   rel="noopener noreferrer">${t(linkKey || 'results.notebook')}</a>
             </article>`;
     }).join('');
 
