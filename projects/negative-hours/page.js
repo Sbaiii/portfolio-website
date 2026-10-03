@@ -192,6 +192,7 @@ const ANSWERED = {
         // browser scales them by 96/72 to get the natural size.
         figures: [
             { file: 'q1_negative_hours_by_zone.svg', w: 1152, h: 634 },
+            { file: 'q1_frequency_vs_depth_2025.svg', w: 864, h: 576 },
             { file: 'q1_share_at_or_below_zero_2026.svg', w: 912, h: 499 },
         ],
     },
