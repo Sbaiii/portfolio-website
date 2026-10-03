@@ -14,6 +14,8 @@ import { LOG } from './log.js';
 const REPO = 'https://github.com/Sbaiii/negative-hours';
 const DECISIONS = `${REPO}/blob/main/control-room/04%20Decisions`;
 const BREAKPOINT = 760;
+const QIDS = ['q1', 'q2', 'q3', 'q4'];
+const FIG_DIR = '/assets/projects/negative-hours';
 
 let lang = 'en';
 
@@ -54,7 +56,7 @@ function renderExplainer() {
 
 function renderQuestions() {
     const host = $('#questions');
-    host.innerHTML = ['q1', 'q2', 'q3', 'q4'].map((id, i) => `
+    host.innerHTML = QIDS.map((id, i) => `
         <article class="qcard reveal">
             <span class="qcard__n">Q${i + 1}</span>
             <h3 class="qcard__q">${t(`questions.items.${id}.q`)}</h3>
@@ -176,16 +178,64 @@ function renderLog() {
     observeReveals(host);
 }
 
-/* --- fig. 06: results, deliberately empty --------------------------------- */
+/* --- fig. 06: results ----------------------------------------------------- */
+
+/* Only the questions listed here have a published answer. Everything else
+   renders as a pending slot, so the page cannot assert a result it does not
+   have: adding a key is the single act that publishes one. */
+const ANSWERED = {
+    q1: {
+        notebook: 'https://github.com/Sbaiii/negative-hours/blob/main/analysis/q1_negative_hours.ipynb',
+        // Intrinsic size in CSS pixels, so the space is reserved before the
+        // image arrives and the section never shifts. Note these are not the
+        // viewBox numbers: the files declare their size in points, so the
+        // browser scales them by 96/72 to get the natural size.
+        figures: [
+            { file: 'q1_negative_hours_by_zone.svg', w: 1152, h: 634 },
+            { file: 'q1_share_at_or_below_zero_2026.svg', w: 912, h: 499 },
+        ],
+    },
+};
 
 function renderResults() {
     const host = $('#results');
-    host.innerHTML = ['q1', 'q2', 'q3', 'q4'].map((id, i) => `
+
+    const answered = QIDS.filter((id) => ANSWERED[id]).map((id) => {
+        const { notebook, figures } = ANSWERED[id];
+        const n = QIDS.indexOf(id) + 1;
+
+        const plates = figures.map((f, j) => `
+            <figure class="rfig">
+                <div class="rfig__canvas">
+                    <img src="${FIG_DIR}/${f.file}" width="${f.w}" height="${f.h}"
+                         loading="lazy" decoding="async"
+                         alt="${t(`results.answers.${id}.fig${j + 1}Alt`)}">
+                </div>
+                <figcaption class="meta rfig__caption">${t(`results.answers.${id}.fig${j + 1}Caption`)}</figcaption>
+            </figure>`).join('');
+
+        return `
+            <article class="rans reveal">
+                <div class="rans__head">
+                    <span class="rslot__n">Q${n}</span>
+                    <span class="badge badge--done">${t('results.answered')}</span>
+                </div>
+                <h3 class="rans__q">${t(`questions.items.${id}.q`)}</h3>
+                <p class="rans__summary">${t(`results.answers.${id}.summary`)}</p>
+                <div class="rans__figures">${plates}</div>
+                <a class="btn btn--text" href="${notebook}" target="_blank"
+                   rel="noopener noreferrer">${t('results.notebook')}</a>
+            </article>`;
+    }).join('');
+
+    const waiting = QIDS.filter((id) => !ANSWERED[id]).map((id) => `
         <div class="rslot reveal">
-            <span class="rslot__n">Q${i + 1}</span>
+            <span class="rslot__n">Q${QIDS.indexOf(id) + 1}</span>
             <p class="rslot__q">${t(`questions.items.${id}.q`)}</p>
             <p class="rslot__pending">${t('results.awaiting')}</p>
         </div>`).join('');
+
+    host.innerHTML = answered + (waiting ? `<div class="rgrid">${waiting}</div>` : '');
     observeReveals(host);
 }
 

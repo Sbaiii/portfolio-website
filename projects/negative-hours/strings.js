@@ -124,15 +124,26 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Results',
-      standfirst: 'Results land here as the analysis ships. Nothing is filled in until the numbers are real.',
+      standfirst: 'Q1 has its answer. The rest land here as the analysis ships, and nothing is filled in until the numbers are real.',
       pending: 'Pending',
       awaiting: 'Awaiting analysis',
+      answered: 'Answered',
+      notebook: 'See the analysis notebook →',
+      answers: {
+        q1: {
+          summary: 'Negative prices went from rare to routine: 5 of 8 European zones topped 500 negative-price hours in 2025, up from at most 112 in 2022. Spain and Portugal now hit zero or below most often, but their negative prices are shallow; Germany, the Netherlands and Belgium go much deeper.',
+          fig1Alt: 'Eight small bar charts, one per bidding zone, showing hours per year with a day-ahead price below zero from 2019 to 2026. The Netherlands, Germany-Luxembourg, Spain, Belgium and France all pass 500 hours in 2025, Poland reaches 311 and Portugal 198, and northern Italy records none in any year. The 2026 bars are drawn hollow because the year is incomplete.',
+          fig1Caption: 'Hours per year with a day-ahead price below 0 €/MWh, by bidding zone. The hollow 2026 bar is the year to date.',
+          fig2Alt: 'A horizontal bar chart of the share of 2026 hours priced at or below zero, split into hours below zero and hours at exactly zero. Spain leads on 15.4 per cent, then Portugal on 13.2 and France on 12.0, ahead of Germany-Luxembourg on 8.3, the Netherlands on 6.8, Poland on 5.8, Belgium on 5.3 and northern Italy on 0.3. About a third of the Spanish, Portuguese and French hours sit at exactly zero, against 13 to 16 per cent in Germany, the Netherlands and Belgium.',
+          fig2Caption: 'Share of 2026 hours to date priced at or below zero, split into below zero and exactly zero.',
+        },
+      },
     },
 
     footer: {
       repo: 'Repository ↗',
       home: 'Back to sbaiii.com',
-      note: 'Data: ENTSO-E Transparency Platform. Figures on this page are illustrations of the method, not results.',
+      note: 'Data: ENTSO-E Transparency Platform. The fig. 01 chart illustrates the method; the fig. 06 charts are results read off the data.',
     },
   },
 
@@ -248,15 +259,26 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Résultats',
-      standfirst: 'Les résultats arriveront ici au fil de l’analyse. Rien n’est rempli tant que les chiffres ne sont pas réels.',
+      standfirst: 'La Q1 a sa réponse. Les autres arriveront ici au fil de l’analyse, et rien n’est rempli tant que les chiffres ne sont pas réels.',
       pending: 'En attente',
       awaiting: 'Analyse en cours',
+      answered: 'Répondue',
+      notebook: 'Voir le notebook d’analyse →',
+      answers: {
+        q1: {
+          summary: 'Les prix négatifs sont passés de rares à courants : 5 zones européennes sur 8 ont dépassé 500 heures de prix négatifs en 2025, contre 112 au maximum en 2022. L’Espagne et le Portugal touchent désormais zéro ou moins le plus souvent, mais leurs prix négatifs restent peu profonds ; l’Allemagne, les Pays-Bas et la Belgique descendent bien plus bas.',
+          fig1Alt: 'Huit petits graphiques en barres, un par zone de marché, montrant le nombre d’heures par an avec un prix day-ahead inférieur à zéro de 2019 à 2026. Les Pays-Bas, l’Allemagne-Luxembourg, l’Espagne, la Belgique et la France dépassent tous 500 heures en 2025, la Pologne atteint 311 et le Portugal 198, et l’Italie du Nord n’en enregistre aucune, quelle que soit l’année. Les barres 2026 sont évidées car l’année est incomplète.',
+          fig1Caption: 'Heures par an avec un prix day-ahead sous 0 €/MWh, par zone de marché. La barre 2026 évidée correspond à l’année en cours.',
+          fig2Alt: 'Un graphique en barres horizontales de la part des heures 2026 cotées à zéro ou en dessous, séparant les heures sous zéro et les heures à exactement zéro. L’Espagne arrive en tête avec 15,4 %, puis le Portugal avec 13,2 % et la France avec 12,0 %, devant l’Allemagne-Luxembourg à 8,3 %, les Pays-Bas à 6,8 %, la Pologne à 5,8 %, la Belgique à 5,3 % et l’Italie du Nord à 0,3 %. Environ un tiers des heures espagnoles, portugaises et françaises sont à exactement zéro, contre 13 à 16 % en Allemagne, aux Pays-Bas et en Belgique.',
+          fig2Caption: 'Part des heures 2026 à ce jour cotées à zéro ou en dessous, séparant sous zéro et exactement zéro.',
+        },
+      },
     },
 
     footer: {
       repo: 'Dépôt ↗',
       home: 'Retour à sbaiii.com',
-      note: 'Données : plateforme de transparence ENTSO-E. Les figures de cette page illustrent la méthode, ce ne sont pas des résultats.',
+      note: 'Données : plateforme de transparence ENTSO-E. Le graphique de la fig. 01 illustre la méthode ; ceux de la fig. 06 sont des résultats issus des données.',
     },
   },
 
@@ -372,15 +394,26 @@ export const PAGE = {
     results: {
       fig: 'fig. 06',
       title: 'Resultados',
-      standfirst: 'Los resultados aparecerán aquí según avance el análisis. Nada se rellena hasta que las cifras sean reales.',
+      standfirst: 'La Q1 ya tiene respuesta. Las demás aparecerán aquí según avance el análisis, y nada se rellena hasta que las cifras sean reales.',
       pending: 'Pendiente',
       awaiting: 'A la espera del análisis',
+      answered: 'Respondida',
+      notebook: 'Ver el cuaderno de análisis →',
+      answers: {
+        q1: {
+          summary: 'Los precios negativos han pasado de raros a habituales: 5 de las 8 zonas europeas superaron las 500 horas de precios negativos en 2025, frente a 112 como máximo en 2022. España y Portugal son ahora las que más veces tocan cero o por debajo, pero sus precios negativos son poco profundos; Alemania, Países Bajos y Bélgica bajan mucho más.',
+          fig1Alt: 'Ocho gráficos de barras pequeños, uno por zona de mercado, con las horas al año con precio day-ahead por debajo de cero entre 2019 y 2026. Países Bajos, Alemania-Luxemburgo, España, Bélgica y Francia superan las 500 horas en 2025, Polonia llega a 311 y Portugal a 198, y el norte de Italia no registra ninguna en ningún año. Las barras de 2026 van huecas porque el año está incompleto.',
+          fig1Caption: 'Horas al año con precio day-ahead por debajo de 0 €/MWh, por zona de mercado. La barra hueca de 2026 es el año en curso.',
+          fig2Alt: 'Un gráfico de barras horizontales con la proporción de horas de 2026 a cero o por debajo, separando las horas por debajo de cero y las horas a exactamente cero. España encabeza con el 15,4 %, seguida de Portugal con el 13,2 % y Francia con el 12,0 %, por delante de Alemania-Luxemburgo con el 8,3 %, Países Bajos con el 6,8 %, Polonia con el 5,8 %, Bélgica con el 5,3 % y el norte de Italia con el 0,3 %. Alrededor de un tercio de las horas españolas, portuguesas y francesas están a exactamente cero, frente al 13 a 16 % en Alemania, Países Bajos y Bélgica.',
+          fig2Caption: 'Proporción de las horas de 2026 hasta la fecha a cero o por debajo, separando por debajo de cero y exactamente cero.',
+        },
+      },
     },
 
     footer: {
       repo: 'Repositorio ↗',
       home: 'Volver a sbaiii.com',
-      note: 'Datos: plataforma de transparencia de ENTSO-E. Las figuras de esta página ilustran el método, no son resultados.',
+      note: 'Datos: plataforma de transparencia de ENTSO-E. El gráfico de la fig. 01 ilustra el método; los de la fig. 06 son resultados obtenidos de los datos.',
     },
   },
 };

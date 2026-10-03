@@ -2548,6 +2548,104 @@ button {
     text-align: center;
 }
 
+/* fig. 06: a question that has been answered. The answered ones get the full
+   width because they carry charts; the ones still waiting stay in the grid. */
+.rstack {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.rans {
+    /* A grid item defaults to min-width: auto, which would let wide content
+       push the card past the page instead of scrolling inside it. */
+    min-width: 0;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--paper);
+}
+
+.rans__head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.rans__head .badge {
+    margin-top: 0;
+}
+
+.badge--done {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--accent-on);
+}
+
+.rans__q {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-block: 0.7rem 0.85rem;
+}
+
+.rans__summary {
+    color: var(--ink);
+    max-width: 68ch;
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.rans__figures {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 1.75rem);
+    margin-bottom: 1.25rem;
+}
+
+/* The charts carry their own near-white canvas. Rather than recolour them per
+   theme, which would make the same chart two different charts, they sit on a
+   card that matches that canvas in both themes. */
+.rfig {
+    margin: 0;
+    min-width: 0;
+}
+
+.rfig__canvas {
+    background: #fcfcfb;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: clamp(0.5rem, 1.5vw, 0.9rem);
+}
+
+.rfig__canvas img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.rfig__caption {
+    display: block;
+    margin-top: 0.6rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    max-width: 72ch;
+}
+
+/* On a phone the eight-panel chart would come out around 260px wide, where its
+   bar labels are unreadable. Rather than shrink it further, the card pans:
+   the chart keeps a legible size and the reader scrolls it sideways. */
+@media (max-width: 760px) {
+    .rfig__canvas {
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+    }
+
+    .rfig__canvas img {
+        min-width: 520px;
+    }
+}
+
 .nav__back {
     display: none;
 }
