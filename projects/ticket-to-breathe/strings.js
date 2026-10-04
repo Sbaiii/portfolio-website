@@ -114,15 +114,9 @@ export const PAGE = {
       },
     },
 
-    log: {
-      fig: 'fig. 05',
-      title: 'Build log',
-      standfirst: 'Updated as the work happens.',
-      empty: 'No entries yet.',
-    },
 
     results: {
-      fig: 'fig. 06',
+      fig: 'fig. 05',
       title: 'Results',
       standfirst: 'Results land here as the analysis ships. Nothing is filled in until the numbers are real.',
       pending: 'Pending',
@@ -236,15 +230,9 @@ export const PAGE = {
       },
     },
 
-    log: {
-      fig: 'fig. 05',
-      title: 'Journal de bord',
-      standfirst: 'Mis à jour au fil du travail.',
-      empty: 'Aucune entrée pour l’instant.',
-    },
 
     results: {
-      fig: 'fig. 06',
+      fig: 'fig. 05',
       title: 'Résultats',
       standfirst: 'Les résultats arriveront ici au fil de l’analyse. Rien n’est rempli tant que les chiffres ne sont pas réels.',
       pending: 'En attente',
@@ -358,15 +346,9 @@ export const PAGE = {
       },
     },
 
-    log: {
-      fig: 'fig. 05',
-      title: 'Diario de obra',
-      standfirst: 'Actualizado según avanza el trabajo.',
-      empty: 'Todavía no hay entradas.',
-    },
 
     results: {
-      fig: 'fig. 06',
+      fig: 'fig. 05',
       title: 'Resultados',
       standfirst: 'Los resultados aparecerán aquí según avance el análisis. Nada se rellena hasta que las cifras sean reales.',
       pending: 'Pendiente',

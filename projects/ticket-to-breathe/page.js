@@ -12,7 +12,6 @@ import {
     $, $$, resolveKey, initTheme, scrambleTo, observeReveals, revealOnScreen,
 } from '/js/chrome.js';
 import { PAGE, LANGS } from './strings.js';
-import { LOG } from './log.js';
 
 const REPO = 'https://github.com/Sbaiii/ticket-to-breathe';
 const DECISIONS = `${REPO}/blob/main/lab-notebook/04%20Decisions`;
@@ -204,28 +203,7 @@ function renderDecisions() {
     observeReveals(host);
 }
 
-/* --- fig. 05: build log --------------------------------------------------- */
-
-function renderLog() {
-    const host = $('#log');
-    if (!LOG.length) {
-        host.innerHTML = `<p class="lead">${t('log.empty')}</p>`;
-        return;
-    }
-    const fmt = new Intl.DateTimeFormat(lang, { day: '2-digit', month: 'short', year: 'numeric' });
-    host.innerHTML = LOG.map((entry) => {
-        const [y, m, d] = entry.date.split('-').map(Number);
-        const when = fmt.format(new Date(y, m - 1, d)).replace('.', '');
-        return `
-            <li class="logitem reveal">
-                <time class="logitem__date" datetime="${entry.date}">${when}</time>
-                <p class="logitem__text">${entry[lang] || entry.en}</p>
-            </li>`;
-    }).join('');
-    observeReveals(host);
-}
-
-/* --- fig. 06: results, deliberately empty --------------------------------- */
+/* --- fig. 05: results, deliberately empty --------------------------------- */
 
 function renderResults() {
     const host = $('#results');
@@ -259,7 +237,6 @@ function renderAll(animate = false) {
     renderQuestions();
     renderPipeline();
     renderDecisions();
-    renderLog();
     renderResults();
 }
 

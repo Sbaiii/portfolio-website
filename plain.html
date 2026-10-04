@@ -119,7 +119,7 @@
         <h2>Projects</h2>
 
         <h3>Negative Hours</h3>
-        <p class="when">In progress · Python · SQL · dbt · DuckDB · GitHub Actions</p>
+        <p class="when">Live · Python · SQL · dbt · DuckDB · GitHub Actions</p>
         <p><em>Europe’s electricity market in the renewables era.</em> How often is power free in Europe, and what is
             a battery worth in each country?</p>
         <p><strong>Problem.</strong> Solar and wind now push European wholesale prices to zero or below for hours at a
@@ -127,7 +127,8 @@
             power.</p>
         <p><strong>What I built.</strong> An automated pipeline pulling official ENTSO-E grid data for 8 European
             bidding zones (ES, PT, FR, DE-LU, NL, BE, PL, IT-North) since 2019, modelled in dbt, analysed in SQL and
-            Python, with a live dashboard.</p>
+            Python. The whole pipeline reruns itself every day at about 12:30 UTC, the warehouse is tested on every
+            run, and the results feed a live dashboard.</p>
         <p><strong>Result.</strong> Negative prices went from rare to routine: 5 of 8 European zones topped 500
             negative hours in 2025 (NL 584, DE 576, ES 556, BE 519, FR 513), and before 2023 no zone had ever
             exceeded 298. All four questions are answered in the case study: solar earned only 51% to 59% of the
@@ -137,6 +138,10 @@
             (2023 to 2025) figures exactly. The live dashboard is still being built.</p>
         <p>
             <a href="/projects/negative-hours/">Read the case study</a> ·
+            <a href="https://sbaiii.github.io/negative-hours/" target="_blank"
+                rel="noopener noreferrer">Live dashboard</a> ·
+            <a href="https://github.com/Sbaiii/negative-hours/blob/main/docs/exec_memo.md" target="_blank"
+                rel="noopener noreferrer">1-page summary</a> ·
             <a href="https://github.com/Sbaiii/negative-hours" target="_blank"
                 rel="noopener noreferrer">github.com/Sbaiii/negative-hours</a>
         </p>

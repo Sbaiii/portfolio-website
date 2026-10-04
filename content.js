@@ -116,11 +116,11 @@ export const PROJECTS = [
     caseStudy: '/projects/negative-hours/',
     tags: ['Python', 'SQL', 'dbt', 'DuckDB', 'GitHub Actions'],
     image: null,
+    dashboard: 'https://sbaiii.github.io/negative-hours/',
     // Which inline illustration the card draws in place of a screenshot.
     plot: 'priceDay',
-    // Stays empty until the analysis ships; the card renders the pending state.
     metrics: [],
-    status: 'wip',
+    status: 'live',
   },
   {
     id: 'ticketToBreathe',
@@ -247,13 +247,15 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Case Studies',
-      standfirst: 'Two in progress. Built in the open.',
+      standfirst: 'One shipped, one in progress. Built in the open.',
       problem: 'Problem',
       built: 'What I built',
       result: 'Result',
       view: 'View on GitHub',
       todo: 'Results pending. Real numbers going in here.',
       wip: 'In progress',
+      live: 'Live',
+      dashboardLink: 'Live dashboard ↗',
       readCase: 'Read the case study →',
       projects: {
         negativeHours: {
@@ -500,13 +502,15 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Études de Cas',
-      standfirst: 'Deux en cours. Construit à ciel ouvert.',
+      standfirst: 'Un livré, un en cours. Construit à ciel ouvert.',
       problem: 'Problème',
       built: 'Ce que j’ai construit',
       result: 'Résultat',
       view: 'Voir sur GitHub',
       todo: 'Résultats à venir. Les vrais chiffres arrivent ici.',
       wip: 'En cours',
+      live: 'En ligne',
+      dashboardLink: 'Tableau de bord ↗',
       readCase: 'Lire l’étude de cas →',
       projects: {
         negativeHours: {
@@ -752,13 +756,15 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Casos Prácticos',
-      standfirst: 'Dos en curso. Construido a la vista.',
+      standfirst: 'Uno entregado, uno en curso. Construido a la vista.',
       problem: 'Problema',
       built: 'Lo que construí',
       result: 'Resultado',
       view: 'Ver en GitHub',
       todo: 'Resultados pendientes. Aquí van las cifras reales.',
       wip: 'En curso',
+      live: 'En directo',
+      dashboardLink: 'Panel en directo ↗',
       readCase: 'Leer el caso práctico →',
       projects: {
         negativeHours: {

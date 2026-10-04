@@ -421,6 +421,9 @@ function renderCases() {
             p.caseStudy
                 ? `<a class="btn btn--primary" href="${p.caseStudy}">${t('work.readCase')}</a>`
                 : '',
+            p.dashboard
+                ? `<a class="btn btn--ghost" href="${p.dashboard}" target="_blank" rel="noopener noreferrer">${t('work.dashboardLink')}</a>`
+                : '',
             p.repo
                 ? `<a class="btn btn--ghost" href="${p.repo}" target="_blank" rel="noopener noreferrer">${t('work.view')} ↗</a>`
                 : '',
@@ -432,6 +435,7 @@ function renderCases() {
             <div class="fig__label">
                 <span class="meta">${String(i + 1).padStart(2, '0')}</span>
                 ${p.status === 'wip' ? `<span class="badge badge--wip">${t('work.wip')}</span>` : ''}
+                ${p.status === 'live' ? `<span class="badge badge--done">${t('work.live')}</span>` : ''}
             </div>
             <div class="case__body">
                 <div>

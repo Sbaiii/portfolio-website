@@ -23,8 +23,10 @@ export const PAGE = {
       title: 'Negative Hours',
       subtitle: 'Europe’s electricity market in the renewables era',
       hook: 'How often is power free in Europe, and what is a battery worth in each country?',
-      status: 'In progress',
+      status: 'Live',
       repo: 'View the repository ↗',
+      dashboard: 'Live dashboard ↗',
+      memo: 'Read the 1-page summary ↗',
       meta: '8 bidding zones · hourly prices since 2019 · official ENTSO-E data',
     },
 
@@ -90,7 +92,7 @@ export const PAGE = {
         dashboard: 'Dashboard',
         dashboardNote: 'The four questions',
       },
-      refresh: 'Refreshed on a schedule by GitHub Actions',
+      refresh: 'The whole pipeline reruns itself every day at about 12:30 UTC, and the warehouse is tested on every run.',
     },
 
     decisions: {
@@ -114,20 +116,16 @@ export const PAGE = {
       },
     },
 
-    log: {
-      fig: 'fig. 05',
-      title: 'Build log',
-      standfirst: 'Updated as the work happens.',
-      empty: 'No entries yet.',
-    },
 
     results: {
-      fig: 'fig. 06',
+      fig: 'fig. 05',
       title: 'Results',
       standfirst: 'All four questions have their answers. Full years are compared with full years; 2026 is not over, so it appears only against the same dates of earlier years, 1 Jan to 2 Oct.',
       pending: 'Pending',
       awaiting: 'Awaiting analysis',
       answered: 'Answered',
+      takeawayLabel: 'Key takeaway',
+      takeaway: 'Negative prices are a symptom, not the prize: what pays a battery is the daily gap between cheap middays and expensive evenings.',
       validated: 'Validated against official statistics. Negative hours match the published German counts for 2019 to 2024 and RTE’s French counts for 2023 to 2025 exactly, and Germany’s 2024 solar capture price lands within a cent of the official market value.',
       notebook: 'See the analysis notebook →',
       notebookModel: 'See the model and notebook →',
@@ -193,8 +191,10 @@ export const PAGE = {
       title: 'Negative Hours',
       subtitle: 'Le marché européen de l’électricité à l’ère des renouvelables',
       hook: 'À quelle fréquence l’électricité est-elle gratuite en Europe, et que vaut une batterie dans chaque pays ?',
-      status: 'En cours',
+      status: 'En ligne',
       repo: 'Voir le dépôt ↗',
+      dashboard: 'Tableau de bord en direct ↗',
+      memo: 'Lire la synthèse d’une page ↗',
       meta: '8 zones de marché · prix horaires depuis 2019 · données officielles ENTSO-E',
     },
 
@@ -260,7 +260,7 @@ export const PAGE = {
         dashboard: 'Tableau de bord',
         dashboardNote: 'Les quatre questions',
       },
-      refresh: 'Rafraîchi automatiquement par GitHub Actions',
+      refresh: 'Tout le pipeline se relance chaque jour vers 12h30 UTC, et l’entrepôt est testé à chaque exécution.',
     },
 
     decisions: {
@@ -284,20 +284,16 @@ export const PAGE = {
       },
     },
 
-    log: {
-      fig: 'fig. 05',
-      title: 'Journal de bord',
-      standfirst: 'Mis à jour au fil du travail.',
-      empty: 'Aucune entrée pour l’instant.',
-    },
 
     results: {
-      fig: 'fig. 06',
+      fig: 'fig. 05',
       title: 'Résultats',
       standfirst: 'Les quatre questions ont leur réponse. Les années complètes sont comparées à des années complètes ; 2026 n’est pas terminée, elle n’apparaît donc que face aux mêmes dates des années précédentes, du 1er janvier au 2 octobre.',
       pending: 'En attente',
       awaiting: 'Analyse en cours',
       answered: 'Répondue',
+      takeawayLabel: 'À retenir',
+      takeaway: 'Les prix négatifs sont un symptôme, pas le gain : ce qui rémunère une batterie, c’est l’écart quotidien entre des midis bon marché et des soirées chères.',
       validated: 'Validé face aux statistiques officielles. Les heures négatives correspondent exactement aux comptages allemands publiés pour 2019 à 2024 et à ceux de RTE pour la France de 2023 à 2025, et le prix de captation du solaire allemand en 2024 tombe à un centime près de la valeur de marché officielle.',
       notebook: 'Voir le notebook d’analyse →',
       notebookModel: 'Voir le modèle et le notebook →',
@@ -363,8 +359,10 @@ export const PAGE = {
       title: 'Negative Hours',
       subtitle: 'El mercado eléctrico europeo en la era de las renovables',
       hook: '¿Con qué frecuencia la electricidad es gratis en Europa, y cuánto vale una batería en cada país?',
-      status: 'En curso',
+      status: 'En directo',
       repo: 'Ver el repositorio ↗',
+      dashboard: 'Panel en directo ↗',
+      memo: 'Leer el resumen de una página ↗',
       meta: '8 zonas de mercado · precios horarios desde 2019 · datos oficiales de ENTSO-E',
     },
 
@@ -430,7 +428,7 @@ export const PAGE = {
         dashboard: 'Panel',
         dashboardNote: 'Las cuatro preguntas',
       },
-      refresh: 'Actualizado de forma programada por GitHub Actions',
+      refresh: 'Todo el pipeline se vuelve a ejecutar cada día hacia las 12:30 UTC, y el almacén se somete a tests en cada ejecución.',
     },
 
     decisions: {
@@ -454,20 +452,16 @@ export const PAGE = {
       },
     },
 
-    log: {
-      fig: 'fig. 05',
-      title: 'Diario de obra',
-      standfirst: 'Actualizado según avanza el trabajo.',
-      empty: 'Todavía no hay entradas.',
-    },
 
     results: {
-      fig: 'fig. 06',
+      fig: 'fig. 05',
       title: 'Resultados',
       standfirst: 'Las cuatro preguntas ya tienen respuesta. Los años completos se comparan con años completos; 2026 no ha terminado, así que solo aparece frente a las mismas fechas de años anteriores, del 1 de enero al 2 de octubre.',
       pending: 'Pendiente',
       awaiting: 'A la espera del análisis',
       answered: 'Respondida',
+      takeawayLabel: 'La idea clave',
+      takeaway: 'Los precios negativos son un síntoma, no el premio: lo que paga a una batería es la diferencia diaria entre mediodías baratos y tardes caras.',
       validated: 'Validado frente a estadísticas oficiales. Las horas negativas coinciden exactamente con los recuentos alemanes publicados de 2019 a 2024 y con los de RTE para Francia de 2023 a 2025, y el precio de captura de la solar alemana en 2024 queda a un céntimo del valor de mercado oficial.',
       notebook: 'Ver el cuaderno de análisis →',
       notebookModel: 'Ver el modelo y el cuaderno →',
