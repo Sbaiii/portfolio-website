@@ -264,7 +264,7 @@ export const STRINGS = {
             'Solar and wind now push European wholesale prices to zero or below for hours at a time. Solar owners earn less exactly when they produce most, while batteries can be paid to absorb free power.',
           built:
             'An automated pipeline pulling official ENTSO-E grid data for 8 European bidding zones (ES, PT, FR, DE-LU, NL, BE, PL, IT-North) since 2019, modelled in dbt, analysed in SQL and Python, with a live dashboard.',
-          result: 'Negative prices went from rare to routine: 5 of 8 European zones topped 500 negative-price hours in 2025, up from at most 112 in 2022. All four questions are answered in the case study, with the charts and the notebooks behind them. The live dashboard is still being built.',
+          result: 'Negative prices went from rare to routine: 5 of 8 European zones topped 500 negative hours in 2025, and before 2023 no zone had ever exceeded 298. All four questions are answered in the case study, with the charts and notebooks behind them, and the counts match the published German and French figures exactly. The live dashboard is still being built.',
         },
         ticketToBreathe: {
           title: 'Ticket to Breathe',
@@ -517,7 +517,7 @@ export const STRINGS = {
             'Le solaire et l’éolien poussent désormais les prix de gros européens à zéro ou en dessous pendant des heures. Les producteurs solaires gagnent moins au moment précis où ils produisent le plus, tandis que les batteries peuvent être payées pour absorber cette électricité gratuite.',
           built:
             'Un pipeline automatisé qui récupère les données officielles du réseau ENTSO-E pour 8 zones de marché européennes (ES, PT, FR, DE-LU, NL, BE, PL, IT-Nord) depuis 2019, modélisées avec dbt, analysées en SQL et Python, avec un tableau de bord en direct.',
-          result: 'Les prix négatifs sont passés de rares à courants : 5 zones européennes sur 8 ont dépassé 500 heures de prix négatifs en 2025, contre 112 au maximum en 2022. Les quatre questions ont leur réponse dans l’étude de cas, avec les graphiques et les notebooks derrière. Le tableau de bord en direct reste à construire.',
+          result: 'Les prix négatifs sont passés de rares à courants : 5 zones européennes sur 8 ont dépassé 500 heures négatives en 2025, alors qu’avant 2023 aucune zone n’avait jamais dépassé 298. Les quatre questions ont leur réponse dans l’étude de cas, graphiques et notebooks à l’appui, et les comptages correspondent exactement aux chiffres publiés en Allemagne et en France. Le tableau de bord en direct reste à construire.',
         },
         ticketToBreathe: {
           title: 'Ticket to Breathe',
@@ -769,7 +769,7 @@ export const STRINGS = {
             'La solar y la eólica empujan ya los precios mayoristas europeos a cero o por debajo durante horas. Los productores solares ganan menos justo cuando más producen, mientras que a las baterías se les puede pagar por absorber esa electricidad gratuita.',
           built:
             'Un pipeline automatizado que extrae datos oficiales de la red ENTSO-E para 8 zonas de mercado europeas (ES, PT, FR, DE-LU, NL, BE, PL, IT-Norte) desde 2019, modelados con dbt, analizados en SQL y Python, con un panel en vivo.',
-          result: 'Los precios negativos han pasado de raros a habituales: 5 de las 8 zonas europeas superaron las 500 horas de precios negativos en 2025, frente a 112 como máximo en 2022. Las cuatro preguntas tienen respuesta en el caso práctico, con los gráficos y los cuadernos que las respaldan. El panel en vivo sigue en construcción.',
+          result: 'Los precios negativos han pasado de raros a habituales: 5 de las 8 zonas europeas superaron las 500 horas negativas en 2025, y antes de 2023 ninguna zona había pasado nunca de 298. Las cuatro preguntas tienen respuesta en el caso práctico, con los gráficos y cuadernos que las respaldan, y los recuentos coinciden exactamente con las cifras publicadas en Alemania y Francia. El panel en vivo sigue en construcción.',
         },
         ticketToBreathe: {
           title: 'Ticket to Breathe',

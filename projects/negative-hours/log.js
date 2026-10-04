@@ -11,6 +11,12 @@
 
 export const LOG = [
   {
+    date: '2026-10-04',
+    en: 'Two independent audits; numbers matched to official statistics.',
+    fr: 'Deux audits indépendants ; chiffres alignés sur les statistiques officielles.',
+    es: 'Dos auditorías independientes; cifras contrastadas con las estadísticas oficiales.',
+  },
+  {
     date: '2026-10-03',
     en: 'Q4 answered: the cheapest hour moved from night to midday.',
     fr: 'Q4 répondue : l’heure la moins chère est passée de la nuit à la mi-journée.',

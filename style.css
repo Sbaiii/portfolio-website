@@ -2555,6 +2555,20 @@ button {
     gap: clamp(1.25rem, 3vw, 2rem);
 }
 
+/* The external check, set above the answers rather than in the footer: it is
+   the reason to believe the numbers, so it belongs next to them. */
+.rvalidated {
+    margin: 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    max-width: 78ch;
+}
+
 .rans {
     /* A grid item defaults to min-width: auto, which would let wide content
        push the card past the page instead of scrolling inside it. */

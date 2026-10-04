@@ -192,6 +192,7 @@ const ANSWERED = {
         // browser scales them by 96/72 to get the natural size.
         figures: [
             { file: 'q1_negative_hours_by_zone.svg', w: 1152, h: 634 },
+            { file: 'q1_ytd_like_for_like.svg', w: 1056, h: 538 },
             { file: 'q1_frequency_vs_depth_2025.svg', w: 864, h: 576 },
             { file: 'q1_share_at_or_below_zero_2026.svg', w: 912, h: 499 },
         ],
@@ -200,6 +201,7 @@ const ANSWERED = {
         notebook: 'https://github.com/Sbaiii/negative-hours/blob/main/analysis/q2_capture_prices.ipynb',
         figures: [
             { file: 'q2_solar_capture_rate_by_zone.svg', w: 1152, h: 634 },
+            { file: 'q2_ytd_capture_rate.svg', w: 1056, h: 538 },
             { file: 'q2_cannibalisation_curve.svg', w: 1152, h: 653 },
         ],
     },
@@ -208,6 +210,7 @@ const ANSWERED = {
         notebook: 'https://github.com/Sbaiii/negative-hours/blob/main/analysis/q3_battery_arbitrage.ipynb',
         figures: [
             { file: 'q3_revenue_by_zone_2025.svg', w: 1056, h: 557 },
+            { file: 'q3_ytd_revenue.svg', w: 1056, h: 557 },
             { file: 'q3_revenue_vs_negative_hours.svg', w: 1056, h: 595 },
         ],
     },
@@ -265,7 +268,12 @@ function renderResults() {
             <p class="rslot__pending">${t('results.awaiting')}</p>
         </div>`).join('');
 
-    host.innerHTML = answered + (waiting ? `<div class="rgrid">${waiting}</div>` : '');
+    const validated = t('results.validated');
+    const note = validated === 'results.validated'
+        ? ''
+        : `<p class="rvalidated reveal">${validated}</p>`;
+
+    host.innerHTML = note + answered + (waiting ? `<div class="rgrid">${waiting}</div>` : '');
     observeReveals(host);
 }
 
