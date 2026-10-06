@@ -1,0 +1,82 @@
+[
+  {
+    "kind": "in_space",
+    "label": "AT",
+    "outcome": "no2_deweathered",
+    "estimate": 0.09,
+    "lo": -2.64,
+    "hi": 2.82
+  },
+  {
+    "kind": "in_space",
+    "label": "BE",
+    "outcome": "no2_deweathered",
+    "estimate": 4.8,
+    "lo": 0.89,
+    "hi": 8.71
+  },
+  {
+    "kind": "in_space",
+    "label": "CH",
+    "outcome": "no2_deweathered",
+    "estimate": 5.67,
+    "lo": 3.52,
+    "hi": 7.82
+  },
+  {
+    "kind": "in_space",
+    "label": "CZ",
+    "outcome": "no2_deweathered",
+    "estimate": 5.02,
+    "lo": 2.55,
+    "hi": 7.49
+  },
+  {
+    "kind": "in_space",
+    "label": "FR",
+    "outcome": "no2_deweathered",
+    "estimate": 2.75,
+    "lo": 0.39,
+    "hi": 5.11
+  },
+  {
+    "kind": "in_space",
+    "label": "NL",
+    "outcome": "no2_deweathered",
+    "estimate": 0.61,
+    "lo": -0.95,
+    "hi": 2.17
+  },
+  {
+    "kind": "in_space",
+    "label": "PL",
+    "outcome": "no2_deweathered",
+    "estimate": 0.4,
+    "lo": -2.22,
+    "hi": 3.02
+  },
+  {
+    "kind": "in_time",
+    "label": "2018",
+    "outcome": "no2_deweathered",
+    "estimate": 2.1,
+    "lo": -0.25,
+    "hi": 4.45
+  },
+  {
+    "kind": "in_time",
+    "label": "2019",
+    "outcome": "no2_deweathered",
+    "estimate": -2.28,
+    "lo": -3.95,
+    "hi": -0.61
+  },
+  {
+    "kind": "in_time",
+    "label": "2021",
+    "outcome": "no2_deweathered",
+    "estimate": 2.56,
+    "lo": -0.29,
+    "hi": 5.41
+  }
+]

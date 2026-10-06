@@ -1,0 +1,196 @@
+{
+  "weights": {
+    "AT": 0.073,
+    "BE": 0.258,
+    "CH": 0.261,
+    "CZ": 0.21,
+    "FR": 0.084,
+    "NL": 0.006,
+    "PL": 0.108
+  },
+  "series": [
+    {
+      "month": "2021-01",
+      "actual": 28.45,
+      "synthetic": 32.07
+    },
+    {
+      "month": "2021-02",
+      "actual": 24.64,
+      "synthetic": 20.53
+    },
+    {
+      "month": "2021-03",
+      "actual": 27.78,
+      "synthetic": 28.51
+    },
+    {
+      "month": "2021-04",
+      "actual": 17.97,
+      "synthetic": 14.81
+    },
+    {
+      "month": "2021-05",
+      "actual": 21.3,
+      "synthetic": 23.43
+    },
+    {
+      "month": "2021-06",
+      "actual": 16.76,
+      "synthetic": 15.85
+    },
+    {
+      "month": "2021-07",
+      "actual": 14.16,
+      "synthetic": 11.48
+    },
+    {
+      "month": "2021-08",
+      "actual": 31.92,
+      "synthetic": 28.46
+    },
+    {
+      "month": "2021-09",
+      "actual": 15.19,
+      "synthetic": 14.5
+    },
+    {
+      "month": "2021-10",
+      "actual": 18.46,
+      "synthetic": 14.96
+    },
+    {
+      "month": "2021-11",
+      "actual": 22.79,
+      "synthetic": 20.92
+    },
+    {
+      "month": "2021-12",
+      "actual": 27.08,
+      "synthetic": 30.94
+    },
+    {
+      "month": "2022-01",
+      "actual": 21.32,
+      "synthetic": 25.46
+    },
+    {
+      "month": "2022-02",
+      "actual": 17.83,
+      "synthetic": 21.18
+    },
+    {
+      "month": "2022-03",
+      "actual": 22.67,
+      "synthetic": 19.5
+    },
+    {
+      "month": "2022-04",
+      "actual": 28.77,
+      "synthetic": 26.5
+    },
+    {
+      "month": "2022-05",
+      "actual": 28.72,
+      "synthetic": 27.29
+    },
+    {
+      "month": "2022-06",
+      "actual": 18.67,
+      "synthetic": 16.11
+    },
+    {
+      "month": "2022-07",
+      "actual": 24.78,
+      "synthetic": 20.51
+    },
+    {
+      "month": "2022-08",
+      "actual": 26.12,
+      "synthetic": 29.69
+    },
+    {
+      "month": "2022-09",
+      "actual": 14.17,
+      "synthetic": 16.13
+    },
+    {
+      "month": "2022-10",
+      "actual": 18.08,
+      "synthetic": 17.31
+    },
+    {
+      "month": "2022-11",
+      "actual": 18.44,
+      "synthetic": 16.01
+    },
+    {
+      "month": "2022-12",
+      "actual": 28.04,
+      "synthetic": 24.64
+    },
+    {
+      "month": "2023-01",
+      "actual": 16.69,
+      "synthetic": 12.47
+    },
+    {
+      "month": "2023-02",
+      "actual": 24.55,
+      "synthetic": 25.97
+    },
+    {
+      "month": "2023-03",
+      "actual": 26.54,
+      "synthetic": 29.2
+    },
+    {
+      "month": "2023-04",
+      "actual": 15.29,
+      "synthetic": 18.51
+    },
+    {
+      "month": "2023-05",
+      "actual": 28.21,
+      "synthetic": 31.84
+    },
+    {
+      "month": "2023-06",
+      "actual": 27.57,
+      "synthetic": 30.57
+    },
+    {
+      "month": "2023-07",
+      "actual": 29.09,
+      "synthetic": 30.68
+    },
+    {
+      "month": "2023-08",
+      "actual": 24.18,
+      "synthetic": 20.71
+    },
+    {
+      "month": "2023-09",
+      "actual": 21.22,
+      "synthetic": 17.34
+    },
+    {
+      "month": "2023-10",
+      "actual": 14.04,
+      "synthetic": 17.41
+    },
+    {
+      "month": "2023-11",
+      "actual": 29.73,
+      "synthetic": 33.59
+    },
+    {
+      "month": "2023-12",
+      "actual": 29.38,
+      "synthetic": 32.79
+    }
+  ],
+  "rank_jun_aug_2022": 5,
+  "rank_may_dec_2023": 3,
+  "n_units": 8
+}

@@ -1,0 +1,1535 @@
+{
+  "status": "FIXTURE",
+  "countries": [
+    {
+      "cc": "DE",
+      "name": "Germany",
+      "value_nine_euro": -8.93,
+      "value_dticket": 1.35,
+      "n_stations": 268,
+      "lat": 51.17,
+      "lon": 10.45
+    },
+    {
+      "cc": "AT",
+      "name": "Austria",
+      "value_nine_euro": -0.53,
+      "value_dticket": 4.8,
+      "n_stations": 91,
+      "lat": 47.52,
+      "lon": 14.55
+    },
+    {
+      "cc": "BE",
+      "name": "Belgium",
+      "value_nine_euro": -9.8,
+      "value_dticket": -10.86,
+      "n_stations": 38,
+      "lat": 50.5,
+      "lon": 4.47
+    },
+    {
+      "cc": "CH",
+      "name": "Switzerland",
+      "value_nine_euro": -7.56,
+      "value_dticket": -2.46,
+      "n_stations": 114,
+      "lat": 46.82,
+      "lon": 8.23
+    },
+    {
+      "cc": "CZ",
+      "name": "Czechia",
+      "value_nine_euro": 3.11,
+      "value_dticket": -2.2,
+      "n_stations": 64,
+      "lat": 49.82,
+      "lon": 15.47
+    },
+    {
+      "cc": "FR",
+      "name": "France",
+      "value_nine_euro": 1.94,
+      "value_dticket": 5.56,
+      "n_stations": 64,
+      "lat": 46.23,
+      "lon": 2.21
+    },
+    {
+      "cc": "NL",
+      "name": "Netherlands",
+      "value_nine_euro": -8.27,
+      "value_dticket": 3.71,
+      "n_stations": 93,
+      "lat": 52.13,
+      "lon": 5.29
+    },
+    {
+      "cc": "PL",
+      "name": "Poland",
+      "value_nine_euro": 0.33,
+      "value_dticket": 3.01,
+      "n_stations": 53,
+      "lat": 51.92,
+      "lon": 19.15
+    }
+  ],
+  "stations": [
+    {
+      "id": "DE0000",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 53.043,
+      "lon": 9.315
+    },
+    {
+      "id": "DE0001",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 49.029,
+      "lon": 7.864
+    },
+    {
+      "id": "DE0002",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 49.99,
+      "lon": 11.513
+    },
+    {
+      "id": "DE0003",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 50.921,
+      "lon": 13.606
+    },
+    {
+      "id": "DE0004",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 50.386,
+      "lon": 13.223
+    },
+    {
+      "id": "DE0005",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 50.045,
+      "lon": 9.391
+    },
+    {
+      "id": "DE0006",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 53.264,
+      "lon": 11.545
+    },
+    {
+      "id": "DE0007",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 50.482,
+      "lon": 9.804
+    },
+    {
+      "id": "DE0008",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 51.646,
+      "lon": 12.778
+    },
+    {
+      "id": "DE0009",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 50.279,
+      "lon": 11.626
+    },
+    {
+      "id": "DE0010",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 52.786,
+      "lon": 10.726
+    },
+    {
+      "id": "DE0011",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 51.819,
+      "lon": 10.737
+    },
+    {
+      "id": "DE0012",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 51.492,
+      "lon": 11.62
+    },
+    {
+      "id": "DE0013",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 49.792,
+      "lon": 13.391
+    },
+    {
+      "id": "DE0014",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 49.507,
+      "lon": 13.398
+    },
+    {
+      "id": "DE0015",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 50.988,
+      "lon": 10.14
+    },
+    {
+      "id": "DE0016",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 51.736,
+      "lon": 12.599
+    },
+    {
+      "id": "DE0017",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 51.047,
+      "lon": 8.184
+    },
+    {
+      "id": "DE0018",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 50.337,
+      "lon": 9.004
+    },
+    {
+      "id": "DE0019",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 49.578,
+      "lon": 10.457
+    },
+    {
+      "id": "DE0020",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 50.373,
+      "lon": 11.905
+    },
+    {
+      "id": "DE0021",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 52.696,
+      "lon": 8.057
+    },
+    {
+      "id": "DE0022",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 53.188,
+      "lon": 8.971
+    },
+    {
+      "id": "DE0023",
+      "cc": "DE",
+      "type": "suburban_background",
+      "lat": 52.391,
+      "lon": 7.553
+    },
+    {
+      "id": "DE0024",
+      "cc": "DE",
+      "type": "urban_traffic",
+      "lat": 49.116,
+      "lon": 9.703
+    },
+    {
+      "id": "DE0025",
+      "cc": "DE",
+      "type": "urban_background",
+      "lat": 50.388,
+      "lon": 7.462
+    },
+    {
+      "id": "AT0000",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 47.603,
+      "lon": 15.367
+    },
+    {
+      "id": "AT0001",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 46.279,
+      "lon": 12.605
+    },
+    {
+      "id": "AT0002",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 47.839,
+      "lon": 12.666
+    },
+    {
+      "id": "AT0003",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 45.868,
+      "lon": 17.47
+    },
+    {
+      "id": "AT0004",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 47.913,
+      "lon": 13.782
+    },
+    {
+      "id": "AT0005",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 46.05,
+      "lon": 16.775
+    },
+    {
+      "id": "AT0006",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 46.029,
+      "lon": 13.498
+    },
+    {
+      "id": "AT0007",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 48.284,
+      "lon": 13.814
+    },
+    {
+      "id": "AT0008",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 47.397,
+      "lon": 16.519
+    },
+    {
+      "id": "AT0009",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 48.013,
+      "lon": 16.799
+    },
+    {
+      "id": "AT0010",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 46.171,
+      "lon": 16.227
+    },
+    {
+      "id": "AT0011",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 45.326,
+      "lon": 12.002
+    },
+    {
+      "id": "AT0012",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 47.948,
+      "lon": 17.516
+    },
+    {
+      "id": "AT0013",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 48.039,
+      "lon": 11.791
+    },
+    {
+      "id": "AT0014",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 46.478,
+      "lon": 13.522
+    },
+    {
+      "id": "AT0015",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 46.928,
+      "lon": 16.598
+    },
+    {
+      "id": "AT0016",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 48.856,
+      "lon": 15.575
+    },
+    {
+      "id": "AT0017",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 49.535,
+      "lon": 14.164
+    },
+    {
+      "id": "AT0018",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 46.329,
+      "lon": 14.545
+    },
+    {
+      "id": "AT0019",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 46.011,
+      "lon": 13.088
+    },
+    {
+      "id": "AT0020",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 46.283,
+      "lon": 11.758
+    },
+    {
+      "id": "AT0021",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 47.08,
+      "lon": 14.452
+    },
+    {
+      "id": "AT0022",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 47.923,
+      "lon": 14.87
+    },
+    {
+      "id": "AT0023",
+      "cc": "AT",
+      "type": "suburban_background",
+      "lat": 49.244,
+      "lon": 13.579
+    },
+    {
+      "id": "AT0024",
+      "cc": "AT",
+      "type": "urban_traffic",
+      "lat": 49.432,
+      "lon": 16.565
+    },
+    {
+      "id": "AT0025",
+      "cc": "AT",
+      "type": "urban_background",
+      "lat": 47.251,
+      "lon": 16.07
+    },
+    {
+      "id": "BE0000",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 50.477,
+      "lon": 1.38
+    },
+    {
+      "id": "BE0001",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 48.965,
+      "lon": 1.663
+    },
+    {
+      "id": "BE0002",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 50.599,
+      "lon": 4.686
+    },
+    {
+      "id": "BE0003",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 51.075,
+      "lon": 6.262
+    },
+    {
+      "id": "BE0004",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 52.422,
+      "lon": 4.5
+    },
+    {
+      "id": "BE0005",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 50.274,
+      "lon": 4.706
+    },
+    {
+      "id": "BE0006",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 48.907,
+      "lon": 6.699
+    },
+    {
+      "id": "BE0007",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 49.526,
+      "lon": 6.815
+    },
+    {
+      "id": "BE0008",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 52.503,
+      "lon": 4.951
+    },
+    {
+      "id": "BE0009",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 51.922,
+      "lon": 1.613
+    },
+    {
+      "id": "BE0010",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 50.001,
+      "lon": 7.193
+    },
+    {
+      "id": "BE0011",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 50.219,
+      "lon": 3.545
+    },
+    {
+      "id": "BE0012",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 51.766,
+      "lon": 5.17
+    },
+    {
+      "id": "BE0013",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 52.212,
+      "lon": 5.226
+    },
+    {
+      "id": "BE0014",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 50.473,
+      "lon": 4.24
+    },
+    {
+      "id": "BE0015",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 50.738,
+      "lon": 6.621
+    },
+    {
+      "id": "BE0016",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 50.08,
+      "lon": 3.931
+    },
+    {
+      "id": "BE0017",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 48.949,
+      "lon": 1.811
+    },
+    {
+      "id": "BE0018",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 48.692,
+      "lon": 2.757
+    },
+    {
+      "id": "BE0019",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 48.955,
+      "lon": 6.137
+    },
+    {
+      "id": "BE0020",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 48.859,
+      "lon": 6.763
+    },
+    {
+      "id": "BE0021",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 50.169,
+      "lon": 6.899
+    },
+    {
+      "id": "BE0022",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 48.928,
+      "lon": 3.831
+    },
+    {
+      "id": "BE0023",
+      "cc": "BE",
+      "type": "suburban_background",
+      "lat": 51.419,
+      "lon": 6.544
+    },
+    {
+      "id": "BE0024",
+      "cc": "BE",
+      "type": "urban_traffic",
+      "lat": 50.522,
+      "lon": 6.333
+    },
+    {
+      "id": "BE0025",
+      "cc": "BE",
+      "type": "urban_background",
+      "lat": 48.96,
+      "lon": 3.833
+    },
+    {
+      "id": "CH0000",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 46.511,
+      "lon": 6.143
+    },
+    {
+      "id": "CH0001",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 48.478,
+      "lon": 8.815
+    },
+    {
+      "id": "CH0002",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 45.938,
+      "lon": 5.93
+    },
+    {
+      "id": "CH0003",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 45.169,
+      "lon": 8.846
+    },
+    {
+      "id": "CH0004",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 48.122,
+      "lon": 5.098
+    },
+    {
+      "id": "CH0005",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 48.853,
+      "lon": 6.034
+    },
+    {
+      "id": "CH0006",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 44.747,
+      "lon": 7.317
+    },
+    {
+      "id": "CH0007",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 47.772,
+      "lon": 6.142
+    },
+    {
+      "id": "CH0008",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 45.263,
+      "lon": 6.562
+    },
+    {
+      "id": "CH0009",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 47.708,
+      "lon": 8.388
+    },
+    {
+      "id": "CH0010",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 47.582,
+      "lon": 6.04
+    },
+    {
+      "id": "CH0011",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 48.313,
+      "lon": 9.448
+    },
+    {
+      "id": "CH0012",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 46.297,
+      "lon": 5.048
+    },
+    {
+      "id": "CH0013",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 45.289,
+      "lon": 6.101
+    },
+    {
+      "id": "CH0014",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 46.648,
+      "lon": 7.669
+    },
+    {
+      "id": "CH0015",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 46.504,
+      "lon": 6.273
+    },
+    {
+      "id": "CH0016",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 48.926,
+      "lon": 7.682
+    },
+    {
+      "id": "CH0017",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 45.034,
+      "lon": 10.207
+    },
+    {
+      "id": "CH0018",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 47.356,
+      "lon": 8.99
+    },
+    {
+      "id": "CH0019",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 48.264,
+      "lon": 9.431
+    },
+    {
+      "id": "CH0020",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 48.912,
+      "lon": 8.8
+    },
+    {
+      "id": "CH0021",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 45.657,
+      "lon": 9.943
+    },
+    {
+      "id": "CH0022",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 48.696,
+      "lon": 6.114
+    },
+    {
+      "id": "CH0023",
+      "cc": "CH",
+      "type": "suburban_background",
+      "lat": 47.186,
+      "lon": 7.461
+    },
+    {
+      "id": "CH0024",
+      "cc": "CH",
+      "type": "urban_traffic",
+      "lat": 47.732,
+      "lon": 5.652
+    },
+    {
+      "id": "CH0025",
+      "cc": "CH",
+      "type": "urban_background",
+      "lat": 47.02,
+      "lon": 6.915
+    },
+    {
+      "id": "CZ0000",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 50.466,
+      "lon": 13.07
+    },
+    {
+      "id": "CZ0001",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 50.711,
+      "lon": 16.955
+    },
+    {
+      "id": "CZ0002",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 50.325,
+      "lon": 13.186
+    },
+    {
+      "id": "CZ0003",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 50.711,
+      "lon": 13.928
+    },
+    {
+      "id": "CZ0004",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 50.831,
+      "lon": 18.251
+    },
+    {
+      "id": "CZ0005",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 49.11,
+      "lon": 13.193
+    },
+    {
+      "id": "CZ0006",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 51.851,
+      "lon": 15.04
+    },
+    {
+      "id": "CZ0007",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 49.979,
+      "lon": 17.988
+    },
+    {
+      "id": "CZ0008",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 50.04,
+      "lon": 18.321
+    },
+    {
+      "id": "CZ0009",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 49.695,
+      "lon": 14.598
+    },
+    {
+      "id": "CZ0010",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 50.981,
+      "lon": 16.071
+    },
+    {
+      "id": "CZ0011",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 49.625,
+      "lon": 13.039
+    },
+    {
+      "id": "CZ0012",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 49.877,
+      "lon": 14.974
+    },
+    {
+      "id": "CZ0013",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 51.06,
+      "lon": 12.949
+    },
+    {
+      "id": "CZ0014",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 51.419,
+      "lon": 13.14
+    },
+    {
+      "id": "CZ0015",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 51.409,
+      "lon": 17.19
+    },
+    {
+      "id": "CZ0016",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 51.639,
+      "lon": 16.063
+    },
+    {
+      "id": "CZ0017",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 50.572,
+      "lon": 18.628
+    },
+    {
+      "id": "CZ0018",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 48.147,
+      "lon": 14.642
+    },
+    {
+      "id": "CZ0019",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 47.818,
+      "lon": 12.335
+    },
+    {
+      "id": "CZ0020",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 50.743,
+      "lon": 15.586
+    },
+    {
+      "id": "CZ0021",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 51.173,
+      "lon": 16.006
+    },
+    {
+      "id": "CZ0022",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 50.524,
+      "lon": 12.628
+    },
+    {
+      "id": "CZ0023",
+      "cc": "CZ",
+      "type": "suburban_background",
+      "lat": 49.885,
+      "lon": 13.63
+    },
+    {
+      "id": "CZ0024",
+      "cc": "CZ",
+      "type": "urban_traffic",
+      "lat": 50.723,
+      "lon": 15.74
+    },
+    {
+      "id": "CZ0025",
+      "cc": "CZ",
+      "type": "urban_background",
+      "lat": 48.242,
+      "lon": 16.172
+    },
+    {
+      "id": "FR0000",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 45.262,
+      "lon": -0.31
+    },
+    {
+      "id": "FR0001",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 47.753,
+      "lon": 0.476
+    },
+    {
+      "id": "FR0002",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 47.238,
+      "lon": 2.47
+    },
+    {
+      "id": "FR0003",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 47.922,
+      "lon": 2.803
+    },
+    {
+      "id": "FR0004",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 46.782,
+      "lon": 5.175
+    },
+    {
+      "id": "FR0005",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 44.693,
+      "lon": -0.923
+    },
+    {
+      "id": "FR0006",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 47.722,
+      "lon": 0.75
+    },
+    {
+      "id": "FR0007",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 45.359,
+      "lon": 3.705
+    },
+    {
+      "id": "FR0008",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 46.273,
+      "lon": 2.072
+    },
+    {
+      "id": "FR0009",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 45.481,
+      "lon": 0.419
+    },
+    {
+      "id": "FR0010",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 46.281,
+      "lon": 2.567
+    },
+    {
+      "id": "FR0011",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 46.437,
+      "lon": 1.886
+    },
+    {
+      "id": "FR0012",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 47.173,
+      "lon": 2.565
+    },
+    {
+      "id": "FR0013",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 46.914,
+      "lon": -0.062
+    },
+    {
+      "id": "FR0014",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 46.758,
+      "lon": 2.281
+    },
+    {
+      "id": "FR0015",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 47.014,
+      "lon": 1.177
+    },
+    {
+      "id": "FR0016",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 46.867,
+      "lon": 4.354
+    },
+    {
+      "id": "FR0017",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 46.747,
+      "lon": 3.707
+    },
+    {
+      "id": "FR0018",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 46.529,
+      "lon": 4.55
+    },
+    {
+      "id": "FR0019",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 46.651,
+      "lon": 2.614
+    },
+    {
+      "id": "FR0020",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 46.571,
+      "lon": -0.079
+    },
+    {
+      "id": "FR0021",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 44.889,
+      "lon": 0.783
+    },
+    {
+      "id": "FR0022",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 46.949,
+      "lon": 4.606
+    },
+    {
+      "id": "FR0023",
+      "cc": "FR",
+      "type": "suburban_background",
+      "lat": 46.257,
+      "lon": 2.488
+    },
+    {
+      "id": "FR0024",
+      "cc": "FR",
+      "type": "urban_traffic",
+      "lat": 45.528,
+      "lon": 1.669
+    },
+    {
+      "id": "FR0025",
+      "cc": "FR",
+      "type": "urban_background",
+      "lat": 45.517,
+      "lon": 0.562
+    },
+    {
+      "id": "NL0000",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 51.694,
+      "lon": 5.1
+    },
+    {
+      "id": "NL0001",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 52.159,
+      "lon": 3.224
+    },
+    {
+      "id": "NL0002",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 53.081,
+      "lon": 4.728
+    },
+    {
+      "id": "NL0003",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 51.514,
+      "lon": 2.994
+    },
+    {
+      "id": "NL0004",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 51.724,
+      "lon": 2.221
+    },
+    {
+      "id": "NL0005",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 50.947,
+      "lon": 7.672
+    },
+    {
+      "id": "NL0006",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 54.038,
+      "lon": 7.019
+    },
+    {
+      "id": "NL0007",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 52.675,
+      "lon": 3.336
+    },
+    {
+      "id": "NL0008",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 50.492,
+      "lon": 5.373
+    },
+    {
+      "id": "NL0009",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 52.984,
+      "lon": 3.884
+    },
+    {
+      "id": "NL0010",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 50.145,
+      "lon": 3.297
+    },
+    {
+      "id": "NL0011",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 53.271,
+      "lon": 3.899
+    },
+    {
+      "id": "NL0012",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 51.723,
+      "lon": 4.824
+    },
+    {
+      "id": "NL0013",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 51.721,
+      "lon": 3.918
+    },
+    {
+      "id": "NL0014",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 51.443,
+      "lon": 8.154
+    },
+    {
+      "id": "NL0015",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 51.404,
+      "lon": 6.353
+    },
+    {
+      "id": "NL0016",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 53.719,
+      "lon": 4.709
+    },
+    {
+      "id": "NL0017",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 54.047,
+      "lon": 7.1
+    },
+    {
+      "id": "NL0018",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 52.244,
+      "lon": 6.89
+    },
+    {
+      "id": "NL0019",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 53.241,
+      "lon": 2.883
+    },
+    {
+      "id": "NL0020",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 52.616,
+      "lon": 7.662
+    },
+    {
+      "id": "NL0021",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 53.211,
+      "lon": 5.636
+    },
+    {
+      "id": "NL0022",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 53.839,
+      "lon": 4.316
+    },
+    {
+      "id": "NL0023",
+      "cc": "NL",
+      "type": "suburban_background",
+      "lat": 53.922,
+      "lon": 4.302
+    },
+    {
+      "id": "NL0024",
+      "cc": "NL",
+      "type": "urban_traffic",
+      "lat": 54.156,
+      "lon": 3.326
+    },
+    {
+      "id": "NL0025",
+      "cc": "NL",
+      "type": "urban_background",
+      "lat": 51.096,
+      "lon": 3.244
+    },
+    {
+      "id": "PL0000",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 51.611,
+      "lon": 19.788
+    },
+    {
+      "id": "PL0001",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 53.593,
+      "lon": 21.194
+    },
+    {
+      "id": "PL0002",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 51.631,
+      "lon": 22.093
+    },
+    {
+      "id": "PL0003",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 52.217,
+      "lon": 19.019
+    },
+    {
+      "id": "PL0004",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 53.942,
+      "lon": 20.248
+    },
+    {
+      "id": "PL0005",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 52.409,
+      "lon": 16.171
+    },
+    {
+      "id": "PL0006",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 50.219,
+      "lon": 20.84
+    },
+    {
+      "id": "PL0007",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 53.308,
+      "lon": 20.719
+    },
+    {
+      "id": "PL0008",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 51.215,
+      "lon": 17.493
+    },
+    {
+      "id": "PL0009",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 53.715,
+      "lon": 20.38
+    },
+    {
+      "id": "PL0010",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 51.656,
+      "lon": 19.717
+    },
+    {
+      "id": "PL0011",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 51.69,
+      "lon": 19.675
+    },
+    {
+      "id": "PL0012",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 52.234,
+      "lon": 22.065
+    },
+    {
+      "id": "PL0013",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 53.667,
+      "lon": 20.573
+    },
+    {
+      "id": "PL0014",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 52.701,
+      "lon": 18.055
+    },
+    {
+      "id": "PL0015",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 50.568,
+      "lon": 19.872
+    },
+    {
+      "id": "PL0016",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 50.192,
+      "lon": 21.824
+    },
+    {
+      "id": "PL0017",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 52.925,
+      "lon": 16.601
+    },
+    {
+      "id": "PL0018",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 51.318,
+      "lon": 22.084
+    },
+    {
+      "id": "PL0019",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 49.851,
+      "lon": 17.001
+    },
+    {
+      "id": "PL0020",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 53.504,
+      "lon": 17.101
+    },
+    {
+      "id": "PL0021",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 52.383,
+      "lon": 16.241
+    },
+    {
+      "id": "PL0022",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 52.123,
+      "lon": 16.704
+    },
+    {
+      "id": "PL0023",
+      "cc": "PL",
+      "type": "suburban_background",
+      "lat": 50.744,
+      "lon": 19.31
+    },
+    {
+      "id": "PL0024",
+      "cc": "PL",
+      "type": "urban_traffic",
+      "lat": 50.595,
+      "lon": 20.924
+    },
+    {
+      "id": "PL0025",
+      "cc": "PL",
+      "type": "urban_background",
+      "lat": 52.263,
+      "lon": 19.427
+    }
+  ]
+}

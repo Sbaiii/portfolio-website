@@ -1,0 +1,23 @@
+[
+  {
+    "id": "nine_euro",
+    "name": "€9 ticket",
+    "start": "2022-06-01",
+    "end": "2022-08-31",
+    "kind": "treatment"
+  },
+  {
+    "id": "tankrabatt",
+    "name": "Tankrabatt",
+    "start": "2022-06-01",
+    "end": "2022-08-31",
+    "kind": "confounder"
+  },
+  {
+    "id": "dticket",
+    "name": "Deutschlandticket",
+    "start": "2023-05-01",
+    "end": null,
+    "kind": "treatment"
+  }
+]
