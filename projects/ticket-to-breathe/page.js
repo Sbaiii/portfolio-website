@@ -12,7 +12,9 @@ import {
     $, $$, resolveKey, initTheme, scrambleTo, observeReveals, revealOnScreen,
 } from '/js/chrome.js';
 import { PAGE, LANGS } from './strings.js';
-import { DATA, loadData, isProvisional, num, interval, count, DASH } from './data.js';
+import {
+    DATA, loadData, isProvisional, num, interval, count, label, monthNumber, DASH,
+} from './data.js';
 
 const REPO = 'https://github.com/Sbaiii/ticket-to-breathe';
 const DECISIONS = `${REPO}/blob/main/lab-notebook/04%20Decisions`;
@@ -30,84 +32,83 @@ function t(path) {
 
 /* --- fig. 01: the policy timeline ----------------------------------------- */
 
-/* Months counted from January 2022. The axis runs two full years, which is the
-   shortest span that holds all three policies and the gap between them. */
-const MONTHS = 24;
-const TIMELINE_ORIGIN = 2022;
+const TL_CATEGORIES = ['treatment', 'fuel_price'];
 
-/** Months since January of TIMELINE_ORIGIN, for a YYYY-MM-DD string. */
-function monthIndex(iso) {
-    const [y, m] = iso.split('-').map(Number);
-    return (y - TIMELINE_ORIGIN) * 12 + (m - 1);
+/** A YYYY-MM-DD string as months since year 0, for the timeline axis. */
+function dayMonth(iso) {
+    return monthNumber(String(iso).slice(0, 7));
 }
 
 /**
- * The policy windows, read from timeline.json. These are dates, not results,
- * so they are drawn whatever the data's status says. A missing file leaves the
- * figure empty rather than falling back to numbers written in here.
- */
-function timelineRows() {
-    return (DATA.timeline || []).map((w) => ({
-        name: w.name,
-        when: w.end ? 'whenSummer' : 'whenFrom',
-        from: monthIndex(w.start),
-        to: w.end ? monthIndex(w.end) + 1 : null,
-        confounder: w.kind === 'confounder',
-    })).filter((r) => r.from >= 0 && r.from < MONTHS);
-}
-
-/**
- * Three policies on a shared time axis. A row of labelled bars where there is
- * room, and a stack on a phone, rather than one diagram scaled down until the
- * dates are unreadable. The Deutschlandticket has no end date, so its bar ends
- * in a point instead of an edge.
+ * The policy windows, straight from timeline.json. Bars for anything with a
+ * span, tick marks for the single-day COVID events. Dates are facts, so they
+ * are drawn whatever the export's status says; a missing file leaves the figure
+ * empty rather than falling back to anything written in here.
  */
 function renderTimeline() {
+    const host = $('#timeline');
+    if (!host) return;
+    const rows = (DATA.timeline || []);
+    if (!rows.length) { host.innerHTML = ''; return; }
+
+    const bars = rows.filter((r) => TL_CATEGORIES.includes(r.category));
+    const marks = rows.filter((r) => r.category === 'covid');
+    if (!bars.length) { host.innerHTML = ''; return; }
+
     const wide = window.innerWidth > BREAKPOINT;
+    const starts = rows.map((r) => dayMonth(r.start));
+    const ends = rows.map((r) => (r.end ? dayMonth(r.end) + 1 : null)).filter((v) => v !== null);
+    const lo = Math.min(...starts);
+    const hi = Math.max(Math.max(...ends), lo + 12) + 2;
 
-    const W = wide ? 720 : 340;
-    const x0 = wide ? 160 : 12;
-    const x1 = wide ? 704 : 328;
-    const barH = wide ? 22 : 18;
-    const axisY = wide ? 146 : 188;
-    const H = wide ? 176 : 218;
+    const W = wide ? 760 : 360;
+    const labelW = wide ? 168 : 0;
+    const x0 = wide ? labelW + 14 : 12;
+    const x1 = W - 14;
+    const at = (m) => x0 + ((m - lo) / (hi - lo)) * (x1 - x0);
 
-    const at = (month) => x0 + (month / MONTHS) * (x1 - x0);
-    const mid = at(12);
+    const rowH = wide ? 34 : 50;
+    const barH = wide ? 17 : 15;
+    const top = 14;
+    const axisY = top + bars.length * rowH + 14;
+    const H = axisY + 34;
 
-    const rows = timelineRows().map((row, i) => {
-        // Beside the bar on a wide screen, above it on a narrow one.
-        const centre = 28 + i * 44;
-        const top = 12 + i * 54;
-        const barY = wide ? centre - barH / 2 : top + 30;
-        const anchor = wide ? 'end' : 'start';
-        const textX = wide ? 142 : x0;
-        const nameY = wide ? centre - 3 : top + 10;
-        const whenY = wide ? centre + 11 : top + 23;
-
-        const a = at(row.from);
-        const b = row.to === null ? at(MONTHS) : at(row.to);
-        const cls = `tl-bar${row.confounder ? ' tl-bar--confound' : ''}`;
-        const bar = row.to === null
-            ? `<path class="${cls}" d="M${a} ${barY} L${b - 7} ${barY} L${b} ${barY + barH / 2} L${b - 7} ${barY + barH} L${a} ${barY + barH} Z" />`
-            : `<rect class="${cls}" x="${a}" y="${barY}" width="${b - a}" height="${barH}" rx="4" />`;
-
-        return `
-            <text class="tl-name" x="${textX}" y="${nameY}" text-anchor="${anchor}">${row.name}</text>
-            <text class="tl-when" x="${textX}" y="${whenY}" text-anchor="${anchor}">${t(`experiment.${row.when}`)}</text>
-            ${bar}`;
+    const lanes = bars.map((r, i) => {
+        const yMid = top + i * rowH + (wide ? rowH / 2 : rowH - 20);
+        const a = at(dayMonth(r.start));
+        const b = r.end ? at(dayMonth(r.end) + 1) : at(hi);
+        const open = !r.end;
+        const cls = `tl-bar${r.category === 'fuel_price' ? ' tl-bar--confound' : ''}`;
+        const y = yMid - barH / 2;
+        const shape = open
+            ? `<path class="${cls}" d="M${a.toFixed(1)} ${y} L${(b - 7).toFixed(1)} ${y} L${b.toFixed(1)} ${(y + barH / 2).toFixed(1)} L${(b - 7).toFixed(1)} ${(y + barH).toFixed(1)} L${a.toFixed(1)} ${(y + barH).toFixed(1)} Z" />`
+            : `<rect class="${cls}" x="${a.toFixed(1)}" y="${y}" width="${Math.max(2, b - a).toFixed(1)}" height="${barH}" rx="3" />`;
+        const text = wide
+            ? `<text class="tl-name" x="${labelW}" y="${(yMid + 4).toFixed(1)}" text-anchor="end">${label(r.label)}</text>
+               <text class="tl-cc" x="${labelW}" y="${(yMid + 15).toFixed(1)}" text-anchor="end">${r.cc}</text>`
+            : `<text class="tl-name" x="${x0}" y="${(yMid - barH).toFixed(1)}">${label(r.label)}</text>`;
+        return text + shape;
     }).join('');
 
-    const host = $('#timeline');
-    if (!timelineRows().length) { host.innerHTML = ''; return; }
+    const ticks = marks.map((r) => {
+        const x = at(dayMonth(r.start));
+        return `<line class="tl-event" x1="${x.toFixed(1)}" y1="${top - 6}" x2="${x.toFixed(1)}" y2="${axisY}" />`;
+    }).join('');
+
+    const years = [];
+    for (let m = Math.ceil(lo / 12) * 12; m < hi; m += 12) {
+        years.push(`<text class="tl-year" x="${at(m + 6).toFixed(1)}" y="${axisY + 18}" text-anchor="middle">${m / 12}</text>`);
+        if (m > lo) years.push(`<line class="tl-grid" x1="${at(m).toFixed(1)}" y1="${top - 6}" x2="${at(m).toFixed(1)}" y2="${axisY}" />`);
+    }
+
     host.innerHTML = `
         <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t('experiment.alt')}">
-            <line class="tl-grid" x1="${mid}" y1="8" x2="${mid}" y2="${axisY}" />
-            ${rows}
+            ${years.join('')}
+            ${ticks}
+            ${lanes}
             <line class="tl-axis" x1="${x0}" y1="${axisY}" x2="${x1}" y2="${axisY}" />
-            <text class="tl-year" x="${(x0 + mid) / 2}" y="${axisY + 18}" text-anchor="middle">2022</text>
-            <text class="tl-year" x="${(mid + x1) / 2}" y="${axisY + 18}" text-anchor="middle">2023</text>
-        </svg>`;
+        </svg>
+        ${marks.length ? `<p class="meta tl-events">${marks.map((r) => `${label(r.label)} (${r.start})`).join(' · ')}</p>` : ''}`;
 }
 
 /* --- fig. 02: the three questions ----------------------------------------- */
@@ -244,7 +245,7 @@ function padded([lo, hi], by = 0.08) {
 }
 
 /**
- * The diagonal "fixture" wash. While the data is provisional every chart wears
+ * The diagonal provisional wash. While the data is not final every chart wears
  * it, so a shape drawn from placeholder numbers cannot be mistaken for a
  * finding even with the banner scrolled off the top.
  */
@@ -276,8 +277,11 @@ function tick(value, opts) {
 function renderBanner() {
     const host = $('#provisional');
     if (!host) return;
-    const settled = DATA.loaded && !isProvisional() && !DATA.missing.length;
-    host.hidden = settled;
+    // Hidden until the data says otherwise. Showing it by default meant it
+    // collapsed out of the layout on every normal load, taking the top of the
+    // page up 155px with it; nothing can print a number before this runs, so
+    // starting hidden cannot mislead anyone.
+    host.hidden = !(DATA.loaded && isProvisional());
     const missing = $('.prov__missing', host);
     if (missing) missing.hidden = !DATA.missing.length;
 }
@@ -286,28 +290,26 @@ function renderBanner() {
 
 const MAP_W = 640;
 const MAP_H = 440;
+const STATION_TYPES = ['traffic', 'background'];
 let showStations = false;
 
 /** Equirectangular, corrected at the middle latitude. Europe at this size. */
 function projector(features) {
-    let lons = [];
-    let lats = [];
-    features.forEach((f) => {
-        rings(f).forEach((ring) => ring.forEach(([lon, lat]) => { lons.push(lon); lats.push(lat); }));
-    });
+    const lons = [];
+    const lats = [];
+    features.forEach((f) => rings(f).forEach((ring) => ring.forEach(([lon, lat]) => {
+        lons.push(lon); lats.push(lat);
+    })));
     const [lon0, lon1] = extent(lons);
     const [lat0, lat1] = extent(lats);
     const k = Math.cos(((lat0 + lat1) / 2) * Math.PI / 180);
     const pad = 12;
     const w = (lon1 - lon0) * k;
     const h = lat1 - lat0;
-    const s = Math.min((MAP_W - pad * 2) / w, (MAP_H - pad * 2) / h);
-    const dx = (MAP_W - w * s) / 2;
-    const dy = (MAP_H - h * s) / 2;
-    return ([lon, lat]) => [
-        dx + (lon - lon0) * k * s,
-        dy + (lat1 - lat) * s,
-    ];
+    const sc = Math.min((MAP_W - pad * 2) / w, (MAP_H - pad * 2) / h);
+    const dx = (MAP_W - w * sc) / 2;
+    const dy = (MAP_H - h * sc) / 2;
+    return ([lon, lat]) => [dx + (lon - lon0) * k * sc, dy + (lat1 - lat) * sc];
 }
 
 /** Polygon and MultiPolygon, flattened to a list of rings. */
@@ -319,9 +321,9 @@ function rings(feature) {
 }
 
 /**
- * Diverging, centred on zero. Blue reads as a fall, amber as a rise, which is
- * the direction a reader expects. While the data is provisional no country is
- * coloured by its value at all: the fill carries no number.
+ * Diverging, centred on zero. Blue reads as less NO2 than expected, amber as
+ * more, which is the direction the unit implies. Nothing is coloured by value
+ * while the data is provisional: on a map the fill is the number.
  */
 function divergingFill(value, max) {
     if (isProvisional() || typeof value !== 'number') return 'var(--map-neutral)';
@@ -342,10 +344,7 @@ function renderMap() {
 
     const byCc = {};
     (payload.countries || []).forEach((c) => { byCc[c.cc] = c; });
-    const maxAbs = Math.max(
-        1,
-        ...(payload.countries || []).map((c) => Math.abs(c.value_nine_euro || 0)),
-    );
+    const maxAbs = Math.max(1, ...(payload.countries || []).map((c) => Math.abs(c.value_nine_euro || 0)));
 
     const project = projector(geo.features);
     const toPath = (f) => rings(f)
@@ -357,19 +356,19 @@ function renderMap() {
         const row = byCc[cc];
         const inStudy = Boolean(row);
         const fill = inStudy ? divergingFill(row.value_nine_euro, maxAbs) : 'var(--map-out)';
-        const label = inStudy
-            ? `${row.name}: ${num(row.value_nine_euro, { digits: 1, sign: true })}, ${count(row.n_stations)} ${t('map.stationCount')}`
+        const text = inStudy
+            ? `${row.name}: ${num(row.value_nine_euro, { digits: 2, sign: true })}, ${count(row.n_stations)} ${t('map.stationCount')}`
             : (f.properties.NAME || cc);
         return `<path class="mp-country${inStudy ? ' is-study' : ''}" d="${toPath(f)}"
                       fill="${fill}" tabindex="${inStudy ? '0' : '-1'}"
                       role="${inStudy ? 'img' : 'presentation'}"
-                      ${inStudy ? `aria-label="${label}"` : ''}><title>${label}</title></path>`;
+                      ${inStudy ? `aria-label="${text}"` : ''}><title>${text}</title></path>`;
     }).join('');
 
     const dots = showStations
         ? (payload.stations || []).map((st) => {
             const [x, y] = project([st.lon, st.lat]);
-            return `<circle class="mp-dot mp-dot--${st.type}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.1" />`;
+            return `<circle class="mp-dot mp-dot--${st.type}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.9" />`;
         }).join('')
         : '';
 
@@ -386,34 +385,45 @@ function renderMap() {
 function renderMapLegend() {
     const host = $('#map-legend');
     if (!host) return;
-    const types = ['urban_traffic', 'urban_background', 'suburban_background'];
+    const payload = DATA.map || {};
+    const maxAbs = Math.max(1, ...(payload.countries || []).map((c) => Math.abs(c.value_nine_euro || 0)));
     host.innerHTML = `
         <div class="mp-scale">
             <span class="meta">${t('map.legend')}</span>
             <div class="mp-ramp" aria-hidden="true"></div>
             <div class="mp-ramp__ends">
-                <span>${isProvisional() ? DASH : num(-1, { digits: 0 })}</span>
+                <span>${num(-maxAbs, { digits: 0 })}</span>
                 <span>0</span>
-                <span>${isProvisional() ? DASH : num(1, { digits: 0, sign: true })}</span>
+                <span>${num(maxAbs, { digits: 0, sign: true })}</span>
             </div>
         </div>
         <button type="button" class="btn btn--text mp-toggle" id="map-stations"
                 aria-pressed="${showStations}">
             ${showStations ? t('map.stationsOff') : t('map.stations')}
         </button>
-        ${showStations ? `<ul class="mp-key">${types.map((ty) => `
+        ${showStations ? `<ul class="mp-key">${STATION_TYPES.map((ty) => `
             <li><span class="mp-dot-key mp-dot--${ty}"></span>${t(`map.types.${ty}`)}</li>`).join('')}</ul>` : ''}`;
 
     const btn = $('#map-stations');
-    if (btn) {
-        btn.addEventListener('click', () => {
-            showStations = !showStations;
-            renderMap();
-        });
-    }
+    if (btn) btn.addEventListener('click', () => { showStations = !showStations; renderMap(); });
 }
 
 /* --- fig. 06: the results table ------------------------------------------- */
+
+/* The contract's family values are prose-ish, so they map to string keys here
+   rather than being mangled into one. A value with no entry falls through to
+   itself, which shows up as a missing key rather than silently blank. */
+const FAMILY_KEYS = {
+    'primary': 'primary',
+    'secondary (a)': 'secondary_a',
+    'secondary (b)': 'secondary_b',
+    'secondary (c)': 'secondary_c',
+    'heterogeneity': 'heterogeneity',
+    'exploratory (ADR-009)': 'exploratory',
+};
+
+/** The unit each outcome is measured in, appended to every estimate. */
+const UNITS = { ratio_pct: ' pts', commute_excess: ' pts', resid_ugm3: ' µg/m³' };
 
 function renderResults() {
     const host = $('#results');
@@ -424,19 +434,31 @@ function renderResults() {
         return;
     }
 
-    const body = rows.map((r) => `
-        <tr>
-            <th scope="row">${t(`results.labels.${r.label}`)}</th>
-            <td>${t(`results.families.${r.family}`)}</td>
-            <td>${t(`results.outcomes.${r.outcome}`)}</td>
-            <td class="rt-num">${num(r.estimate, { digits: 2, sign: true })}</td>
-            <td class="rt-num">${interval(r.ci_low, r.ci_high, { digits: 2, sign: true })}</td>
-            <td><span class="rt-verdict">${t(`results.verdicts.${r.verdict}`)}</span></td>
-        </tr>`).join('');
+    const body = rows.map((r) => {
+        // "not evaluated" means no decision rule was applied to this row. It is
+        // context for the reader, not a finding, and must not be dressed as one.
+        const context = r.verdict === 'not evaluated';
+        const key = String(r.verdict).replace(/\s+/g, '_');
+        const dir = t(`results.directions.${r.direction}`);
+        const unit = UNITS[r.outcome] || '';
+        return `
+            <tr class="${context ? 'rt-row--context' : ''}">
+                <th scope="row">${label(r.label)}</th>
+                <td>${t(`results.families.${FAMILY_KEYS[r.family] || r.family}`)}</td>
+                <td>${t(`results.outcomes.${r.outcome}`)}</td>
+                <td class="rt-num">${num(r.estimate, { digits: 2, sign: true, suffix: unit })}</td>
+                <td class="rt-num">${interval(r.ci_low, r.ci_high, { digits: 2, sign: true })}</td>
+                <td class="rt-decide">
+                    <span class="rt-verdict rt-verdict--${key}">${t(`results.verdicts.${key}`)}</span>
+                    <span class="rt-direction">${dir}</span>
+                </td>
+            </tr>`;
+    }).join('');
 
     const meta = DATA.meta || {};
     const n = meta.n_stations || {};
     const win = meta.analysis_window || {};
+    const years = Array.isArray(win.years) && !isProvisional() ? win.years.join(', ') : DASH;
 
     host.innerHTML = `
         <div class="rt-wrap">
@@ -454,12 +476,80 @@ function renderResults() {
                 <tbody>${body}</tbody>
             </table>
         </div>
+        <p class="meta rt-note">${t('results.ruleNote')}</p>
         <dl class="rt-meta">
             <div><dt>${t('results.stations')}</dt><dd>${count((n.DE || 0) + (n.controls || 0))}</dd></div>
             <div><dt>${t('results.stationDays')}</dt><dd>${count(meta.n_station_days)}</dd></div>
-            <div><dt>${t('results.window')}</dt><dd>${isProvisional() || !win.start ? DASH : `${win.start} → ${win.end}`}</dd></div>
-            <div><dt>${t('results.grid')}</dt><dd>${num(meta.weather_grid_deg, { digits: 2, suffix: '°' })}</dd></div>
+            <div><dt>${t('results.window')}</dt><dd>${years}</dd></div>
+            <div><dt>${t('results.grid')}</dt><dd>${num(meta.weather_grid_deg, { digits: 1, suffix: '°' })}</dd></div>
         </dl>`;
+}
+
+/* --- time axis shared by fig. 07 and fig. 08 ------------------------------ */
+
+/**
+ * A month axis that leaves a hole where months are missing. 2020 and 2021 were
+ * dropped from the analysis, so drawing index-to-index would close the gap and
+ * imply a continuous series across COVID. Everything here is spaced by real
+ * date, and paths break wherever consecutive months are not adjacent.
+ */
+function monthAxis(months, left, right) {
+    const nums = months.map(monthNumber);
+    const lo = Math.min(...nums);
+    const hi = Math.max(...nums);
+    const x = scale(lo, hi, left, right);
+    return { x, nums, lo, hi };
+}
+
+/** Splits a series into runs of consecutive months, so gaps stay gaps. */
+function runs(nums) {
+    const out = [];
+    let run = [0];
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] - nums[i - 1] === 1) run.push(i);
+        else { out.push(run); run = [i]; }
+    }
+    out.push(run);
+    return out;
+}
+
+/** Shades the excluded years, so the hole in the line is explained. */
+function gapBand(axis, yTop, yBottom) {
+    const holes = [];
+    for (let i = 1; i < axis.nums.length; i++) {
+        if (axis.nums[i] - axis.nums[i - 1] > 1) holes.push([axis.nums[i - 1] + 1, axis.nums[i]]);
+    }
+    return holes.map(([a, b]) => `
+        <rect class="ch-gap" x="${axis.x(a).toFixed(1)}" y="${yTop}"
+              width="${Math.max(2, axis.x(b) - axis.x(a)).toFixed(1)}" height="${yBottom - yTop}" />
+        <text class="ax-label ch-gap__label" x="${axis.x((a + b) / 2).toFixed(1)}"
+              y="${yTop + 14}" text-anchor="middle">${t('charts.excluded')}</text>`).join('');
+}
+
+/** Shades the policy windows wherever a chart runs on a month axis. */
+function policyBands(axis, yTop, yBottom) {
+    return (DATA.timeline || [])
+        .filter((w) => w.category === 'treatment' && w.cc === 'DE' && !/€/.test(w.label))
+        .map((w) => {
+            const a = monthNumber(String(w.start).slice(0, 7));
+            const b = w.end ? monthNumber(String(w.end).slice(0, 7)) + 1 : axis.hi;
+            if (b < axis.lo || a > axis.hi) return '';
+            const x0 = axis.x(Math.max(a, axis.lo));
+            const x1 = axis.x(Math.min(b, axis.hi));
+            return `<rect class="ch-band" x="${x0.toFixed(1)}" y="${yTop}"
+                          width="${Math.max(2, x1 - x0).toFixed(1)}" height="${yBottom - yTop}" />`;
+        }).join('');
+}
+
+/** Year labels under a month axis. */
+function yearTicks(axis, y) {
+    const out = [];
+    for (let m = Math.ceil(axis.lo / 12) * 12; m <= axis.hi; m += 12) {
+        if (axis.nums.includes(m)) {
+            out.push(`<text class="ax-label" x="${axis.x(m + 5).toFixed(1)}" y="${y}" text-anchor="middle">${m / 12}</text>`);
+        }
+    }
+    return out.join('');
 }
 
 /* --- fig. 07: the counterfactual ------------------------------------------ */
@@ -478,33 +568,41 @@ function renderCounterfactual() {
     }
 
     const rows = sc.series;
-    const months = rows.map((r) => r.month);
-    const x = scale(0, rows.length - 1, 48, CF_W - 16);
+    const axis = monthAxis(rows.map((r) => r.month), 48, CF_W - 16);
     const yDom = padded(extent(rows.flatMap((r) => [r.actual, r.synthetic])));
     const y = scale(yDom[0], yDom[1], CF_TOP - 28, 16);
 
-    const line = (key) => rows.map((r, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${y(r[key]).toFixed(1)}`).join('');
+    const segs = runs(axis.nums);
+    const line = (key) => segs.map((run) => run
+        .map((i, k) => `${k ? 'L' : 'M'}${axis.x(axis.nums[i]).toFixed(1)} ${y(rows[i][key]).toFixed(1)}`)
+        .join('')).join(' ');
 
     const gaps = rows.map((r) => r.actual - r.synthetic);
     const gDom = padded(extent(gaps.concat([0])));
     const gy = scale(gDom[0], gDom[1], CF_GAP - 24, 12);
-    const gapLine = rows.map((r, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${gy(gaps[i]).toFixed(1)}`).join('');
+    const gapLine = segs.map((run) => run
+        .map((i, k) => `${k ? 'L' : 'M'}${axis.x(axis.nums[i]).toFixed(1)} ${gy(gaps[i]).toFixed(1)}`)
+        .join('')).join(' ');
 
-    const bands = policyBands(months, x);
-    const yearTicks = months.map((m, i) => (m.endsWith('-01') ? `
-        <text class="ax-label" x="${x(i).toFixed(1)}" y="${CF_TOP - 8}" text-anchor="middle">${m.slice(0, 4)}</text>` : '')).join('');
+    const donors = Object.entries(sc.weights || {})
+        .filter(([, w]) => w > 0.001)
+        .sort((a, b) => b[1] - a[1])
+        .map(([cc, w]) => `${cc} ${num(w * 100, { digits: 0, suffix: '%' })}`)
+        .join(' · ');
 
     host.innerHTML = `
         <svg viewBox="0 0 ${CF_W} ${CF_TOP + CF_GAP}" role="img" aria-label="${t('counterfactual.alt')}">
-            ${bands(0, CF_TOP - 28)}
+            ${policyBands(axis, 0, CF_TOP - 28)}
+            ${gapBand(axis, 0, CF_TOP - 28)}
             <line class="ax-line" x1="48" y1="${CF_TOP - 28}" x2="${CF_W - 16}" y2="${CF_TOP - 28}" />
             <path class="cf-line cf-line--synth" d="${line('synthetic')}" />
             <path class="cf-line cf-line--actual" d="${line('actual')}" />
-            <text class="ax-label" x="44" y="20" text-anchor="end">${tick(yDom[1])}</text>
-            <text class="ax-label" x="44" y="${(CF_TOP - 28).toFixed(1)}" text-anchor="end">${tick(yDom[0])}</text>
-            ${yearTicks}
+            <text class="ax-label" x="44" y="20" text-anchor="end">${tick(yDom[1], { digits: 0 })}</text>
+            <text class="ax-label" x="44" y="${(CF_TOP - 28).toFixed(1)}" text-anchor="end">${tick(yDom[0], { digits: 0 })}</text>
+            ${yearTicks(axis, CF_TOP - 8)}
             <g transform="translate(0 ${CF_TOP})">
-                ${bands(0, CF_GAP - 24)}
+                ${policyBands(axis, 0, CF_GAP - 24)}
+                ${gapBand(axis, 0, CF_GAP - 24)}
                 <line class="ax-zero" x1="48" y1="${gy(0).toFixed(1)}" x2="${CF_W - 16}" y2="${gy(0).toFixed(1)}" />
                 <path class="cf-line cf-line--gap" d="${gapLine}" />
                 <text class="ax-label" x="44" y="${(gy(0) + 4).toFixed(1)}" text-anchor="end">${t('counterfactual.gap')}</text>
@@ -514,28 +612,15 @@ function renderCounterfactual() {
         <ul class="ch-key">
             <li><span class="ch-swatch ch-swatch--actual"></span>${t('counterfactual.actual')}</li>
             <li><span class="ch-swatch ch-swatch--synth"></span>${t('counterfactual.synthetic')}</li>
-        </ul>`;
-}
-
-/** Shades the policy windows wherever a chart runs on the same month axis. */
-function policyBands(months, x) {
-    const windows = (DATA.timeline || []).filter((w) => w.kind === 'treatment');
-    return (yTop, yBottom) => windows.map((w) => {
-        const from = months.findIndex((m) => m >= w.start.slice(0, 7));
-        if (from < 0) return '';
-        const toMonth = w.end ? w.end.slice(0, 7) : months[months.length - 1];
-        let to = months.findIndex((m) => m > toMonth);
-        if (to < 0) to = months.length - 1;
-        return `<rect class="ch-band" x="${x(from).toFixed(1)}" y="${yTop}"
-                      width="${Math.max(2, x(to) - x(from)).toFixed(1)}" height="${yBottom - yTop}" />`;
-    }).join('');
+        </ul>
+        <p class="meta ch-note">${t('counterfactual.weights')}: ${isProvisional() ? DASH : donors}</p>`;
 }
 
 /* --- fig. 08: the event study --------------------------------------------- */
 
 const ES_W = 720;
 const ES_H = 280;
-let eventVariant = 'nine_euro';
+let eventVariant = 'ref_janmay';
 
 function renderEventStudy() {
     const host = $('#event-study');
@@ -548,20 +633,15 @@ function renderEventStudy() {
     const variants = [...new Set(all.map((r) => r.variant))];
     if (!variants.includes(eventVariant)) eventVariant = variants[0];
     const rows = all.filter((r) => r.variant === eventVariant);
-    const months = rows.map((r) => r.month);
 
-    const x = scale(0, rows.length - 1, 48, ES_W - 16);
+    const axis = monthAxis(rows.map((r) => r.month), 48, ES_W - 16);
     const yDom = padded(extent(rows.flatMap((r) => [r.lo, r.hi]).concat([0])));
     const y = scale(yDom[0], yDom[1], ES_H - 34, 16);
-    const bands = policyBands(months, x);
 
     const marks = rows.map((r, i) => `
-        <line class="ev-ci" x1="${x(i).toFixed(1)}" y1="${y(r.lo).toFixed(1)}"
-              x2="${x(i).toFixed(1)}" y2="${y(r.hi).toFixed(1)}" />
-        <circle class="ev-dot" cx="${x(i).toFixed(1)}" cy="${y(r.est).toFixed(1)}" r="2.6" />`).join('');
-
-    const yearTicks = months.map((m, i) => (m.endsWith('-01') ? `
-        <text class="ax-label" x="${x(i).toFixed(1)}" y="${ES_H - 12}" text-anchor="middle">${m.slice(0, 4)}</text>` : '')).join('');
+        <line class="ev-ci" x1="${axis.x(axis.nums[i]).toFixed(1)}" y1="${y(r.lo).toFixed(1)}"
+              x2="${axis.x(axis.nums[i]).toFixed(1)}" y2="${y(r.hi).toFixed(1)}" />
+        <circle class="ev-dot" cx="${axis.x(axis.nums[i]).toFixed(1)}" cy="${y(r.est).toFixed(1)}" r="2.3" />`).join('');
 
     host.innerHTML = `
         <div class="ch-tabs" role="group">
@@ -571,13 +651,14 @@ function renderEventStudy() {
         </div>
         <div class="ch-canvas ch-canvas--event">
         <svg viewBox="0 0 ${ES_W} ${ES_H}" role="img" aria-label="${t('event.alt')}">
-            ${bands(0, ES_H - 34)}
+            ${policyBands(axis, 0, ES_H - 34)}
+            ${gapBand(axis, 0, ES_H - 34)}
             <line class="ax-zero" x1="48" y1="${y(0).toFixed(1)}" x2="${ES_W - 16}" y2="${y(0).toFixed(1)}" />
             ${marks}
-            <text class="ax-label" x="44" y="20" text-anchor="end">${tick(yDom[1])}</text>
+            <text class="ax-label" x="44" y="20" text-anchor="end">${tick(yDom[1], { digits: 0 })}</text>
             <text class="ax-label" x="44" y="${(y(0) + 4).toFixed(1)}" text-anchor="end">0</text>
-            <text class="ax-label" x="44" y="${(ES_H - 34).toFixed(1)}" text-anchor="end">${tick(yDom[0])}</text>
-            ${yearTicks}
+            <text class="ax-label" x="44" y="${(ES_H - 34).toFixed(1)}" text-anchor="end">${tick(yDom[0], { digits: 0 })}</text>
+            ${yearTicks(axis, ES_H - 12)}
             ${watermark('ev-fx', ES_W, ES_H)}
         </svg>
         </div>`;
@@ -591,45 +672,47 @@ function renderEventStudy() {
 /* --- fig. 09: the placebo strip ------------------------------------------- */
 
 const PB_W = 720;
-const PB_H = 180;
+const PB_H = 190;
 
 function renderPlacebo() {
     const host = $('#placebo');
     if (!host) return;
-    const rows = DATA.placebos || [];
+    const payload = DATA.placebos;
+    const rows = (payload && payload.rows ? payload.rows : []).filter((r) => r.outcome === 'ratio_pct');
     if (!rows.length) {
         host.innerHTML = `<p class="lead">${t('placebo.empty')}</p>`;
         return;
     }
-    const real = (DATA.headline || []).find((r) => r.outcome === 'no2_deweathered');
-    const values = rows.flatMap((r) => [r.lo, r.hi]).concat(real ? [real.estimate] : []);
+    const real = (payload.primary || []).find((r) => r.outcome === 'ratio_pct');
+
+    const values = rows.flatMap((r) => [r.lo, r.hi]).concat(real ? [real.lo, real.hi] : []);
     const xDom = padded(extent(values));
     const x = scale(xDom[0], xDom[1], 24, PB_W - 24);
 
-    const kinds = ['in_space', 'in_time'];
+    const kinds = ['country', 'date'];
     const lanes = kinds.map((kind, k) => {
-        const lane = 54 + k * 46;
+        const lane = 58 + k * 48;
         const dots = rows.filter((r) => r.kind === kind).map((r) => `
             <line class="pb-ci" x1="${x(r.lo).toFixed(1)}" y1="${lane}" x2="${x(r.hi).toFixed(1)}" y2="${lane}" />
             <circle class="pb-dot" cx="${x(r.estimate).toFixed(1)}" cy="${lane}" r="3">
-                <title>${r.label}: ${num(r.estimate, { digits: 2, sign: true })}</title>
+                <title>${label(r.label)}: ${num(r.estimate, { digits: 2, sign: true })}</title>
             </circle>`).join('');
         return `
-            <text class="ax-label" x="24" y="${lane - 14}">${t(kind === 'in_space' ? 'placebo.inSpace' : 'placebo.inTime')}</text>
+            <text class="ax-label" x="24" y="${lane - 15}">${t(kind === 'country' ? 'placebo.inSpace' : 'placebo.inTime')}</text>
             ${dots}`;
     }).join('');
 
     const realMark = real ? `
-        <line class="pb-real" x1="${x(real.estimate).toFixed(1)}" y1="30" x2="${x(real.estimate).toFixed(1)}" y2="${PB_H - 30}" />
-        <text class="ax-label pb-real-label" x="${x(real.estimate).toFixed(1)}" y="24" text-anchor="middle">${t('placebo.real')}</text>` : '';
+        <line class="pb-real" x1="${x(real.estimate).toFixed(1)}" y1="32" x2="${x(real.estimate).toFixed(1)}" y2="${PB_H - 32}" />
+        <text class="ax-label pb-real-label" x="${x(real.estimate).toFixed(1)}" y="26" text-anchor="middle">${t('placebo.real')} ${num(real.estimate, { digits: 2, sign: true })}</text>` : '';
 
     host.innerHTML = `
         <svg viewBox="0 0 ${PB_W} ${PB_H}" role="img" aria-label="${t('placebo.alt')}">
-            <line class="ax-zero" x1="${x(0).toFixed(1)}" y1="30" x2="${x(0).toFixed(1)}" y2="${PB_H - 30}" />
+            <line class="ax-zero" x1="${x(0).toFixed(1)}" y1="32" x2="${x(0).toFixed(1)}" y2="${PB_H - 32}" />
             ${lanes}
             ${realMark}
-            <text class="ax-label" x="24" y="${PB_H - 10}">${tick(xDom[0])}</text>
-            <text class="ax-label" x="${PB_W - 24}" y="${PB_H - 10}" text-anchor="end">${tick(xDom[1])}</text>
+            <text class="ax-label" x="24" y="${PB_H - 10}">${tick(xDom[0], { digits: 0 })}</text>
+            <text class="ax-label" x="${PB_W - 24}" y="${PB_H - 10}" text-anchor="end">${tick(xDom[1], { digits: 0, sign: true })}</text>
             ${watermark('pb-fx', PB_W, PB_H)}
         </svg>`;
 }

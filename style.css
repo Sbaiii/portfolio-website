@@ -2776,7 +2776,7 @@ button {
 }
 
 #map { aspect-ratio: 640 / 440; }
-#counterfactual { aspect-ratio: 720 / 360; }
+#counterfactual { aspect-ratio: 720 / 360; min-height: 23rem; }
 #placebo { aspect-ratio: 720 / 180; }
 .ch-canvas--event { aspect-ratio: 720 / 280; }
 
@@ -2803,11 +2803,11 @@ button {
     display: block;
 }
 
-.mp-fixture:empty {
+.mp-credit:empty {
     display: none;
 }
 
-/* The fixture wash. Deliberately loud enough that no shape under it reads as
+/* The provisional wash. Deliberately loud enough that no shape under it reads as
    a finding. */
 .fx-mark {
     font-family: var(--mono);
@@ -2918,9 +2918,8 @@ button {
     opacity: 0.55;
 }
 
-.mp-dot--urban_traffic { fill: var(--map-pos); opacity: 0.8; }
-.mp-dot--urban_background { fill: var(--map-neg); opacity: 0.8; }
-.mp-dot--suburban_background { fill: var(--faint); opacity: 0.8; }
+.mp-dot--traffic { fill: var(--map-pos); opacity: 0.85; }
+.mp-dot--background { fill: var(--map-neg); opacity: 0.85; }
 
 .mp-controls {
     display: flex;
@@ -2971,9 +2970,8 @@ button {
     background: var(--faint);
 }
 
-.mp-dot-key.mp-dot--urban_traffic { background: var(--map-pos); }
-.mp-dot-key.mp-dot--urban_background { background: var(--map-neg); }
-.mp-dot-key.mp-dot--suburban_background { background: var(--faint); }
+.mp-dot-key.mp-dot--traffic { background: var(--map-pos); }
+.mp-dot-key.mp-dot--background { background: var(--map-neg); }
 
 /* fig. 06 results table */
 .rt-wrap {
@@ -3038,6 +3036,90 @@ button {
     text-transform: uppercase;
     color: var(--muted);
     white-space: nowrap;
+}
+
+/* A row the decision rule was never applied to is context, not a finding. It
+   is set back so it cannot be skim-read as a result alongside the one estimate
+   that does carry the rule. */
+.rt-row--context th,
+.rt-row--context td {
+    color: var(--faint);
+}
+
+.rt-row--context .rt-num {
+    color: var(--faint) !important;
+}
+
+.rt-verdict--detected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+}
+
+.rt-verdict--not_evaluated {
+    border-style: dashed;
+    color: var(--faint);
+}
+
+.rt-decide {
+    white-space: nowrap;
+}
+
+/* The sign always travels with the verdict: "detected" says the rule passed,
+   never which way the estimate went. */
+.rt-direction {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--faint);
+    white-space: normal;
+}
+
+.rt-note {
+    display: block;
+    margin-top: 0.9rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    max-width: 74ch;
+}
+
+/* The years dropped from the analysis, left as a hole rather than a line. */
+.ch-gap {
+    fill: var(--rule);
+    opacity: 0.35;
+}
+
+.ch-gap__label {
+    fill: var(--faint);
+}
+
+.ch-note {
+    display: block;
+    margin-top: 0.6rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+}
+
+.tl-cc {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    fill: var(--faint);
+}
+
+.tl-event {
+    stroke: var(--faint);
+    stroke-width: 1;
+    stroke-dasharray: 2 3;
+}
+
+.tl-events {
+    margin-top: 0.6rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
 }
 
 .rt-meta {
@@ -3164,9 +3246,8 @@ button {
        after first paint, so the page jumped as each one appeared. These hold
        the space open; more data simply grows past them. Measured at 375px,
        where the whole page shifted 0.048 without them. */
-    #timeline { min-height: 12rem; }
-    #results { min-height: 41rem; }
-    #event-study { min-height: 10.5rem; }
+    #timeline { min-height: 30rem; }
+    #event-study { min-height: 12.5rem; }
     .ch-key { min-height: 1.4rem; }
 }
 

@@ -128,10 +128,10 @@ export const PROJECTS = [
     caseStudy: '/projects/ticket-to-breathe/',
     tags: ['Python', 'DuckDB', 'dbt', 'LightGBM', 'Causal inference'],
     image: null,
-    // Policy dates, not measurements. There is nothing to plot yet.
+    // Policy dates, not measurements: the card shows when, the case study what.
     plot: 'policyTimeline',
     metrics: [],
-    status: 'wip',
+    status: 'live',
   },
 ];
 
@@ -247,7 +247,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Case Studies',
-      standfirst: 'One shipped, one in progress. Built in the open.',
+      standfirst: 'Two shipped. Built in the open.',
       problem: 'Problem',
       built: 'What I built',
       result: 'Result',
@@ -277,7 +277,7 @@ export const STRINGS = {
           built:
             'A pipeline over the EEA’s verified hourly air-quality data (1,955 NO2 sampling points in 10 countries, 2.5 GB) and ERA5 reanalysis weather, a DuckDB and dbt warehouse, a LightGBM model that removes the effect of weather, then difference-in-differences, synthetic control and an event study comparing Germany with 7 neighbouring countries.',
           plotAlt: 'Timeline of three German policies: the €9 ticket and the Tankrabatt fuel tax cut, both from June to August 2022, and the Deutschlandticket from May 2023 onwards.',
-          result: '',
+          result: 'No measurable drop in urban NO2 from either ticket. The pre-registered €9 estimate (+3.6 points vs expected, 95% CI +1.0 to +6.2) sits inside the range of placebo countries; the Deutschlandticket estimate is −0.5 (CI −2.8 to +1.7).',
         },
       },
     },
@@ -502,7 +502,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Études de Cas',
-      standfirst: 'Un livré, un en cours. Construit à ciel ouvert.',
+      standfirst: 'Deux livrés. Construit à ciel ouvert.',
       problem: 'Problème',
       built: 'Ce que j’ai construit',
       result: 'Résultat',
@@ -532,7 +532,7 @@ export const STRINGS = {
           built:
             'Un pipeline sur les données horaires validées de qualité de l’air de l’AEE (1 955 points de mesure du NO2 dans 10 pays, 2,5 Go) et la météo de réanalyse ERA5, un entrepôt DuckDB et dbt, un modèle LightGBM qui retire l’effet de la météo, puis doubles différences, contrôle synthétique et étude d’événement comparant l’Allemagne à 7 pays voisins.',
           plotAlt: 'Chronologie de trois mesures allemandes : le billet à 9 € et la remise sur les carburants (Tankrabatt), tous deux de juin à août 2022, et le Deutschlandticket à partir de mai 2023.',
-          result: '',
+          result: 'Aucune baisse mesurable du NO2 urbain, quel que soit le billet. L\'estimation préenregistrée pour les 9 € (+3,6 points par rapport à l\'attendu, IC à 95 % de +1,0 à +6,2) reste dans la plage des pays placebo ; celle du Deutschlandticket est de −0,5 (IC de −2,8 à +1,7).',
         },
       },
     },
@@ -756,7 +756,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Casos Prácticos',
-      standfirst: 'Uno entregado, uno en curso. Construido a la vista.',
+      standfirst: 'Dos entregados. Construido a la vista.',
       problem: 'Problema',
       built: 'Lo que construí',
       result: 'Resultado',
@@ -786,7 +786,7 @@ export const STRINGS = {
           built:
             'Un pipeline sobre los datos horarios validados de calidad del aire de la AEMA (1.955 puntos de muestreo de NO2 en 10 países, 2,5 GB) y la meteorología de reanálisis ERA5, un almacén con DuckDB y dbt, un modelo LightGBM que descuenta el efecto del tiempo, y después diferencias en diferencias, control sintético y un estudio de eventos que compara Alemania con 7 países vecinos.',
           plotAlt: 'Cronología de tres medidas alemanas: el abono de 9 € y la rebaja del combustible (Tankrabatt), ambos de junio a agosto de 2022, y el Deutschlandticket desde mayo de 2023.',
-          result: '',
+          result: 'Ninguna caída medible del NO2 urbano con ninguno de los dos billetes. La estimación preregistrada para el de 9 € (+3,6 puntos sobre lo esperado, IC al 95 % de +1,0 a +6,2) queda dentro del rango de los países placebo; la del Deutschlandticket es de −0,5 (IC de −2,8 a +1,7).',
         },
       },
     },

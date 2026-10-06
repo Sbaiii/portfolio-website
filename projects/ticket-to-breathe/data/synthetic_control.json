@@ -1,196 +1,380 @@
 {
-  "weights": {
-    "AT": 0.073,
-    "BE": 0.258,
-    "CH": 0.261,
-    "CZ": 0.21,
-    "FR": 0.084,
-    "NL": 0.006,
-    "PL": 0.108
+ "status": "FINAL",
+ "generated_utc": "2026-10-06T08:26:46Z",
+ "variant": "raw",
+ "outcome": "ratio_pct",
+ "weights": {
+  "AT": 0.0,
+  "BE": 0.43,
+  "CH": 0.29,
+  "CZ": 0.02,
+  "FR": 0.0,
+  "NL": 0.26,
+  "PL": 0.0
+ },
+ "series": [
+  {
+   "month": "2018-01",
+   "actual": 13.69,
+   "synthetic": 11.58
   },
-  "series": [
-    {
-      "month": "2021-01",
-      "actual": 28.45,
-      "synthetic": 32.07
-    },
-    {
-      "month": "2021-02",
-      "actual": 24.64,
-      "synthetic": 20.53
-    },
-    {
-      "month": "2021-03",
-      "actual": 27.78,
-      "synthetic": 28.51
-    },
-    {
-      "month": "2021-04",
-      "actual": 17.97,
-      "synthetic": 14.81
-    },
-    {
-      "month": "2021-05",
-      "actual": 21.3,
-      "synthetic": 23.43
-    },
-    {
-      "month": "2021-06",
-      "actual": 16.76,
-      "synthetic": 15.85
-    },
-    {
-      "month": "2021-07",
-      "actual": 14.16,
-      "synthetic": 11.48
-    },
-    {
-      "month": "2021-08",
-      "actual": 31.92,
-      "synthetic": 28.46
-    },
-    {
-      "month": "2021-09",
-      "actual": 15.19,
-      "synthetic": 14.5
-    },
-    {
-      "month": "2021-10",
-      "actual": 18.46,
-      "synthetic": 14.96
-    },
-    {
-      "month": "2021-11",
-      "actual": 22.79,
-      "synthetic": 20.92
-    },
-    {
-      "month": "2021-12",
-      "actual": 27.08,
-      "synthetic": 30.94
-    },
-    {
-      "month": "2022-01",
-      "actual": 21.32,
-      "synthetic": 25.46
-    },
-    {
-      "month": "2022-02",
-      "actual": 17.83,
-      "synthetic": 21.18
-    },
-    {
-      "month": "2022-03",
-      "actual": 22.67,
-      "synthetic": 19.5
-    },
-    {
-      "month": "2022-04",
-      "actual": 28.77,
-      "synthetic": 26.5
-    },
-    {
-      "month": "2022-05",
-      "actual": 28.72,
-      "synthetic": 27.29
-    },
-    {
-      "month": "2022-06",
-      "actual": 18.67,
-      "synthetic": 16.11
-    },
-    {
-      "month": "2022-07",
-      "actual": 24.78,
-      "synthetic": 20.51
-    },
-    {
-      "month": "2022-08",
-      "actual": 26.12,
-      "synthetic": 29.69
-    },
-    {
-      "month": "2022-09",
-      "actual": 14.17,
-      "synthetic": 16.13
-    },
-    {
-      "month": "2022-10",
-      "actual": 18.08,
-      "synthetic": 17.31
-    },
-    {
-      "month": "2022-11",
-      "actual": 18.44,
-      "synthetic": 16.01
-    },
-    {
-      "month": "2022-12",
-      "actual": 28.04,
-      "synthetic": 24.64
-    },
-    {
-      "month": "2023-01",
-      "actual": 16.69,
-      "synthetic": 12.47
-    },
-    {
-      "month": "2023-02",
-      "actual": 24.55,
-      "synthetic": 25.97
-    },
-    {
-      "month": "2023-03",
-      "actual": 26.54,
-      "synthetic": 29.2
-    },
-    {
-      "month": "2023-04",
-      "actual": 15.29,
-      "synthetic": 18.51
-    },
-    {
-      "month": "2023-05",
-      "actual": 28.21,
-      "synthetic": 31.84
-    },
-    {
-      "month": "2023-06",
-      "actual": 27.57,
-      "synthetic": 30.57
-    },
-    {
-      "month": "2023-07",
-      "actual": 29.09,
-      "synthetic": 30.68
-    },
-    {
-      "month": "2023-08",
-      "actual": 24.18,
-      "synthetic": 20.71
-    },
-    {
-      "month": "2023-09",
-      "actual": 21.22,
-      "synthetic": 17.34
-    },
-    {
-      "month": "2023-10",
-      "actual": 14.04,
-      "synthetic": 17.41
-    },
-    {
-      "month": "2023-11",
-      "actual": 29.73,
-      "synthetic": 33.59
-    },
-    {
-      "month": "2023-12",
-      "actual": 29.38,
-      "synthetic": 32.79
-    }
-  ],
-  "rank_jun_aug_2022": 5,
-  "rank_may_dec_2023": 3,
-  "n_units": 8
+  {
+   "month": "2018-02",
+   "actual": 5.68,
+   "synthetic": 5.16
+  },
+  {
+   "month": "2018-03",
+   "actual": 10.42,
+   "synthetic": 12.89
+  },
+  {
+   "month": "2018-04",
+   "actual": 17.27,
+   "synthetic": 15.46
+  },
+  {
+   "month": "2018-05",
+   "actual": 19.81,
+   "synthetic": 15.36
+  },
+  {
+   "month": "2018-06",
+   "actual": 6.69,
+   "synthetic": 5.41
+  },
+  {
+   "month": "2018-07",
+   "actual": 9.23,
+   "synthetic": 10.9
+  },
+  {
+   "month": "2018-08",
+   "actual": 11.87,
+   "synthetic": 8.42
+  },
+  {
+   "month": "2018-09",
+   "actual": 15.01,
+   "synthetic": 10.06
+  },
+  {
+   "month": "2018-10",
+   "actual": 16.69,
+   "synthetic": 14.67
+  },
+  {
+   "month": "2018-11",
+   "actual": 7.34,
+   "synthetic": 6.35
+  },
+  {
+   "month": "2018-12",
+   "actual": 4.31,
+   "synthetic": 4.31
+  },
+  {
+   "month": "2019-01",
+   "actual": 9.91,
+   "synthetic": 10.89
+  },
+  {
+   "month": "2019-02",
+   "actual": 24.73,
+   "synthetic": 19.83
+  },
+  {
+   "month": "2019-03",
+   "actual": 6.69,
+   "synthetic": 6.66
+  },
+  {
+   "month": "2019-04",
+   "actual": 5.58,
+   "synthetic": 6.9
+  },
+  {
+   "month": "2019-05",
+   "actual": 8.88,
+   "synthetic": 5.19
+  },
+  {
+   "month": "2019-06",
+   "actual": -8.39,
+   "synthetic": -4.09
+  },
+  {
+   "month": "2019-07",
+   "actual": -9.2,
+   "synthetic": -10.67
+  },
+  {
+   "month": "2019-08",
+   "actual": -11.59,
+   "synthetic": -10.32
+  },
+  {
+   "month": "2019-09",
+   "actual": -11.49,
+   "synthetic": -8.06
+  },
+  {
+   "month": "2019-10",
+   "actual": -13.0,
+   "synthetic": -12.04
+  },
+  {
+   "month": "2019-11",
+   "actual": -6.52,
+   "synthetic": -6.24
+  },
+  {
+   "month": "2019-12",
+   "actual": -2.0,
+   "synthetic": -3.88
+  },
+  {
+   "month": "2022-01",
+   "actual": -22.88,
+   "synthetic": -19.02
+  },
+  {
+   "month": "2022-02",
+   "actual": -23.73,
+   "synthetic": -21.05
+  },
+  {
+   "month": "2022-03",
+   "actual": -15.69,
+   "synthetic": -13.7
+  },
+  {
+   "month": "2022-04",
+   "actual": -23.13,
+   "synthetic": -22.87
+  },
+  {
+   "month": "2022-05",
+   "actual": -22.59,
+   "synthetic": -18.97
+  },
+  {
+   "month": "2022-06",
+   "actual": -23.68,
+   "synthetic": -23.07
+  },
+  {
+   "month": "2022-07",
+   "actual": -25.0,
+   "synthetic": -26.98
+  },
+  {
+   "month": "2022-08",
+   "actual": -27.9,
+   "synthetic": -26.33
+  },
+  {
+   "month": "2022-09",
+   "actual": -26.43,
+   "synthetic": -23.61
+  },
+  {
+   "month": "2022-10",
+   "actual": -27.07,
+   "synthetic": -24.39
+  },
+  {
+   "month": "2022-11",
+   "actual": -23.17,
+   "synthetic": -24.86
+  },
+  {
+   "month": "2022-12",
+   "actual": -18.65,
+   "synthetic": -20.12
+  },
+  {
+   "month": "2023-01",
+   "actual": -25.19,
+   "synthetic": -23.44
+  },
+  {
+   "month": "2023-02",
+   "actual": -20.46,
+   "synthetic": -17.62
+  },
+  {
+   "month": "2023-03",
+   "actual": -25.36,
+   "synthetic": -23.62
+  },
+  {
+   "month": "2023-04",
+   "actual": -24.34,
+   "synthetic": -23.2
+  },
+  {
+   "month": "2023-05",
+   "actual": -28.26,
+   "synthetic": -25.92
+  },
+  {
+   "month": "2023-06",
+   "actual": -25.74,
+   "synthetic": -24.01
+  },
+  {
+   "month": "2023-07",
+   "actual": -29.11,
+   "synthetic": -27.34
+  },
+  {
+   "month": "2023-08",
+   "actual": -38.35,
+   "synthetic": -32.23
+  },
+  {
+   "month": "2023-09",
+   "actual": -34.92,
+   "synthetic": -32.36
+  },
+  {
+   "month": "2023-10",
+   "actual": -27.26,
+   "synthetic": -25.79
+  },
+  {
+   "month": "2023-11",
+   "actual": -28.69,
+   "synthetic": -26.05
+  },
+  {
+   "month": "2023-12",
+   "actual": -25.05,
+   "synthetic": -23.47
+  },
+  {
+   "month": "2024-01",
+   "actual": -20.13,
+   "synthetic": -21.34
+  },
+  {
+   "month": "2024-02",
+   "actual": -30.82,
+   "synthetic": -25.2
+  },
+  {
+   "month": "2024-03",
+   "actual": -29.97,
+   "synthetic": -29.82
+  },
+  {
+   "month": "2024-04",
+   "actual": -29.41,
+   "synthetic": -29.03
+  },
+  {
+   "month": "2024-05",
+   "actual": -32.24,
+   "synthetic": -27.78
+  },
+  {
+   "month": "2024-06",
+   "actual": -33.9,
+   "synthetic": -28.1
+  },
+  {
+   "month": "2024-07",
+   "actual": -40.72,
+   "synthetic": -35.27
+  },
+  {
+   "month": "2024-08",
+   "actual": -40.78,
+   "synthetic": -35.67
+  },
+  {
+   "month": "2024-09",
+   "actual": -34.52,
+   "synthetic": -33.36
+  },
+  {
+   "month": "2024-10",
+   "actual": -35.73,
+   "synthetic": -32.75
+  },
+  {
+   "month": "2024-11",
+   "actual": -31.51,
+   "synthetic": -31.03
+  },
+  {
+   "month": "2024-12",
+   "actual": -33.63,
+   "synthetic": -31.05
+  },
+  {
+   "month": "2025-01",
+   "actual": -23.7,
+   "synthetic": -25.4
+  },
+  {
+   "month": "2025-02",
+   "actual": -28.22,
+   "synthetic": -28.99
+  },
+  {
+   "month": "2025-03",
+   "actual": -23.63,
+   "synthetic": -26.95
+  },
+  {
+   "month": "2025-04",
+   "actual": -27.84,
+   "synthetic": -29.37
+  },
+  {
+   "month": "2025-05",
+   "actual": -29.07,
+   "synthetic": -29.89
+  },
+  {
+   "month": "2025-06",
+   "actual": -32.34,
+   "synthetic": -31.78
+  },
+  {
+   "month": "2025-07",
+   "actual": -37.78,
+   "synthetic": -38.05
+  },
+  {
+   "month": "2025-08",
+   "actual": -38.79,
+   "synthetic": -35.87
+  },
+  {
+   "month": "2025-09",
+   "actual": -40.21,
+   "synthetic": -37.43
+  },
+  {
+   "month": "2025-10",
+   "actual": -37.46,
+   "synthetic": -35.29
+  },
+  {
+   "month": "2025-11",
+   "actual": -29.54,
+   "synthetic": -31.12
+  },
+  {
+   "month": "2025-12",
+   "actual": -34.21,
+   "synthetic": -34.21
+  }
+ ],
+ "rank_jun_aug_2022": 6,
+ "rank_may_dec_2023": 4,
+ "n_units": 8
 }

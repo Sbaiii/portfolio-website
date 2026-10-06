@@ -1,33 +1,51 @@
 {
-  "status": "FIXTURE",
-  "generated_utc": "2026-10-06T00:00:00Z",
-  "n_stations": {
-    "DE": 268,
-    "controls": 517,
-    "by_country": {
-      "DE": 268,
-      "AT": 91,
-      "BE": 38,
-      "CH": 114,
-      "CZ": 64,
-      "FR": 64,
-      "NL": 93,
-      "PL": 53
-    }
-  },
-  "n_station_days": 1955000,
-  "control_countries": [
-    "AT",
-    "BE",
-    "CH",
-    "CZ",
-    "FR",
-    "NL",
-    "PL"
+ "status": "FINAL",
+ "generated_utc": "2026-10-06T08:26:46Z",
+ "n_stations": {
+  "DE": 284,
+  "controls": 549,
+  "by_country": {
+   "AT": 91,
+   "BE": 23,
+   "CH": 22,
+   "CZ": 45,
+   "DE": 284,
+   "FR": 253,
+   "NL": 39,
+   "PL": 76
+  }
+ },
+ "n_station_days": 1762413,
+ "control_stations_with_predictions": 587,
+ "control_stations_in_study": 587,
+ "control_countries": [
+  "AT",
+  "BE",
+  "CH",
+  "CZ",
+  "FR",
+  "NL",
+  "PL"
+ ],
+ "station_types": [
+  "traffic",
+  "background"
+ ],
+ "analysis_window": {
+  "years": [
+   2018,
+   2019,
+   2022,
+   2023,
+   2024,
+   2025
   ],
-  "analysis_window": {
-    "start": "2018-01-01",
-    "end": "2025-12-31"
-  },
-  "weather_grid_deg": 0.25
+  "start": "2018-01-01",
+  "end": "2025-12-31",
+  "excluded_years": [
+   2020,
+   2021
+  ]
+ },
+ "weather_grid_deg": 1.0
 }
