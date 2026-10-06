@@ -36,7 +36,7 @@ export const DATA = { ...FILES, loaded: false, missing: [] };
 async function one(key) {
     const file = key === 'countries' ? 'countries.geojson' : `${key}.json`;
     try {
-        const res = await fetch(new URL(file, DIR), { cache: 'no-cache' });
+        const res = await fetch(new URL(file, DIR));
         if (!res.ok) throw new Error(`${res.status}`);
         return await res.json();
     } catch (e) {

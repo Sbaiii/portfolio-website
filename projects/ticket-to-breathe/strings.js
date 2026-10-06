@@ -115,12 +115,133 @@ export const PAGE = {
     },
 
 
-    results: {
+    provisional: {
+      label: 'Provisional',
+      text: 'The analysis has not shipped. Every number on this page is withheld until it is final, so figures read as a dash and the charts carry a fixture watermark.',
+      missing: 'Some data files are not loaded, so parts of this page are empty.',
+    },
+
+    map: {
       fig: 'fig. 05',
+      title: 'Where we look',
+      standfirst: 'TODO: one sentence on the station panel and why these countries.',
+      legend: 'Percentage points vs expected',
+      note: 'Descriptive country values, not causal estimates.',
+      stations: 'Show stations',
+      stationsOff: 'Hide stations',
+      inStudy: 'In the study',
+      other: 'Not in the study',
+      stationCount: 'stations',
+      fixtureGeometry: 'Country outlines are placeholders until the real boundary file is copied in.',
+      empty: 'No map data loaded.',
+      alt: 'A map of western and central Europe. The eight study countries are outlined and shaded by their value in percentage points against expected; every other country is grey. Station positions can be switched on as small dots.',
+      types: {
+        urban_traffic: 'Urban traffic',
+        urban_background: 'Urban background',
+        suburban_background: 'Suburban background',
+      },
+    },
+
+    counterfactual: {
+      fig: 'fig. 07',
+      title: 'The counterfactual',
+      standfirst: 'TODO: one sentence on what the synthetic control is and how to read it.',
+      actual: 'Germany, actual',
+      synthetic: 'Germany, synthetic',
+      gap: 'Gap',
+      caption: 'Monthly deweathered NO2 for Germany against its synthetic control, with the policy windows shaded. The lower panel is the gap between the two.',
+      alt: 'A line chart of monthly deweathered NO2 for Germany and for its synthetic control, with the €9 ticket and Deutschlandticket windows shaded, and a smaller panel beneath showing the gap between the two series.',
+      weights: 'Donor weights',
+      empty: 'No counterfactual data loaded.',
+    },
+
+    event: {
+      fig: 'fig. 08',
+      title: 'Event study',
+      standfirst: 'TODO: one sentence on the reference period and what a flat pre-trend would mean.',
+      caption: 'Monthly estimates with 95% confidence intervals, policy windows shaded.',
+      alt: 'An event study chart: one estimate per month with a 95% confidence interval, drawn against a zero line, with the policy windows shaded.',
+      variants: {
+        nine_euro: '€9 ticket',
+        dticket: 'Deutschlandticket',
+      },
+      empty: 'No event study data loaded.',
+    },
+
+    placebo: {
+      fig: 'fig. 09',
+      title: 'Placebo tests',
+      standfirst: 'TODO: one sentence on what the placebos are and what would count as a pass.',
+      real: 'Germany, actual estimate',
+      inSpace: 'Placebo in space',
+      inTime: 'Placebo in time',
+      caption: 'Each placebo estimate as a dot, with the real estimate marked.',
+      alt: 'A strip chart of placebo estimates, one dot per placebo, with the real estimate for Germany marked separately.',
+      empty: 'No placebo data loaded.',
+    },
+
+    methods: {
+      fig: 'fig. 10',
+      title: 'Methods',
+      standfirst: 'The parts a reviewer will ask about, written down in one place.',
+      show: 'Show',
+      hide: 'Hide',
+      items: {
+        prereg: {
+          title: 'Pre-registration',
+          body: 'TODO: ADR-008 was committed before any estimate was run. Say what was fixed in advance, what was left open, and where the commit is.',
+        },
+        deweathering: {
+          title: 'Deweathering',
+          body: 'TODO: LightGBM per station, cross-fitted. Say which weather features, how the folds are cut, and what the residual is.',
+        },
+        data: {
+          title: 'Data',
+          body: 'TODO: stations, the filter that selected them, the analysis window, the weather grid, and what was excluded.',
+        },
+        limitations: {
+          title: 'Limitations',
+          body: 'TODO: the fuel tax cut, the post-COVID recovery, the energy crisis, and what this design cannot separate.',
+        },
+      },
+    },
+
+    results: {
+      fig: 'fig. 06',
       title: 'Results',
-      standfirst: 'Results land here as the analysis ships. Nothing is filled in until the numbers are real.',
+      standfirst: 'TODO: one sentence framing the table. No conclusions until the analysis ships.',
       pending: 'Pending',
       awaiting: 'Awaiting analysis',
+      empty: 'No results loaded.',
+      cols: {
+        label: 'Policy',
+        family: 'Design',
+        outcome: 'Outcome',
+        estimate: 'Estimate',
+        ci: '95% CI',
+        verdict: 'Verdict',
+      },
+      families: {
+        did: 'Difference-in-differences',
+        synthetic_control: 'Synthetic control',
+      },
+      labels: {
+        nine_euro_ticket: '€9 ticket',
+        deutschlandticket: 'Deutschlandticket',
+      },
+      outcomes: {
+        no2_deweathered: 'NO2, deweathered',
+        no2_raw: 'NO2, raw',
+      },
+      verdicts: {
+        inconclusive: 'Inconclusive',
+        consistent: 'Consistent',
+        not_detected: 'Not detected',
+      },
+      stations: 'Stations',
+      stationDays: 'Station days',
+      window: 'Window',
+      grid: 'Weather grid',
     },
 
     footer: {
@@ -231,12 +352,133 @@ export const PAGE = {
     },
 
 
-    results: {
+    provisional: {
+      label: 'Provisoire',
+      text: 'L’analyse n’est pas publiée. Tous les chiffres de cette page sont retenus tant qu’ils ne sont pas définitifs : ils s’affichent sous forme de tiret et les graphiques portent un filigrane indiquant des données fictives.',
+      missing: 'Certains fichiers de données ne sont pas chargés : des parties de cette page restent vides.',
+    },
+
+    map: {
       fig: 'fig. 05',
+      title: 'Où l’on regarde',
+      standfirst: 'TODO : une phrase sur le panel de stations et le choix de ces pays.',
+      legend: 'Points de pourcentage par rapport à l’attendu',
+      note: 'Valeurs descriptives par pays, pas des estimations causales.',
+      stations: 'Afficher les stations',
+      stationsOff: 'Masquer les stations',
+      inStudy: 'Dans l’étude',
+      other: 'Hors étude',
+      stationCount: 'stations',
+      fixtureGeometry: 'Les contours des pays sont provisoires tant que le vrai fichier de frontières n’est pas copié.',
+      empty: 'Aucune donnée cartographique chargée.',
+      alt: 'Une carte de l’Europe occidentale et centrale. Les huit pays de l’étude sont détourés et teintés selon leur valeur en points de pourcentage par rapport à l’attendu ; tous les autres pays sont en gris. La position des stations peut être affichée sous forme de petits points.',
+      types: {
+        urban_traffic: 'Urbain trafic',
+        urban_background: 'Urbain de fond',
+        suburban_background: 'Périurbain de fond',
+      },
+    },
+
+    counterfactual: {
+      fig: 'fig. 07',
+      title: 'Le contrefactuel',
+      standfirst: 'TODO : une phrase sur ce qu’est le contrôle synthétique et comment le lire.',
+      actual: 'Allemagne, observé',
+      synthetic: 'Allemagne, synthétique',
+      gap: 'Écart',
+      caption: 'NO2 mensuel corrigé de la météo pour l’Allemagne face à son contrôle synthétique, fenêtres de politique publique ombrées. Le panneau du bas donne l’écart entre les deux.',
+      alt: 'Un graphique en lignes du NO2 mensuel corrigé de la météo pour l’Allemagne et pour son contrôle synthétique, avec les fenêtres du billet à 9 € et du Deutschlandticket ombrées, et un panneau plus petit en dessous montrant l’écart entre les deux séries.',
+      weights: 'Poids des donneurs',
+      empty: 'Aucune donnée de contrefactuel chargée.',
+    },
+
+    event: {
+      fig: 'fig. 08',
+      title: 'Étude d’événement',
+      standfirst: 'TODO : une phrase sur la période de référence et sur ce que signifierait une tendance pré-traitement plate.',
+      caption: 'Estimations mensuelles avec intervalles de confiance à 95 %, fenêtres de politique publique ombrées.',
+      alt: 'Un graphique d’étude d’événement : une estimation par mois avec son intervalle de confiance à 95 %, tracée par rapport à une ligne zéro, les fenêtres de politique publique étant ombrées.',
+      variants: {
+        nine_euro: 'Billet à 9 €',
+        dticket: 'Deutschlandticket',
+      },
+      empty: 'Aucune donnée d’étude d’événement chargée.',
+    },
+
+    placebo: {
+      fig: 'fig. 09',
+      title: 'Tests placebo',
+      standfirst: 'TODO : une phrase sur la nature des placebos et sur ce qui constituerait un succès.',
+      real: 'Allemagne, estimation réelle',
+      inSpace: 'Placebo dans l’espace',
+      inTime: 'Placebo dans le temps',
+      caption: 'Chaque estimation placebo sous forme de point, l’estimation réelle étant signalée.',
+      alt: 'Un graphique en bande des estimations placebo, un point par placebo, avec l’estimation réelle pour l’Allemagne signalée à part.',
+      empty: 'Aucune donnée de placebo chargée.',
+    },
+
+    methods: {
+      fig: 'fig. 10',
+      title: 'Méthodes',
+      standfirst: 'Ce qu’un relecteur demandera, écrit au même endroit.',
+      show: 'Afficher',
+      hide: 'Masquer',
+      items: {
+        prereg: {
+          title: 'Préenregistrement',
+          body: 'TODO : l’ADR-008 a été committé avant toute estimation. Dire ce qui a été fixé à l’avance, ce qui est resté ouvert, et où se trouve le commit.',
+        },
+        deweathering: {
+          title: 'Correction météo',
+          body: 'TODO : LightGBM par station, en validation croisée. Dire quelles variables météo, comment les plis sont découpés, et ce qu’est le résidu.',
+        },
+        data: {
+          title: 'Données',
+          body: 'TODO : les stations, le filtre qui les a sélectionnées, la fenêtre d’analyse, la grille météo, et ce qui a été exclu.',
+        },
+        limitations: {
+          title: 'Limites',
+          body: 'TODO : la remise sur la taxe carburant, la reprise post-COVID, la crise de l’énergie, et ce que ce protocole ne peut pas séparer.',
+        },
+      },
+    },
+
+    results: {
+      fig: 'fig. 06',
       title: 'Résultats',
-      standfirst: 'Les résultats arriveront ici au fil de l’analyse. Rien n’est rempli tant que les chiffres ne sont pas réels.',
+      standfirst: 'TODO : une phrase de cadrage du tableau. Aucune conclusion tant que l’analyse n’est pas publiée.',
       pending: 'En attente',
       awaiting: 'Analyse en cours',
+      empty: 'Aucun résultat chargé.',
+      cols: {
+        label: 'Mesure',
+        family: 'Protocole',
+        outcome: 'Variable',
+        estimate: 'Estimation',
+        ci: 'IC à 95 %',
+        verdict: 'Verdict',
+      },
+      families: {
+        did: 'Doubles différences',
+        synthetic_control: 'Contrôle synthétique',
+      },
+      labels: {
+        nine_euro_ticket: 'Billet à 9 €',
+        deutschlandticket: 'Deutschlandticket',
+      },
+      outcomes: {
+        no2_deweathered: 'NO2, corrigé de la météo',
+        no2_raw: 'NO2, brut',
+      },
+      verdicts: {
+        inconclusive: 'Non concluant',
+        consistent: 'Cohérent',
+        not_detected: 'Non détecté',
+      },
+      stations: 'Stations',
+      stationDays: 'Jours-station',
+      window: 'Fenêtre',
+      grid: 'Grille météo',
     },
 
     footer: {
@@ -347,12 +589,133 @@ export const PAGE = {
     },
 
 
-    results: {
+    provisional: {
+      label: 'Provisional',
+      text: 'El análisis aún no se ha publicado. Todas las cifras de esta página se retienen hasta que sean definitivas: aparecen como un guion y los gráficos llevan una marca de agua que indica datos de prueba.',
+      missing: 'Algunos archivos de datos no están cargados, así que partes de esta página quedan vacías.',
+    },
+
+    map: {
       fig: 'fig. 05',
+      title: 'Dónde miramos',
+      standfirst: 'TODO: una frase sobre el panel de estaciones y por qué estos países.',
+      legend: 'Puntos porcentuales frente a lo esperado',
+      note: 'Valores descriptivos por país, no estimaciones causales.',
+      stations: 'Mostrar estaciones',
+      stationsOff: 'Ocultar estaciones',
+      inStudy: 'En el estudio',
+      other: 'Fuera del estudio',
+      stationCount: 'estaciones',
+      fixtureGeometry: 'Los contornos de los países son provisionales hasta que se copie el archivo de fronteras real.',
+      empty: 'No hay datos de mapa cargados.',
+      alt: 'Un mapa de Europa occidental y central. Los ocho países del estudio aparecen perfilados y coloreados según su valor en puntos porcentuales frente a lo esperado; el resto de países están en gris. La posición de las estaciones puede activarse como puntos pequeños.',
+      types: {
+        urban_traffic: 'Urbana de tráfico',
+        urban_background: 'Urbana de fondo',
+        suburban_background: 'Suburbana de fondo',
+      },
+    },
+
+    counterfactual: {
+      fig: 'fig. 07',
+      title: 'El contrafactual',
+      standfirst: 'TODO: una frase sobre qué es el control sintético y cómo leerlo.',
+      actual: 'Alemania, observado',
+      synthetic: 'Alemania, sintético',
+      gap: 'Diferencia',
+      caption: 'NO2 mensual corregido por meteorología para Alemania frente a su control sintético, con las ventanas de las medidas sombreadas. El panel inferior es la diferencia entre ambos.',
+      alt: 'Un gráfico de líneas del NO2 mensual corregido por meteorología para Alemania y para su control sintético, con las ventanas del abono de 9 € y del Deutschlandticket sombreadas, y un panel más pequeño debajo que muestra la diferencia entre ambas series.',
+      weights: 'Pesos de los donantes',
+      empty: 'No hay datos de contrafactual cargados.',
+    },
+
+    event: {
+      fig: 'fig. 08',
+      title: 'Estudio de eventos',
+      standfirst: 'TODO: una frase sobre el periodo de referencia y qué significaría una tendencia previa plana.',
+      caption: 'Estimaciones mensuales con intervalos de confianza del 95 %, ventanas de las medidas sombreadas.',
+      alt: 'Un gráfico de estudio de eventos: una estimación por mes con su intervalo de confianza del 95 %, trazada frente a una línea de cero, con las ventanas de las medidas sombreadas.',
+      variants: {
+        nine_euro: 'Abono de 9 €',
+        dticket: 'Deutschlandticket',
+      },
+      empty: 'No hay datos de estudio de eventos cargados.',
+    },
+
+    placebo: {
+      fig: 'fig. 09',
+      title: 'Pruebas placebo',
+      standfirst: 'TODO: una frase sobre qué son los placebos y qué contaría como aprobado.',
+      real: 'Alemania, estimación real',
+      inSpace: 'Placebo en el espacio',
+      inTime: 'Placebo en el tiempo',
+      caption: 'Cada estimación placebo como un punto, con la estimación real señalada.',
+      alt: 'Un gráfico de banda con las estimaciones placebo, un punto por placebo, y la estimación real de Alemania señalada aparte.',
+      empty: 'No hay datos de placebo cargados.',
+    },
+
+    methods: {
+      fig: 'fig. 10',
+      title: 'Métodos',
+      standfirst: 'Lo que preguntará cualquier revisor, escrito en un solo sitio.',
+      show: 'Mostrar',
+      hide: 'Ocultar',
+      items: {
+        prereg: {
+          title: 'Registro previo',
+          body: 'TODO: el ADR-008 se registró antes de calcular ninguna estimación. Decir qué se fijó de antemano, qué quedó abierto y dónde está el commit.',
+        },
+        deweathering: {
+          title: 'Corrección meteorológica',
+          body: 'TODO: LightGBM por estación, con validación cruzada. Decir qué variables meteorológicas, cómo se parten los pliegues y qué es el residuo.',
+        },
+        data: {
+          title: 'Datos',
+          body: 'TODO: las estaciones, el filtro que las seleccionó, la ventana de análisis, la malla meteorológica y qué quedó excluido.',
+        },
+        limitations: {
+          title: 'Limitaciones',
+          body: 'TODO: la rebaja del impuesto a los carburantes, la recuperación pos-COVID, la crisis energética y lo que este diseño no puede separar.',
+        },
+      },
+    },
+
+    results: {
+      fig: 'fig. 06',
       title: 'Resultados',
-      standfirst: 'Los resultados aparecerán aquí según avance el análisis. Nada se rellena hasta que las cifras sean reales.',
+      standfirst: 'TODO: una frase que enmarque la tabla. Ninguna conclusión hasta que se publique el análisis.',
       pending: 'Pendiente',
       awaiting: 'A la espera del análisis',
+      empty: 'No hay resultados cargados.',
+      cols: {
+        label: 'Medida',
+        family: 'Diseño',
+        outcome: 'Variable',
+        estimate: 'Estimación',
+        ci: 'IC del 95 %',
+        verdict: 'Veredicto',
+      },
+      families: {
+        did: 'Diferencias en diferencias',
+        synthetic_control: 'Control sintético',
+      },
+      labels: {
+        nine_euro_ticket: 'Abono de 9 €',
+        deutschlandticket: 'Deutschlandticket',
+      },
+      outcomes: {
+        no2_deweathered: 'NO2, corregido por meteorología',
+        no2_raw: 'NO2, bruto',
+      },
+      verdicts: {
+        inconclusive: 'No concluyente',
+        consistent: 'Coherente',
+        not_detected: 'No detectado',
+      },
+      stations: 'Estaciones',
+      stationDays: 'Días-estación',
+      window: 'Ventana',
+      grid: 'Malla meteorológica',
     },
 
     footer: {

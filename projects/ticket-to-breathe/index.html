@@ -49,6 +49,15 @@
     <link rel="modulepreload" href="./page.js">
     <link rel="modulepreload" href="/js/chrome.js">
     <link rel="modulepreload" href="./strings.js">
+    <link rel="modulepreload" href="./data.js">
+    <link rel="preload" href="./data/meta.json" as="fetch">
+    <link rel="preload" href="./data/headline.json" as="fetch">
+    <link rel="preload" href="./data/event_study.json" as="fetch">
+    <link rel="preload" href="./data/synthetic_control.json" as="fetch">
+    <link rel="preload" href="./data/placebos.json" as="fetch">
+    <link rel="preload" href="./data/map.json" as="fetch">
+    <link rel="preload" href="./data/timeline.json" as="fetch">
+    <link rel="preload" href="./data/countries.geojson" as="fetch">
     <link rel="stylesheet" href="/style.css">
 
     <script type="application/ld+json">
@@ -152,6 +161,16 @@
             </div>
         </section>
 
+        <div class="wrap" id="provisional">
+            <div class="prov" role="status">
+                <span class="prov__badge" data-i18n="provisional.label">Provisional</span>
+                <div>
+                    <p class="prov__text" data-i18n="provisional.text"></p>
+                    <p class="prov__missing" data-i18n="provisional.missing" hidden></p>
+                </div>
+            </div>
+        </div>
+
         <!-- ==================== fig. 01  THE EXPERIMENT ==================== -->
         <section class="wrap fig" id="experiment">
             <div class="fig__head reveal">
@@ -209,17 +228,94 @@
             <div class="dgrid" id="decisions"></div>
         </section>
 
-        <!-- ==================== fig. 05  RESULTS ==================== -->
+        <!-- ==================== fig. 05  THE MAP ==================== -->
+        <section class="wrap fig" id="coverage">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="map.fig">fig. 05</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="map.title">Where we look</h2>
+                    <p class="fig__standfirst" data-i18n="map.standfirst"></p>
+                </div>
+            </div>
+            <figure class="ch-plate reveal">
+                <div class="mp" id="map"></div>
+                <div class="mp-controls" id="map-legend"></div>
+                <figcaption class="meta ch-caption">
+                    <span data-i18n="map.note">Descriptive country values, not causal estimates.</span>
+                    <span class="mp-fixture" data-i18n="map.fixtureGeometry"></span>
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- ==================== fig. 06  RESULTS ==================== -->
         <section class="wrap fig" id="results-section">
             <div class="fig__head reveal">
-                <div class="fig__label"><span class="meta" data-i18n="results.fig">fig. 05</span></div>
+                <div class="fig__label"><span class="meta" data-i18n="results.fig">fig. 06</span></div>
                 <div>
                     <h2 class="fig__title" data-i18n="results.title">Results</h2>
                     <p class="fig__standfirst" data-i18n="results.standfirst"></p>
                 </div>
             </div>
-            <div class="rgrid" id="results"></div>
+            <div class="reveal" id="results"></div>
         </section>
+
+        <!-- ==================== fig. 07  COUNTERFACTUAL ==================== -->
+        <section class="wrap fig" id="counterfactual-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="counterfactual.fig">fig. 07</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="counterfactual.title">The counterfactual</h2>
+                    <p class="fig__standfirst" data-i18n="counterfactual.standfirst"></p>
+                </div>
+            </div>
+            <figure class="ch-plate reveal">
+                <div id="counterfactual"></div>
+                <figcaption class="meta ch-caption" data-i18n="counterfactual.caption"></figcaption>
+            </figure>
+        </section>
+
+        <!-- ==================== fig. 08  EVENT STUDY ==================== -->
+        <section class="wrap fig" id="event-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="event.fig">fig. 08</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="event.title">Event study</h2>
+                    <p class="fig__standfirst" data-i18n="event.standfirst"></p>
+                </div>
+            </div>
+            <figure class="ch-plate reveal">
+                <div id="event-study"></div>
+                <figcaption class="meta ch-caption" data-i18n="event.caption"></figcaption>
+            </figure>
+        </section>
+
+        <!-- ==================== fig. 09  PLACEBO TESTS ==================== -->
+        <section class="wrap fig" id="placebo-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="placebo.fig">fig. 09</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="placebo.title">Placebo tests</h2>
+                    <p class="fig__standfirst" data-i18n="placebo.standfirst"></p>
+                </div>
+            </div>
+            <figure class="ch-plate reveal">
+                <div id="placebo"></div>
+                <figcaption class="meta ch-caption" data-i18n="placebo.caption"></figcaption>
+            </figure>
+        </section>
+
+        <!-- ==================== fig. 10  METHODS ==================== -->
+        <section class="wrap fig" id="methods-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="methods.fig">fig. 10</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="methods.title">Methods</h2>
+                    <p class="fig__standfirst" data-i18n="methods.standfirst"></p>
+                </div>
+            </div>
+            <div class="mt-list reveal" id="methods"></div>
+        </section>
+
     </main>
 
     <footer class="wrap colophon">

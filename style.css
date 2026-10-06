@@ -2670,6 +2670,506 @@ button {
     }
 }
 
+
+/* 15c  TICKET TO BREATHE: DATA-DRIVEN FIGURES ------------------------------ */
+
+/* The map needs two ends to a diverging scale, which is one more hue than the
+   rest of the site uses. Blue reads as a fall and amber as a rise, and both are
+   defined per theme so the map keeps its meaning in either. */
+:root {
+    --map-neg: #1b4dff;
+    --map-pos: #b5651d;
+    --map-neutral: #eceef2;
+    --map-out: #f2f3f5;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --map-neg: #5b87ff;
+        --map-pos: #d08a3c;
+        --map-neutral: #171a20;
+        --map-out: #111318;
+    }
+}
+
+:root[data-theme="dark"] {
+    --map-neg: #5b87ff;
+    --map-pos: #d08a3c;
+    --map-neutral: #171a20;
+    --map-out: #111318;
+}
+
+:root[data-theme="light"] {
+    --map-neg: #1b4dff;
+    --map-pos: #b5651d;
+    --map-neutral: #eceef2;
+    --map-out: #f2f3f5;
+}
+
+/* Provisional banner. Sticky to the top of the section flow rather than the
+   viewport: present, but not in the way on a phone. */
+.prov {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    margin-block: 1rem 0;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    background: var(--accent-soft);
+}
+
+.prov__badge {
+    flex: none;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-on);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.prov__text,
+.prov__missing {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--accent-ink);
+    max-width: 70ch;
+}
+
+/* No opacity here: dimming accent-ink against the banner's tinted background
+   drops it to 4.09:1, under AA. Separation comes from the rule instead. */
+.prov__missing {
+    margin-top: 0.55rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--accent);
+}
+
+/* A chart plate: the light card the site already uses for figures, plus the
+   room a caption and a control row need. */
+.ch-plate {
+    margin: 0;
+    min-width: 0;
+    padding: clamp(0.75rem, 2vw, 1.15rem);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--paper-2);
+}
+
+.ch-plate svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+/* The charts arrive after their JSON does. Reserving each box from first paint
+   means filling it in moves nothing below it: without this the page scored a
+   0.097 cumulative layout shift on mobile, almost all of it these four. */
+#map,
+#counterfactual,
+#placebo,
+.ch-canvas {
+    display: block;
+}
+
+#map { aspect-ratio: 640 / 440; }
+#counterfactual { aspect-ratio: 720 / 360; }
+#placebo { aspect-ratio: 720 / 180; }
+.ch-canvas--event { aspect-ratio: 720 / 280; }
+
+#map > p,
+#counterfactual > p,
+#placebo > p,
+.ch-canvas > p {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    margin: 0;
+}
+
+.ch-caption {
+    display: block;
+    margin-top: 0.7rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    max-width: 74ch;
+}
+
+.ch-caption > span {
+    display: block;
+}
+
+.mp-fixture:empty {
+    display: none;
+}
+
+/* The fixture wash. Deliberately loud enough that no shape under it reads as
+   a finding. */
+.fx-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    fill: var(--faint);
+    opacity: 0.17;
+}
+
+.fx-wash {
+    pointer-events: none;
+}
+
+/* axes shared by every chart here */
+.ax-line,
+.ax-zero {
+    stroke: var(--rule);
+    stroke-width: 1;
+}
+
+.ax-zero {
+    stroke-dasharray: 3 3;
+}
+
+.ax-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    fill: var(--faint);
+}
+
+.ch-band {
+    fill: var(--accent-soft);
+}
+
+.ch-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+.ch-key li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.ch-swatch {
+    width: 14px;
+    height: 2px;
+    background: var(--accent);
+}
+
+.ch-swatch--synth {
+    background: var(--faint);
+}
+
+.ch-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+}
+
+.ch-tab {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+
+.ch-tab.is-on {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+}
+
+/* fig. 05 map */
+.mp-country {
+    stroke: var(--rule);
+    stroke-width: 0.6;
+}
+
+.mp-country.is-study {
+    stroke: var(--ink);
+    stroke-width: 1.1;
+}
+
+.mp-country.is-study:hover,
+.mp-country.is-study:focus-visible {
+    stroke-width: 2;
+    outline: none;
+}
+
+.mp-dot {
+    fill: var(--ink);
+    opacity: 0.55;
+}
+
+.mp-dot--urban_traffic { fill: var(--map-pos); opacity: 0.8; }
+.mp-dot--urban_background { fill: var(--map-neg); opacity: 0.8; }
+.mp-dot--suburban_background { fill: var(--faint); opacity: 0.8; }
+
+.mp-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.25rem;
+    margin-top: 0.9rem;
+}
+
+.mp-ramp {
+    width: min(220px, 48vw);
+    height: 8px;
+    margin-top: 0.35rem;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--map-neg), var(--map-neutral), var(--map-pos));
+}
+
+.mp-ramp__ends {
+    display: flex;
+    justify-content: space-between;
+    width: min(220px, 48vw);
+    margin-top: 0.25rem;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    color: var(--faint);
+}
+
+.mp-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    color: var(--muted);
+}
+
+.mp-key li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.mp-dot-key {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--faint);
+}
+
+.mp-dot-key.mp-dot--urban_traffic { background: var(--map-pos); }
+.mp-dot-key.mp-dot--urban_background { background: var(--map-neg); }
+.mp-dot-key.mp-dot--suburban_background { background: var(--faint); }
+
+/* fig. 06 results table */
+.rt-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+}
+
+.rt {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.rt th,
+.rt td {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+}
+
+.rt thead th {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.rt tbody tr:last-child th,
+.rt tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.rt tbody th {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.rt td {
+    color: var(--muted);
+}
+
+.rt-num {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink) !important;
+    white-space: nowrap;
+}
+
+.rt-verdict {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.rt-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.rt-meta dt {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.25rem;
+}
+
+.rt-meta dd {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--ink);
+}
+
+/* fig. 07 counterfactual */
+.cf-line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+
+.cf-line--actual { stroke: var(--accent); }
+.cf-line--synth { stroke: var(--faint); stroke-dasharray: 5 4; }
+.cf-line--gap { stroke: var(--ink); stroke-width: 1.5; }
+
+/* fig. 08 event study */
+.ev-ci {
+    stroke: var(--faint);
+    stroke-width: 1.4;
+}
+
+.ev-dot {
+    fill: var(--accent);
+}
+
+/* fig. 09 placebo strip */
+.pb-ci {
+    stroke: var(--rule);
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.pb-dot {
+    fill: var(--faint);
+}
+
+.pb-real {
+    stroke: var(--accent);
+    stroke-width: 2;
+}
+
+.pb-real-label {
+    fill: var(--accent-ink);
+}
+
+/* fig. 10 methods */
+.mt-list {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.mt-item {
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: var(--paper);
+}
+
+.mt-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem 1.15rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.mt-summary::-webkit-details-marker {
+    display: none;
+}
+
+.mt-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.mt-item[open] .mt-cue {
+    opacity: 0;
+}
+
+.mt-body {
+    padding: 0 1.15rem 1.15rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 72ch;
+}
+
+@media (max-width: 760px) {
+    .prov {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .mp-controls {
+        gap: 0.9rem;
+    }
+
+    /* Floors, not fixed heights. The table, the timeline and the variant tabs
+       only exist once their JSON lands, and on a throttled phone that is well
+       after first paint, so the page jumped as each one appeared. These hold
+       the space open; more data simply grows past them. Measured at 375px,
+       where the whole page shifted 0.048 without them. */
+    #timeline { min-height: 12rem; }
+    #results { min-height: 41rem; }
+    #event-study { min-height: 10.5rem; }
+    .ch-key { min-height: 1.4rem; }
+}
+
 /* 16  PLAIN & 404 PAGES ---------------------------------------------------- */
 
 .plain {
