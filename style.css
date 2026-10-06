@@ -2769,21 +2769,23 @@ button {
    means filling it in moves nothing below it: without this the page scored a
    0.097 cumulative layout shift on mobile, almost all of it these four. */
 #map,
-#counterfactual,
 #placebo,
 .ch-canvas {
     display: block;
 }
 
 #map { aspect-ratio: 640 / 440; }
-#counterfactual { aspect-ratio: 720 / 360; min-height: 23rem; }
+.ch-canvas--cf { aspect-ratio: 720 / 360; }
 #placebo { aspect-ratio: 720 / 180; }
 .ch-canvas--event { aspect-ratio: 720 / 280; }
 
-#map > p,
-#counterfactual > p,
-#placebo > p,
-.ch-canvas > p {
+/* Only the "no data" line is centred in the reserved box. Scoped to .lead
+   because the counterfactual's donor-weights note is also a <p> child, and a
+   bare child selector stretched it to the full height of the chart and laid it
+   over the legend and the caption. */
+#map > p.lead,
+#placebo > p.lead,
+.ch-canvas > p.lead {
     display: grid;
     place-items: center;
     height: 100%;
@@ -3122,6 +3124,19 @@ button {
     letter-spacing: 0.04em;
 }
 
+/* Nine policy windows need their label column to stay readable, so the figure
+   keeps one layout and pans on a narrow screen instead of restacking into
+   something that collides with itself. */
+#timeline {
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+#timeline svg {
+    min-width: 560px;
+}
+
 .rt-meta {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -3246,7 +3261,6 @@ button {
        after first paint, so the page jumped as each one appeared. These hold
        the space open; more data simply grows past them. Measured at 375px,
        where the whole page shifted 0.048 without them. */
-    #timeline { min-height: 30rem; }
     #event-study { min-height: 12.5rem; }
     .ch-key { min-height: 1.4rem; }
 }

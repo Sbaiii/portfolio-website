@@ -39,7 +39,7 @@ export const PAGE = {
       caption: 'Policy dates only, nothing measured. Tankrabatt was a cut in fuel tax: it ran over exactly the same three months as the €9 ticket while pushing the other way, which is why the 2023 Deutschlandticket is the cleaner test.',
       whenSummer: 'Jun → Aug 2022',
       whenFrom: 'from May 2023',
-      alt: 'Timeline of three German policies on a two-year axis: the €9 ticket and the Tankrabatt fuel tax cut, both from June to August 2022, and the Deutschlandticket running from May 2023 onwards.',
+      alt: 'Policy timeline. Each bar is a policy window on a shared time axis; fuel-price measures are drawn dashed and dated COVID events are marked with a vertical line. Windows shown:',
     },
 
     questions: {
@@ -288,7 +288,7 @@ export const PAGE = {
       caption: 'Uniquement des dates de mesures publiques, rien de mesuré. Le Tankrabatt était une remise sur la taxe carburant : il a couvert exactement les mêmes trois mois que le billet à 9 € tout en poussant dans l’autre sens, ce qui fait du Deutschlandticket de 2023 le test le plus propre.',
       whenSummer: 'juin → août 2022',
       whenFrom: 'à partir de mai 2023',
-      alt: 'Chronologie de trois mesures allemandes sur deux ans : le billet à 9 € et la remise sur la taxe carburant (Tankrabatt), tous deux de juin à août 2022, et le Deutschlandticket à partir de mai 2023.',
+      alt: 'Chronologie des mesures. Chaque barre est une fenêtre de politique publique sur un axe de temps commun ; les mesures sur les carburants sont en tirets et les dates COVID sont marquées par un trait vertical. Fenêtres représentées :',
     },
 
     questions: {
@@ -537,7 +537,7 @@ export const PAGE = {
       caption: 'Solo fechas de medidas públicas, nada medido. El Tankrabatt era una rebaja del impuesto a los carburantes: cubrió exactamente los mismos tres meses que el abono de 9 € y empuja en sentido contrario, y por eso el Deutschlandticket de 2023 es la prueba más limpia.',
       whenSummer: 'jun → ago 2022',
       whenFrom: 'desde mayo de 2023',
-      alt: 'Cronología de tres medidas alemanas sobre dos años: el abono de 9 € y la rebaja del impuesto a los carburantes (Tankrabatt), ambos de junio a agosto de 2022, y el Deutschlandticket a partir de mayo de 2023.',
+      alt: 'Cronología de medidas. Cada barra es una ventana de política pública sobre un eje de tiempo común; las medidas sobre carburantes van en trazo discontinuo y las fechas de COVID se marcan con una línea vertical. Ventanas mostradas:',
     },
 
     questions: {

@@ -34,6 +34,17 @@ function t(path) {
 
 const TL_CATEGORIES = ['treatment', 'fuel_price'];
 
+/**
+ * The figure's own contents as a sentence. The alt used to name three policies
+ * that were written into the page; the file now carries nine, so it is built
+ * from whatever is actually drawn.
+ */
+function timelineAlt(bars, marks) {
+    const names = bars.map((r) => label(r.label)).join(', ');
+    return `${t('experiment.alt')} ${names}.`
+        + (marks.length ? ` ${marks.map((r) => `${label(r.label)} (${r.start})`).join('. ')}.` : '');
+}
+
 /** A YYYY-MM-DD string as months since year 0, for the timeline axis. */
 function dayMonth(iso) {
     return monthNumber(String(iso).slice(0, 7));
@@ -55,26 +66,27 @@ function renderTimeline() {
     const marks = rows.filter((r) => r.category === 'covid');
     if (!bars.length) { host.innerHTML = ''; return; }
 
-    const wide = window.innerWidth > BREAKPOINT;
+    // One layout at every width. Nine labelled windows do not restack into a
+    // phone without colliding, so the figure keeps its label column and pans.
     const starts = rows.map((r) => dayMonth(r.start));
     const ends = rows.map((r) => (r.end ? dayMonth(r.end) + 1 : null)).filter((v) => v !== null);
-    const lo = Math.min(...starts);
+    const lo = Math.min(...starts) - 1;
     const hi = Math.max(Math.max(...ends), lo + 12) + 2;
 
-    const W = wide ? 760 : 360;
-    const labelW = wide ? 168 : 0;
-    const x0 = wide ? labelW + 14 : 12;
+    const W = 760;
+    const labelW = 168;
+    const x0 = labelW + 14;
     const x1 = W - 14;
     const at = (m) => x0 + ((m - lo) / (hi - lo)) * (x1 - x0);
 
-    const rowH = wide ? 34 : 50;
-    const barH = wide ? 17 : 15;
+    const rowH = 34;
+    const barH = 17;
     const top = 14;
     const axisY = top + bars.length * rowH + 14;
     const H = axisY + 34;
 
     const lanes = bars.map((r, i) => {
-        const yMid = top + i * rowH + (wide ? rowH / 2 : rowH - 20);
+        const yMid = top + i * rowH + rowH / 2;
         const a = at(dayMonth(r.start));
         const b = r.end ? at(dayMonth(r.end) + 1) : at(hi);
         const open = !r.end;
@@ -83,26 +95,29 @@ function renderTimeline() {
         const shape = open
             ? `<path class="${cls}" d="M${a.toFixed(1)} ${y} L${(b - 7).toFixed(1)} ${y} L${b.toFixed(1)} ${(y + barH / 2).toFixed(1)} L${(b - 7).toFixed(1)} ${(y + barH).toFixed(1)} L${a.toFixed(1)} ${(y + barH).toFixed(1)} Z" />`
             : `<rect class="${cls}" x="${a.toFixed(1)}" y="${y}" width="${Math.max(2, b - a).toFixed(1)}" height="${barH}" rx="3" />`;
-        const text = wide
-            ? `<text class="tl-name" x="${labelW}" y="${(yMid + 4).toFixed(1)}" text-anchor="end">${label(r.label)}</text>
-               <text class="tl-cc" x="${labelW}" y="${(yMid + 15).toFixed(1)}" text-anchor="end">${r.cc}</text>`
-            : `<text class="tl-name" x="${x0}" y="${(yMid - barH).toFixed(1)}">${label(r.label)}</text>`;
-        return text + shape;
+        const span = r.end ? `${r.start} to ${r.end}` : `${r.start} onwards`;
+        const text = `<text class="tl-name" x="${labelW}" y="${(yMid - 1).toFixed(1)}" text-anchor="end">${label(r.label)}</text>
+               <text class="tl-cc" x="${labelW}" y="${(yMid + 11).toFixed(1)}" text-anchor="end">${r.cc}</text>`;
+        return `${text}<g><title>${label(r.label)}, ${span}</title>${shape}</g>`;
     }).join('');
 
     const ticks = marks.map((r) => {
         const x = at(dayMonth(r.start));
-        return `<line class="tl-event" x1="${x.toFixed(1)}" y1="${top - 6}" x2="${x.toFixed(1)}" y2="${axisY}" />`;
+        return `<g><title>${label(r.label)}, ${r.start}</title>
+            <line class="tl-event" x1="${x.toFixed(1)}" y1="${top - 6}" x2="${x.toFixed(1)}" y2="${axisY}" /></g>`;
     }).join('');
 
     const years = [];
-    for (let m = Math.ceil(lo / 12) * 12; m < hi; m += 12) {
-        years.push(`<text class="tl-year" x="${at(m + 6).toFixed(1)}" y="${axisY + 18}" text-anchor="middle">${m / 12}</text>`);
+    for (let m = Math.floor(lo / 12) * 12; m < hi; m += 12) {
+        const mid = Math.max(m + 6, (lo + Math.min(m + 12, hi)) / 2);
+        if (Math.min(m + 12, hi) - Math.max(m, lo) >= 3) {
+            years.push(`<text class="tl-year" x="${at(mid).toFixed(1)}" y="${axisY + 18}" text-anchor="middle">${m / 12}</text>`);
+        }
         if (m > lo) years.push(`<line class="tl-grid" x1="${at(m).toFixed(1)}" y1="${top - 6}" x2="${at(m).toFixed(1)}" y2="${axisY}" />`);
     }
 
     host.innerHTML = `
-        <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t('experiment.alt')}">
+        <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${timelineAlt(bars, marks)}">
             ${years.join('')}
             ${ticks}
             ${lanes}
@@ -563,7 +578,7 @@ function renderCounterfactual() {
     if (!host) return;
     const sc = DATA.synthetic_control;
     if (!sc || !sc.series || !sc.series.length) {
-        host.innerHTML = `<p class="lead">${t('counterfactual.empty')}</p>`;
+        host.innerHTML = `<div class="ch-canvas ch-canvas--cf"><p class="lead">${t('counterfactual.empty')}</p></div>`;
         return;
     }
 
@@ -591,6 +606,7 @@ function renderCounterfactual() {
         .join(' · ');
 
     host.innerHTML = `
+        <div class="ch-canvas ch-canvas--cf">
         <svg viewBox="0 0 ${CF_W} ${CF_TOP + CF_GAP}" role="img" aria-label="${t('counterfactual.alt')}">
             ${policyBands(axis, 0, CF_TOP - 28)}
             ${gapBand(axis, 0, CF_TOP - 28)}
@@ -609,6 +625,7 @@ function renderCounterfactual() {
             </g>
             ${watermark('cf-fx', CF_W, CF_TOP + CF_GAP)}
         </svg>
+        </div>
         <ul class="ch-key">
             <li><span class="ch-swatch ch-swatch--actual"></span>${t('counterfactual.actual')}</li>
             <li><span class="ch-swatch ch-swatch--synth"></span>${t('counterfactual.synthetic')}</li>
@@ -854,7 +871,7 @@ function boot() {
         clearTimeout(timer);
         timer = setTimeout(() => {
             const next = window.innerWidth > BREAKPOINT;
-            if (next !== mode) { mode = next; renderTimeline(); renderPipeline(); }
+            if (next !== mode) { mode = next; renderPipeline(); }
         }, 160);
     });
 
