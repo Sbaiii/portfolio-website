@@ -3265,6 +3265,338 @@ button {
     .ch-key { min-height: 1.4rem; }
 }
 
+/* 15d  LOOKED UP: SCORECARD, ARCHITECTURE, REDRAWN CHARTS ------------------ */
+
+/* Screenshots: the desktop view and the phone view side by side, the phone at
+   its own proportions rather than cropped to match. Space is reserved by the
+   width and height attributes, so lazy loading moves nothing. */
+.lu-shots {
+    margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+}
+
+.lu-shots__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.27fr);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    align-items: end;
+}
+
+.lu-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: #08090b;
+}
+
+.lu-shot--phone img {
+    border-radius: 18px;
+}
+
+/* A sub-heading inside one fig., set like the meta labels so it does not
+   compete with the section title above it. */
+.lu-sub {
+    font-family: var(--mono);
+    font-size: var(--t-meta);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: clamp(2.5rem, 6vw, 3.5rem) 0 1rem;
+}
+
+.lu-shots + .lu-sub {
+    margin-top: 0;
+}
+
+.lu-arch .pl-note {
+    font-size: 10px;
+}
+
+.lu-arch .lu-app {
+    fill: var(--accent-soft);
+    stroke: var(--accent);
+}
+
+.lu-arch-path {
+    fill: var(--accent-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* The headline figures reuse the home page's, without its masthead spacing. */
+.lu-numbers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 0;
+    padding-top: 1.5rem;
+}
+
+.lu-numbers .figures__value {
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+    white-space: nowrap;
+}
+
+.lu-numbers .figures__label {
+    text-transform: none;
+    letter-spacing: 0.04em;
+    max-width: 26ch;
+}
+
+/* fig. 03: the tally above the table */
+.lu-tally {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.25rem, 4vw, 3rem);
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.lu-tally__item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.lu-tally__n {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Supported is the only verdict in the accent: two of fourteen should stand
+   out. Rejected is plain, and inconclusive is dashed because it is a missing
+   answer, not a negative one. */
+.lu-verdict--supported {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-on);
+}
+
+.lu-verdict--rejected {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.lu-verdict--inconclusive {
+    border-style: dashed;
+    color: var(--faint);
+}
+
+.lu-score {
+    min-width: 760px;
+}
+
+.lu-score th[scope="row"] {
+    width: 17%;
+    vertical-align: top;
+}
+
+.lu-score td {
+    vertical-align: top;
+    line-height: 1.45;
+}
+
+.lu-score td:nth-child(2) {
+    width: 36%;
+}
+
+.lu-score .lu-found {
+    color: var(--ink);
+}
+
+.lu-hid {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent-ink);
+}
+
+.lu-phase th {
+    padding-top: 1.1rem !important;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint) !important;
+    background: var(--paper-2);
+}
+
+/* fig. 04: a finding with a chart puts the two side by side when there is room */
+.lu-finding--chart {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    align-items: start;
+}
+
+.lu-chart {
+    padding: clamp(0.6rem, 1.5vw, 0.9rem);
+}
+
+.lu-chart--calibration svg {
+    max-width: 420px;
+    margin-inline: auto;
+}
+
+.lu-grid {
+    stroke-opacity: 0.7;
+}
+
+.lu-line--alt {
+    stroke: var(--faint);
+}
+
+.lu-dot {
+    fill: var(--accent);
+}
+
+.lu-dot--alt {
+    fill: var(--faint);
+}
+
+.lu-key {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--accent-ink);
+}
+
+.lu-key--alt {
+    fill: var(--muted);
+}
+
+.lu-bar {
+    fill: var(--accent);
+}
+
+.lu-bar--alt {
+    fill: var(--faint);
+}
+
+.lu-zero {
+    stroke: var(--ink);
+    stroke-width: 1;
+}
+
+.lu-prereg {
+    stroke: var(--faint);
+}
+
+.lu-median {
+    stroke: var(--ink);
+    stroke-width: 1.5;
+    stroke-dasharray: 1 3;
+    stroke-linecap: round;
+}
+
+.lu-when {
+    margin: -0.35rem 0 0.75rem;
+    text-transform: none;
+    letter-spacing: 0.06em;
+}
+
+.lu-stack {
+    margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+/* On a phone the four columns do not fit, and scrolling sideways would hide
+   the verdict, which is the point of the table. Each row becomes a card: the
+   hypothesis and its verdict on top, then what was expected and what was found. */
+@media (max-width: 760px) {
+    .lu-score {
+        min-width: 0;
+    }
+
+    .lu-score thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    .lu-score,
+    .lu-score tbody,
+    .lu-score tr,
+    .lu-score th,
+    .lu-score td {
+        display: block;
+        width: auto !important;
+    }
+
+    .lu-score tbody tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        column-gap: 0.75rem;
+        padding: 0.9rem 0.9rem 0.8rem;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .lu-score tbody tr.lu-phase {
+        display: block;
+        padding: 0;
+    }
+
+    .lu-score tbody th,
+    .lu-score tbody td {
+        padding: 0;
+        border: 0;
+    }
+
+    .lu-score .lu-verdict {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+    }
+
+    .lu-score td[data-label] {
+        grid-column: 1 / -1;
+        margin-top: 0.6rem;
+    }
+
+    .lu-score td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 0.15rem;
+        font-family: var(--mono);
+        font-size: 0.56rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--faint);
+    }
+
+    .lu-phase th {
+        padding: 0.8rem 0.9rem 0.6rem !important;
+        border-bottom: 1px solid var(--rule) !important;
+    }
+}
+
+@media (max-width: 860px) {
+    .lu-finding--chart {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .lu-numbers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .lu-shots__row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr);
+    }
+}
+
+
 /* 16  PLAIN & 404 PAGES ---------------------------------------------------- */
 
 .plain {
