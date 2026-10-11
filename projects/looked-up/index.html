@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looked Up, a case study by Abdellah Sbai Atta Allah</title>
+    <meta name="description"
+        content="What humanity looked up today. Wikipedia across 30 languages, every hour, turned into attention events, forecasts and a live globe, with 14 pre-registered hypotheses scored honestly.">
+    <meta name="author" content="Abdellah Sbai Atta Allah">
+    <link rel="canonical" href="https://sbaiii.com/projects/looked-up/">
+
+    <!-- Resolve the theme before first paint so there is no flash of the wrong one. -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('portfolio_theme');
+                if (stored) document.documentElement.setAttribute('data-theme', stored);
+            } catch (e) { /* private mode: fall back to the CSS media query */ }
+        })();
+    </script>
+
+    <meta property="og:url" content="https://sbaiii.com/projects/looked-up/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Abdellah Sbai Atta Allah">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:title" content="Looked Up: what humanity looked up today">
+    <meta property="og:description"
+        content="Wikipedia across 30 languages, every hour. 14 hypotheses written down first; 2 held.">
+    <meta property="og:image" content="https://sbaiii.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A career plotted as a line chart: latitude against time.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Looked Up: what humanity looked up today">
+    <meta name="twitter:description"
+        content="Wikipedia across 30 languages, every hour. 14 hypotheses written down first; 2 held.">
+    <meta name="twitter:image" content="https://sbaiii.com/assets/og-image.png">
+
+    <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#08090b" media="(prefers-color-scheme: dark)">
+
+    <link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="modulepreload" href="./page.js">
+    <link rel="modulepreload" href="/js/chrome.js">
+    <link rel="modulepreload" href="./strings.js">
+    <link rel="stylesheet" href="/style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Looked Up: what humanity looked up today",
+        "description": "Wikipedia across 30 languages, every hour, turned into attention events, forecasts and a live globe.",
+        "url": "https://sbaiii.com/projects/looked-up/",
+        "author": {
+            "@type": "Person",
+            "name": "Abdellah Sbai Atta Allah",
+            "url": "https://sbaiii.com/"
+        },
+        "isPartOf": { "@type": "WebSite", "url": "https://sbaiii.com/" }
+    }
+    </script>
+</head>
+
+<body>
+    <a class="visually-hidden" href="#main">Skip to content</a>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <a class="brand" href="/">Abdellah Sbai<span class="dot">.</span></a>
+
+        <nav class="nav" id="nav" aria-label="Primary">
+            <div class="nav__index">
+                <a href="/#work" class="nav__back"><span class="nav__label" data-i18n="back">Back to the
+                        portfolio</span></a>
+                <a href="/" style="--i:0"><span class="nav__fig">fig. 00</span><span class="nav__label"
+                        data-i18n="nav.home">Home</span></a>
+                <a href="https://sbaiii.github.io/looked-up/" target="_blank" rel="noopener noreferrer"
+                    style="--i:1"><span class="nav__fig">app</span><span class="nav__label"
+                        data-i18n="nav.app">The app</span></a>
+                <a href="https://github.com/Sbaiii/looked-up" target="_blank" rel="noopener noreferrer"
+                    style="--i:2"><span class="nav__fig">git</span><span class="nav__label"
+                        data-i18n="nav.repo">Repository</span></a>
+            </div>
+            <div class="nav__foot">
+                <div class="nav__langs" id="nav-langs" role="group" aria-label="Language">
+                    <button type="button" data-lang="en" lang="en">EN</button>
+                    <button type="button" data-lang="fr" lang="fr">FR</button>
+                    <button type="button" data-lang="es" lang="es">ES</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="controls">
+            <a class="ctrl ctrl--query" href="/#work" data-i18n="back">Back to the portfolio</a>
+
+            <div class="lang">
+                <button class="lang__btn" id="lang-btn" aria-haspopup="true" aria-expanded="false"
+                    aria-controls="lang-menu"><span class="visually-hidden">Language: </span><span
+                        id="lang-code">EN</span></button>
+                <div class="lang__menu" id="lang-menu">
+                    <button data-lang="en" lang="en">English</button>
+                    <button data-lang="fr" lang="fr">Français</button>
+                    <button data-lang="es" lang="es">Español</button>
+                </div>
+            </div>
+
+            <button class="ctrl" id="theme-toggle" aria-label="Toggle colour theme">
+                <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4.5" />
+                    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                </svg>
+                <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- ==================== fig. 00  HERO ==================== -->
+        <section class="wrap cs-hero" id="top">
+            <div class="masthead__fig">
+                <span class="meta" data-i18n="hero.fig">fig. 00</span>
+                <span class="meta" data-i18n="hero.kicker">Case study</span>
+                <span class="badge badge--done" data-i18n="hero.status">Live</span>
+            </div>
+
+            <h1 class="cs-hero__title" data-i18n="hero.title">Looked Up</h1>
+            <p class="cs-hero__subtitle" data-i18n="hero.subtitle">What humanity looked up today.</p>
+            <!-- 30 languages: config/languages.yml (top_n: 30) -->
+            <p class="cs-hero__hook" data-i18n="hero.hook">Wikipedia across 30 languages, every hour, turned into attention events, forecasts and a live globe.</p>
+            <!-- 30: config/languages.yml · every hour: docs/ops.md (hourly.yml) · 14 hypotheses: docs/analysis/phase2_results.md,
+                 phase2b_results.md, phase4_results.md, phase5_results.md · €0: docs/adr/0002-storage-and-compute.md -->
+            <p class="meta cs-hero__meta" data-i18n="hero.meta">30 languages · updated every hour · 14 pre-registered hypotheses · €0</p>
+
+            <div class="case__tags" style="margin-top:1.5rem">
+                <span class="tool">Python</span><span class="tool">DuckDB</span><span class="tool">dbt</span><span
+                    class="tool">LightGBM</span><span class="tool">TypeScript</span><span class="tool">Cloudflare
+                    Workers</span><span class="tool">GitHub Actions</span>
+            </div>
+
+            <div class="cs-hero__actions">
+                <a class="btn btn--primary" href="https://sbaiii.github.io/looked-up/" target="_blank"
+                    rel="noopener noreferrer" data-i18n="hero.app">Open the app ↗</a>
+                <a class="btn btn--ghost" href="https://github.com/Sbaiii/looked-up" target="_blank"
+                    rel="noopener noreferrer" data-i18n="hero.repo">GitHub ↗</a>
+                <a class="btn btn--text" href="https://huggingface.co/datasets/Sbaiiiiii/looked-up" target="_blank"
+                    rel="noopener noreferrer" data-i18n="hero.dataset">Dataset ↗</a>
+                <a class="btn btn--text" href="/#work" data-i18n="back">Back to the portfolio</a>
+            </div>
+        </section>
+
+        <!-- ==================== fig. 01  THE QUESTION ==================== -->
+        <section class="wrap fig" id="question">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="question.fig">fig. 01</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="question.title">The question</h2>
+                </div>
+            </div>
+            <aside class="takeaway reveal">
+                <p class="takeaway__text" data-i18n="question.ask">Can we see what the world pays attention to, hour by hour, across languages, from public data, for free?</p>
+            </aside>
+            <div class="cs-prose reveal">
+                <!-- more than 300 language editions: README.md -->
+                <p data-i18n="question.p1"></p>
+                <!-- about 3.2 hours: docs/analysis/phase5_results.md -->
+                <p data-i18n="question.p2"></p>
+                <p data-i18n="question.p3"></p>
+            </div>
+        </section>
+
+        <!-- ==================== fig. 02  WHAT I BUILT ==================== -->
+        <section class="wrap fig" id="built">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="built.fig">fig. 02</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="built.title">What I built</h2>
+                    <p class="fig__standfirst" data-i18n="built.standfirst"></p>
+                </div>
+            </div>
+
+            <figure class="lu-shots reveal">
+                <div class="lu-shots__row">
+                    <picture class="lu-shot lu-shot--desktop">
+                        <source type="image/webp" sizes="(max-width: 560px) 66vw, 900px"
+                            srcset="/assets/projects/looked-up/desktop-today-760.webp 760w, /assets/projects/looked-up/desktop-today.webp 1440w">
+                        <img src="/assets/projects/looked-up/desktop-today.jpg" width="1440" height="900"
+                            loading="lazy" decoding="async" data-i18n-attr="alt:built.shotDesktopAlt"
+                            alt="The Looked Up app on a desktop screen, with the editors strip, the headline event and a world map.">
+                    </picture>
+                    <picture class="lu-shot lu-shot--phone">
+                        <source type="image/webp" sizes="(max-width: 560px) 28vw, 260px"
+                            srcset="/assets/projects/looked-up/phone-today-300.webp 300w, /assets/projects/looked-up/phone-today.webp 780w">
+                        <img src="/assets/projects/looked-up/phone-today.jpg" width="780" height="1688"
+                            loading="lazy" decoding="async" data-i18n-attr="alt:built.shotPhoneAlt"
+                            alt="The same front page on a phone.">
+                    </picture>
+                </div>
+                <figcaption class="meta ch-caption" data-i18n="built.shotsCaption"></figcaption>
+            </figure>
+
+            <h3 class="lu-sub reveal" data-i18n="built.archTitle">Architecture</h3>
+            <figure class="ch-plate reveal">
+                <div class="pipeline lu-arch" id="architecture"></div>
+                <figcaption class="meta ch-caption" data-i18n="built.archCaption"></figcaption>
+            </figure>
+
+            <h3 class="lu-sub reveal" data-i18n="built.numbersTitle">In numbers</h3>
+            <!-- Sources, in order: config/languages.yml (rank 30, cumulative_share_of_candidates 0.9851);
+                 docs/feasibility.md (≈ 55 MB gz per hour); docs/data_model.md (≈ 16 GB a year);
+                 docs/adr/0021-product-tiers.md (37,386 events in 84 days, 124 planetary);
+                 docs/ops.md (hourly.yml); docs/adr/0002-storage-and-compute.md (budget €0). -->
+            <div class="figures lu-numbers reveal" id="numbers"></div>
+
+            <h3 class="lu-sub reveal" data-i18n="built.speedsTitle">Three speeds</h3>
+            <!-- every 6 minutes: docs/adr/0033-live-state-in-d1.md, docs/ops.md · 2 languages within 6 h, 28 day
+                 baseline: README.md · 5 languages, next 24 h: docs/analysis/phase4_results.md -->
+            <div class="qgrid" id="speeds"></div>
+        </section>
+
+        <!-- ==================== fig. 03  THE SCORECARD ==================== -->
+        <section class="wrap fig" id="scorecard-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="score.fig">fig. 03</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="score.title">The scorecard</h2>
+                    <p class="fig__standfirst" data-i18n="score.standfirst"></p>
+                </div>
+            </div>
+            <!-- H1 to H4: docs/analysis/phase2_results.md · H1b-1 to H5: docs/analysis/phase2b_results.md ·
+                 H6 to H8: docs/analysis/phase4_results.md · H9, H10: docs/analysis/phase5_results.md -->
+            <div class="reveal" id="scorecard"></div>
+        </section>
+
+        <!-- ==================== fig. 04  FINDINGS ==================== -->
+        <section class="wrap fig" id="findings-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="findings.fig">fig. 04</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="findings.title">What the data said instead</h2>
+                    <p class="fig__standfirst" data-i18n="findings.standfirst"></p>
+                </div>
+            </div>
+            <!-- 01 to 03: docs/analysis/phase2_results.md · 04: docs/analysis/phase5_results.md and phase5_h9.csv ·
+                 05: docs/analysis/phase4_results.md and phase4_metrics.json -->
+            <div class="rstack" id="findings"></div>
+        </section>
+
+        <!-- ==================== fig. 05  THREE EVENTS ==================== -->
+        <section class="wrap fig" id="events-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="events.fig">fig. 05</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="events.title">Three events</h2>
+                    <p class="fig__standfirst" data-i18n="events.standfirst"></p>
+                </div>
+            </div>
+            <!-- All three: docs/analysis/phase2_results.md (case studies 1, 2 and 4) -->
+            <div class="dgrid" id="events"></div>
+            <!-- 90 days: lookedup/app_export.py (STATS_DAYS = 90) -->
+            <p class="meta pipeline__refresh" data-i18n="events.window"></p>
+        </section>
+
+        <!-- ==================== fig. 06  LIMITATIONS ==================== -->
+        <section class="wrap fig" id="limits-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="limits.fig">fig. 06</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="limits.title">Honest limitations</h2>
+                    <p class="fig__standfirst" data-i18n="limits.standfirst"></p>
+                </div>
+            </div>
+            <!-- In order: docs/analysis/phase5_results.md (3.2 h, 2.2 h); docs/feasibility.md (18 of 38);
+                 docs/analysis/phase2b_results.md (23%, 54%); docs/analysis/phase4_results.md (3 events, 30%);
+                 docs/adr/0006 (1,000 views, 5% mobile); docs/adr/0033 and docs/ops.md (10 ms, p95 16 ms, 85 polls) -->
+            <div class="dgrid" id="limits"></div>
+        </section>
+
+        <!-- ==================== fig. 07  STACK AND PRACTICE ==================== -->
+        <section class="wrap fig" id="practice-section">
+            <div class="fig__head reveal">
+                <div class="fig__label"><span class="meta" data-i18n="stack.fig">fig. 07</span></div>
+                <div>
+                    <h2 class="fig__title" data-i18n="stack.title">Stack and practice</h2>
+                    <p class="fig__standfirst" data-i18n="stack.standfirst"></p>
+                </div>
+            </div>
+            <div class="case__tags lu-stack reveal">
+                <span class="tool">Python</span><span class="tool">DuckDB</span><span class="tool">dbt</span><span
+                    class="tool">LightGBM</span><span class="tool">Parquet</span><span class="tool">GitHub
+                    Actions</span><span class="tool">Hugging Face Datasets</span><span class="tool">Cloudflare
+                    Workers</span><span class="tool">TypeScript</span><span class="tool">D1</span><span
+                    class="tool">KV</span><span class="tool">Vanilla JS</span><span class="tool">WebGL</span><span
+                    class="tool">Playwright</span>
+            </div>
+            <!-- 33 decision records: docs/adr/ (0001 to 0033) -->
+            <div class="dgrid" id="practice"></div>
+        </section>
+    </main>
+
+    <footer class="wrap colophon">
+        <p data-i18n="footer.note">Data: Wikimedia pageviews and Wikidata, CC0.</p>
+        <p>
+            <a href="https://github.com/Sbaiii/looked-up" target="_blank" rel="noopener noreferrer"
+                data-i18n="footer.repo">Repository ↗</a>
+            &nbsp;·&nbsp;
+            <a href="/" data-i18n="footer.home">Back to sbaiii.com</a>
+            &nbsp;·&nbsp;
+            © <span id="year">2026</span> Abdellah Sbai Atta Allah
+        </p>
+    </footer>
+
+    <script type="module" src="./page.js"></script>
+</body>
+
+</html>
