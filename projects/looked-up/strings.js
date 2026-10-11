@@ -78,7 +78,7 @@ export const PAGE = {
         { v: '37,386', l: 'attention events in 84 days' }, // docs/adr/0021-product-tiers.md
         { v: '124', l: 'planetary: 20 languages or more' }, // docs/adr/0021-product-tiers.md
         { v: '1 h', l: 'between updates' }, // docs/ops.md: hourly.yml, cron 17 * * * *
-        { v: '€0', l: 'budget, and the bill' }, // docs/adr/0002-storage-and-compute.md; docs/feasibility.md §6
+        { v: '€0', l: 'budget, free tiers only' }, // docs/adr/0002-storage-and-compute.md; README.md (free infrastructure only)
       ],
       speedsTitle: 'Three speeds',
       speedLabel: 'Speed',
@@ -315,7 +315,7 @@ export const PAGE = {
         { v: '37 386', l: 'événements d’attention en 84 jours' },
         { v: '124', l: 'planétaires : 20 langues ou plus' },
         { v: '1 h', l: 'entre deux mises à jour' },
-        { v: '0 €', l: 'de budget, et de facture' },
+        { v: '0 €', l: 'de budget, offres gratuites uniquement' },
       ],
       speedsTitle: 'Trois vitesses',
       speedLabel: 'Vitesse',
@@ -552,7 +552,7 @@ export const PAGE = {
         { v: '37.386', l: 'eventos de atención en 84 días' },
         { v: '124', l: 'planetarios: 20 idiomas o más' },
         { v: '1 h', l: 'entre actualizaciones' },
-        { v: '0 €', l: 'de presupuesto, y de factura' },
+        { v: '0 €', l: 'de presupuesto, solo niveles gratuitos' },
       ],
       speedsTitle: 'Tres velocidades',
       speedLabel: 'Velocidad',
