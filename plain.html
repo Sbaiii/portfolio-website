@@ -167,6 +167,37 @@
                 rel="noopener noreferrer">github.com/Sbaiii/ticket-to-breathe</a>
         </p>
 
+        <!-- Numbers: github.com/Sbaiii/looked-up. 30 languages: config/languages.yml; 37,386 events in 84 days:
+             docs/adr/0021-product-tiers.md; verdicts and figures: docs/analysis/phase2_results.md, phase2b_results.md,
+             phase4_results.md, phase5_results.md; 18 of 38 countries: docs/feasibility.md. -->
+        <h3>Looked Up</h3>
+        <p class="when">Live · Python · DuckDB · dbt · LightGBM · TypeScript · Cloudflare Workers</p>
+        <p><em>What humanity looked up today.</em> Can public Wikipedia data show what the world pays attention to,
+            hour by hour, across languages?</p>
+        <p><strong>Problem.</strong> Wikimedia publishes how often every Wikipedia article is read, every hour, in
+            more than 300 languages. Could that public data show what the world is paying attention to, how it
+            spreads from language to language, and what will spread next, for free?</p>
+        <p><strong>What I built.</strong> An hourly pipeline that adds 30 Wikipedias to a public Hugging Face
+            dataset, scores them for attention events in DuckDB and dbt (37,386 events in 84 days), and forecasts
+            their spread with LightGBM; a Cloudflare Worker in TypeScript that watches edits by the minute; and an
+            app in English, French and Spanish with a live globe. 14 hypotheses were pre-registered before the code
+            that tested them, and every decision is recorded.</p>
+        <p><strong>Result.</strong> Of 14 pre-registered hypotheses, 2 held, 7 were rejected and 5 could not be
+            decided on the data available. What the data showed instead: English leads only 26.6% of events; a World
+            Cup final reaches 29 languages in the same hour while a death takes hours; readers reach a story a median
+            106 minutes before editors do, though edits are known 86 minutes before the reading data is published;
+            and fame explains only a fifth of what goes global, with the forecast reaching AUC 0.875 an hour after
+            detection. Limits: it sees languages, not countries, and it favours the famous.</p>
+        <p>
+            <a href="/projects/looked-up/">Read the case study</a> ·
+            <a href="https://sbaiii.github.io/looked-up/" target="_blank"
+                rel="noopener noreferrer">Open the app</a> ·
+            <a href="https://huggingface.co/datasets/Sbaiiiiii/looked-up" target="_blank"
+                rel="noopener noreferrer">Dataset</a> ·
+            <a href="https://github.com/Sbaiii/looked-up" target="_blank"
+                rel="noopener noreferrer">github.com/Sbaiii/looked-up</a>
+        </p>
+
         <h2>Contact</h2>
         <ul>
             <li>Email: <a href="mailto:abdellahsbaisbai@gmail.com">abdellahsbaisbai@gmail.com</a></li>
