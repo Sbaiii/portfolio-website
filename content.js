@@ -139,16 +139,16 @@ export const PROJECTS = [
    THE STACK: grouped by what the tool is for, not by logo availability.
 -------------------------------------------------------------------------------*/
 export const STACK = [
-  { id: 'lang', items: ['Python', 'R', 'Java', 'JavaScript', 'C', 'C++', 'C#'] },
+  { id: 'lang', items: ['Python', 'R', 'Java', 'JavaScript', 'TypeScript', 'C', 'C++', 'C#'] },
   { id: 'query', items: ['SQL', 'DAX', 'M / Power Query', 'VBA', 'Bash'] },
   { id: 'py', items: ['pandas', 'NumPy', 'scikit-learn', 'SciPy', 'statsmodels', 'Matplotlib', 'Seaborn', 'Plotly', 'TensorFlow', 'PyTorch', 'spaCy', 'Streamlit'] },
   { id: 'r', items: ['tidyverse', 'dplyr', 'ggplot2', 'caret', 'Shiny', 'R Markdown'] },
-  { id: 'db', items: ['MySQL', 'PostgreSQL', 'SQL Server', 'Oracle', 'SQLite', 'MongoDB', 'Schema design'] },
+  { id: 'db', items: ['MySQL', 'PostgreSQL', 'SQL Server', 'Oracle', 'SQLite', 'DuckDB', 'MongoDB', 'Schema design'] },
   { id: 'bi', items: ['Power BI', 'Tableau', 'Looker Studio', 'Qlik Sense', 'Excel', 'Google Sheets'] },
   { id: 'stats', items: ['Hypothesis testing', 'A/B testing', 'Regression', 'Correlation', 'Time series', 'Forecasting', 'Exploratory analysis', 'Cohort & funnel', 'Segmentation & RFM'] },
-  { id: 'ml', items: ['Classification', 'Clustering', 'Random Forest', 'XGBoost', 'Feature engineering', 'Model evaluation', 'Cross-validation', 'NLP & sentiment', 'Deep learning'] },
+  { id: 'ml', items: ['Classification', 'Clustering', 'Random Forest', 'XGBoost', 'LightGBM', 'Feature engineering', 'Model evaluation', 'Cross-validation', 'NLP & sentiment', 'Deep learning'] },
   { id: 'eng', items: ['ETL & ELT', 'Star & snowflake schemas', 'Data warehousing', 'PySpark', 'Airflow', 'dbt', 'SSIS', 'APIs & JSON'] },
-  { id: 'cloud', items: ['BigQuery', 'Snowflake', 'Databricks', 'Azure Data Factory', 'Synapse', 'AWS Redshift', 'Microsoft Fabric'] },
+  { id: 'cloud', items: ['BigQuery', 'Snowflake', 'Databricks', 'Azure Data Factory', 'Synapse', 'AWS Redshift', 'Microsoft Fabric', 'Cloudflare Workers'] },
   { id: 'tools', items: ['Git & GitHub', 'Jupyter', 'VS Code', 'RStudio', 'Anaconda', 'Jira', 'SAS', 'SPSS', 'HTML & CSS'] },
 ];
 
