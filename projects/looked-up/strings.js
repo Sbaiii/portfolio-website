@@ -193,7 +193,6 @@ export const PAGE = {
       title: 'Three events',
       standfirst: 'Each one opens in the app, on its day, with its spread on the globe.',
       open: 'Open in the app ↗',
-      window: 'The app keeps the last 90 days, so a link opens its event while that day is still in the window.', // lookedup/app_export.py STATS_DAYS = 90
       items: [
         {
           key: 'panettiere',
@@ -430,7 +429,6 @@ export const PAGE = {
       title: 'Trois événements',
       standfirst: 'Chacun s’ouvre dans l’application, à sa date, avec sa diffusion sur le globe.',
       open: 'Ouvrir dans l’application ↗',
-      window: 'L’application garde les 90 derniers jours : un lien ouvre son événement tant que ce jour reste dans la fenêtre.',
       items: [
         {
           key: 'panettiere',
@@ -667,7 +665,6 @@ export const PAGE = {
       title: 'Tres eventos',
       standfirst: 'Cada uno se abre en la aplicación, en su día, con su difusión en el globo.',
       open: 'Abrir en la aplicación ↗',
-      window: 'La aplicación guarda los últimos 90 días, así que un enlace abre su evento mientras ese día siga en la ventana.',
       items: [
         {
           key: 'panettiere',
