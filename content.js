@@ -133,6 +133,18 @@ export const PROJECTS = [
     metrics: [],
     status: 'live',
   },
+  {
+    id: 'lookedUp',
+    repo: 'https://github.com/Sbaiii/looked-up',
+    caseStudy: '/projects/looked-up/',
+    tags: ['Python', 'DuckDB', 'dbt', 'LightGBM', 'TypeScript', 'Cloudflare Workers'],
+    image: null,
+    dashboard: 'https://sbaiii.github.io/looked-up/',
+    // The scorecard of the 14 pre-registered hypotheses: verdicts, not data.
+    plot: 'scorecard',
+    metrics: [],
+    status: 'live',
+  },
 ];
 
 /* -----------------------------------------------------------------------------
@@ -247,7 +259,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Case Studies',
-      standfirst: 'Two shipped. Built in the open.',
+      standfirst: 'Three shipped. Built in the open.',
       problem: 'Problem',
       built: 'What I built',
       result: 'Result',
@@ -278,6 +290,19 @@ export const STRINGS = {
             'A pipeline over the EEA’s verified hourly air-quality data (1,955 NO2 sampling points in 10 countries, 2.5 GB) and ERA5 reanalysis weather, a DuckDB and dbt warehouse, a LightGBM model that removes the effect of weather, then difference-in-differences, synthetic control and an event study comparing Germany with 7 neighbouring countries.',
           plotAlt: 'Timeline of three German policies: the €9 ticket and the Tankrabatt fuel tax cut, both from June to August 2022, and the Deutschlandticket from May 2023 onwards.',
           result: 'No measurable drop in urban NO2 from either ticket. The pre-registered €9 estimate (+3.6 points vs expected, 95% CI +1.0 to +6.2) sits inside the range of placebo countries; the Deutschlandticket estimate is −0.5 (CI −2.8 to +1.7).',
+        },
+        lookedUp: {
+          title: 'Looked Up',
+          subtitle: 'What humanity looked up today',
+          hook: 'Can public Wikipedia data show what the world pays attention to, hour by hour, across languages?',
+          // Numbers: github.com/Sbaiii/looked-up, config/languages.yml and docs/analysis/phase{2,2b,4,5}_results.md
+          problem:
+            'Wikimedia publishes how often every Wikipedia article is read, every hour, in more than 300 languages. Could that public data show what the world is paying attention to, how it spreads from language to language, and what will spread next, for free?',
+          built:
+            'An hourly pipeline that adds 30 Wikipedias to a public Hugging Face dataset, scores them for attention events in DuckDB and dbt, and forecasts their spread with LightGBM; a Cloudflare Worker in TypeScript that watches edits by the minute; and an app in English, French and Spanish with a live globe. 14 hypotheses were pre-registered before the code that tested them.',
+          plotAlt: 'The scorecard of 14 pre-registered hypotheses: 2 supported, 7 rejected and 5 inconclusive.',
+          liveLink: 'Open the app ↗',
+          result: 'Of 14 pre-registered hypotheses, 2 held, 7 were rejected and 5 could not be decided on the data available. What the data showed instead: English leads only 26.6% of events, readers reach a story a median 106 minutes before editors do, and fame explains only a fifth of what goes global.',
         },
       },
     },
@@ -502,7 +527,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Études de Cas',
-      standfirst: 'Deux livrés. Construit à ciel ouvert.',
+      standfirst: 'Trois livrés. Construit à ciel ouvert.',
       problem: 'Problème',
       built: 'Ce que j’ai construit',
       result: 'Résultat',
@@ -533,6 +558,18 @@ export const STRINGS = {
             'Un pipeline sur les données horaires validées de qualité de l’air de l’AEE (1 955 points de mesure du NO2 dans 10 pays, 2,5 Go) et la météo de réanalyse ERA5, un entrepôt DuckDB et dbt, un modèle LightGBM qui retire l’effet de la météo, puis doubles différences, contrôle synthétique et étude d’événement comparant l’Allemagne à 7 pays voisins.',
           plotAlt: 'Chronologie de trois mesures allemandes : le billet à 9 € et la remise sur les carburants (Tankrabatt), tous deux de juin à août 2022, et le Deutschlandticket à partir de mai 2023.',
           result: 'Aucune baisse mesurable du NO2 urbain, quel que soit le billet. L\'estimation préenregistrée pour les 9 € (+3,6 points par rapport à l\'attendu, IC à 95 % de +1,0 à +6,2) reste dans la plage des pays placebo ; celle du Deutschlandticket est de −0,5 (IC de −2,8 à +1,7).',
+        },
+        lookedUp: {
+          title: 'Looked Up',
+          subtitle: 'Ce que l’humanité a cherché aujourd’hui',
+          hook: 'Les données publiques de Wikipédia peuvent-elles montrer ce à quoi le monde prête attention, heure par heure, d’une langue à l’autre ?',
+          problem:
+            'Wikimedia publie toutes les heures combien de fois chaque article de Wikipédia est lu, dans plus de 300 langues. Ces données publiques peuvent-elles montrer ce à quoi le monde prête attention, comment cela passe d’une langue à l’autre, et ce qui va se propager ensuite, gratuitement ?',
+          built:
+            'Une chaîne horaire qui ajoute 30 Wikipédia à un jeu de données public sur Hugging Face, y détecte des événements d’attention avec DuckDB et dbt et prévoit leur diffusion avec LightGBM ; un Cloudflare Worker en TypeScript qui suit les modifications à la minute ; et une application en anglais, français et espagnol avec un globe en direct. 14 hypothèses ont été préenregistrées avant le code qui les a testées.',
+          plotAlt: 'Le bilan des 14 hypothèses préenregistrées : 2 confirmées, 7 rejetées et 5 non concluantes.',
+          liveLink: 'Ouvrir l’application ↗',
+          result: 'Sur 14 hypothèses préenregistrées, 2 ont tenu, 7 ont été rejetées et 5 n’ont pas pu être tranchées faute de données. Ce que les données ont montré à la place : l’anglais ne mène que 26,6 % des événements, les lecteurs arrivent sur une actualité en médiane 106 minutes avant les contributeurs, et la notoriété n’explique qu’un cinquième de ce qui devient mondial.',
         },
       },
     },
@@ -756,7 +793,7 @@ export const STRINGS = {
     work: {
       fig: 'fig. 02',
       title: 'Casos Prácticos',
-      standfirst: 'Dos entregados. Construido a la vista.',
+      standfirst: 'Tres entregados. Construido a la vista.',
       problem: 'Problema',
       built: 'Lo que construí',
       result: 'Resultado',
@@ -787,6 +824,18 @@ export const STRINGS = {
             'Un pipeline sobre los datos horarios validados de calidad del aire de la AEMA (1.955 puntos de muestreo de NO2 en 10 países, 2,5 GB) y la meteorología de reanálisis ERA5, un almacén con DuckDB y dbt, un modelo LightGBM que descuenta el efecto del tiempo, y después diferencias en diferencias, control sintético y un estudio de eventos que compara Alemania con 7 países vecinos.',
           plotAlt: 'Cronología de tres medidas alemanas: el abono de 9 € y la rebaja del combustible (Tankrabatt), ambos de junio a agosto de 2022, y el Deutschlandticket desde mayo de 2023.',
           result: 'Ninguna caída medible del NO2 urbano con ninguno de los dos billetes. La estimación preregistrada para el de 9 € (+3,6 puntos sobre lo esperado, IC al 95 % de +1,0 a +6,2) queda dentro del rango de los países placebo; la del Deutschlandticket es de −0,5 (IC de −2,8 a +1,7).',
+        },
+        lookedUp: {
+          title: 'Looked Up',
+          subtitle: 'Lo que la humanidad buscó hoy',
+          hook: '¿Pueden los datos públicos de Wikipedia mostrar a qué presta atención el mundo, hora a hora, entre idiomas?',
+          problem:
+            'Wikimedia publica cada hora cuántas veces se lee cada artículo de Wikipedia, en más de 300 idiomas. ¿Pueden esos datos públicos mostrar a qué presta atención el mundo, cómo pasa de un idioma a otro y qué se propagará después, gratis?',
+          built:
+            'Una cadena horaria que añade 30 Wikipedias a un conjunto de datos público en Hugging Face, detecta en ellas eventos de atención con DuckDB y dbt y prevé su difusión con LightGBM; un Cloudflare Worker en TypeScript que sigue las ediciones minuto a minuto; y una aplicación en inglés, francés y español con un globo en directo. Se preregistraron 14 hipótesis antes del código que las puso a prueba.',
+          plotAlt: 'El balance de las 14 hipótesis preregistradas: 2 confirmadas, 7 rechazadas y 5 no concluyentes.',
+          liveLink: 'Abrir la aplicación ↗',
+          result: 'De 14 hipótesis preregistradas, se sostuvieron 2, se rechazaron 7 y 5 no pudieron decidirse con los datos disponibles. Lo que mostraron los datos en su lugar: el inglés lidera solo el 26,6 % de los eventos, los lectores llegan a una noticia una mediana de 106 minutos antes que los editores, y la fama explica solo una quinta parte de lo que se vuelve global.',
         },
       },
     },

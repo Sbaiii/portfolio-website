@@ -415,6 +415,9 @@ function renderCases() {
             : '';
 
         const subtitle = t(`${base}.subtitle`);
+        // A project can name its live link (an app is not a dashboard).
+        const ownLabel = t(`${base}.liveLink`);
+        const linkLabel = ownLabel !== `${base}.liveLink` ? ownLabel : t('work.dashboardLink');
         const hook = t(`${base}.hook`);
 
         const links = [
@@ -422,7 +425,7 @@ function renderCases() {
                 ? `<a class="btn btn--primary" href="${p.caseStudy}">${t('work.readCase')}</a>`
                 : '',
             p.dashboard
-                ? `<a class="btn btn--ghost" href="${p.dashboard}" target="_blank" rel="noopener noreferrer">${t('work.dashboardLink')}</a>`
+                ? `<a class="btn btn--ghost" href="${p.dashboard}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>`
                 : '',
             p.repo
                 ? `<a class="btn btn--ghost" href="${p.repo}" target="_blank" rel="noopener noreferrer">${t('work.view')} ↗</a>`
@@ -474,7 +477,34 @@ function renderCases() {
 function casePlot(project, base) {
     if (project.plot === 'policyTimeline') return policyTimelineSvg(t(`${base}.plotAlt`));
     if (project.plot === 'priceDay') return priceDaySvg();
+    if (project.plot === 'scorecard') return scorecardSvg(t(`${base}.plotAlt`));
     return '';
+}
+
+/**
+ * The Looked Up scorecard: one mark per pre-registered hypothesis, grouped by
+ * verdict. Verdicts only, no measurements: filled held, a ring was rejected,
+ * a dashed ring never got enough data to decide.
+ */
+function scorecardSvg(alt) {
+    const rows = [
+        { cls: 'sc-yes', ids: ['H6', 'H8'] },
+        { cls: 'sc-no', ids: ['H1', 'H2', 'H4', 'H1b-1', 'H1b-2', 'H7', 'H9'] },
+        { cls: 'sc-open', ids: ['H3', 'H1b-3', 'H2b', 'H5', 'H10'] },
+    ];
+    const marks = rows.map((row, r) => {
+        const y = 34 + r * 54;
+        const dots = row.ids.map((id, i) => {
+            const x = 78 + i * 33;
+            return `<circle class="${row.cls}" cx="${x}" cy="${y}" r="10" />
+                <text class="sc-id" x="${x}" y="${y + 24}" text-anchor="middle">${id}</text>`;
+        }).join('');
+        return `<text class="sc-n" x="18" y="${y + 9}">${row.ids.length}</text>${dots}`;
+    }).join('');
+    return `
+        <svg viewBox="0 0 320 180" role="img" aria-label="${alt}">
+            ${marks}
+        </svg>`;
 }
 
 /**
